@@ -1,0 +1,6 @@
+module Pods_Recognizer_Chords [system] {
+  umbrella header "Pods-Recognizer Chords-umbrella.h"
+
+  export *
+  module * { export * }
+}
