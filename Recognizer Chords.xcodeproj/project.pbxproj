@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		4AD48171BC7C958FC9BF1DBB /* libPods-Recognizer Chords.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */; };
 		A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502D207E504C000E79E1 /* AppDelegate.swift */; };
-		A6A35030207E504C000E79E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502F207E504C000E79E1 /* ViewController.swift */; };
+		A6A35030207E504C000E79E1 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502F207E504C000E79E1 /* Networking.swift */; };
 		A6A35033207E504C000E79E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35031207E504C000E79E1 /* Main.storyboard */; };
 		A6A35035207E504C000E79E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A35034207E504C000E79E1 /* Assets.xcassets */; };
 		A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35036207E504C000E79E1 /* LaunchScreen.storyboard */; };
+		A6BC0AE1208524DD00D2AF6C /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE0208524DD00D2AF6C /* FirstScreenViewController.swift */; };
+		A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */; };
+		A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */; };
+		A6DE85FC20869C9E00DBBE3A /* LastScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE85FB20869C9E00DBBE3A /* LastScoresViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +25,15 @@
 		A5B70A3B4E59E301089A3BD1 /* Pods-Recognizer Chords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.release.xcconfig"; sourceTree = "<group>"; };
 		A6A3502A207E504C000E79E1 /* Recognizer Chords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recognizer Chords.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A3502D207E504C000E79E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A6A3502F207E504C000E79E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A6A3502F207E504C000E79E1 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		A6A35032207E504C000E79E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6A35034207E504C000E79E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6A35037207E504C000E79E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6A35039207E504C000E79E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6BC0AE0208524DD00D2AF6C /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
+		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
+		A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
+		A6DE85FB20869C9E00DBBE3A /* LastScoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastScoresViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,13 +79,49 @@
 			isa = PBXGroup;
 			children = (
 				A6A3502D207E504C000E79E1 /* AppDelegate.swift */,
-				A6A3502F207E504C000E79E1 /* ViewController.swift */,
+				A6BC0AD92085243C00D2AF6C /* Controllers */,
+				A6DE85FE2086A33400DBBE3A /* Networking */,
+				A6BC0AE6208542C800D2AF6C /* Resources */,
+				A6BC0AE7208542EB00D2AF6C /* Supporting files */,
+			);
+			path = "Recognizer Chords";
+			sourceTree = "<group>";
+		};
+		A6BC0AD92085243C00D2AF6C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A6BC0AE0208524DD00D2AF6C /* FirstScreenViewController.swift */,
+				A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */,
+				A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */,
+				A6DE85FB20869C9E00DBBE3A /* LastScoresViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A6BC0AE6208542C800D2AF6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				A6A35031207E504C000E79E1 /* Main.storyboard */,
 				A6A35034207E504C000E79E1 /* Assets.xcassets */,
 				A6A35036207E504C000E79E1 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A6BC0AE7208542EB00D2AF6C /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
 				A6A35039207E504C000E79E1 /* Info.plist */,
 			);
-			path = "Recognizer Chords";
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		A6DE85FE2086A33400DBBE3A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A6A3502F207E504C000E79E1 /* Networking.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		DC90F1BA0BA035ECC0E48262 /* Frameworks */ = {
@@ -182,8 +226,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6A35030207E504C000E79E1 /* ViewController.swift in Sources */,
+				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
+				A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */,
+				A6A35030207E504C000E79E1 /* Networking.swift in Sources */,
+				A6BC0AE1208524DD00D2AF6C /* FirstScreenViewController.swift in Sources */,
 				A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */,
+				A6DE85FC20869C9E00DBBE3A /* LastScoresViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +371,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QE68JBKWWB;
-				INFOPLIST_FILE = "Recognizer Chords/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Recognizer Chords/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.luko.Recognizer-Chords";
@@ -340,7 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QE68JBKWWB;
-				INFOPLIST_FILE = "Recognizer Chords/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Recognizer Chords/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.luko.Recognizer-Chords";
