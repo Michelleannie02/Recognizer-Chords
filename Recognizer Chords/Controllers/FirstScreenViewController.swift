@@ -43,11 +43,11 @@ class FirstScreenViewController: UIViewController {
 	@IBOutlet weak var myLastScoresView: UIView!
 	
 	
-	
-
 	//*****************************************************************
 	// MARK: - Actions
 	//*****************************************************************
+	
+	// major, minor & play button ///////////////////////////////////////////
 	
 	// play button
 	@IBAction func playButtonPressed(_ sender: UIButton) {
@@ -64,9 +64,14 @@ class FirstScreenViewController: UIViewController {
 	// minor button
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
 		
+		//self.majorButton.backgroundColor = .white
+		
 	}
 	
 	
+	// last 3 scores ////////////////////////////////////////////////////////
+	
+	// abre la pestaña del mensaje de score
 	@IBAction func openScoreMessage(_ sender: UIButton) {
 		
 			// emerge esta vista
@@ -84,16 +89,16 @@ class FirstScreenViewController: UIViewController {
 		// touch drag inside
 		
 		// esconde la pestaña antes abierta
-		self.myLastScoresView.isHidden = true
+			self.myLastScoresView.isHidden = true
 		
 		// repone la fecha para arriba
-		self.upArrow.isHidden = false
+			self.upArrow.isHidden = false
 		
 	}
 	
 	@IBAction func lastScoresButton(_ sender: UIButton) {
 		
-		// lleva al 
+		// lleva al 'LastScoresVC'
 		
 	}
 	
@@ -106,14 +111,11 @@ class FirstScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        	// esconde la barra de estado
 			self.myLastScoresView.isHidden = true
-			
-			
-			
+		
 			
     }
-
-
 
 	//*****************************************************************
 	// MARK: - Navigation
