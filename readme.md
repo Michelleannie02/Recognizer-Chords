@@ -6,6 +6,8 @@ El usuario entonces da play y suena un acorde que puede ser tanto mayor como men
 
 La aplicación se complementa con dos pantallas más donde la dificultad se incrementa. En la segunda pantalla suena uno entre cuatro acordes y en la tercera, uno entre ocho.
 
+El objetivo de esta aplicación es entrenar la audiopercepción a través del reconocimiento de diversos tipos de acordes.
+
 
 
 
