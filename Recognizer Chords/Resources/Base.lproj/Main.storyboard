@@ -141,7 +141,7 @@
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.95686274510000002" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="M">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0078431372550000003" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="majorButtonPressed:" destination="MyA-Bw-ojC" eventType="touchUpInside" id="gxG-dk-eRq"/>
@@ -330,6 +330,9 @@
                                 <state key="normal" title="m">
                                     <color key="titleColor" red="0.2666666667" green="0.75294117650000003" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="minorButtonPressed:" destination="coL-3Q-8Ca" eventType="touchUpInside" id="Ymi-m4-QC2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qtc-Ik-uET">
                                 <rect key="frame" x="0.0" y="358" width="188" height="309"/>
@@ -339,6 +342,9 @@
                                 <state key="normal" title="d">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="diminishedButtonPressed:" destination="coL-3Q-8Ca" eventType="touchUpInside" id="z8y-XC-iY5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdR-AQ-CCc">
                                 <rect key="frame" x="187" y="358" width="188" height="309"/>
@@ -348,6 +354,21 @@
                                 <state key="normal" title="A">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="augmentedButtonPressed:" destination="coL-3Q-8Ca" eventType="touchUpInside" id="zf9-iZ-Hk5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKE-w4-cgy">
+                                <rect key="frame" x="0.0" y="50" width="188" height="309"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.77647058820000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="M">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="majorButtonPressed:" destination="coL-3Q-8Ca" eventType="touchUpInside" id="DYE-Uy-1Eu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Oa-1D-6Ek" userLabel="Play Button">
                                 <rect key="frame" x="137" y="305" width="101" height="101"/>
@@ -355,6 +376,15 @@
                                 <state key="normal" image="Asset 1"/>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="MyA-Bw-ojC" eventType="touchUpInside" id="O82-ot-zga"/>
+                                    <action selector="playButtonPressed:" destination="coL-3Q-8Ca" eventType="touchUpInside" id="mNa-nJ-Qtr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCv-zA-D5B">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Asset 2"/>
+                                <connections>
+                                    <action selector="openScoreMessage:" destination="coL-3Q-8Ca" eventType="touchDragInside" id="we5-fD-0Hq"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzj-cK-qZR">
@@ -368,6 +398,7 @@
                                         <connections>
                                             <action selector="closeScoreMessage:" destination="MyA-Bw-ojC" eventType="touchUpInside" id="1OZ-dd-E74"/>
                                             <action selector="closeScoreMessage:" destination="MyA-Bw-ojC" eventType="touchDragInside" id="agQ-hr-Zh9"/>
+                                            <action selector="closeScoreMessage:" destination="coL-3Q-8Ca" eventType="touchDragInside" id="rOO-9G-y1y"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fu7-em-X0W">
@@ -377,25 +408,25 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="lastScoresButton:" destination="coL-3Q-8Ca" eventType="touchUpInside" id="3Uf-OM-yeH"/>
                                             <action selector="lastScoresButton:" destination="MyA-Bw-ojC" eventType="touchUpInside" id="L5m-jj-XeN"/>
+                                            <segue destination="PIH-Hf-ide" kind="show" id="r7n-eR-sWA"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKE-w4-cgy">
-                                <rect key="frame" x="0.0" y="50" width="188" height="309"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36862745099999999" green="0.77647058820000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="M">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ow6-bq-Gte"/>
                     </view>
+                    <connections>
+                        <outlet property="augmentedButton" destination="tdR-AQ-CCc" id="aQ3-hK-Yt9"/>
+                        <outlet property="diminishedButton" destination="Qtc-Ik-uET" id="9iK-r4-kAS"/>
+                        <outlet property="majorButton" destination="SKE-w4-cgy" id="Kej-MB-ZCH"/>
+                        <outlet property="minorButton" destination="V2d-3X-8Zj" id="Wmc-px-XpJ"/>
+                        <outlet property="myLastScores" destination="kzj-cK-qZR" id="MoA-0T-yqL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EyX-z6-hMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -422,4 +453,7 @@
         <image name="Asset 1-1" width="14" height="14"/>
         <image name="Asset 2" width="1028" height="548"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="r7n-eR-sWA"/>
+    </inferredMetricsTieBreakers>
 </document>
