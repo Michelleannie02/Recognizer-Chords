@@ -36,7 +36,6 @@ class SecondScreenViewController: UIViewController {
 	@IBOutlet weak var diminishedButton: UIButton!
 	@IBOutlet weak var augmentedButton: UIButton!
 	
-	@IBOutlet weak var myLastScores: UIView!
 	
 	//*****************************************************************
 	// MARK: - Actions
@@ -45,75 +44,51 @@ class SecondScreenViewController: UIViewController {
 
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
-		
+		// test
+		print("el botón PLAY ha sido tapeado")
 		
 	}
 	
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
+		// test
+		print("el botón MAYOR ha sido tapeado")
 		
 	}
 	
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
 		
-		
+		// test
+		print("el botón MENOR ha sido tapeado")
 	}
 	
 	@IBAction func diminishedButtonPressed(_ sender: UIButton) {
 		
-		
+		// test
+		print("el botón DISMINUÍDO ha sido tapeado")
 	}
 	
 	@IBAction func augmentedButtonPressed(_ sender: UIButton) {
 		
-		
-		
-	}
-	
-	
-	// last 3 scores ////////////////////////////////////////////////////////
-	
-	@IBAction func openScoreMessage(_ sender: UIButton) {
-		
-		// emerge esta vista
-		self.myLastScores.isHidden = false
-		
-		// se esconde el botón de flecha para arriba anterior
-		self.upArrow.isHidden = true
+		// test
+		print("el botón AUMENTADO ha sido tapeado")
 		
 	}
-	
-	@IBAction func closeScoreMessage(_ sender: UIButton) {
-		
-		
-	}
-	
-	@IBAction func lastScoresButton(_ sender: UIButton) {
-		
-		// lleva al 'LastScoresVC'
-		
-	}
-	
 	
 
-	
-	
-	
-	
-	
 
 	//*****************************************************************
 	// MARK: - Life Cycle
 	//*****************************************************************
+	
+	// view controller methods
+	
 	override func viewDidLoad() {
 			super.viewDidLoad()
 
 			// Do any additional setup after loading the view.
 	}
 
-	
-	
-	
 	
 
 } // end class

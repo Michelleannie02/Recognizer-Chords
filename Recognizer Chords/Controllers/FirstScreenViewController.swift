@@ -36,15 +36,21 @@ class FirstScreenViewController: UIViewController {
 	
 	@IBOutlet weak var majorButton: UIButton!
 	@IBOutlet weak var minorButton: UIButton!
+	@IBOutlet weak var playButton: UIButton!
 	
-	// la flecha para que emerja el mensaje de scores
-	@IBOutlet weak var upArrow: UIButton!
-	// el mensaje que emerge para acceder a los últimos scores
-	@IBOutlet weak var myLastScoresView: UIView!
+//	// la flecha para que se abra el 'options view'
+//	@IBOutlet weak var upArrow: UIButton!
+//	// la flecha para que se cierre el 'options view'
+//	@IBOutlet weak var downArrow: UIButton!
+//	
+//	// una vista con las opciones de ver los últimos tres scores, ver una referencia de tipo de acordes y opciones de configuración
+//	@IBOutlet weak var optionsView: UIView!
+	
+
 	
 	
 	//*****************************************************************
-	// MARK: - Actions
+	// MARK: - IBActions
 	//*****************************************************************
 	
 	// major, minor & play button ///////////////////////////////////////////
@@ -52,12 +58,16 @@ class FirstScreenViewController: UIViewController {
 	// play button
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
+		// test
+		print("el botón PLAY ha sido tapeado")
 	}
 	
 	// major button
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
 		//self.minorButton.backgroundColor = .white
+		// test
+		print("el botón MAYOR ha sido tapeado")
 		
 	}
 	
@@ -65,54 +75,56 @@ class FirstScreenViewController: UIViewController {
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
 		
 		//self.majorButton.backgroundColor = .white
+		// test
+		print("el botón MENOR ha sido tapeado")
 		
 	}
 	
-	
-	// last 3 scores ////////////////////////////////////////////////////////
-	
-	// abre la pestaña del mensaje de score
-	@IBAction func openScoreMessage(_ sender: UIButton) {
+	@IBAction func openOptionsView(_ sender: UIButton) {
 		
-			// emerge esta vista
-			self.myLastScoresView.isHidden = false
+		// abre la vista para ver diversas opciones
+		//self.optionsView.isHidden = false
 		
-			// se esconde el botón de flecha para arriba anterior
-			self.upArrow.isHidden = true
-	
+		
+//		// configura la animación de las constraints ligadas al menú
+//		UIView.animate(
+//			withDuration: 0.33,
+//			delay: 0.0,
+//			options: .curveEaseIn,
+//			animations: {
+//				let angle: CGFloat =
+//					self.menuIsOpen ? .pi / 4 : 0.0
+//				self.buttonMenu.transform = CGAffineTransform(rotationAngle: angle)
+//				self.view.layoutIfNeeded() // !!!
+//		},
+//			completion: nil
+//		)
+		
+		// configura la animación de las constraints ligadas al menú
+//		UIView.animate(
+//			withDuration: 0.33,
+//			delay: 0.0,
+//			options: .curveEaseIn,
+//			animations: {
+//				self.optionsView.frame.origin.y = +30
+//		},
+//			completion: nil
+//		)
+		
+		
 	}
 	
-	
-	// cierra la pestaña del mensaje de score
-	@IBAction func closeScoreMessage(_ sender: UIButton) {
-		
-		// touch drag inside
-		
-		// esconde la pestaña antes abierta
-			self.myLastScoresView.isHidden = true
-		
-		// repone la fecha para arriba
-			self.upArrow.isHidden = false
-		
-	}
-	
-	@IBAction func lastScoresButton(_ sender: UIButton) {
-		
-		// lleva al 'LastScoresVC'
-		
-	}
 	
 
 	//*****************************************************************
-	// MARK: - Life Cycle (View Controller Methods)
+	// MARK: - Life Cycle
 	//*****************************************************************
+	
+		// view controller methods
 	
 		// cuando la supervista ya se cargó...
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        	// esconde la barra de estado
-			self.myLastScoresView.isHidden = true
 		
 			
     }
