@@ -40,32 +40,8 @@ class ThirdScreenViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-	//*****************************************************************
-	// MARK: - IBOutlets
-	//*****************************************************************
-	
-	
 
-	
-	
-	
-	//*****************************************************************
-	// MARK: - IBActions
-	//*****************************************************************
-	
-	// play button
-	@IBAction func playButtonPressed(_ sender: UIButton) {
-		
-		// test
-		print("el botón PLAY ha sido tapeado")
-		
-	}
-	
-	
-	
-	
-	
-	
+
 
 	//*****************************************************************
 	// MARK: - Navigation

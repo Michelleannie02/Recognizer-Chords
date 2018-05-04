@@ -30,89 +30,43 @@ class FirstScreenViewController: UIViewController {
 		return true
 	}
 	
+	
+	
+	var collectionData = ["🌚", "🔋", "🤡", "🎲"]
+
+	
+	
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
 	
-	@IBOutlet weak var majorButton: UIButton!
-	@IBOutlet weak var minorButton: UIButton!
-	@IBOutlet weak var playButton: UIButton!
-	
-//	// la flecha para que se abra el 'options view'
-//	@IBOutlet weak var upArrow: UIButton!
-//	// la flecha para que se cierre el 'options view'
-//	@IBOutlet weak var downArrow: UIButton!
-//	
-//	// una vista con las opciones de ver los últimos tres scores, ver una referencia de tipo de acordes y opciones de configuración
-//	@IBOutlet weak var optionsView: UIView!
-	
+	// el menú con 4 opciones
 
 	
 	
+	
+	
+//	var menuModel: UIImage = ["play_button.png", "failure_image.png", "point_image.png"]
+	
+	// menu items
+//	var chordMenuItem = UIImage(imageLiteralResourceName: "gClef_image.png")
+//	var settingMenuItem: UIImage = UIImage(imageLiteralResourceName: "settings_image.png")
+//	var scoreMenuItem: UIImage = UIImage(imageLiteralResourceName: "lastScores_image.png")
+//	var headphonesMenuItem: UIImage = UIImage(imageLiteralResourceName: "headphones_image.png")
+	
+	//var menuModel: [UIImage] = [chordMenuItem, ]
+	
+	
+	//imageDePrueba.image = UIImage(named: "play_button.png")
+
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
 	// major, minor & play button ///////////////////////////////////////////
 	
-	// play button
-	@IBAction func playButtonPressed(_ sender: UIButton) {
-		
-		// test
-		print("el botón PLAY ha sido tapeado")
-	}
 	
-	// major button
-	@IBAction func majorButtonPressed(_ sender: UIButton) {
-		
-		//self.minorButton.backgroundColor = .white
-		// test
-		print("el botón MAYOR ha sido tapeado")
-		
-	}
-	
-	// minor button
-	@IBAction func minorButtonPressed(_ sender: UIButton) {
-		
-		//self.majorButton.backgroundColor = .white
-		// test
-		print("el botón MENOR ha sido tapeado")
-		
-	}
-	
-	@IBAction func openOptionsView(_ sender: UIButton) {
-		
-		// abre la vista para ver diversas opciones
-		//self.optionsView.isHidden = false
-		
-		
-//		// configura la animación de las constraints ligadas al menú
-//		UIView.animate(
-//			withDuration: 0.33,
-//			delay: 0.0,
-//			options: .curveEaseIn,
-//			animations: {
-//				let angle: CGFloat =
-//					self.menuIsOpen ? .pi / 4 : 0.0
-//				self.buttonMenu.transform = CGAffineTransform(rotationAngle: angle)
-//				self.view.layoutIfNeeded() // !!!
-//		},
-//			completion: nil
-//		)
-		
-		// configura la animación de las constraints ligadas al menú
-//		UIView.animate(
-//			withDuration: 0.33,
-//			delay: 0.0,
-//			options: .curveEaseIn,
-//			animations: {
-//				self.optionsView.frame.origin.y = +30
-//		},
-//			completion: nil
-//		)
-		
-		
-	}
+
 	
 	
 
@@ -127,18 +81,24 @@ class FirstScreenViewController: UIViewController {
         super.viewDidLoad()
 		
 			
+			
+			
     }
-
+	
+	
 	//*****************************************************************
 	// MARK: - Navigation
 	//*****************************************************************
 	
-		///In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-			
-         //Get the new view controller using segue.destinationViewController.
-         //Pass the selected object to the new view controller.
-    }
-
-
+	///In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		//Get the new view controller using segue.destinationViewController.
+		//Pass the selected object to the new view controller.
+	}
+	
 } // end class
+
+
+	
+

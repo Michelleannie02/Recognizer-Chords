@@ -26,15 +26,8 @@ class SecondScreenViewController: UIViewController {
 	}
 	
 	
-	//*****************************************************************
-	// MARK: - IBOutlets
-	//*****************************************************************
 	
-	// los botones de los acordes..
-	@IBOutlet weak var majorButton: UIButton!
-	@IBOutlet weak var minorButton: UIButton!
-	@IBOutlet weak var diminishedButton: UIButton!
-	@IBOutlet weak var augmentedButton: UIButton!
+
 	
 	
 	//*****************************************************************
@@ -42,38 +35,7 @@ class SecondScreenViewController: UIViewController {
 	//*****************************************************************
 	
 
-	@IBAction func playButtonPressed(_ sender: UIButton) {
-		
-		// test
-		print("el botón PLAY ha sido tapeado")
-		
-	}
-	
-	@IBAction func majorButtonPressed(_ sender: UIButton) {
-		
-		// test
-		print("el botón MAYOR ha sido tapeado")
-		
-	}
-	
-	@IBAction func minorButtonPressed(_ sender: UIButton) {
-		
-		// test
-		print("el botón MENOR ha sido tapeado")
-	}
-	
-	@IBAction func diminishedButtonPressed(_ sender: UIButton) {
-		
-		// test
-		print("el botón DISMINUÍDO ha sido tapeado")
-	}
-	
-	@IBAction func augmentedButtonPressed(_ sender: UIButton) {
-		
-		// test
-		print("el botón AUMENTADO ha sido tapeado")
-		
-	}
+
 	
 
 

@@ -8,8 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		4AD48171BC7C958FC9BF1DBB /* libPods-Recognizer Chords.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */; };
-		A65856E62088DA89007E2FB1 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65856E52088DA89007E2FB1 /* ConfigurationViewController.swift */; };
-		A65856E82088E5B5007E2FB1 /* ChordsReferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65856E72088E5B5007E2FB1 /* ChordsReferencesViewController.swift */; };
+		A684733C209CEB0000AD89CD /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684733B209CEB0000AD89CD /* MenuBar.swift */; };
+		A684733E209CEB0F00AD89CD /* ScoreBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684733D209CEB0F00AD89CD /* ScoreBar.swift */; };
+		A6847340209CEB2E00AD89CD /* BaseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684733F209CEB2E00AD89CD /* BaseBar.swift */; };
+		A6847344209CED2700AD89CD /* ChordsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847343209CED2700AD89CD /* ChordsInfo.swift */; };
+		A6847346209CEDB100AD89CD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847345209CEDB100AD89CD /* Settings.swift */; };
+		A6847348209CEE2100AD89CD /* LastScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847347209CEE2100AD89CD /* LastScores.swift */; };
+		A684734A209CEE7000AD89CD /* Headphones.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847349209CEE7000AD89CD /* Headphones.swift */; };
+		A6847351209CF21300AD89CD /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847350209CF21300AD89CD /* ScoreCell.swift */; };
+		A6847353209CF23B00AD89CD /* ChordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847352209CF23B00AD89CD /* ChordsCell.swift */; };
+		A6847355209CF28300AD89CD /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847354209CF28300AD89CD /* BaseCell.swift */; };
+		A6847358209CF36000AD89CD /* TwoChords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847357209CF36000AD89CD /* TwoChords.swift */; };
+		A684735A209CF3F000AD89CD /* FourChords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847359209CF3F000AD89CD /* FourChords.swift */; };
+		A684735C209CF40D00AD89CD /* EigthChords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684735B209CF40D00AD89CD /* EigthChords.swift */; };
 		A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502D207E504C000E79E1 /* AppDelegate.swift */; };
 		A6A35030207E504C000E79E1 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502F207E504C000E79E1 /* Networking.swift */; };
 		A6A35033207E504C000E79E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35031207E504C000E79E1 /* Main.storyboard */; };
@@ -25,8 +36,19 @@
 		9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Recognizer Chords.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B70A3B4E59E301089A3BD1 /* Pods-Recognizer Chords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.release.xcconfig"; sourceTree = "<group>"; };
 		A61BE9CE208E6868004023EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A65856E52088DA89007E2FB1 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
-		A65856E72088E5B5007E2FB1 /* ChordsReferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsReferencesViewController.swift; sourceTree = "<group>"; };
+		A684733B209CEB0000AD89CD /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		A684733D209CEB0F00AD89CD /* ScoreBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBar.swift; sourceTree = "<group>"; };
+		A684733F209CEB2E00AD89CD /* BaseBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBar.swift; sourceTree = "<group>"; };
+		A6847343209CED2700AD89CD /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsInfo.swift; sourceTree = "<group>"; };
+		A6847345209CEDB100AD89CD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A6847347209CEE2100AD89CD /* LastScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastScores.swift; sourceTree = "<group>"; };
+		A6847349209CEE7000AD89CD /* Headphones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headphones.swift; sourceTree = "<group>"; };
+		A6847350209CF21300AD89CD /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScoreCell.swift; path = "Recognizer Chords/View/cells/ScoreCell.swift"; sourceTree = SOURCE_ROOT; };
+		A6847352209CF23B00AD89CD /* ChordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChordsCell.swift; path = "Recognizer Chords/View/cells/ChordsCell.swift"; sourceTree = SOURCE_ROOT; };
+		A6847354209CF28300AD89CD /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCell.swift; path = "Recognizer Chords/View/cells/BaseCell.swift"; sourceTree = SOURCE_ROOT; };
+		A6847357209CF36000AD89CD /* TwoChords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoChords.swift; sourceTree = "<group>"; };
+		A6847359209CF3F000AD89CD /* FourChords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourChords.swift; sourceTree = "<group>"; };
+		A684735B209CF40D00AD89CD /* EigthChords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EigthChords.swift; sourceTree = "<group>"; };
 		A6A3502A207E504C000E79E1 /* Recognizer Chords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recognizer Chords.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A3502D207E504C000E79E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A3502F207E504C000E79E1 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -60,6 +82,63 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A60E686220927221004C601B /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				A684734C209CEEE400AD89CD /* bars */,
+				A684734B209CEEBD00AD89CD /* auxiliares */,
+				A6847356209CF2F400AD89CD /* user interaction */,
+				A684734F209CF10E00AD89CD /* cells */,
+			);
+			name = VIew;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		A684734B209CEEBD00AD89CD /* auxiliares */ = {
+			isa = PBXGroup;
+			children = (
+				A6847343209CED2700AD89CD /* ChordsInfo.swift */,
+				A6847345209CEDB100AD89CD /* Settings.swift */,
+				A6847347209CEE2100AD89CD /* LastScores.swift */,
+				A6847349209CEE7000AD89CD /* Headphones.swift */,
+			);
+			name = auxiliares;
+			path = "Recognizer Chords/View/auxiliares";
+			sourceTree = "<group>";
+		};
+		A684734C209CEEE400AD89CD /* bars */ = {
+			isa = PBXGroup;
+			children = (
+				A684733F209CEB2E00AD89CD /* BaseBar.swift */,
+				A684733B209CEB0000AD89CD /* MenuBar.swift */,
+				A684733D209CEB0F00AD89CD /* ScoreBar.swift */,
+			);
+			name = bars;
+			path = "Recognizer Chords/View/bars";
+			sourceTree = "<group>";
+		};
+		A684734F209CF10E00AD89CD /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				A6847350209CF21300AD89CD /* ScoreCell.swift */,
+				A6847352209CF23B00AD89CD /* ChordsCell.swift */,
+				A6847354209CF28300AD89CD /* BaseCell.swift */,
+			);
+			name = cells;
+			path = "Recognizer Chords/View/cells";
+			sourceTree = "<group>";
+		};
+		A6847356209CF2F400AD89CD /* user interaction */ = {
+			isa = PBXGroup;
+			children = (
+				A6847357209CF36000AD89CD /* TwoChords.swift */,
+				A6847359209CF3F000AD89CD /* FourChords.swift */,
+				A684735B209CF40D00AD89CD /* EigthChords.swift */,
+			);
+			name = "user interaction";
+			path = "Recognizer Chords/View/user interaction";
+			sourceTree = "<group>";
+		};
 		A6A35021207E504C000E79E1 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A3502D207E504C000E79E1 /* AppDelegate.swift */,
+				A60E686220927221004C601B /* VIew */,
 				A6BC0AD92085243C00D2AF6C /* Controllers */,
 				A6DE85FE2086A33400DBBE3A /* Networking */,
 				A6BC0AE6208542C800D2AF6C /* Resources */,
@@ -96,8 +176,6 @@
 				A6BC0AE0208524DD00D2AF6C /* FirstScreenViewController.swift */,
 				A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */,
 				A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */,
-				A65856E52088DA89007E2FB1 /* ConfigurationViewController.swift */,
-				A65856E72088E5B5007E2FB1 /* ChordsReferencesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,12 +309,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6847340209CEB2E00AD89CD /* BaseBar.swift in Sources */,
 				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
 				A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */,
+				A684733C209CEB0000AD89CD /* MenuBar.swift in Sources */,
+				A684735C209CF40D00AD89CD /* EigthChords.swift in Sources */,
+				A6847355209CF28300AD89CD /* BaseCell.swift in Sources */,
+				A6847351209CF21300AD89CD /* ScoreCell.swift in Sources */,
+				A6847346209CEDB100AD89CD /* Settings.swift in Sources */,
+				A6847358209CF36000AD89CD /* TwoChords.swift in Sources */,
+				A6847348209CEE2100AD89CD /* LastScores.swift in Sources */,
+				A684734A209CEE7000AD89CD /* Headphones.swift in Sources */,
+				A684733E209CEB0F00AD89CD /* ScoreBar.swift in Sources */,
 				A6A35030207E504C000E79E1 /* Networking.swift in Sources */,
-				A65856E82088E5B5007E2FB1 /* ChordsReferencesViewController.swift in Sources */,
+				A684735A209CF3F000AD89CD /* FourChords.swift in Sources */,
+				A6847353209CF23B00AD89CD /* ChordsCell.swift in Sources */,
+				A6847344209CED2700AD89CD /* ChordsInfo.swift in Sources */,
 				A6BC0AE1208524DD00D2AF6C /* FirstScreenViewController.swift in Sources */,
-				A65856E62088DA89007E2FB1 /* ConfigurationViewController.swift in Sources */,
 				A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
