@@ -31,59 +31,56 @@ class FirstScreenViewController: UIViewController {
 	}
 	
 	
+	// View //
 	
-	var collectionData = ["🌚", "🔋", "🤡", "🎲"]
+	// la barra del menú superior
+//	let menuBar: UICollectionView = {
+//		
+//		let frame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)
+//		let mb = UICollectionView(frame: frame)
+//		mb.backgroundColor = .red
+//		
+//		return mb
+//		
+//	}()
 
-	
-	
-	//*****************************************************************
-	// MARK: - IBOutlets
-	//*****************************************************************
-	
-	// el menú con 4 opciones
-
-	
-	
-	
-	
-//	var menuModel: UIImage = ["play_button.png", "failure_image.png", "point_image.png"]
-	
-	// menu items
-//	var chordMenuItem = UIImage(imageLiteralResourceName: "gClef_image.png")
-//	var settingMenuItem: UIImage = UIImage(imageLiteralResourceName: "settings_image.png")
-//	var scoreMenuItem: UIImage = UIImage(imageLiteralResourceName: "lastScores_image.png")
-//	var headphonesMenuItem: UIImage = UIImage(imageLiteralResourceName: "headphones_image.png")
-	
-	//var menuModel: [UIImage] = [chordMenuItem, ]
-	
-	
-	//imageDePrueba.image = UIImage(named: "play_button.png")
-
-	//*****************************************************************
-	// MARK: - IBActions
-	//*****************************************************************
-	
-	// major, minor & play button ///////////////////////////////////////////
-	
-	
-
-	
-	
 
 	//*****************************************************************
 	// MARK: - Life Cycle
 	//*****************************************************************
 	
-		// view controller methods
+	// view controller methods
 	
-		// cuando la supervista ya se cargó...
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	/// task: ejecutar luego cargar la supervista
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
-			
-			
-			
-    }
+
+		
+		// llama al configurador de la vista 'two chords'
+//		setupTwoChords()
+		
+		print("view did load")
+		
+		view.backgroundColor = .brown
+	
+	}
+	
+	//*****************************************************************
+	// MARK: - Methods
+	//*****************************************************************
+	
+	/// task: configurar la vista 'two chords'
+	private func setupTwoChords() {
+		
+		// agrega la vista 'two chords'
+		//view.addSubview(twoChords)
+//		// agrega una restricción horizontal
+//		view.addConstraintsWithFormat(format: "H:|[v0]|", views: twoChords)
+//		// agrega una restricción vertical
+//		view.addConstraintsWithFormat(format: "V:|[v0(50)]|", views: twoChords)
+		
+	}
 	
 	
 	//*****************************************************************

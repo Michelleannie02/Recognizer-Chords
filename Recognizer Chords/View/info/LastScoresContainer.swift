@@ -1,5 +1,5 @@
 //
-//  Headphones.swift
+//  LastScoresContainer.swift
 //  Recognizer Chords
 //
 //  Created by Luciano Schillagi on 04/05/2018.
@@ -11,14 +11,15 @@
 import UIKit
 
 /* Abstract:
-Esta clase representa una vista que recomienda usar auriculares.
+Esta clase representa una vista que muestra los últimos tres scores del usuario.
 */
 
-class Headphones: UIView {
+class LastScoresContainer: UIView {
 	
 	
 	
-	
+//	/// un botón de un acorde mayor
+
 	
 	
 	
