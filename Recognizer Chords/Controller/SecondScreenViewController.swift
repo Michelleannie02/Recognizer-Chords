@@ -44,9 +44,8 @@ class SecondScreenViewController: UIViewController {
 	
 	// los íconos de la barra de menú
 	@IBOutlet weak var gClefButton: UIButton!
-	@IBOutlet weak var settingsButton: UIButton!
 	@IBOutlet weak var lastScoresButton: UIButton!
-	@IBOutlet weak var headphonesButton: UIButton!
+	@IBOutlet weak var languageButton: UIButton!
 	
 	/// información desplegada del menú
 	@IBOutlet weak var fourChordInfo: UICollectionView!
@@ -83,6 +82,34 @@ class SecondScreenViewController: UIViewController {
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
+	
+	@IBAction func chordsInfoButtonPressed(_ sender: UIButton) {
+
+	}
+	
+	@IBAction func scoresButtonPressed(_ sender: UIButton) {
+	}
+	
+	/// task: ejectutarse cada vez que el botón 'language' es tapeado
+	@IBAction func languageButtonPressed(_ sender: UIButton) {
+		
+		// si el lenguaje actual está en inglés, cambiar a español
+		if englishLanguage {
+			languageButton.setTitle("EN", for: .normal)
+			englishLanguage = false
+			print("ahora la app está en español")
+			// si está en español, cambiar a inglés
+		} else {
+			languageButton.setTitle("ES", for: .normal)
+			print("ahora la app está en inglés")
+			englishLanguage = true
+		}
+		
+	}
+	
+	
+	
+	
 	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
@@ -233,9 +260,8 @@ class SecondScreenViewController: UIViewController {
 			
 			// botones del menú superior
 			gClefButton.translatesAutoresizingMaskIntoConstraints = false
-			settingsButton.translatesAutoresizingMaskIntoConstraints = false
 			lastScoresButton.translatesAutoresizingMaskIntoConstraints = false
-			headphonesButton.translatesAutoresizingMaskIntoConstraints = false
+
 			
 			// botones de la interfaz
 			majorButton.translatesAutoresizingMaskIntoConstraints = false
@@ -252,7 +278,7 @@ class SecondScreenViewController: UIViewController {
 			
 			
 			// TOP ////////////////////////////////////////////////////////////////
-			let topStackView = UIStackView(arrangedSubviews: [gClefButton, lastScoresButton, settingsButton, headphonesButton])
+			let topStackView = UIStackView(arrangedSubviews: [gClefButton, lastScoresButton, languageButton])
 			
 			
 			// CENTER //////////////////////////////////////////////////////////////

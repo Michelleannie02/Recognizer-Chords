@@ -278,54 +278,51 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgS-Yx-sMo">
-                                <rect key="frame" x="22" y="8" width="38" height="32"/>
+                                <rect key="frame" x="-7" y="-10" width="97" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="chords">
+                                <state key="normal" image="down_arrow">
                                     <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="chordsInfoButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="03u-ZD-hpY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0e1-Ta-Ivb">
-                                <rect key="frame" x="107" y="8" width="49" height="32"/>
+                                <rect key="frame" x="83" y="-10" width="97" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="scores">
+                                <state key="normal" image="down_arrow">
                                     <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="scoresButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="MAK-jG-Ufz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZg-Mc-JOd">
                                 <rect key="frame" x="289" y="8" width="64" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="headphones">
+                                <state key="normal" title="ES">
                                     <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="iI1-jh-w7T" kind="show" id="yQv-aZ-uDH"/>
+                                    <action selector="languageButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="DW9-id-U7l"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtH-kf-lE1">
-                                <rect key="frame" x="198" y="8" width="54" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="settings">
-                                    <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.8784313725490196" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="WZj-eW-vjT"/>
                     </view>
                     <connections>
                         <outlet property="augmentedButton" destination="hea-Nw-7j7" id="kiQ-GN-XJR"/>
                         <outlet property="diminishedButton" destination="2oV-cp-skb" id="vsm-TC-i4Y"/>
                         <outlet property="gClefButton" destination="lgS-Yx-sMo" id="cYm-Bf-hlt"/>
-                        <outlet property="headphonesButton" destination="RZg-Mc-JOd" id="kYt-HS-SQW"/>
+                        <outlet property="languageButton" destination="RZg-Mc-JOd" id="hca-CO-EIr"/>
                         <outlet property="lastScoresButton" destination="0e1-Ta-Ivb" id="sqS-aU-v8r"/>
                         <outlet property="majorButton" destination="gTC-iN-ZAe" id="f4k-bY-Wa1"/>
                         <outlet property="minorButton" destination="Cdc-cw-6rH" id="qNm-CA-fKg"/>
                         <outlet property="playButton" destination="RJS-cr-DxR" id="zEp-3A-97S"/>
-                        <outlet property="settingsButton" destination="vtH-kf-lE1" id="pdc-Jj-EAI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAt-zl-PJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
