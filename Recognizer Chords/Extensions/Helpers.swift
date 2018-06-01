@@ -69,10 +69,7 @@ extension UIView {
 		// agrega múltiples constraints
 		// este método toma un array de constraints [NSLayoutConstraint]
 		// notar como le pasa todas la vistas que tienen constraints en un diccionario [String: UIView]
-		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format,
-																									options: NSLayoutFormatOptions(),
-																									metrics: nil,
-																									views: viewsDictionary))
+		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(),metrics: nil, views: viewsDictionary))
 		
 	} // end mehtod
 	

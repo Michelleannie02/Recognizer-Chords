@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Points-->
+        <scene sceneID="lCq-z7-633">
+            <objects>
+                <viewController storyboardIdentifier="Points" title="Points" id="4gc-JH-Htl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xcH-DS-xHd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLt-dt-vu1" customClass="PointsBar" customModule="Recognizer_Chords" customModuleProvider="target">
+                                <rect key="frame" x="32" y="108" width="311" height="450"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hLt-dt-vu1" firstAttribute="leading" secondItem="yWm-td-D0k" secondAttribute="leading" constant="32" id="5HG-oS-sWa"/>
+                            <constraint firstItem="yWm-td-D0k" firstAttribute="bottom" secondItem="hLt-dt-vu1" secondAttribute="bottom" constant="109" id="Bhr-HP-R5D"/>
+                            <constraint firstItem="yWm-td-D0k" firstAttribute="trailing" secondItem="hLt-dt-vu1" secondAttribute="trailing" constant="32" id="S3W-gc-JhE"/>
+                            <constraint firstItem="hLt-dt-vu1" firstAttribute="top" secondItem="yWm-td-D0k" secondAttribute="top" constant="88" id="pRA-Vw-qB0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yWm-td-D0k"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mEM-hS-SRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-474.39999999999998" y="146.17691154422789"/>
+        </scene>
+    </scenes>
+</document>

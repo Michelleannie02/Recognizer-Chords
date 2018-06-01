@@ -8,53 +8,61 @@
 
 /* Begin PBXBuildFile section */
 		4AD48171BC7C958FC9BF1DBB /* libPods-Recognizer Chords.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */; };
+		A6075BDE20B911080019E2E8 /* PointsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDD20B911080019E2E8 /* PointsBar.swift */; };
+		A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDF20B911190019E2E8 /* ErrorsBar.swift */; };
 		A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6333ADA209D40F800A94C1A /* Helpers.swift */; };
-		A6699BF320A24DF600EBACFF /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6699BF220A24DF600EBACFF /* MenuBarCell.swift */; };
+		A63B6DF820BFC193005CBBFF /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63B6DF720BFC193005CBBFF /* Preview.storyboard */; };
 		A6699BF920A254F800EBACFF /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6699BF820A254F800EBACFF /* BaseCell.swift */; };
-		A6814E5220A3645A0076511E /* ScoreBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5120A3645A0076511E /* ScoreBarCell.swift */; };
+		A6814E5220A3645A0076511E /* PointsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5120A3645A0076511E /* PointsBarCell.swift */; };
 		A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5320A3670A0076511E /* FourChordsContainer.swift */; };
 		A6814E5620A3671B0076511E /* EightChordsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5520A3671B0076511E /* EightChordsContainer.swift */; };
 		A6814E5820A367450076511E /* SettingsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5720A367450076511E /* SettingsContainer.swift */; };
 		A6814E5C20A39A0D0076511E /* ChordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5B20A39A0D0076511E /* ChordsCell.swift */; };
-		A684733C209CEB0000AD89CD /* MenuBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684733B209CEB0000AD89CD /* MenuBarContainer.swift */; };
-		A684733E209CEB0F00AD89CD /* ScoreBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684733D209CEB0F00AD89CD /* ScoreBarContainer.swift */; };
 		A6847344209CED2700AD89CD /* TwoChordsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847343209CED2700AD89CD /* TwoChordsContainer.swift */; };
 		A6847348209CEE2100AD89CD /* LastScoresContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847347209CEE2100AD89CD /* LastScoresContainer.swift */; };
 		A684734A209CEE7000AD89CD /* HeadphonesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847349209CEE7000AD89CD /* HeadphonesContainer.swift */; };
-		A6847358209CF36000AD89CD /* ThreeButtonsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847357209CF36000AD89CD /* ThreeButtonsContainer.swift */; };
-		A684735A209CF3F000AD89CD /* FiveButtonsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6847359209CF3F000AD89CD /* FiveButtonsContainer.swift */; };
-		A684735C209CF40D00AD89CD /* NineButtonsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684735B209CF40D00AD89CD /* NineButtonsContainer.swift */; };
+		A686770520BA568B00DD4804 /* PruebaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686770420BA568B00DD4804 /* PruebaViewController.swift */; };
+		A69789BC20C0B72C005B404A /* CopperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789BB20C0B72C005B404A /* CopperViewController.swift */; };
+		A69789C020C0B753005B404A /* GoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789BF20C0B753005B404A /* GoldViewController.swift */; };
+		A69789C220C0B7B0005B404A /* SilverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C120C0B7AF005B404A /* SilverViewController.swift */; };
+		A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C520C0BA8A005B404A /* AppGuide.swift */; };
+		A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */; };
 		A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502D207E504C000E79E1 /* AppDelegate.swift */; };
 		A6A35030207E504C000E79E1 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502F207E504C000E79E1 /* Networking.swift */; };
 		A6A35033207E504C000E79E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35031207E504C000E79E1 /* Main.storyboard */; };
 		A6A35035207E504C000E79E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A35034207E504C000E79E1 /* Assets.xcassets */; };
 		A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35036207E504C000E79E1 /* LaunchScreen.storyboard */; };
-		A6BC0AE1208524DD00D2AF6C /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE0208524DD00D2AF6C /* FirstScreenViewController.swift */; };
+		A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF19FC20BE17E600DBAAAC /* PointsView.swift */; };
 		A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */; };
 		A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */; };
+		A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */; };
+		A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D2820520B6500700F8554E /* ErrorsBarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5DB012AD6305BF70E66D0DD3 /* Pods-Recognizer Chords.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.debug.xcconfig"; sourceTree = "<group>"; };
 		9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Recognizer Chords.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B70A3B4E59E301089A3BD1 /* Pods-Recognizer Chords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.release.xcconfig"; sourceTree = "<group>"; };
+		A6075BDD20B911080019E2E8 /* PointsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBar.swift; sourceTree = "<group>"; };
+		A6075BDF20B911190019E2E8 /* ErrorsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBar.swift; sourceTree = "<group>"; };
 		A61BE9CE208E6868004023EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A6333ADA209D40F800A94C1A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		A6699BF220A24DF600EBACFF /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
+		A63B6DF720BFC193005CBBFF /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		A6699BF820A254F800EBACFF /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
-		A6814E5120A3645A0076511E /* ScoreBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBarCell.swift; sourceTree = "<group>"; };
+		A6814E5120A3645A0076511E /* PointsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBarCell.swift; sourceTree = "<group>"; };
 		A6814E5320A3670A0076511E /* FourChordsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourChordsContainer.swift; sourceTree = "<group>"; };
 		A6814E5520A3671B0076511E /* EightChordsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightChordsContainer.swift; sourceTree = "<group>"; };
 		A6814E5720A367450076511E /* SettingsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainer.swift; sourceTree = "<group>"; };
 		A6814E5B20A39A0D0076511E /* ChordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsCell.swift; sourceTree = "<group>"; };
-		A684733B209CEB0000AD89CD /* MenuBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContainer.swift; sourceTree = "<group>"; };
-		A684733D209CEB0F00AD89CD /* ScoreBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBarContainer.swift; sourceTree = "<group>"; };
 		A6847343209CED2700AD89CD /* TwoChordsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoChordsContainer.swift; sourceTree = "<group>"; };
 		A6847347209CEE2100AD89CD /* LastScoresContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastScoresContainer.swift; sourceTree = "<group>"; };
 		A6847349209CEE7000AD89CD /* HeadphonesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadphonesContainer.swift; sourceTree = "<group>"; };
-		A6847357209CF36000AD89CD /* ThreeButtonsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeButtonsContainer.swift; sourceTree = "<group>"; };
-		A6847359209CF3F000AD89CD /* FiveButtonsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveButtonsContainer.swift; sourceTree = "<group>"; };
-		A684735B209CF40D00AD89CD /* NineButtonsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NineButtonsContainer.swift; sourceTree = "<group>"; };
+		A686770420BA568B00DD4804 /* PruebaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaViewController.swift; sourceTree = "<group>"; };
+		A69789BB20C0B72C005B404A /* CopperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopperViewController.swift; sourceTree = "<group>"; };
+		A69789BF20C0B753005B404A /* GoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldViewController.swift; sourceTree = "<group>"; };
+		A69789C120C0B7AF005B404A /* SilverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SilverViewController.swift; sourceTree = "<group>"; };
+		A69789C520C0BA8A005B404A /* AppGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGuide.swift; sourceTree = "<group>"; };
+		A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
 		A6A3502A207E504C000E79E1 /* Recognizer Chords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recognizer Chords.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A3502D207E504C000E79E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A3502F207E504C000E79E1 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -62,9 +70,11 @@
 		A6A35034207E504C000E79E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6A35037207E504C000E79E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6A35039207E504C000E79E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6BC0AE0208524DD00D2AF6C /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
+		A6AF19FC20BE17E600DBAAAC /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
 		A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
+		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsInfo.swift; sourceTree = "<group>"; };
+		A6D2820520B6500700F8554E /* ErrorsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,14 +98,43 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A60E686220927221004C601B /* VIew */ = {
+		A6075BE220B911570019E2E8 /* Points Bar */ = {
 			isa = PBXGroup;
 			children = (
-				A684734C209CEEE400AD89CD /* bars */,
-				A684734B209CEEBD00AD89CD /* info */,
-				A6847356209CF2F400AD89CD /* user interaction */,
+				A6075BDD20B911080019E2E8 /* PointsBar.swift */,
+				A6AF19FC20BE17E600DBAAAC /* PointsView.swift */,
+				A6814E5120A3645A0076511E /* PointsBarCell.swift */,
 			);
-			name = VIew;
+			path = "Points Bar";
+			sourceTree = "<group>";
+		};
+		A6075BE320B911650019E2E8 /* Errors Bar */ = {
+			isa = PBXGroup;
+			children = (
+				A6075BDF20B911190019E2E8 /* ErrorsBar.swift */,
+				A6D2820520B6500700F8554E /* ErrorsBarCell.swift */,
+			);
+			path = "Errors Bar";
+			sourceTree = "<group>";
+		};
+		A6075BE420B911840019E2E8 /* Bars */ = {
+			isa = PBXGroup;
+			children = (
+				A6075BE220B911570019E2E8 /* Points Bar */,
+				A6075BE320B911650019E2E8 /* Errors Bar */,
+				A6699BF820A254F800EBACFF /* BaseCell.swift */,
+			);
+			path = Bars;
+			sourceTree = "<group>";
+		};
+		A60E686220927221004C601B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */,
+				A6075BE420B911840019E2E8 /* Bars */,
+				A684734B209CEEBD00AD89CD /* Menu Info */,
+			);
+			name = View;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -107,7 +146,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		A6814E5D20A39A9C0076511E /* ChordsContainer */ = {
+		A63B6DF920BFC2D0005CBBFF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A6A35031207E504C000E79E1 /* Main.storyboard */,
+				A63B6DF720BFC193005CBBFF /* Preview.storyboard */,
+				A6A35036207E504C000E79E1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A6814E5D20A39A9C0076511E /* ChordsInfo */ = {
 			isa = PBXGroup;
 			children = (
 				A6847343209CED2700AD89CD /* TwoChordsContainer.swift */,
@@ -115,43 +164,27 @@
 				A6814E5520A3671B0076511E /* EightChordsContainer.swift */,
 				A6814E5B20A39A0D0076511E /* ChordsCell.swift */,
 			);
-			path = ChordsContainer;
+			path = ChordsInfo;
 			sourceTree = "<group>";
 		};
-		A684734B209CEEBD00AD89CD /* info */ = {
+		A684734B209CEEBD00AD89CD /* Menu Info */ = {
 			isa = PBXGroup;
 			children = (
-				A6814E5D20A39A9C0076511E /* ChordsContainer */,
+				A6814E5D20A39A9C0076511E /* ChordsInfo */,
 				A6814E5720A367450076511E /* SettingsContainer.swift */,
 				A6847347209CEE2100AD89CD /* LastScoresContainer.swift */,
 				A6847349209CEE7000AD89CD /* HeadphonesContainer.swift */,
 			);
-			name = info;
-			path = "Recognizer Chords/View/info";
+			name = "Menu Info";
+			path = "Recognizer Chords/View/Menu Info";
 			sourceTree = "<group>";
 		};
-		A684734C209CEEE400AD89CD /* bars */ = {
+		A69789C720C0BB03005B404A /* App Guide */ = {
 			isa = PBXGroup;
 			children = (
-				A6699BF820A254F800EBACFF /* BaseCell.swift */,
-				A684733B209CEB0000AD89CD /* MenuBarContainer.swift */,
-				A6699BF220A24DF600EBACFF /* MenuBarCell.swift */,
-				A684733D209CEB0F00AD89CD /* ScoreBarContainer.swift */,
-				A6814E5120A3645A0076511E /* ScoreBarCell.swift */,
+				A69789C520C0BA8A005B404A /* AppGuide.swift */,
 			);
-			name = bars;
-			path = "Recognizer Chords/View/bars";
-			sourceTree = "<group>";
-		};
-		A6847356209CF2F400AD89CD /* user interaction */ = {
-			isa = PBXGroup;
-			children = (
-				A6847357209CF36000AD89CD /* ThreeButtonsContainer.swift */,
-				A6847359209CF3F000AD89CD /* FiveButtonsContainer.swift */,
-				A684735B209CF40D00AD89CD /* NineButtonsContainer.swift */,
-			);
-			name = "user interaction";
-			path = "Recognizer Chords/View/user interaction";
+			path = "App Guide";
 			sourceTree = "<group>";
 		};
 		A6A35021207E504C000E79E1 = {
@@ -176,8 +209,11 @@
 			isa = PBXGroup;
 			children = (
 				A6A3502D207E504C000E79E1 /* AppDelegate.swift */,
-				A6BC0AD92085243C00D2AF6C /* Controllers */,
-				A60E686220927221004C601B /* VIew */,
+				A69789C720C0BB03005B404A /* App Guide */,
+				A63B6DF920BFC2D0005CBBFF /* Storyboards */,
+				A6BC0AD92085243C00D2AF6C /* Controller */,
+				A60E686220927221004C601B /* View */,
+				A6AF16D120A492A400A25F1B /* Model */,
 				A6333AD9209D40D400A94C1A /* Extensions */,
 				A6DE85FE2086A33400DBBE3A /* Networking */,
 				A6BC0AE6208542C800D2AF6C /* Resources */,
@@ -186,22 +222,31 @@
 			path = "Recognizer Chords";
 			sourceTree = "<group>";
 		};
-		A6BC0AD92085243C00D2AF6C /* Controllers */ = {
+		A6AF16D120A492A400A25F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A6BC0AE0208524DD00D2AF6C /* FirstScreenViewController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A6BC0AD92085243C00D2AF6C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */,
 				A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */,
 				A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */,
+				A69789BB20C0B72C005B404A /* CopperViewController.swift */,
+				A69789C120C0B7AF005B404A /* SilverViewController.swift */,
+				A69789BF20C0B753005B404A /* GoldViewController.swift */,
+				A686770420BA568B00DD4804 /* PruebaViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		A6BC0AE6208542C800D2AF6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A6A35031207E504C000E79E1 /* Main.storyboard */,
 				A6A35034207E504C000E79E1 /* Assets.xcassets */,
-				A6A35036207E504C000E79E1 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -294,6 +339,7 @@
 				A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */,
 				A6A35035207E504C000E79E1 /* Assets.xcassets in Resources */,
 				A6A35033207E504C000E79E1 /* Main.storyboard in Resources */,
+				A63B6DF820BFC193005CBBFF /* Preview.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,25 +373,29 @@
 			files = (
 				A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */,
 				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
-				A6814E5220A3645A0076511E /* ScoreBarCell.swift in Sources */,
+				A6814E5220A3645A0076511E /* PointsBarCell.swift in Sources */,
 				A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */,
-				A684733C209CEB0000AD89CD /* MenuBarContainer.swift in Sources */,
-				A684735C209CF40D00AD89CD /* NineButtonsContainer.swift in Sources */,
 				A6699BF920A254F800EBACFF /* BaseCell.swift in Sources */,
+				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
+				A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */,
+				A686770520BA568B00DD4804 /* PruebaViewController.swift in Sources */,
+				A69789C020C0B753005B404A /* GoldViewController.swift in Sources */,
+				A69789C220C0B7B0005B404A /* SilverViewController.swift in Sources */,
 				A6814E5C20A39A0D0076511E /* ChordsCell.swift in Sources */,
-				A6847358209CF36000AD89CD /* ThreeButtonsContainer.swift in Sources */,
 				A6847348209CEE2100AD89CD /* LastScoresContainer.swift in Sources */,
 				A684734A209CEE7000AD89CD /* HeadphonesContainer.swift in Sources */,
-				A684733E209CEB0F00AD89CD /* ScoreBarContainer.swift in Sources */,
+				A69789BC20C0B72C005B404A /* CopperViewController.swift in Sources */,
+				A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */,
 				A6A35030207E504C000E79E1 /* Networking.swift in Sources */,
-				A684735A209CF3F000AD89CD /* FiveButtonsContainer.swift in Sources */,
 				A6847344209CED2700AD89CD /* TwoChordsContainer.swift in Sources */,
+				A6075BDE20B911080019E2E8 /* PointsBar.swift in Sources */,
 				A6814E5820A367450076511E /* SettingsContainer.swift in Sources */,
+				A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */,
 				A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */,
+				A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */,
+				A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */,
 				A6814E5620A3671B0076511E /* EightChordsContainer.swift in Sources */,
-				A6BC0AE1208524DD00D2AF6C /* FirstScreenViewController.swift in Sources */,
 				A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */,
-				A6699BF320A24DF600EBACFF /* MenuBarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -474,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -490,7 +540,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QE68JBKWWB;
 				INFOPLIST_FILE = "$(SRCROOT)/Recognizer Chords/Supporting files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.luko.Recognizer-Chords";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,7 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QE68JBKWWB;
 				INFOPLIST_FILE = "$(SRCROOT)/Recognizer Chords/Supporting files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.luko.Recognizer-Chords";
 				PRODUCT_NAME = "$(TARGET_NAME)";
