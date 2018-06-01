@@ -24,6 +24,7 @@
 		A69789C020C0B753005B404A /* GoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789BF20C0B753005B404A /* GoldViewController.swift */; };
 		A69789C220C0B7B0005B404A /* SilverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C120C0B7AF005B404A /* SilverViewController.swift */; };
 		A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C520C0BA8A005B404A /* AppGuide.swift */; };
+		A69789C920C10558005B404A /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C820C10558005B404A /* Counter.swift */; };
 		A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */; };
 		A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502D207E504C000E79E1 /* AppDelegate.swift */; };
 		A6A35030207E504C000E79E1 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502F207E504C000E79E1 /* Networking.swift */; };
@@ -58,6 +59,7 @@
 		A69789BF20C0B753005B404A /* GoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldViewController.swift; sourceTree = "<group>"; };
 		A69789C120C0B7AF005B404A /* SilverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SilverViewController.swift; sourceTree = "<group>"; };
 		A69789C520C0BA8A005B404A /* AppGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGuide.swift; sourceTree = "<group>"; };
+		A69789C820C10558005B404A /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
 		A6A3502A207E504C000E79E1 /* Recognizer Chords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recognizer Chords.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A3502D207E504C000E79E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		A6AF16D120A492A400A25F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A69789C820C10558005B404A /* Counter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
 				A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */,
 				A686770520BA568B00DD4804 /* PruebaViewController.swift in Sources */,
+				A69789C920C10558005B404A /* Counter.swift in Sources */,
 				A69789C020C0B753005B404A /* GoldViewController.swift in Sources */,
 				A69789C220C0B7B0005B404A /* SilverViewController.swift in Sources */,
 				A6814E5C20A39A0D0076511E /* ChordsCell.swift in Sources */,

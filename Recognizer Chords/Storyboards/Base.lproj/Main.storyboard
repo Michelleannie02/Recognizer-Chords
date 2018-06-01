@@ -75,7 +75,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="majorButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="al7-XI-dei"/>
+                                    <action selector="majorButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="AbA-0a-C5r"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXM-03-odx">
@@ -87,7 +87,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="minorButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="ebr-d4-WNb"/>
+                                    <action selector="minorButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="saO-XE-8G8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqy-Cp-pgD">
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I30-hn-cVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-455" y="-320"/>
+            <point key="canvasLocation" x="-455.19999999999999" y="-320.68965517241384"/>
         </scene>
         <!--Copper View Controller-->
         <scene sceneID="iMF-Jx-snd">

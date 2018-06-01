@@ -27,6 +27,8 @@ class FirstScreenViewController: UIViewController {
 	let pointsBar = PointsBar()
 	let errorsBar = ErrorsBar()
 	
+	// una variable que contiene la cantidad de veces que fue presionado el botón 'play'
+	var counter: Counter = Counter()
 
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -57,17 +59,16 @@ class FirstScreenViewController: UIViewController {
 		
 		view.addSubview(pointsBar)
 
-		print("HOLA")
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
 	
-		
     }
 	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
+
 	
 	@IBAction func gClefButtonPressed(_ sender: UIButton) {
 		
@@ -87,41 +88,81 @@ class FirstScreenViewController: UIViewController {
 
 	}
 	
-	
+	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
+		// test 
 		print("el botón de mayor fue presionado")
-		playButton.isEnabled = true
-		minorButton.isEnabled = false
-		majorButton.isEnabled = false
 		
+		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
+		playButton.isHidden = false
+		// el contador del botón play se pone a 0
+		counter.playButtonValue = 0
+		// se incrementa en 1 el valor del contador del botón mayor
+		counter.incrementMajorButton()
 
-		ci.contenedorPrueba.isHidden = true
+		// test
+		print("✏️\(counter.majorButtonValue)")
+
+		
+		if counter.majorButtonValue == 1 {
+			// el botón de mayor al ser tapeado se deshabilita
+			majorButton.isEnabled = false
+			// el contador de este botón suma 1
+			counter.majorButtonValue = 0
+			// y el botón menor se deshabilita
+			minorButton.isEnabled = false
+
+		}
 		
 	}
 	
+	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
 		
 		print("el botón de menor fue presionado")
-		playButton.isEnabled = true
-		majorButton.isEnabled = false
-		minorButton.isEnabled = false
 		
-		ci.contenedorPrueba.isHidden = true
-	
+		playButton.isHidden = false
+		counter.playButtonValue = 0
+
+		counter.incrementMinorButton()
+		print("✏️\(counter.minorButtonValue)")
+		// el botón de menor al ser tapeado se deshabilita
+		if counter.minorButtonValue == 1 {
+			counter.minorButtonValue = 0
+			minorButton.isEnabled = false
+			majorButton.isEnabled = false
+
+		}
+
 	}
 	
 	
-	// play button
+	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
 		print("el botón de play fue presionado")
 		
 		// si el botón fue presionado 3 veces, desaparece
 		
-		// NOTE: ver app 'counter'
+		// un contador que cuenta la cantidad de veces que fue presionado el botón 'play'
 		
-		playButton.isHidden = true
+		counter.incrementPlayButton()
+		print("✏️\(counter.playButtonValue)")
+		
+		majorButton.isEnabled = true
+		minorButton.isEnabled = true
+		
+		if counter.playButtonValue == 3 {
+			
+			counter.playButtonValue = 0
+			playButton.isHidden = true
+			majorButton.isEnabled = true
+			minorButton.isEnabled = true
+		}
+		
+		
+//		playButton.isHidden = true
 		
 	}
 	
