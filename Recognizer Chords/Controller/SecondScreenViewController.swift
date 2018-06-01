@@ -23,6 +23,18 @@ class SecondScreenViewController: UIViewController {
 	let pointsBar = PointsBar()
 	let errorsBar = ErrorsBar()
 	
+	// una variable que contiene la cantidad de veces que fue presionado el botón 'play'
+	var counter: Counter = Counter()
+	
+	// lenguaje actual
+	var englishLanguage = true
+	
+	// los botones de acordes fueron tapeados
+	var majorButtonWasTapped = true
+	var minorButtonWasTapped = true
+	var diminishedButtonWasTapped = true
+	var augmentedButtonWasTapped = true
+
 
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -59,42 +71,148 @@ class SecondScreenViewController: UIViewController {
 	override func viewDidLoad() { // 🚪
 		super.viewDidLoad()
 		
+		
+		disabledButtons()
+		
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
 		
 	}
 	
+
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
+	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
+		// test
 		print("el botón de mayor fue presionado")
+		
+		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
+		playButton.isHidden = false
+		
+		
+		// se ejecuta como estado inicial
+		// y cada vez que el botón mayor es tapeado
+		if majorButtonWasTapped {
+			// deshabilita todos los botones de acordes
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			diminishedButton.isEnabled = false
+			augmentedButton.isEnabled = false
+			
+		}
+		
+		// el contador del botón play se pone a 0
+		counter.playButtonValue = 0
 	
 	}
 	
+	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
 		
 		print("el botón de menor fue presionado")
-
-	}
-	
-	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
-		print("el botón de play fue presionado")
+		
+		playButton.isHidden = false
+		
+		if minorButtonWasTapped {
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			diminishedButton.isEnabled = false
+			augmentedButton.isEnabled = false
+			
+		}
+		
+		counter.playButtonValue = 0
 
 	}
 	
+	
+	/// task: ejectutarse cada vez que el botón 'disminuído' es tapeado
 	@IBAction func diminishedButtonPressed(_ sender: UIButton) {
 		
+		// test
 		print("el botón de disminuído fue presionado")
+		
+		// cuando el usuario tapea el botón disminuído, el botón play vuelve a aparecer
+		playButton.isHidden = false
+		
+		
+		if diminishedButtonWasTapped {
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			diminishedButton.isEnabled = false
+			augmentedButton.isEnabled = false
+		}
+		
+		// el contador del botón play se pone a 0
+		counter.playButtonValue = 0
 
 	}
 	
+	/// task: ejectutarse cada vez que el botón 'aumentado' es tapeado
 	@IBAction func augmentedButtonPressed(_ sender: UIButton) {
 		
 		print("el botón de aumentado fue presionado")
+		
+		// cuando el usuario tapea el botón disminuído, el botón play vuelve a aparecer
+		playButton.isHidden = false
+		
+		// se ejecuta como estado inicial
+		// y cada vez que el botón aumentado es tapeado
+		if augmentedButtonWasTapped {
+			// deshabilita todos los botones de acordes
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			diminishedButton.isEnabled = false
+			augmentedButton.isEnabled = false
+			
+		}
+		
+		// y el contador del botón play se pone a 0
+		counter.playButtonValue = 0
+		
+	}
+	
+	
+	/// task: ejectutarse cada vez que el botón 'play' es tapeado
+	@IBAction func playButtonPressed(_ sender: UIButton) {
+		
+		print("el botón de play fue presionado")
+		
+		counter.incrementPlayButton()
+		print("✏️\(counter.playButtonValue)")
+		
+		majorButton.isEnabled = true
+		minorButton.isEnabled = true
+		diminishedButton.isEnabled = true
+		augmentedButton.isEnabled = true
+		
+		if counter.playButtonValue == 3 {
+			
+			counter.playButtonValue = 0
+			playButton.isHidden = true
+			majorButton.isEnabled = true
+			minorButton.isEnabled = true
+		}
+		
+	}
+
+	//*****************************************************************
+	// MARK: - Methods
+	//*****************************************************************
+	
+	/// task: deshabilitar los botones de acordes
+	func disabledButtons() {
+		
+		// en principio los botones de mayor, menor, disminuído y aumentado están deshabilitados
+		majorButton.isEnabled = false
+		minorButton.isEnabled = false
+		augmentedButton.isEnabled = false
+		diminishedButton.isEnabled = false
 
 	}
 	

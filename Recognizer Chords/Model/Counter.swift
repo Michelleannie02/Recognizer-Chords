@@ -11,7 +11,7 @@
 import Foundation
 
 /* Abstract:
-Un contador que cuenta la cantidad de veces que fue presionado el botón 'play'
+Un contador que cuenta la cantidad de veces que fue presionado el botón 'play'.
 */
 
 struct Counter {
@@ -21,7 +21,6 @@ struct Counter {
 	//*****************************************************************
 	
 	var playButtonValue = 0
-
 
 	//*****************************************************************
 	// MARK: - Methods

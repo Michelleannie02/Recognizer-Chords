@@ -28,12 +28,14 @@ class FirstScreenViewController: UIViewController {
 	let errorsBar = ErrorsBar()
 	
 	// una variable que contiene la cantidad de veces que fue presionado el botón 'play'
-	var counter: Counter = Counter()
+	var counter = Counter()
 	
 	// lenguaje actual
 	var englishLanguage = true
-	var majorButtonWasPressed = true
-	var minorButtonWasPressed = true
+	
+	// los botones de acordes fueron tapeados
+	var majorButtonWasTapped = true
+	var minorButtonWasTapped = true
 
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -105,13 +107,6 @@ class FirstScreenViewController: UIViewController {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	// Major, Minor & Play Buttons
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
@@ -123,7 +118,7 @@ class FirstScreenViewController: UIViewController {
 		playButton.isHidden = false
 
 		
-		if majorButtonWasPressed {
+		if majorButtonWasTapped {
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
 			
@@ -142,7 +137,7 @@ class FirstScreenViewController: UIViewController {
 		
 		playButton.isHidden = false
 	
-		if minorButtonWasPressed {
+		if minorButtonWasTapped {
 			minorButton.isEnabled = false
 			majorButton.isEnabled = false
 			
