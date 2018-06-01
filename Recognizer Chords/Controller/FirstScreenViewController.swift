@@ -29,16 +29,20 @@ class FirstScreenViewController: UIViewController {
 	
 	// una variable que contiene la cantidad de veces que fue presionado el botón 'play'
 	var counter: Counter = Counter()
+	
+	// lenguaje actual
+	var englishLanguage = true
+	var majorButtonWasPressed = true
+	var minorButtonWasPressed = true
 
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
 
 	// los íconos de la barra de menú
-	@IBOutlet weak var gClefButton: UIButton!
-	@IBOutlet weak var settingsButton: UIButton!
+	@IBOutlet weak var chordsInfoButton: UIButton!
 	@IBOutlet weak var lastScoresButton: UIButton!
-	@IBOutlet weak var headphonesButton: UIButton!
+	@IBOutlet weak var languageButton: UIButton!
 	
 	// los tres botones que contiene esta pantalla
 	@IBOutlet weak var majorButton: UIButton!
@@ -61,6 +65,7 @@ class FirstScreenViewController: UIViewController {
 
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
+		
 	
     }
 	
@@ -68,26 +73,46 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - IBActions
 	//*****************************************************************
 	
-
-	
-	@IBAction func gClefButtonPressed(_ sender: UIButton) {
+	// Menu Bar Buttons
+	/// task: ejectutarse cada vez que el botón 'chords info' es tapeado
+	@IBAction func chordsInfoButtonPressed(_ sender: UIButton) {
 		
-//		majorButton.backgroundColor = .black
-//		minorButton.backgroundColor = .black
-		// emerge el rect que contiene información sobre los acordes
-		ci.translatesAutoresizingMaskIntoConstraints = false
-		ci.contenedorPrueba.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
-		view.addSubview(ci.contenedorPrueba)
-		ci.contenedorPrueba.isHidden = false
 		
-		playButton.alpha = 0.8
-		majorButton.alpha = 0.8
-		minorButton.alpha = 0.8
-
 		
-
 	}
 	
+	/// task: ejectutarse cada vez que el botón 'last scores' es tapeado
+	@IBAction func lastScoresButtonPressed(_ sender: UIButton) {
+		
+		
+		
+	}
+	
+	/// task: ejectutarse cada vez que el botón 'language' es tapeado
+	@IBAction func languageButtonPressed(_ sender: UIButton) {
+		
+		// si el lenguaje actual está en inglés, cambiar a español
+		if englishLanguage {
+		languageButton.setTitle("EN", for: .normal)
+		englishLanguage = false
+		print("ahora la app está en español")
+		// si está en español, cambiar a inglés
+		} else {
+		languageButton.setTitle("ES", for: .normal)
+		print("ahora la app está en inglés")
+		englishLanguage = true
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// Major, Minor & Play Buttons
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
@@ -96,25 +121,17 @@ class FirstScreenViewController: UIViewController {
 		
 		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
 		playButton.isHidden = false
+
+		
+		if majorButtonWasPressed {
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			
+		}
+
 		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
-		// se incrementa en 1 el valor del contador del botón mayor
-		counter.incrementMajorButton()
 
-		// test
-		print("✏️\(counter.majorButtonValue)")
-
-		
-		if counter.majorButtonValue == 1 {
-			// el botón de mayor al ser tapeado se deshabilita
-			majorButton.isEnabled = false
-			// el contador de este botón suma 1
-			counter.majorButtonValue = 0
-			// y el botón menor se deshabilita
-			minorButton.isEnabled = false
-
-		}
-		
 	}
 	
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
@@ -122,19 +139,16 @@ class FirstScreenViewController: UIViewController {
 		
 		print("el botón de menor fue presionado")
 		
+		
 		playButton.isHidden = false
-		counter.playButtonValue = 0
-
-		counter.incrementMinorButton()
-		print("✏️\(counter.minorButtonValue)")
-		// el botón de menor al ser tapeado se deshabilita
-		if counter.minorButtonValue == 1 {
-			counter.minorButtonValue = 0
+	
+		if minorButtonWasPressed {
 			minorButton.isEnabled = false
 			majorButton.isEnabled = false
-
+			
 		}
-
+		
+		counter.playButtonValue = 0
 	}
 	
 	
@@ -142,10 +156,6 @@ class FirstScreenViewController: UIViewController {
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
 		print("el botón de play fue presionado")
-		
-		// si el botón fue presionado 3 veces, desaparece
-		
-		// un contador que cuenta la cantidad de veces que fue presionado el botón 'play'
 		
 		counter.incrementPlayButton()
 		print("✏️\(counter.playButtonValue)")
@@ -160,9 +170,6 @@ class FirstScreenViewController: UIViewController {
 			majorButton.isEnabled = true
 			minorButton.isEnabled = true
 		}
-		
-		
-//		playButton.isHidden = true
 		
 	}
 	
@@ -183,10 +190,10 @@ class FirstScreenViewController: UIViewController {
 //		headphonesButton.transform = CGAffineTransform(rotationAngle: -120)
 		
 		// translate autoresizing mask into constraints
-		gClefButton.translatesAutoresizingMaskIntoConstraints = false
-		settingsButton.translatesAutoresizingMaskIntoConstraints =  false
+		chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
+		lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
 		lastScoresButton.translatesAutoresizingMaskIntoConstraints = false
-		headphonesButton.translatesAutoresizingMaskIntoConstraints = false
+		languageButton.translatesAutoresizingMaskIntoConstraints = false
 		
 		majorButton.translatesAutoresizingMaskIntoConstraints = false
 		minorButton.translatesAutoresizingMaskIntoConstraints = false
@@ -200,7 +207,7 @@ class FirstScreenViewController: UIViewController {
 		// definiendo los stack views
 		
 		// TOP
-		let topStackView = UIStackView(arrangedSubviews: [gClefButton,  lastScoresButton, settingsButton, headphonesButton])
+		let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton,  lastScoresButton, languageButton])
 		
 		// CENTER
 		let centerStackView = UIStackView(arrangedSubviews: [majorButton, minorButton])
@@ -215,7 +222,9 @@ class FirstScreenViewController: UIViewController {
 		
 		topStackView.translatesAutoresizingMaskIntoConstraints = false
 		topStackView.axis = .horizontal
-		topStackView.distribution = .equalCentering
+		topStackView.distribution = .fillEqually
+
+
 		
 		view.addSubview(topStackView)
 		

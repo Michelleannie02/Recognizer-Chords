@@ -90,34 +90,37 @@
                                     <action selector="minorButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="saO-XE-8G8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqy-Cp-pgD">
-                                <rect key="frame" x="78" y="0.0" width="20" height="16"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGg-9z-I6a">
+                                <rect key="frame" x="22" y="0.0" width="20" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.81960784310000001" green="0.82745098039999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" image="down_arrow">
-                                    <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLo-cI-NLs">
-                                <rect key="frame" x="179" y="0.0" width="20" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.81960784310000001" green="0.82745098039999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" image="down_arrow">
-                                    <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFa-Nr-4id">
-                                <rect key="frame" x="295" y="8" width="64" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.81960784310000001" green="0.82745098039999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="EN">
                                     <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="TBp-57-4Gb" kind="show" id="wZz-AF-AVO"/>
+                                    <action selector="chordsInfoButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="PdE-9D-u8u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqy-Cp-pgD">
+                                <rect key="frame" x="78" y="0.0" width="20" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" image="down_arrow">
+                                    <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="lastScoresButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="8Nb-9d-OKm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFa-Nr-4id" userLabel="Language Button">
+                                <rect key="frame" x="295" y="8" width="64" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="ES">
+                                    <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="languageButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="oyx-l6-5hI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMA-z9-vfr">
@@ -128,30 +131,17 @@
                                     <action selector="playButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="z4z-Z0-J79"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGg-9z-I6a">
-                                <rect key="frame" x="22" y="0.0" width="20" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.81960784313725488" green="0.82745098039215681" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" image="down_arrow">
-                                    <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="gClefButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="YU2-VT-OuF"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.8784313725490196" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ufS-pU-SDr"/>
                     </view>
                     <connections>
-                        <outlet property="gClefButton" destination="hGg-9z-I6a" id="kui-Gq-aqq"/>
-                        <outlet property="headphonesButton" destination="jFa-Nr-4id" id="n5s-Br-bK9"/>
-                        <outlet property="lastScoresButton" destination="MLo-cI-NLs" id="gJf-i9-khH"/>
+                        <outlet property="chordsInfoButton" destination="hGg-9z-I6a" id="kui-Gq-aqq"/>
+                        <outlet property="languageButton" destination="jFa-Nr-4id" id="n5s-Br-bK9"/>
+                        <outlet property="lastScoresButton" destination="hqy-Cp-pgD" id="dRB-Zi-5T8"/>
                         <outlet property="majorButton" destination="vZ5-cB-hHL" id="0rd-6t-TgD"/>
                         <outlet property="minorButton" destination="FXM-03-odx" id="npt-Gq-DDa"/>
                         <outlet property="playButton" destination="MMA-z9-vfr" id="xlK-xI-lVc"/>
-                        <outlet property="settingsButton" destination="hqy-Cp-pgD" id="dRB-Zi-5T8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I30-hn-cVb" userLabel="First Responder" sceneMemberID="firstResponder"/>

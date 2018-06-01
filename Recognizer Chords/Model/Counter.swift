@@ -21,8 +21,7 @@ struct Counter {
 	//*****************************************************************
 	
 	var playButtonValue = 0
-	var majorButtonValue = 0
-	var minorButtonValue = 0
+
 
 	//*****************************************************************
 	// MARK: - Methods
@@ -30,14 +29,6 @@ struct Counter {
 	
 	mutating func incrementPlayButton() {
 		playButtonValue += 1
-	}
-	
-	mutating func incrementMajorButton() {
-		majorButtonValue += 1
-	}
-	
-	mutating func incrementMinorButton() {
-		minorButtonValue += 1
 	}
 	
 	
