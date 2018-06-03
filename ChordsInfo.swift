@@ -11,8 +11,11 @@ import UIKit
 class ChordsInfo: UIView {
 
 	override init(frame: CGRect) {
-		super.init(frame: frame)
 		
+		let rect = CGRect(x: 0, y: 0, width: 100, height: 100)
+		
+		super.init(frame: frame)
+		self.backgroundColor = .yellow
 		
 	}
 	
@@ -20,11 +23,11 @@ class ChordsInfo: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	let contenedorPrueba: UIView = {
-		let cp = UIView()
-		cp.backgroundColor = .orange
-		return cp
-	}()
+//	let contenedorPrueba: UIView = {
+//		let cp = UIView()
+//		cp.backgroundColor = .yellow
+//		return cp
+//	}()
 	
 	
 	

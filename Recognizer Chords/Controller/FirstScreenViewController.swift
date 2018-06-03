@@ -23,10 +23,11 @@ class FirstScreenViewController: UIViewController {
 	// información desplegada del menú
 	let ci = ChordsInfo()
 	
-	// las barras
-	let pointsBar = PointsBar()
-	let errorsBar = ErrorsBar()
 	
+	// la barra que me traje
+	let pointsBarView = PointsView()
+	let errorsBarView = ErrorsView()
+
 	// una variable que contiene la cantidad de veces que fue presionado el botón 'play'
 	var counter = Counter()
 	
@@ -36,6 +37,14 @@ class FirstScreenViewController: UIViewController {
 	// los botones de acordes fueron tapeados
 	var majorButtonWasTapped = true
 	var minorButtonWasTapped = true
+	
+	var elBotonFuePresionado = true
+	
+	// scores
+	var actualScore: Int = 0
+	
+	// TODO: core data!
+	var savedScores: [Int] = []
 
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -63,11 +72,17 @@ class FirstScreenViewController: UIViewController {
 		majorButton.isEnabled = false
 		minorButton.isEnabled = false
 		
-		view.addSubview(pointsBar)
+		// las contenedores con información acerca de acordes y puntaje también
+		ci.isHidden = true
+		
 
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
 		
+		// tus scores
+		print("🥉 tus scores son estos: \(savedScores)")
+
+
 	
     }
 	
@@ -79,14 +94,54 @@ class FirstScreenViewController: UIViewController {
 	/// task: ejectutarse cada vez que el botón 'chords info' es tapeado
 	@IBAction func chordsInfoButtonPressed(_ sender: UIButton) {
 		
+		print("🤼‍♀️ El boton fue presionado está en \(elBotonFuePresionado)")
 		
+		// el área aparece
+		if elBotonFuePresionado {
+			ci.isHidden = false
+			elBotonFuePresionado = false
+			
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			playButton.isEnabled = false
+			
+			// el área desaparece
+		} else {
+			ci.isHidden = true
+			elBotonFuePresionado = true
+			
+			majorButton.isEnabled = true
+			minorButton.isEnabled = true
+			playButton.isEnabled = true
+		}
 		
 	}
 	
 	/// task: ejectutarse cada vez que el botón 'last scores' es tapeado
 	@IBAction func lastScoresButtonPressed(_ sender: UIButton) {
 		
+		print("🤼‍♀️ El boton fue presionado está en \(elBotonFuePresionado)")
 		
+		// el área aparece
+		if elBotonFuePresionado {
+			ci.isHidden = false
+			elBotonFuePresionado = false
+			
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			playButton.isEnabled = false
+			
+		// el área desaparece
+		} else {
+			ci.isHidden = true
+			elBotonFuePresionado = true
+			
+			majorButton.isEnabled = true
+			minorButton.isEnabled = true
+			playButton.isEnabled = true
+		}
+		
+
 		
 	}
 	
@@ -95,17 +150,43 @@ class FirstScreenViewController: UIViewController {
 		
 		// si el lenguaje actual está en inglés, cambiar a español
 		if englishLanguage {
-		languageButton.setTitle("EN", for: .normal)
+		languageButton.setTitle("ES", for: .normal)
 		englishLanguage = false
 		print("ahora la app está en español")
 		// si está en español, cambiar a inglés
 		} else {
-		languageButton.setTitle("ES", for: .normal)
+		languageButton.setTitle("EN", for: .normal)
 		print("ahora la app está en inglés")
 		englishLanguage = true
 		}
 		
+		// prueba
+		pointsBarView.currentValue += 1
+		print("👏tu puntaje actual es de \(pointsBarView.currentValue)")
+		
+		
+		
+		if pointsBarView.currentValue == 8 {
+			
+			pasarDePantalla()
+		}
+		
+		// va contando los aciertos
+		actualScore = Int(pointsBarView.currentValue)
+		print("tu score actual es \(actualScore)")
+		
+		savedScores.append(actualScore)
+		print("🔌\(savedScores)")
+	
+		
 	}
+	
+	
+	func pasarDePantalla() {
+		
+		print("PASASTE A LA SIGUIENTE PANTALLA!!")
+	}
+	
 	
 	// Major, Minor & Play Buttons
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
@@ -126,8 +207,14 @@ class FirstScreenViewController: UIViewController {
 
 		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
+		
 
 	}
+	
+	
+
+	
+	
 	
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
@@ -144,6 +231,25 @@ class FirstScreenViewController: UIViewController {
 		}
 		
 		counter.playButtonValue = 0
+		
+		
+		// prueba
+		errorsBarView.currentValue += 1
+		print("ya erraste \(errorsBarView.currentValue) veces")
+		
+		if errorsBarView.currentValue == 3 {
+			
+			perdiste()
+		}
+		
+		print("tu score fue de \(actualScore) puntos")
+		
+	}
+	
+	
+	func perdiste() {
+
+		print("game over")
 	}
 	
 	
@@ -187,14 +293,15 @@ class FirstScreenViewController: UIViewController {
 		// translate autoresizing mask into constraints
 		chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
 		lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
-		lastScoresButton.translatesAutoresizingMaskIntoConstraints = false
 		languageButton.translatesAutoresizingMaskIntoConstraints = false
 		
 		majorButton.translatesAutoresizingMaskIntoConstraints = false
 		minorButton.translatesAutoresizingMaskIntoConstraints = false
 		playButton.translatesAutoresizingMaskIntoConstraints = false
 		
-		pointsBar.translatesAutoresizingMaskIntoConstraints =  false
+		pointsBarView.translatesAutoresizingMaskIntoConstraints = false
+		
+		ci.translatesAutoresizingMaskIntoConstraints = false
 		
 		
 		// MARK: - Stack Views
@@ -208,7 +315,13 @@ class FirstScreenViewController: UIViewController {
 		let centerStackView = UIStackView(arrangedSubviews: [majorButton, minorButton])
 		
 		// BOTTOM
-		let bottomStackView = UIStackView(arrangedSubviews: [pointsBar, errorsBar])
+		let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView])
+		
+		print("🎲\(bottomStackView.arrangedSubviews)")
+		
+		// ANEXOS
+		let chordsInfoStackView = UIStackView(arrangedSubviews: [ci])
+		let lastScoresStackView = UIStackView(arrangedSubviews: [ci])
 		
 		
 		//////////////////////
@@ -218,17 +331,16 @@ class FirstScreenViewController: UIViewController {
 		topStackView.translatesAutoresizingMaskIntoConstraints = false
 		topStackView.axis = .horizontal
 		topStackView.distribution = .fillEqually
+		topStackView.spacing = 150
 
-
-		
 		view.addSubview(topStackView)
 		
 		// restricciones a 'top stack view'
 		NSLayoutConstraint.activate([
-			topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			topStackView.heightAnchor.constraint(equalToConstant: 35)
+			topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+			topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+			topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+			topStackView.heightAnchor.constraint(equalToConstant: 10)
 			])
 		
 		
@@ -268,7 +380,7 @@ class FirstScreenViewController: UIViewController {
 			bottomStackView.topAnchor.constraint(equalTo: centerStackView.bottomAnchor),
 			bottomStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 			bottomStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			bottomStackView.heightAnchor.constraint(equalToConstant: 50),
+			bottomStackView.heightAnchor.constraint(equalToConstant: 25),
 			bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 			])
 
@@ -282,6 +394,51 @@ class FirstScreenViewController: UIViewController {
 			playButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 			playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 			])
+
+		///////////////////
+		/// Chords Info ///
+		///////////////////
+		
+		chordsInfoStackView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(chordsInfoStackView)
+		// restricciones al contenedor de prueba
+		NSLayoutConstraint.activate([
+			// top
+			chordsInfoStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
+			// leading
+			chordsInfoStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			// trailing
+			chordsInfoStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			// height
+			chordsInfoStackView.heightAnchor.constraint(equalToConstant: 250)
+
+			])
+		
+		print("🥉\(chordsInfoStackView.arrangedSubviews.count)")
+		
+		///////////////////
+		/// Scores Info ///
+		///////////////////
+		
+		lastScoresStackView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(lastScoresStackView)
+		// restricciones al contenedor de prueba
+		NSLayoutConstraint.activate([
+			// top
+			lastScoresStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
+			// leading
+			lastScoresStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			// trailing
+			lastScoresStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			// height
+			lastScoresStackView.heightAnchor.constraint(equalToConstant: 250)
+			
+			])
+		
+		
+		// test
+		print("👻\(pointsBarView.layer)")
+		
 
 	}
 	

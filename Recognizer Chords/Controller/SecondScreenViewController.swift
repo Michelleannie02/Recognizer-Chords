@@ -20,6 +20,9 @@ class SecondScreenViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 	
+	// información desplegada del menú
+	let ci = ChordsInfo()
+	
 	let pointsBar = PointsBar()
 	let errorsBar = ErrorsBar()
 	
@@ -34,6 +37,8 @@ class SecondScreenViewController: UIViewController {
 	var minorButtonWasTapped = true
 	var diminishedButtonWasTapped = true
 	var augmentedButtonWasTapped = true
+	
+	var elBotonFuePresionado = true
 
 
 	//*****************************************************************
@@ -70,6 +75,8 @@ class SecondScreenViewController: UIViewController {
 	override func viewDidLoad() { // 🚪
 		super.viewDidLoad()
 		
+		// las contenedores con información acerca de acordes y puntaje también
+		ci.isHidden = true
 		
 		disabledButtons()
 		
@@ -84,10 +91,53 @@ class SecondScreenViewController: UIViewController {
 	//*****************************************************************
 	
 	@IBAction func chordsInfoButtonPressed(_ sender: UIButton) {
+		
+		print("🤼‍♀️ El boton fue presionado está en \(elBotonFuePresionado)")
+		
+		// el área aparece
+		if elBotonFuePresionado {
+			ci.isHidden = false
+			elBotonFuePresionado = false
+			
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			playButton.isEnabled = false
+			
+			// el área desaparece
+		} else {
+			ci.isHidden = true
+			elBotonFuePresionado = true
+			
+			majorButton.isEnabled = true
+			minorButton.isEnabled = true
+			playButton.isEnabled = true
+		}
 
 	}
 	
 	@IBAction func scoresButtonPressed(_ sender: UIButton) {
+		
+		print("🤼‍♀️ El boton fue presionado está en \(elBotonFuePresionado)")
+		
+		// el área aparece
+		if elBotonFuePresionado {
+			ci.isHidden = false
+			elBotonFuePresionado = false
+			
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			playButton.isEnabled = false
+			
+			// el área desaparece
+		} else {
+			ci.isHidden = true
+			elBotonFuePresionado = true
+			
+			majorButton.isEnabled = true
+			minorButton.isEnabled = true
+			playButton.isEnabled = true
+		}
+		
 	}
 	
 	/// task: ejectutarse cada vez que el botón 'language' es tapeado
@@ -107,10 +157,7 @@ class SecondScreenViewController: UIViewController {
 		
 	}
 	
-	
-	
-	
-	
+
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
@@ -119,6 +166,7 @@ class SecondScreenViewController: UIViewController {
 		
 		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
 		playButton.isHidden = false
+		playButton.alpha = 1
 		
 		
 		// se ejecuta como estado inicial
@@ -144,6 +192,8 @@ class SecondScreenViewController: UIViewController {
 		
 		
 		playButton.isHidden = false
+		playButton.alpha = 1
+
 		
 		if minorButtonWasTapped {
 			majorButton.isEnabled = false
@@ -166,6 +216,8 @@ class SecondScreenViewController: UIViewController {
 		
 		// cuando el usuario tapea el botón disminuído, el botón play vuelve a aparecer
 		playButton.isHidden = false
+		playButton.alpha = 1
+
 		
 		
 		if diminishedButtonWasTapped {
@@ -187,6 +239,8 @@ class SecondScreenViewController: UIViewController {
 		
 		// cuando el usuario tapea el botón disminuído, el botón play vuelve a aparecer
 		playButton.isHidden = false
+		playButton.alpha = 1
+
 		
 		// se ejecuta como estado inicial
 		// y cada vez que el botón aumentado es tapeado
@@ -217,6 +271,11 @@ class SecondScreenViewController: UIViewController {
 		minorButton.isEnabled = true
 		diminishedButton.isEnabled = true
 		augmentedButton.isEnabled = true
+		
+		if counter.playButtonValue == 2 {
+			
+			playButton.alpha = 0.75
+		}
 		
 		if counter.playButtonValue == 3 {
 			
@@ -249,6 +308,7 @@ class SecondScreenViewController: UIViewController {
 	//*****************************************************************
 	
 		func autolayout () {
+		
 			
 //			// rota el texto de los botones del menú superior
 //			gClefButton.transform = CGAffineTransform(rotationAngle: -120)
@@ -269,6 +329,8 @@ class SecondScreenViewController: UIViewController {
 			augmentedButton.translatesAutoresizingMaskIntoConstraints = false
 			diminishedButton.translatesAutoresizingMaskIntoConstraints = false
 			playButton.translatesAutoresizingMaskIntoConstraints = false
+			
+			ci.translatesAutoresizingMaskIntoConstraints = false
 			
 			
 			// MARK: - Stack Views
@@ -294,6 +356,10 @@ class SecondScreenViewController: UIViewController {
 			// BOTTOM //////////////////////////////////////////////////////////////
 			let bottomStackView = UIStackView(arrangedSubviews: [pointsBar, errorsBar])
 			
+			// ANEXOS
+			let chordsInfoStackView = UIStackView(arrangedSubviews: [ci])
+			let lastScoresStackView = UIStackView(arrangedSubviews: [ci])
+			
 			
 			//////////////////////
 			/// Top Stack View ///
@@ -302,19 +368,16 @@ class SecondScreenViewController: UIViewController {
 			topStackView.translatesAutoresizingMaskIntoConstraints = false
 			topStackView.axis = .horizontal
 			topStackView.distribution = .fillEqually
+			topStackView.spacing = 150
 			
 			view.addSubview(topStackView)
 			
 			// restricciones a 'top stack view'
 			NSLayoutConstraint.activate([
-				// ancla 'topStackView' con el tope de la supervista
-				topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-				// ancla 'topStackView' con el lado izquierdo de la supervista
-				topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				// ancla 'topStackView' con el lado derecho de la supervista
-				topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				// ancla 'topStackView' con el fondo de la supervista
-				topStackView.heightAnchor.constraint(equalToConstant: 35)
+				topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+				topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+				topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+				topStackView.heightAnchor.constraint(equalToConstant: 10)
 				])
 			
 			
@@ -411,6 +474,48 @@ class SecondScreenViewController: UIViewController {
 				playButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 				playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 				])
+			
+			///////////////////
+			/// Chords Info ///
+			///////////////////
+			
+			chordsInfoStackView.translatesAutoresizingMaskIntoConstraints = false
+			view.addSubview(chordsInfoStackView)
+			// restricciones al contenedor de prueba
+			NSLayoutConstraint.activate([
+				// top
+				chordsInfoStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
+				// leading
+				chordsInfoStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				// trailing
+				chordsInfoStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				// height
+				chordsInfoStackView.heightAnchor.constraint(equalToConstant: 250)
+				
+				])
+			
+			print("🥉\(chordsInfoStackView.arrangedSubviews.count)")
+			
+			///////////////////
+			/// Scores Info ///
+			///////////////////
+			
+			lastScoresStackView.translatesAutoresizingMaskIntoConstraints = false
+			view.addSubview(lastScoresStackView)
+			// restricciones al contenedor de prueba
+			NSLayoutConstraint.activate([
+				// top
+				lastScoresStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
+				// leading
+				lastScoresStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				// trailing
+				lastScoresStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				// height
+				lastScoresStackView.heightAnchor.constraint(equalToConstant: 250)
+				
+				])
+			
+			
 
 	}
 	
