@@ -9,6 +9,7 @@
 /* Controller */
 
 import UIKit
+import AVFoundation
 
 /* Abstract:
 La primer pantalla de la aplicación. Contiene dos botones representando un acorde mayor y un acorde menor más un botón de play.
@@ -45,6 +46,15 @@ class FirstScreenViewController: UIViewController {
 	
 	// TODO: core data!
 	var savedScores: [Int] = []
+	
+	// los tipos de botones disponibles
+	// cada valor (tag) se corresponde con un tipo de botón diferente
+	enum chordButtonType: Int {
+		case major = 0, minor
+	}
+	
+	// reproductor de audio
+//	var audioPlayer: AVAudioPlayer!
 
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -61,7 +71,7 @@ class FirstScreenViewController: UIViewController {
 	@IBOutlet weak var minorButton: UIButton!
 	
 	//*****************************************************************
-	// MARK: - Life Cycle
+	// MARK: - VC Life Cycle
 	//*****************************************************************
 	
 	// task: cargar la supervista..
@@ -81,10 +91,15 @@ class FirstScreenViewController: UIViewController {
 		
 		// tus scores
 		print("🥉 tus scores son estos: \(savedScores)")
-
-
-	
+		
+		// prepara el sonido
+		
+		// TODO: que tome un nro aletorio 👈
+		Chords.arrayChords[2]
+		
+		
     }
+
 	
 	//*****************************************************************
 	// MARK: - IBActions
@@ -189,6 +204,22 @@ class FirstScreenViewController: UIViewController {
 	
 	
 	// Major, Minor & Play Buttons
+	
+	@IBAction func playChordsButon(_ sender: UIButton) {
+		
+//		switch(chordButtonType(rawValue: sender.tag)!) {
+//		case .major:
+//			playSound(rate: 0.5)
+//		case .minor:
+//			playSound(rate: 1.5)
+
+		}
+		
+	
+	
+	
+	
+	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
@@ -208,6 +239,7 @@ class FirstScreenViewController: UIViewController {
 		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
 		
+	
 
 	}
 	
@@ -272,6 +304,10 @@ class FirstScreenViewController: UIViewController {
 			minorButton.isEnabled = true
 		}
 		
+		
+		// reproduce el sonido
+//		audioPlayer.play()
+		Chords.audioPlayer.play()
 	}
 	
 	//*****************************************************************

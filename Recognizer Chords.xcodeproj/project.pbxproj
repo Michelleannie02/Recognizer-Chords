@@ -39,6 +39,12 @@
 		A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */; };
 		A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */; };
 		A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D2820520B6500700F8554E /* ErrorsBarCell.swift */; };
+		A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */; };
+		A6FA467C20C62CC700123013 /* SecondScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */; };
+		A6FA46C220C65C2B00123013 /* ab5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A6FA46C120C65B6400123013 /* ab5.aiff */; };
+		A6FA46C320C65C2B00123013 /* ab6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A6FA46BF20C65B6100123013 /* ab6.aiff */; };
+		A6FA46C420C65C2B00123013 /* ab7.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A6FA46C020C65B6300123013 /* ab7.aiff */; };
+		A6FA46C920C65F1800123013 /* Chords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA46C820C65F1800123013 /* Chords.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +85,13 @@
 		A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
 		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsInfo.swift; sourceTree = "<group>"; };
 		A6D2820520B6500700F8554E /* ErrorsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBarCell.swift; sourceTree = "<group>"; };
+		A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreenViewController+Audio.swift"; sourceTree = "<group>"; };
+		A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondScreenViewController+Audio.swift"; sourceTree = "<group>"; };
+		A6FA46BF20C65B6100123013 /* ab6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ab6.aiff; sourceTree = "<group>"; };
+		A6FA46C020C65B6300123013 /* ab7.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ab7.aiff; sourceTree = "<group>"; };
+		A6FA46C120C65B6400123013 /* ab5.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ab5.aiff; sourceTree = "<group>"; };
+		A6FA46C720C65E1500123013 /* g2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = g2.aiff; sourceTree = "<group>"; };
+		A6FA46C820C65F1800123013 /* Chords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chords.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +242,7 @@
 		A6AF16D120A492A400A25F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A6FA46C820C65F1800123013 /* Chords.swift */,
 				A69789C820C10558005B404A /* Counter.swift */,
 			);
 			path = Model;
@@ -238,7 +252,9 @@
 			isa = PBXGroup;
 			children = (
 				A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */,
+				A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */,
 				A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */,
+				A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */,
 				A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */,
 				A69789BB20C0B72C005B404A /* CopperViewController.swift */,
 				A69789C120C0B7AF005B404A /* SilverViewController.swift */,
@@ -252,6 +268,7 @@
 		A6BC0AE6208542C800D2AF6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A6FA46BE20C65B6000123013 /* audio */,
 				A6A35034207E504C000E79E1 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -272,6 +289,17 @@
 				A6A3502F207E504C000E79E1 /* Networking.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		A6FA46BE20C65B6000123013 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				A6FA46C720C65E1500123013 /* g2.aiff */,
+				A6FA46C120C65B6400123013 /* ab5.aiff */,
+				A6FA46BF20C65B6100123013 /* ab6.aiff */,
+				A6FA46C020C65B6300123013 /* ab7.aiff */,
+			);
+			path = audio;
 			sourceTree = "<group>";
 		};
 		DC90F1BA0BA035ECC0E48262 /* Frameworks */ = {
@@ -342,6 +370,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6FA46C220C65C2B00123013 /* ab5.aiff in Resources */,
+				A6FA46C320C65C2B00123013 /* ab6.aiff in Resources */,
+				A6FA46C420C65C2B00123013 /* ab7.aiff in Resources */,
 				A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */,
 				A6A35035207E504C000E79E1 /* Assets.xcassets in Resources */,
 				A6A35033207E504C000E79E1 /* Main.storyboard in Resources */,
@@ -399,8 +430,11 @@
 				A6354F7A20C3B6C10083E838 /* LayerViewController.swift in Sources */,
 				A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */,
 				A63EADF920C2707C00A7E168 /* PointsBarView.swift in Sources */,
+				A6FA467C20C62CC700123013 /* SecondScreenViewController+Audio.swift in Sources */,
 				A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */,
 				A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */,
+				A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */,
+				A6FA46C920C65F1800123013 /* Chords.swift in Sources */,
 				A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */,
 				A6814E5620A3671B0076511E /* EightChordsContainer.swift in Sources */,
 				A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */,

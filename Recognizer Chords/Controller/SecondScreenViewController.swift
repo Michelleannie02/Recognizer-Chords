@@ -67,6 +67,13 @@ class SecondScreenViewController: UIViewController {
 	@IBOutlet weak var diminishedButton: UIButton!
 	@IBOutlet weak var augmentedButton: UIButton!
 	
+	
+	// los tipos de botones disponibles
+	// cada valor (tag) se corresponde con un tipo de botón diferente
+	enum chordButtonType: Int {
+		case major = 0, minor, diminished, augmented
+	}
+	
 	//*****************************************************************
 	// MARK: - Life Cycle
 	//*****************************************************************
@@ -157,7 +164,24 @@ class SecondScreenViewController: UIViewController {
 		
 	}
 	
+	// Chords Button
+	
+	@IBAction func playChordsButton(_ sender: UIButton) {
+		
+		switch(chordButtonType(rawValue: sender.tag)!) {
+		case .major:
+			playSound(rate: 0.5)
+		case .minor:
+			playSound(rate: 1.5)
+		case .diminished:
+			playSound(rate: 1000)
+		case .augmented:
+			playSound(rate: -1000)
+		}
 
+
+	}
+	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
