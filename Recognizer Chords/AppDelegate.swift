@@ -9,6 +9,7 @@
 /* Application */
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	/// task: se ejecuta una vez que la aplicación terminó su etapa de ´lanzamiento´
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+		
+		// Use Firebase library to configure APIs
+		FirebaseApp.configure()
 
 			return true
 	}
@@ -26,41 +30,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 } // end class
 
 
-///* Abstract:
-//La aplicación entra por el ´AppGuideViewController´
-//*/
-//
-//@UIApplicationMain
-//class AppDelegate: UIResponder, UIApplicationDelegate {
-//
-//	// representa la ventana de la aplicación
-//	var window: UIWindow?
-//
-//	/// task: se ejecuta una vez que la aplicación terminó su etapa de ´lanzamiento´
-//	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//		// Override point for customization after application launch.
-//
-//		// "esto es para ver cómo construir nuestra app con código"
-//		window = UIWindow()
-//		// muestra la ventana
-//		window?.makeKeyAndVisible()
-//
-//		//		let randonViewController = UIViewController()
-//		//		// pone la supervista de color púrpura
-//		//		randonViewController.view.backgroundColor = .purple
-//
-//		// el diseño del ´collection view´
-//		let layout = UICollectionViewFlowLayout()
-//		// pone el diseño de la colleción para que tenga desplazamiento horizontal
-//		layout.scrollDirection = .horizontal
-//		// se lo asigna al 'SwipingController'
-//		let appGuideViewController = AppGuideViewController(collectionViewLayout: layout)
-//
-//		// hace que 'swipingController' sea el vc inicial
-//		window?.rootViewController = appGuideViewController
-//
-//			return true
-//	}
-//
-//} // end class
+
 

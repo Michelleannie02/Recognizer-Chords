@@ -10,6 +10,7 @@
 		4AD48171BC7C958FC9BF1DBB /* libPods-Recognizer Chords.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */; };
 		A6075BDE20B911080019E2E8 /* PointsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDD20B911080019E2E8 /* PointsBar.swift */; };
 		A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDF20B911190019E2E8 /* ErrorsBar.swift */; };
+		A61D47DD20C753FC002DEFEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A61D47DC20C753FC002DEFEB /* GoogleService-Info.plist */; };
 		A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6333ADA209D40F800A94C1A /* Helpers.swift */; };
 		A6354F7A20C3B6C10083E838 /* LayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7920C3B6C10083E838 /* LayerViewController.swift */; };
 		A6354F7E20C3C0790083E838 /* ErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7D20C3C0790083E838 /* ErrorsView.swift */; };
@@ -54,6 +55,7 @@
 		A6075BDD20B911080019E2E8 /* PointsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBar.swift; sourceTree = "<group>"; };
 		A6075BDF20B911190019E2E8 /* ErrorsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBar.swift; sourceTree = "<group>"; };
 		A61BE9CE208E6868004023EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A61D47DC20C753FC002DEFEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6333ADA209D40F800A94C1A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		A6354F7920C3B6C10083E838 /* LayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerViewController.swift; sourceTree = "<group>"; };
 		A6354F7D20C3C0790083E838 /* ErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsView.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */,
+				A61D47DC20C753FC002DEFEB /* GoogleService-Info.plist */,
 				A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */,
 				A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */,
 				A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */,
@@ -321,6 +324,8 @@
 				A6A35026207E504C000E79E1 /* Sources */,
 				A6A35027207E504C000E79E1 /* Frameworks */,
 				A6A35028207E504C000E79E1 /* Resources */,
+				7A9DABF3DE58144EEB964AC3 /* [CP] Embed Pods Frameworks */,
+				DEFE697A6FEFA2E0BFE61F60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -371,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6FA46C220C65C2B00123013 /* ab5.aiff in Resources */,
+				A61D47DD20C753FC002DEFEB /* GoogleService-Info.plist in Resources */,
 				A6FA46C320C65C2B00123013 /* ab6.aiff in Resources */,
 				A6FA46C420C65C2B00123013 /* ab7.aiff in Resources */,
 				A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */,
@@ -399,6 +405,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A9DABF3DE58144EEB964AC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords-frameworks.sh",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEFE697A6FEFA2E0BFE61F60 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
