@@ -92,14 +92,9 @@ class FirstScreenViewController: UIViewController {
 		
 		// tus scores
 		print("🥉 tus scores son estos: \(savedScores)")
-		
-		// prepara los acordes de esta primer pantalla
-		//setupChords()
-		
-		// TODO: que tome un nro aletorio 👈
-		//Chords.arrayChords[2]
+
 	
-		
+		// prepara los acordes que van a sonar
 		setupChords()
 		
 		
@@ -305,7 +300,7 @@ class FirstScreenViewController: UIViewController {
 		
 		
 		
-		
+		setupChords()
 		
 		
 		

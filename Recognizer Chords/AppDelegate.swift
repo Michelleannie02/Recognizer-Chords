@@ -20,11 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	/// task: se ejecuta una vez que la aplicación terminó su etapa de ´lanzamiento´
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
-		
-		// la app ya esta asociada a firebase!
+		// asocia la app a Firebase 🔥
 		FirebaseApp.configure()
-		
-	
 
 			return true
 	}
