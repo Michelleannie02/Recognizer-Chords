@@ -10,6 +10,7 @@
 		4AD48171BC7C958FC9BF1DBB /* libPods-Recognizer Chords.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */; };
 		A6075BDE20B911080019E2E8 /* PointsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDD20B911080019E2E8 /* PointsBar.swift */; };
 		A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDF20B911190019E2E8 /* ErrorsBar.swift */; };
+		A619F8F220CBA14E00241E2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */; };
 		A61D47DF20C79B2F002DEFEB /* ChordsSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D47DE20C79B2F002DEFEB /* ChordsSounds.swift */; };
 		A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6333ADA209D40F800A94C1A /* Helpers.swift */; };
 		A6354F7A20C3B6C10083E838 /* LayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7920C3B6C10083E838 /* LayerViewController.swift */; };
@@ -40,7 +41,6 @@
 		A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */; };
 		A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */; };
 		A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D2820520B6500700F8554E /* ErrorsBarCell.swift */; };
-		A6ED286920CB9AF100D36DB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6ED286820CB9AF000D36DB4 /* GoogleService-Info.plist */; };
 		A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */; };
 		A6FA467C20C62CC700123013 /* SecondScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */; };
 		A6FA46C220C65C2B00123013 /* ab5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A6FA46C120C65B6400123013 /* ab5.aiff */; };
@@ -55,6 +55,7 @@
 		A5B70A3B4E59E301089A3BD1 /* Pods-Recognizer Chords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.release.xcconfig"; sourceTree = "<group>"; };
 		A6075BDD20B911080019E2E8 /* PointsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBar.swift; sourceTree = "<group>"; };
 		A6075BDF20B911190019E2E8 /* ErrorsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBar.swift; sourceTree = "<group>"; };
+		A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A61BE9CE208E6868004023EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A61D47DE20C79B2F002DEFEB /* ChordsSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsSounds.swift; sourceTree = "<group>"; };
 		A6333ADA209D40F800A94C1A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -88,7 +89,6 @@
 		A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
 		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsInfo.swift; sourceTree = "<group>"; };
 		A6D2820520B6500700F8554E /* ErrorsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBarCell.swift; sourceTree = "<group>"; };
-		A6ED286820CB9AF000D36DB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreenViewController+Audio.swift"; sourceTree = "<group>"; };
 		A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondScreenViewController+Audio.swift"; sourceTree = "<group>"; };
 		A6FA46BF20C65B6100123013 /* ab6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ab6.aiff; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A35039207E504C000E79E1 /* Info.plist */,
-				A6ED286820CB9AF000D36DB4 /* GoogleService-Info.plist */,
+				A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */,
 				A61BE9CE208E6868004023EE /* README.md */,
 			);
 			path = "Supporting files";
@@ -377,7 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6FA46C220C65C2B00123013 /* ab5.aiff in Resources */,
-				A6ED286920CB9AF100D36DB4 /* GoogleService-Info.plist in Resources */,
+				A619F8F220CBA14E00241E2D /* GoogleService-Info.plist in Resources */,
 				A6FA46C320C65C2B00123013 /* ab6.aiff in Resources */,
 				A6FA46C420C65C2B00123013 /* ab7.aiff in Resources */,
 				A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */,
