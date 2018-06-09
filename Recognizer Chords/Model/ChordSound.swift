@@ -6,26 +6,14 @@
 //  Copyright © 2018 luko. All rights reserved.
 //
 
+/* Model */
+
 import Foundation
-import AVFoundation
-import Firebase
-
-struct ChordsSounds {
-	
 
 
-	static func firebase() {
-
+struct ChordSound {
 	
-
-	
-	
-	} // end func
-	
-	
-	
-	
-	
+	var mp3 = Data()
 	
 	
 } // end struct

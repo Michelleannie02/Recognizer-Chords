@@ -10,6 +10,7 @@
 
 import UIKit
 import AVFoundation
+import Firebase
 
 /* Abstract:
 La primer pantalla de la aplicación. Contiene dos botones representando un acorde mayor y un acorde menor más un botón de play.
@@ -53,7 +54,8 @@ class FirstScreenViewController: UIViewController {
 	}
 	
 	// reproductor de audio
-	var audioPlayer: AVAudioPlayer!
+	var audioPlayer: AVAudioPlayer?
+	var dataChord = Data()
 
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -91,11 +93,16 @@ class FirstScreenViewController: UIViewController {
 		// tus scores
 		print("🥉 tus scores son estos: \(savedScores)")
 		
-		// prepara el sonido
+		// prepara los acordes de esta primer pantalla
+		//setupChords()
 		
 		// TODO: que tome un nro aletorio 👈
 		//Chords.arrayChords[2]
 	
+		
+		setupChords()
+		
+		
 		
 		
     }
@@ -205,22 +212,7 @@ class FirstScreenViewController: UIViewController {
 	
 	// Major, Minor & Play Buttons
 	
-	@IBAction func playChordsButon(_ sender: UIButton) {
-		
-//		switch(chordButtonType(rawValue: sender.tag)!) {
-//		case .major:
-//			Chords.arrayChords[0]
-//		case .minor:
-//			Chords.arrayChords[1]
-
-			//		// reproduce el sonido
-			////		audioPlayer.play()
-			//		Chords.audioPlayer.play()
-
-//		}
-		
-		
-	}
+	
 
 	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
@@ -308,10 +300,39 @@ class FirstScreenViewController: UIViewController {
 		}
 
 
-		// reproduce el sonido
-		Chords.audioPlayer.play()
-	}
+//		// reproduce el sonido
+//		Chords.audioPlayer.play()
+		
+		
+		
+		
+		
+		
+		
+		
+		// busca el archivo de audio
+		//let acordeMayorUrl = Bundle.main.url(forResource: "ab5", withExtension: "aiff")
+		
+		
+		// lo pone el el reproductor
+		do {
+			audioPlayer = try AVAudioPlayer(data: self.dataChord)
+			audioPlayer?.prepareToPlay()
+			
+			
+		} catch let error as NSError {
+			
+			print(error.debugDescription)
+		}
+		
+		
+		// y lo reproduce
+		audioPlayer?.play()
+		
+		
 	
+	}
+
 	
 	
 	//*****************************************************************
