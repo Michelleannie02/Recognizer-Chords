@@ -24,7 +24,6 @@ class FirstScreenViewController: UIViewController {
 	// información desplegada del menú
 	let ci = ChordsInfo()
 	
-	
 	// la barra que me traje
 	let pointsBarView = PointsView()
 	let errorsBarView = ErrorsView()
@@ -54,7 +53,7 @@ class FirstScreenViewController: UIViewController {
 	}
 	
 	// reproductor de audio
-//	var audioPlayer: AVAudioPlayer!
+	var audioPlayer: AVAudioPlayer!
 
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -95,7 +94,8 @@ class FirstScreenViewController: UIViewController {
 		// prepara el sonido
 		
 		// TODO: que tome un nro aletorio 👈
-		Chords.arrayChords[2]
+		//Chords.arrayChords[2]
+	
 		
 		
     }
@@ -209,104 +209,106 @@ class FirstScreenViewController: UIViewController {
 		
 //		switch(chordButtonType(rawValue: sender.tag)!) {
 //		case .major:
-//			playSound(rate: 0.5)
+//			Chords.arrayChords[0]
 //		case .minor:
-//			playSound(rate: 1.5)
+//			Chords.arrayChords[1]
 
-		}
+			//		// reproduce el sonido
+			////		audioPlayer.play()
+			//		Chords.audioPlayer.play()
+
+//		}
 		
-	
-	
-	
-	
+		
+	}
+
 	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
-		
-		// test 
+
+		// test
 		print("el botón de mayor fue presionado")
-		
+
 		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
 		playButton.isHidden = false
 
-		
+
 		if majorButtonWasTapped {
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
-			
+
 		}
 
 		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
-		
-	
+
+
 
 	}
-	
-	
 
-	
-	
-	
+
+
+
+
+
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
-		
+
 		print("el botón de menor fue presionado")
-		
-		
+
+
 		playButton.isHidden = false
-	
+
 		if minorButtonWasTapped {
 			minorButton.isEnabled = false
 			majorButton.isEnabled = false
-			
+
 		}
-		
+
 		counter.playButtonValue = 0
-		
-		
+
+
 		// prueba
 		errorsBarView.currentValue += 1
 		print("ya erraste \(errorsBarView.currentValue) veces")
-		
+
 		if errorsBarView.currentValue == 3 {
-			
+
 			perdiste()
 		}
-		
+
 		print("tu score fue de \(actualScore) puntos")
-		
+
 	}
-	
-	
+
+
 	func perdiste() {
 
 		print("game over")
 	}
-	
-	
+
+
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
-		
+
 		print("el botón de play fue presionado")
-		
+
 		counter.incrementPlayButton()
 		print("✏️\(counter.playButtonValue)")
-		
+
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true
-		
+
 		if counter.playButtonValue == 3 {
-			
+
 			counter.playButtonValue = 0
 			playButton.isHidden = true
 			majorButton.isEnabled = true
 			minorButton.isEnabled = true
 		}
-		
-		
+
+
 		// reproduce el sonido
-//		audioPlayer.play()
 		Chords.audioPlayer.play()
 	}
 	
@@ -417,7 +419,8 @@ class FirstScreenViewController: UIViewController {
 			bottomStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 			bottomStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 			bottomStackView.heightAnchor.constraint(equalToConstant: 25),
-			bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+			bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			
 			])
 
 		///////////////////

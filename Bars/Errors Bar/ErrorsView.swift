@@ -12,6 +12,7 @@ import UIKit
 class ErrorsView: UIView {
 	
 	override init(frame: CGRect) {
+		
 		super.init(frame: frame)
 		self.backgroundColor = .gray
 		setup()
