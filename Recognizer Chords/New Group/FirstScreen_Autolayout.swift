@@ -8,6 +8,10 @@
 
 import UIKit
 
+/* Abstract:
+Aplica restricciones a los elementos gráficos de la primer pantalla.
+*/
+
 extension FirstScreenViewController {
 
 //*****************************************************************

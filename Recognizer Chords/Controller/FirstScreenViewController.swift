@@ -55,6 +55,7 @@ class FirstScreenViewController: UIViewController {
 	
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
+	// los datos el acorde elegido
 	var dataChord = Data()
 
 	//*****************************************************************
@@ -86,23 +87,18 @@ class FirstScreenViewController: UIViewController {
 		// las contenedores con información acerca de acordes y puntaje también
 		ci.isHidden = true
 		
-
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
+	
+		// prepara los acordes que van a sonar
+		// un acorde mayor o uno menor
+		setupChords()
 		
 		// tus scores
 		print("🥉 tus scores son estos: \(savedScores)")
-
-	
-		// prepara los acordes que van a sonar
-		setupChords()
-		
-		
-		
 		
     }
 
-	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
@@ -208,8 +204,6 @@ class FirstScreenViewController: UIViewController {
 	// Major, Minor & Play Buttons
 	
 	
-
-	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 
@@ -230,11 +224,7 @@ class FirstScreenViewController: UIViewController {
 		counter.playButtonValue = 0
 
 
-
 	}
-
-
-
 
 
 
@@ -279,14 +269,15 @@ class FirstScreenViewController: UIViewController {
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 
 		print("el botón de play fue presionado")
-
+		
+		// cuenta cuantas veces fue tapeado el botón de play
 		counter.incrementPlayButton()
 		print("✏️\(counter.playButtonValue)")
 
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true
 
-		if counter.playButtonValue == 3 {
+		if counter.playButtonValue == 50 { // cambiar luego a 3
 
 			counter.playButtonValue = 0
 			playButton.isHidden = true
@@ -294,38 +285,8 @@ class FirstScreenViewController: UIViewController {
 			minorButton.isEnabled = true
 		}
 
-
-//		// reproduce el sonido
-//		Chords.audioPlayer.play()
-		
-		
-		
 		setupChords()
 		
-		
-		
-		
-		// busca el archivo de audio
-		//let acordeMayorUrl = Bundle.main.url(forResource: "ab5", withExtension: "aiff")
-		
-		
-		// lo pone el el reproductor
-		do {
-			audioPlayer = try AVAudioPlayer(data: self.dataChord)
-			audioPlayer?.prepareToPlay()
-			
-			
-		} catch let error as NSError {
-			
-			print(error.debugDescription)
-		}
-		
-		
-		// y lo reproduce
-		audioPlayer?.play()
-		
-		
-	
 	}
 
 	

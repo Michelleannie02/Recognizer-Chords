@@ -43,9 +43,6 @@
 		A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D2820520B6500700F8554E /* ErrorsBarCell.swift */; };
 		A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */; };
 		A6FA467C20C62CC700123013 /* SecondScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */; };
-		A6FA46C220C65C2B00123013 /* ab5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A6FA46C120C65B6400123013 /* ab5.aiff */; };
-		A6FA46C320C65C2B00123013 /* ab6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A6FA46BF20C65B6100123013 /* ab6.aiff */; };
-		A6FA46C420C65C2B00123013 /* ab7.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A6FA46C020C65B6300123013 /* ab7.aiff */; };
 		A6FA46C920C65F1800123013 /* Chords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA46C820C65F1800123013 /* Chords.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,10 +88,6 @@
 		A6D2820520B6500700F8554E /* ErrorsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBarCell.swift; sourceTree = "<group>"; };
 		A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreenViewController+Audio.swift"; sourceTree = "<group>"; };
 		A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondScreenViewController+Audio.swift"; sourceTree = "<group>"; };
-		A6FA46BF20C65B6100123013 /* ab6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ab6.aiff; sourceTree = "<group>"; };
-		A6FA46C020C65B6300123013 /* ab7.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ab7.aiff; sourceTree = "<group>"; };
-		A6FA46C120C65B6400123013 /* ab5.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ab5.aiff; sourceTree = "<group>"; };
-		A6FA46C720C65E1500123013 /* g2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = g2.aiff; sourceTree = "<group>"; };
 		A6FA46C820C65F1800123013 /* Chords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chords.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,7 +275,6 @@
 		A6BC0AE6208542C800D2AF6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A6FA46BE20C65B6000123013 /* audio */,
 				A6A35034207E504C000E79E1 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -304,17 +296,6 @@
 				A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		A6FA46BE20C65B6000123013 /* audio */ = {
-			isa = PBXGroup;
-			children = (
-				A6FA46C720C65E1500123013 /* g2.aiff */,
-				A6FA46C120C65B6400123013 /* ab5.aiff */,
-				A6FA46BF20C65B6100123013 /* ab6.aiff */,
-				A6FA46C020C65B6300123013 /* ab7.aiff */,
-			);
-			path = audio;
 			sourceTree = "<group>";
 		};
 		DC90F1BA0BA035ECC0E48262 /* Frameworks */ = {
@@ -385,10 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6FA46C220C65C2B00123013 /* ab5.aiff in Resources */,
 				A619F8F220CBA14E00241E2D /* GoogleService-Info.plist in Resources */,
-				A6FA46C320C65C2B00123013 /* ab6.aiff in Resources */,
-				A6FA46C420C65C2B00123013 /* ab7.aiff in Resources */,
 				A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */,
 				A6A35035207E504C000E79E1 /* Assets.xcassets in Resources */,
 				A6A35033207E504C000E79E1 /* Main.storyboard in Resources */,
