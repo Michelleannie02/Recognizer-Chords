@@ -12,7 +12,6 @@
 		A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDF20B911190019E2E8 /* ErrorsBar.swift */; };
 		A619F8F220CBA14E00241E2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */; };
 		A619F8F520CBA70B00241E2D /* FirstScreen_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */; };
-		A61D47DF20C79B2F002DEFEB /* ChordSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D47DE20C79B2F002DEFEB /* ChordSound.swift */; };
 		A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6333ADA209D40F800A94C1A /* Helpers.swift */; };
 		A6354F7A20C3B6C10083E838 /* LayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7920C3B6C10083E838 /* LayerViewController.swift */; };
 		A6354F7E20C3C0790083E838 /* ErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7D20C3C0790083E838 /* ErrorsView.swift */; };
@@ -43,7 +42,6 @@
 		A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D2820520B6500700F8554E /* ErrorsBarCell.swift */; };
 		A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */; };
 		A6FA467C20C62CC700123013 /* SecondScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */; };
-		A6FA46C920C65F1800123013 /* Chords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA46C820C65F1800123013 /* Chords.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +53,6 @@
 		A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen_Autolayout.swift; sourceTree = "<group>"; };
 		A61BE9CE208E6868004023EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A61D47DE20C79B2F002DEFEB /* ChordSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordSound.swift; sourceTree = "<group>"; };
 		A6333ADA209D40F800A94C1A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		A6354F7920C3B6C10083E838 /* LayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerViewController.swift; sourceTree = "<group>"; };
 		A6354F7D20C3C0790083E838 /* ErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsView.swift; sourceTree = "<group>"; };
@@ -88,7 +85,6 @@
 		A6D2820520B6500700F8554E /* ErrorsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBarCell.swift; sourceTree = "<group>"; };
 		A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreenViewController+Audio.swift"; sourceTree = "<group>"; };
 		A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondScreenViewController+Audio.swift"; sourceTree = "<group>"; };
-		A6FA46C820C65F1800123013 /* Chords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chords.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,8 +246,6 @@
 		A6AF16D120A492A400A25F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A6FA46C820C65F1800123013 /* Chords.swift */,
-				A61D47DE20C79B2F002DEFEB /* ChordSound.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,7 +403,6 @@
 				A6699BF920A254F800EBACFF /* BaseCell.swift in Sources */,
 				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
 				A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */,
-				A61D47DF20C79B2F002DEFEB /* ChordSound.swift in Sources */,
 				A686770520BA568B00DD4804 /* PruebaViewController.swift in Sources */,
 				A69789C920C10558005B404A /* Counter.swift in Sources */,
 				A69789C020C0B753005B404A /* GoldViewController.swift in Sources */,
@@ -429,7 +422,6 @@
 				A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */,
 				A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */,
 				A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */,
-				A6FA46C920C65F1800123013 /* Chords.swift in Sources */,
 				A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */,
 				A6814E5620A3671B0076511E /* EightChordsContainer.swift in Sources */,
 				A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */,
