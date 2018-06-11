@@ -122,20 +122,6 @@ class FirebaseClient: NSObject {
 			let acordeActual = tiposAcordes.randomElement()
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-			
 		}
 
 		
@@ -190,8 +176,6 @@ class FirebaseClient: NSObject {
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
 				}
-				
-				
 				
 			}
 			

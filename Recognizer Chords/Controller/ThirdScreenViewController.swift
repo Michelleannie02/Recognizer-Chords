@@ -27,6 +27,10 @@ class ThirdScreenViewController: UIViewController {
 	// lenguaje actual
 	var englishLanguage = true
 	
+	// la barra que me traje
+	let pointsBarView = PointsView()
+	let errorsBarView = ErrorsView()
+	
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
 	// los datos el acorde elegido

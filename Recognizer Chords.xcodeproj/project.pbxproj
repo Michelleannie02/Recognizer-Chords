@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4AD48171BC7C958FC9BF1DBB /* libPods-Recognizer Chords.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */; };
-		A6075BDE20B911080019E2E8 /* PointsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDD20B911080019E2E8 /* PointsBar.swift */; };
-		A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDF20B911190019E2E8 /* ErrorsBar.swift */; };
 		A60DF5BB20CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5B920CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld */; };
 		A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */; };
 		A60DF5C120CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5C020CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift */; };
@@ -21,9 +19,6 @@
 		A6354F7A20C3B6C10083E838 /* LayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7920C3B6C10083E838 /* LayerViewController.swift */; };
 		A6354F7E20C3C0790083E838 /* ErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7D20C3C0790083E838 /* ErrorsView.swift */; };
 		A63B6DF820BFC193005CBBFF /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63B6DF720BFC193005CBBFF /* Preview.storyboard */; };
-		A63EADF920C2707C00A7E168 /* PointsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63EADF820C2707C00A7E168 /* PointsBarView.swift */; };
-		A6699BF920A254F800EBACFF /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6699BF820A254F800EBACFF /* BaseCell.swift */; };
-		A6814E5220A3645A0076511E /* PointsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5120A3645A0076511E /* PointsBarCell.swift */; };
 		A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5320A3670A0076511E /* FourChordsContainer.swift */; };
 		A6814E5620A3671B0076511E /* EightChordsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5520A3671B0076511E /* EightChordsContainer.swift */; };
 		A6814E5C20A39A0D0076511E /* ChordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6814E5B20A39A0D0076511E /* ChordsCell.swift */; };
@@ -44,15 +39,12 @@
 		A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */; };
 		A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */; };
 		A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */; };
-		A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D2820520B6500700F8554E /* ErrorsBarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5DB012AD6305BF70E66D0DD3 /* Pods-Recognizer Chords.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.debug.xcconfig"; sourceTree = "<group>"; };
 		9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Recognizer Chords.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B70A3B4E59E301089A3BD1 /* Pods-Recognizer Chords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.release.xcconfig"; sourceTree = "<group>"; };
-		A6075BDD20B911080019E2E8 /* PointsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBar.swift; sourceTree = "<group>"; };
-		A6075BDF20B911190019E2E8 /* ErrorsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBar.swift; sourceTree = "<group>"; };
 		A60DF5BA20CDEFD400EE4F7A /* RecognizerChords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecognizerChords.xcdatamodel; sourceTree = "<group>"; };
 		A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondScreen_Autolayout.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/Autolayout/SecondScreen_Autolayout.swift"; sourceTree = "<absolute>"; };
 		A60DF5C020CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThirdScreen_AutoLayout.swift; path = "Recognizer Chords/Autolayout/ThirdScreen_AutoLayout.swift"; sourceTree = SOURCE_ROOT; };
@@ -65,9 +57,6 @@
 		A6354F7920C3B6C10083E838 /* LayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerViewController.swift; sourceTree = "<group>"; };
 		A6354F7D20C3C0790083E838 /* ErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsView.swift; sourceTree = "<group>"; };
 		A63B6DF720BFC193005CBBFF /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
-		A63EADF820C2707C00A7E168 /* PointsBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBarView.swift; sourceTree = "<group>"; };
-		A6699BF820A254F800EBACFF /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
-		A6814E5120A3645A0076511E /* PointsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBarCell.swift; sourceTree = "<group>"; };
 		A6814E5320A3670A0076511E /* FourChordsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourChordsContainer.swift; sourceTree = "<group>"; };
 		A6814E5520A3671B0076511E /* EightChordsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightChordsContainer.swift; sourceTree = "<group>"; };
 		A6814E5B20A39A0D0076511E /* ChordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsCell.swift; sourceTree = "<group>"; };
@@ -90,7 +79,6 @@
 		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
 		A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
 		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChordsInfo.swift; path = "Recognizer Chords/ChordsInfo.swift"; sourceTree = "<group>"; };
-		A6D2820520B6500700F8554E /* ErrorsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				A6AF19FC20BE17E600DBAAAC /* PointsView.swift */,
-				A63EADF820C2707C00A7E168 /* PointsBarView.swift */,
-				A6075BDD20B911080019E2E8 /* PointsBar.swift */,
-				A6814E5120A3645A0076511E /* PointsBarCell.swift */,
 			);
 			path = "Points Bar";
 			sourceTree = "<group>";
@@ -129,8 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				A6354F7D20C3C0790083E838 /* ErrorsView.swift */,
-				A6075BDF20B911190019E2E8 /* ErrorsBar.swift */,
-				A6D2820520B6500700F8554E /* ErrorsBarCell.swift */,
 			);
 			path = "Errors Bar";
 			sourceTree = "<group>";
@@ -140,7 +123,6 @@
 			children = (
 				A6075BE220B911570019E2E8 /* Points Bar */,
 				A6075BE320B911650019E2E8 /* Errors Bar */,
-				A6699BF820A254F800EBACFF /* BaseCell.swift */,
 			);
 			name = Bars;
 			path = "Recognizer Chords/Bars";
@@ -408,12 +390,9 @@
 				A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */,
 				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
 				A60DF5C520CE0EF100EE4F7A /* FirebaseConstants.swift in Sources */,
-				A6814E5220A3645A0076511E /* PointsBarCell.swift in Sources */,
 				A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */,
 				A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */,
-				A6699BF920A254F800EBACFF /* BaseCell.swift in Sources */,
 				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
-				A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */,
 				A60DF5C120CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift in Sources */,
 				A686770520BA568B00DD4804 /* PruebaViewController.swift in Sources */,
 				A69789C920C10558005B404A /* Counter.swift in Sources */,
@@ -425,14 +404,11 @@
 				A69789BC20C0B72C005B404A /* CopperViewController.swift in Sources */,
 				A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */,
 				A6847344209CED2700AD89CD /* TwoChordsContainer.swift in Sources */,
-				A6075BDE20B911080019E2E8 /* PointsBar.swift in Sources */,
 				A6354F7A20C3B6C10083E838 /* LayerViewController.swift in Sources */,
 				A619F8F520CBA70B00241E2D /* FirstScreen_Autolayout.swift in Sources */,
 				A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */,
-				A63EADF920C2707C00A7E168 /* PointsBarView.swift in Sources */,
 				A60DF5BB20CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld in Sources */,
 				A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */,
-				A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */,
 				A60DF5C320CE0E4100EE4F7A /* FirebaseClient.swift in Sources */,
 				A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */,
 				A6814E5620A3671B0076511E /* EightChordsContainer.swift in Sources */,

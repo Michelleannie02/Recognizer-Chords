@@ -65,7 +65,7 @@ extension SecondScreenViewController {
 		let centerStackView = UIStackView(arrangedSubviews: [centerTopStackView, centerBottomStackView])
 		
 		// BOTTOM //////////////////////////////////////////////////////////////
-		let bottomStackView = UIStackView(arrangedSubviews: [pointsBar, errorsBar])
+		let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView])
 		
 		// ANEXOS
 		let chordsInfoStackView = UIStackView(arrangedSubviews: [ci])
