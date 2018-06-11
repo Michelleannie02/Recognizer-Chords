@@ -45,8 +45,6 @@
 		A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */; };
 		A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */; };
 		A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D2820520B6500700F8554E /* ErrorsBarCell.swift */; };
-		A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */; };
-		A6FA467C20C62CC700123013 /* SecondScreenViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,8 +91,6 @@
 		A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
 		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChordsInfo.swift; path = "Recognizer Chords/ChordsInfo.swift"; sourceTree = "<group>"; };
 		A6D2820520B6500700F8554E /* ErrorsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBarCell.swift; sourceTree = "<group>"; };
-		A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreenViewController+Audio.swift"; sourceTree = "<group>"; };
-		A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondScreenViewController+Audio.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,8 +297,6 @@
 			children = (
 				A60DF5C220CE0E4100EE4F7A /* FirebaseClient.swift */,
 				A60DF5C420CE0EF100EE4F7A /* FirebaseConstants.swift */,
-				A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */,
-				A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -437,10 +431,8 @@
 				A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */,
 				A63EADF920C2707C00A7E168 /* PointsBarView.swift in Sources */,
 				A60DF5BB20CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld in Sources */,
-				A6FA467C20C62CC700123013 /* SecondScreenViewController+Audio.swift in Sources */,
 				A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */,
 				A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */,
-				A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */,
 				A60DF5C320CE0E4100EE4F7A /* FirebaseClient.swift in Sources */,
 				A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */,
 				A6814E5620A3671B0076511E /* EightChordsContainer.swift in Sources */,

@@ -26,17 +26,19 @@ extension FirebaseClient {
 		
 	}
 	
+	// gs://recognizer-chords.appspot.com/d/Cdim4_dens4.mp3
 	struct DiminishedChords {
 		
-		static let refAcordesDisminuidos = "m/Cm4_dens4.mp3"
+		static let refAcordesDisminuidos = "d/Cdim4_dens4.mp3"
 		static let items = ["d/Cdim4_dens4.mp3", "d/Edim4_dens4.mp3", "d/Gdim4_dens4.mp3"]
 		
 		
 	}
 	
+	// gs://recognizer-chords.appspot.com/A/Caug4_dens4.mp3
 	struct AugmentedChords {
 		
-		static let refAcordesAumentados = "m/Cm4_dens4.mp3"
+		static let refAcordesAumentados = "A/Caug4_dens4.mp3"
 		static let items = ["A/Caug4_dens4.mp3", "A/Eaug4_dens4.mp3", "A/Gaug4_dens4.mp3"]
 		
 		

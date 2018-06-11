@@ -56,7 +56,7 @@ class FirstScreenViewController: UIViewController {
 	// los datos el acorde elegido
 	
 	let firebase = FirebaseClient()
-	var dataChord = FirebaseClient.dataChord
+//	var dataChord = FirebaseClient.dataChord
 
 	
 	// PERSISTENCIA
@@ -97,7 +97,7 @@ class FirstScreenViewController: UIViewController {
 	
 		// prepara los acordes que van a sonar
 		// un acorde mayor o uno menor
-		firebase.setupChords(screen: self)
+		firebase.setupChords(firstScreen: self, secondScreen: nil, thirdScreen: nil)
 		
 		// tus scores
 		print("🥉 tus scores son estos: \(savedScores)")
@@ -295,12 +295,14 @@ class FirstScreenViewController: UIViewController {
 		// Audio //////////////////////////////////////////////////
 		
 		// 1-prepara el acorde a sonar...
-		setupChords()
+
+		// un acorde mayor o uno menor
+		firebase.setupChords(firstScreen: self, secondScreen: nil, thirdScreen: nil)
 		
 		
 		// 2-lo pone el el reproductor
 		do {
-			audioPlayer = try AVAudioPlayer(data: self.dataChord)
+			audioPlayer = try AVAudioPlayer(data: FirebaseClient.dataChord)
 			audioPlayer?.prepareToPlay()
 			
 		} catch let error as NSError {
@@ -311,6 +313,7 @@ class FirstScreenViewController: UIViewController {
 		
 		// 3-y lo reproduce
 		audioPlayer?.play()
+
 
 	}
 

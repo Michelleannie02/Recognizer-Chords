@@ -77,7 +77,7 @@ class ThirdScreenViewController: UIViewController {
 		autolayout()
 		
 		
-		firebase.setupChords(screen: self)
+		firebase.setupChords(firstScreen: nil, secondScreen: nil, thirdScreen: self)
 	}
 
 	
@@ -160,7 +160,8 @@ class ThirdScreenViewController: UIViewController {
 		// Audio //////////////////////////////////////////////////
 		
 		// 1-prepara el acorde a sonar...
-		//setupChords()
+		// un acorde mayor o uno menor
+		firebase.setupChords(firstScreen: nil, secondScreen: nil, thirdScreen: self)
 		
 		
 		// 2-lo pone el el reproductor
