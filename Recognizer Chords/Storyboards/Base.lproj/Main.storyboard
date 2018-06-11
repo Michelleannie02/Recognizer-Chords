@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="-1319.2" y="-322.48875562218893"/>
         </scene>
-        <!--First Screen View Controller-->
+        <!--1-->
         <scene sceneID="7Jr-qm-ibU">
             <objects>
-                <viewController title="First Screen View Controller" id="Lus-0j-79O" customClass="FirstScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="1" id="Lus-0j-79O" customClass="FirstScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KnL-4G-3CW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,10 +210,10 @@
             </objects>
             <point key="canvasLocation" x="300" y="-320"/>
         </scene>
-        <!--Second Screen View Controller-->
+        <!--2-->
         <scene sceneID="RaA-AF-N60">
             <objects>
-                <viewController storyboardIdentifier="Second Screen View Controller" title="Second Screen View Controller" id="OQf-Gl-yZi" customClass="SecondScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Second Screen View Controller" title="2" id="OQf-Gl-yZi" customClass="SecondScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TSc-jh-kSx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -390,10 +390,10 @@
             </objects>
             <point key="canvasLocation" x="1839" y="-320"/>
         </scene>
-        <!--Third Screen View Controller-->
+        <!--3-->
         <scene sceneID="vOU-pP-RZU">
             <objects>
-                <viewController title="Third Screen View Controller" id="d0K-uy-ZwF" customClass="ThirdScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="3" id="d0K-uy-ZwF" customClass="ThirdScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bfm-Uu-ZcJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -477,6 +477,7 @@
                                 </state>
                                 <connections>
                                     <action selector="augmentedButtonPressed:" destination="d0K-uy-ZwF" eventType="touchUpInside" id="nwe-KO-GKU"/>
+                                    <action selector="playButtonPressed:" destination="d0K-uy-ZwF" eventType="touchUpInside" id="RHW-Fb-8ek"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reu-Kd-W2F">

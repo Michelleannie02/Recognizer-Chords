@@ -21,6 +21,7 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 	
+	// UI ELEMENTOS
 	// información desplegada del menú
 	let ci = ChordsInfo()
 	
@@ -49,12 +50,16 @@ class FirstScreenViewController: UIViewController {
 		case major = 0, minor
 	}
 	
+	// AUDIO
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
 	// los datos el acorde elegido
-	var dataChord = Data()
+	
+	let firebase = FirebaseClient()
+	var dataChord = FirebaseClient.dataChord
 
 	
+	// PERSISTENCIA
 	// TODO: core data!
 	var savedScores: [Int] = []
 	
@@ -92,7 +97,7 @@ class FirstScreenViewController: UIViewController {
 	
 		// prepara los acordes que van a sonar
 		// un acorde mayor o uno menor
-		setupChords()
+		firebase.setupChords(screen: self)
 		
 		// tus scores
 		print("🥉 tus scores son estos: \(savedScores)")
@@ -201,11 +206,7 @@ class FirstScreenViewController: UIViewController {
 		print("PASASTE A LA SIGUIENTE PANTALLA!!")
 	}
 	
-	
 	// Major, Minor & Play Buttons
-	
-	
-
 	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
@@ -228,7 +229,6 @@ class FirstScreenViewController: UIViewController {
 
 
 	}
-
 
 
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
@@ -302,7 +302,6 @@ class FirstScreenViewController: UIViewController {
 		do {
 			audioPlayer = try AVAudioPlayer(data: self.dataChord)
 			audioPlayer?.prepareToPlay()
-			
 			
 		} catch let error as NSError {
 			

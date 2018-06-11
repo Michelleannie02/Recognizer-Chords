@@ -13,6 +13,8 @@
 		A60DF5BB20CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5B920CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld */; };
 		A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */; };
 		A60DF5C120CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5C020CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift */; };
+		A60DF5C320CE0E4100EE4F7A /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5C220CE0E4100EE4F7A /* FirebaseClient.swift */; };
+		A60DF5C520CE0EF100EE4F7A /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5C420CE0EF100EE4F7A /* FirebaseConstants.swift */; };
 		A619F8F220CBA14E00241E2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */; };
 		A619F8F520CBA70B00241E2D /* FirstScreen_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */; };
 		A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6333ADA209D40F800A94C1A /* Helpers.swift */; };
@@ -56,6 +58,8 @@
 		A60DF5BA20CDEFD400EE4F7A /* RecognizerChords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecognizerChords.xcdatamodel; sourceTree = "<group>"; };
 		A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondScreen_Autolayout.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/Autolayout/SecondScreen_Autolayout.swift"; sourceTree = "<absolute>"; };
 		A60DF5C020CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThirdScreen_AutoLayout.swift; path = "Recognizer Chords/Autolayout/ThirdScreen_AutoLayout.swift"; sourceTree = SOURCE_ROOT; };
+		A60DF5C220CE0E4100EE4F7A /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = "Recognizer Chords/Networking/FirebaseClient.swift"; sourceTree = SOURCE_ROOT; };
+		A60DF5C420CE0EF100EE4F7A /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseConstants.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/Networking/FirebaseConstants.swift"; sourceTree = "<absolute>"; };
 		A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen_Autolayout.swift; sourceTree = "<group>"; };
 		A61BE9CE208E6868004023EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -295,8 +299,10 @@
 		A6DE85FE2086A33400DBBE3A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */,
+				A60DF5C220CE0E4100EE4F7A /* FirebaseClient.swift */,
+				A60DF5C420CE0EF100EE4F7A /* FirebaseConstants.swift */,
 				A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */,
+				A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 			files = (
 				A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */,
 				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
+				A60DF5C520CE0EF100EE4F7A /* FirebaseConstants.swift in Sources */,
 				A6814E5220A3645A0076511E /* PointsBarCell.swift in Sources */,
 				A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */,
 				A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */,
@@ -434,6 +441,7 @@
 				A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */,
 				A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */,
 				A6FA467A20C62C4F00123013 /* FirstScreenViewController+Audio.swift in Sources */,
+				A60DF5C320CE0E4100EE4F7A /* FirebaseClient.swift in Sources */,
 				A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */,
 				A6814E5620A3671B0076511E /* EightChordsContainer.swift in Sources */,
 				A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */,

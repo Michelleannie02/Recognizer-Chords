@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/Networking/FirebaseConstants.swift">
+   </FileRef>
+   <FileRef
       location = "group:Recognizer Chords.xcodeproj">
    </FileRef>
    <FileRef
