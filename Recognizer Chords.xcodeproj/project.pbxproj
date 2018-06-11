@@ -10,6 +10,9 @@
 		4AD48171BC7C958FC9BF1DBB /* libPods-Recognizer Chords.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */; };
 		A6075BDE20B911080019E2E8 /* PointsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDD20B911080019E2E8 /* PointsBar.swift */; };
 		A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6075BDF20B911190019E2E8 /* ErrorsBar.swift */; };
+		A60DF5BB20CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5B920CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld */; };
+		A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */; };
+		A60DF5C120CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DF5C020CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift */; };
 		A619F8F220CBA14E00241E2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */; };
 		A619F8F520CBA70B00241E2D /* FirstScreen_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */; };
 		A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6333ADA209D40F800A94C1A /* Helpers.swift */; };
@@ -50,6 +53,9 @@
 		A5B70A3B4E59E301089A3BD1 /* Pods-Recognizer Chords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.release.xcconfig"; sourceTree = "<group>"; };
 		A6075BDD20B911080019E2E8 /* PointsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBar.swift; sourceTree = "<group>"; };
 		A6075BDF20B911190019E2E8 /* ErrorsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBar.swift; sourceTree = "<group>"; };
+		A60DF5BA20CDEFD400EE4F7A /* RecognizerChords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecognizerChords.xcdatamodel; sourceTree = "<group>"; };
+		A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondScreen_Autolayout.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/Autolayout/SecondScreen_Autolayout.swift"; sourceTree = "<absolute>"; };
+		A60DF5C020CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThirdScreen_AutoLayout.swift; path = "Recognizer Chords/Autolayout/ThirdScreen_AutoLayout.swift"; sourceTree = SOURCE_ROOT; };
 		A619F8F120CBA14E00241E2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen_Autolayout.swift; sourceTree = "<group>"; };
 		A61BE9CE208E6868004023EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -81,7 +87,7 @@
 		A6AF19FC20BE17E600DBAAAC /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
 		A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
-		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsInfo.swift; sourceTree = "<group>"; };
+		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChordsInfo.swift; path = "Recognizer Chords/ChordsInfo.swift"; sourceTree = "<group>"; };
 		A6D2820520B6500700F8554E /* ErrorsBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsBarCell.swift; sourceTree = "<group>"; };
 		A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreenViewController+Audio.swift"; sourceTree = "<group>"; };
 		A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondScreenViewController+Audio.swift"; sourceTree = "<group>"; };
@@ -136,7 +142,8 @@
 				A6075BE320B911650019E2E8 /* Errors Bar */,
 				A6699BF820A254F800EBACFF /* BaseCell.swift */,
 			);
-			path = Bars;
+			name = Bars;
+			path = "Recognizer Chords/Bars";
 			sourceTree = "<group>";
 		};
 		A60E686220927221004C601B /* View */ = {
@@ -154,9 +161,10 @@
 			isa = PBXGroup;
 			children = (
 				A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */,
+				A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */,
+				A60DF5C020CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift */,
 			);
-			name = Autolayout;
-			path = "New Group";
+			path = Autolayout;
 			sourceTree = "<group>";
 		};
 		A6333AD9209D40D400A94C1A /* Extensions */ = {
@@ -246,6 +254,7 @@
 		A6AF16D120A492A400A25F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A60DF5B920CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,7 +264,6 @@
 			children = (
 				A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */,
 				A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */,
-				A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */,
 				A6BC0AE4208524F600D2AF6C /* ThirdScreenViewController.swift */,
 				A69789BB20C0B72C005B404A /* CopperViewController.swift */,
 				A69789C120C0B7AF005B404A /* SilverViewController.swift */,
@@ -287,6 +295,7 @@
 		A6DE85FE2086A33400DBBE3A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A6FA467B20C62CC700123013 /* SecondScreenViewController+Audio.swift */,
 				A6FA467920C62C4F00123013 /* FirstScreenViewController+Audio.swift */,
 			);
 			path = Networking;
@@ -399,10 +408,12 @@
 				A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */,
 				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
 				A6814E5220A3645A0076511E /* PointsBarCell.swift in Sources */,
+				A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */,
 				A6BC0AE5208524F600D2AF6C /* ThirdScreenViewController.swift in Sources */,
 				A6699BF920A254F800EBACFF /* BaseCell.swift in Sources */,
 				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
 				A6D2820620B6500700F8554E /* ErrorsBarCell.swift in Sources */,
+				A60DF5C120CDFD0900EE4F7A /* ThirdScreen_AutoLayout.swift in Sources */,
 				A686770520BA568B00DD4804 /* PruebaViewController.swift in Sources */,
 				A69789C920C10558005B404A /* Counter.swift in Sources */,
 				A69789C020C0B753005B404A /* GoldViewController.swift in Sources */,
@@ -418,6 +429,7 @@
 				A619F8F520CBA70B00241E2D /* FirstScreen_Autolayout.swift in Sources */,
 				A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */,
 				A63EADF920C2707C00A7E168 /* PointsBarView.swift in Sources */,
+				A60DF5BB20CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld in Sources */,
 				A6FA467C20C62CC700123013 /* SecondScreenViewController+Audio.swift in Sources */,
 				A6814E5420A3670A0076511E /* FourChordsContainer.swift in Sources */,
 				A6075BE020B911190019E2E8 /* ErrorsBar.swift in Sources */,
@@ -617,6 +629,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A60DF5B920CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A60DF5BA20CDEFD400EE4F7A /* RecognizerChords.xcdatamodel */,
+			);
+			currentVersion = A60DF5BA20CDEFD400EE4F7A /* RecognizerChords.xcdatamodel */;
+			path = RecognizerChords.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A6A35022207E504C000E79E1 /* Project object */;
 }

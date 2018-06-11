@@ -11,28 +11,28 @@
 import Foundation
 import Firebase
 
+/* Abstract:
+Prepara el acorde que sonará en la primer pantalla cuando el usuario presione ´play´.
+*/
+
 extension FirstScreenViewController {
 	
-	
-	//let audioPlayer: AVAudioPlayer!
 	
 	//*****************************************************************
 	// MARK: - Audio Functions
 	//*****************************************************************
 	
-	// task: prepara los acordes a sonar
+	/// task: elegir, entre seis opciones, el acorde a sonar (puede ser uno mayor o uno menor)
 	func setupChords() {
 
-		
-		// array de strings con solicitudes para traer sonidos de acordes mayores
 		let refAcordesMayores = "M/C4_dens4.mp3"
 		let refAcordesMenores = "m/Cm4_dens4.mp3"
 		let gsRef = "gs://recognizer-chords.appspot.com/"
 
-		var acordesMayores = ["M/C4_dens4.mp3", "M/E4_dens4.mp3", "M/G4_dens4.mp3"]
-		var acordesMenores = ["m/Cm4_dens4.mp3","m/Em4_dens4.mp3","m/Gm4_dens4.mp3"]
-		var acordesDisminuidos = ["d/Cdim4_dens4.mp3", "d/Edim4_dens4.mp3", "d/Gdim4_dens4.mp3"]
-		var acordesAumentados = ["A/Caug4_dens4.mp3", "A/Eaug4_dens4.mp3", "A/Gaug4_dens4.mp3"]
+		let acordesMayores = ["M/C4_dens4.mp3", "M/E4_dens4.mp3", "M/G4_dens4.mp3"]
+		let acordesMenores = ["m/Cm4_dens4.mp3","m/Em4_dens4.mp3","m/Gm4_dens4.mp3"]
+		let acordesDisminuidos = ["d/Cdim4_dens4.mp3", "d/Edim4_dens4.mp3", "d/Gdim4_dens4.mp3"]
+		let acordesAumentados = ["A/Caug4_dens4.mp3", "A/Eaug4_dens4.mp3", "A/Gaug4_dens4.mp3"]
 		
 		
 		//TODO: investigar
@@ -66,11 +66,8 @@ extension FirstScreenViewController {
 
 	}
 	
-	
-	
 		
-		
-	/// task: tomar los datoa para realizar una solicitud web específica
+	/// task: tomar los datos para realizar una solicitud web específica
 	func chordMajorRequest(refAcordesMayores: String, gsRef: String, acordesMayores: [String]) {
 			
 		

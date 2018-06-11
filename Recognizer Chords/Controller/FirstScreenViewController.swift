@@ -10,7 +10,6 @@
 
 import UIKit
 import AVFoundation
-import Firebase
 
 /* Abstract:
 La primer pantalla de la aplicación. Contiene dos botones representando un acorde mayor y un acorde menor más un botón de play.
@@ -44,9 +43,6 @@ class FirstScreenViewController: UIViewController {
 	// scores
 	var actualScore: Int = 0
 	
-	// TODO: core data!
-	var savedScores: [Int] = []
-	
 	// los tipos de botones disponibles
 	// cada valor (tag) se corresponde con un tipo de botón diferente
 	enum chordButtonType: Int {
@@ -58,6 +54,10 @@ class FirstScreenViewController: UIViewController {
 	// los datos el acorde elegido
 	var dataChord = Data()
 
+	
+	// TODO: core data!
+	var savedScores: [Int] = []
+	
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
@@ -99,6 +99,7 @@ class FirstScreenViewController: UIViewController {
 		
     }
 
+	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
@@ -204,6 +205,8 @@ class FirstScreenViewController: UIViewController {
 	// Major, Minor & Play Buttons
 	
 	
+
+	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 
@@ -267,15 +270,18 @@ class FirstScreenViewController: UIViewController {
 
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
-
+		
+		// test
 		print("el botón de play fue presionado")
 		
-		// cuenta cuantas veces fue tapeado el botón de play
-		counter.incrementPlayButton()
-		print("✏️\(counter.playButtonValue)")
-
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true
+
+		
+		// Contador ///////////////////////////////////////////////
+		
+		counter.incrementPlayButton()
+		print("✏️\(counter.playButtonValue)")
 
 		if counter.playButtonValue == 50 { // cambiar luego a 3
 
@@ -284,12 +290,31 @@ class FirstScreenViewController: UIViewController {
 			majorButton.isEnabled = true
 			minorButton.isEnabled = true
 		}
-
+		
+		
+		// Audio //////////////////////////////////////////////////
+		
+		// 1-prepara el acorde a sonar...
 		setupChords()
 		
+		
+		// 2-lo pone el el reproductor
+		do {
+			audioPlayer = try AVAudioPlayer(data: self.dataChord)
+			audioPlayer?.prepareToPlay()
+			
+			
+		} catch let error as NSError {
+			
+			print(error.debugDescription)
+		}
+		
+		
+		// 3-y lo reproduce
+		audioPlayer?.play()
+
 	}
 
-	
 	
 	//*****************************************************************
 	// MARK: - Helpers
