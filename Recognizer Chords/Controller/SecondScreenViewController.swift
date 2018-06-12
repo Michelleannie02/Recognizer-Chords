@@ -82,6 +82,10 @@ class SecondScreenViewController: UIViewController {
 		case major = 0, minor, diminished, augmented
 	}
 	
+	// indicator de actividad (networking)
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
+	
 	//*****************************************************************
 	// MARK: - Life Cycle
 	//*****************************************************************
@@ -98,7 +102,7 @@ class SecondScreenViewController: UIViewController {
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
 		
-		firebase.setupChords(firstScreen: nil, secondScreen: self, thirdScreen: nil)
+		firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
 	}
 	
@@ -321,7 +325,7 @@ class SecondScreenViewController: UIViewController {
 		
 		// 1-prepara el acorde a sonar...
 		// un acorde mayor o uno menor
-		firebase.setupChords(firstScreen: nil, secondScreen: self, thirdScreen: nil)
+		firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
 		
 		// 2-lo pone el el reproductor

@@ -23,7 +23,7 @@ class FirstScreenViewController: UIViewController {
 	
 	// UI ELEMENTOS
 	// información desplegada del menú
-	let ci = ChordsInfo()
+	let chordsInfo = ChordsInfo()
 	
 	// la barra que me traje
 	let pointsBarView = PointsView()
@@ -39,7 +39,8 @@ class FirstScreenViewController: UIViewController {
 	var majorButtonWasTapped = true
 	var minorButtonWasTapped = true
 	
-	var elBotonFuePresionado = true
+	// indica si el botón ya fue tapeado
+	var buttonWasTapped = true
 	
 	// scores
 	var actualScore: Int = 0
@@ -50,7 +51,7 @@ class FirstScreenViewController: UIViewController {
 		case major = 0, minor
 	}
 	
-	// AUDIO
+	// AUDIO ///////////////////////////////////////////////////////
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
 	// los datos el acorde elegido
@@ -59,7 +60,7 @@ class FirstScreenViewController: UIViewController {
 //	var dataChord = FirebaseClient.dataChord
 
 	
-	// PERSISTENCIA
+	// PERSISTENCIA ///////////////////////////////////////////////
 	// TODO: core data!
 	var savedScores: [Int] = []
 	
@@ -77,6 +78,9 @@ class FirstScreenViewController: UIViewController {
 	@IBOutlet weak var playButton: UIButton!
 	@IBOutlet weak var minorButton: UIButton!
 	
+	// indicator de actividad (networking)
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
@@ -90,17 +94,14 @@ class FirstScreenViewController: UIViewController {
 		minorButton.isEnabled = false
 		
 		// las contenedores con información acerca de acordes y puntaje también
-		ci.isHidden = true
+		chordsInfo.isHidden = true
 		
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
 	
-		// prepara los acordes que van a sonar
+		// prepara el primer acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChords(firstScreen: self, secondScreen: nil, thirdScreen: nil)
-		
-		// tus scores
-		print("🥉 tus scores son estos: \(savedScores)")
+		firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
     }
 
@@ -113,12 +114,12 @@ class FirstScreenViewController: UIViewController {
 	/// task: ejectutarse cada vez que el botón 'chords info' es tapeado
 	@IBAction func chordsInfoButtonPressed(_ sender: UIButton) {
 		
-		print("🤼‍♀️ El boton fue presionado está en \(elBotonFuePresionado)")
+		print("🤼‍♀️ El boton fue presionado está en \(buttonWasTapped)")
 		
 		// el área aparece
-		if elBotonFuePresionado {
-			ci.isHidden = false
-			elBotonFuePresionado = false
+		if buttonWasTapped {
+			chordsInfo.isHidden = false
+			buttonWasTapped = false
 			
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
@@ -126,8 +127,8 @@ class FirstScreenViewController: UIViewController {
 			
 			// el área desaparece
 		} else {
-			ci.isHidden = true
-			elBotonFuePresionado = true
+			chordsInfo.isHidden = true
+			buttonWasTapped = true
 			
 			majorButton.isEnabled = true
 			minorButton.isEnabled = true
@@ -139,12 +140,12 @@ class FirstScreenViewController: UIViewController {
 	/// task: ejectutarse cada vez que el botón 'last scores' es tapeado
 	@IBAction func lastScoresButtonPressed(_ sender: UIButton) {
 		
-		print("🤼‍♀️ El boton fue presionado está en \(elBotonFuePresionado)")
+		print("🤼‍♀️ El boton fue presionado está en \(buttonWasTapped)")
 		
 		// el área aparece
-		if elBotonFuePresionado {
-			ci.isHidden = false
-			elBotonFuePresionado = false
+		if buttonWasTapped {
+			chordsInfo.isHidden = false
+			buttonWasTapped = false
 			
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
@@ -152,8 +153,8 @@ class FirstScreenViewController: UIViewController {
 			
 		// el área desaparece
 		} else {
-			ci.isHidden = true
-			elBotonFuePresionado = true
+			chordsInfo.isHidden = true
+			buttonWasTapped = true
 			
 			majorButton.isEnabled = true
 			minorButton.isEnabled = true
@@ -187,7 +188,7 @@ class FirstScreenViewController: UIViewController {
 		
 		if pointsBarView.currentValue == 8 {
 			
-			pasarDePantalla()
+			//
 		}
 		
 		// va contando los aciertos
@@ -200,11 +201,6 @@ class FirstScreenViewController: UIViewController {
 		
 	}
 	
-	
-	func pasarDePantalla() {
-		
-		print("PASASTE A LA SIGUIENTE PANTALLA!!")
-	}
 	
 	// Major, Minor & Play Buttons
 	
@@ -227,6 +223,9 @@ class FirstScreenViewController: UIViewController {
 		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
 
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		// un acorde mayor o uno menor
+		firebase.setupChord(firstScreen: self, secondScreen: nil)
 
 	}
 
@@ -244,35 +243,46 @@ class FirstScreenViewController: UIViewController {
 			majorButton.isEnabled = false
 
 		}
-
+		
+		
+		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
+		if FirebaseClient.aChordSounded == "minor" {
+			
+			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
+			// un paso para la barra de aciertos
+			pointsBarView.currentValue += 1
+	
+		} else {
+			
+			print("YERRASTE!!!!!!!!")
+			// un paso para la barra de errores
+			errorsBarView.currentValue += 1
+			
+		}
+		
+		// si el usuario erró más de tres veces en su sesión, pierde
+		if errorsBarView.currentValue == 3 {
+			
+			performSegue(withIdentifier: "ir a game over", sender: nil)
+			
+			
+		}
+		
+		
+		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
 
-
-		// prueba
-		errorsBarView.currentValue += 1
-		print("ya erraste \(errorsBarView.currentValue) veces")
-
-		if errorsBarView.currentValue == 3 {
-
-			perdiste()
-		}
-
-		print("tu score fue de \(actualScore) puntos")
-
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		// un acorde mayor o uno menor
+		firebase.setupChord(firstScreen: self, secondScreen: nil)
+		
+		
 	}
 
-
-	func perdiste() {
-
-		print("game over")
-	}
 
 
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
-		
-		// test
-		print("el botón de play fue presionado")
 		
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true
@@ -280,11 +290,13 @@ class FirstScreenViewController: UIViewController {
 		
 		// Contador ///////////////////////////////////////////////
 		
+		// cada vez que se tapea el botón de play se incrementa en 1 el contador
 		counter.incrementPlayButton()
 		print("✏️\(counter.playButtonValue)")
 
-		if counter.playButtonValue == 50 { // cambiar luego a 3
-
+		if counter.playButtonValue == 3 {
+			
+			// UI
 			counter.playButtonValue = 0
 			playButton.isHidden = true
 			majorButton.isEnabled = true
@@ -297,7 +309,7 @@ class FirstScreenViewController: UIViewController {
 		// 1-prepara el acorde a sonar...
 
 		// un acorde mayor o uno menor
-		firebase.setupChords(firstScreen: self, secondScreen: nil, thirdScreen: nil)
+//		firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
 		
 		// 2-lo pone el el reproductor
@@ -322,10 +334,29 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - Helpers
 	//*****************************************************************
 	
-		/// esconde la barra de estado
-		override var prefersStatusBarHidden: Bool {
+	/// esconde la barra de estado
+	override var prefersStatusBarHidden: Bool {
 			return true
 		}
+	
+	/**
+	Muestra al usuario un mensaje acerca de porqué el sonido no suena.
+	
+	- Parameter title: El título del error.
+	- Parameter message: El mensaje acerca del error.
+	
+	*/
+	func displayErrorAlert(_ title: String?, _ message: String?) {
+		
+		// Reset UI
+		setUIEnabled(true)
+		stopAnimating()
+		
+		// Display Error in Alert Controller
+		let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+		self.present(alert, animated: true, completion: nil)
+	}
 		
 
 } // end class

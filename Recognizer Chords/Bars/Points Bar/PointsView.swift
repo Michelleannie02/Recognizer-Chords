@@ -28,7 +28,7 @@ class PointsView: UIView {
 //	let label = UILabel()
 //
 //	// stepper is 0 to 10
-//	let stepper = UIStepper()
+	let stepper = UIStepper()
 	
 	let step: Double = 100  // go up by $100 at a time
 	let maxValue:Double = 8

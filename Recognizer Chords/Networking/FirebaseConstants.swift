@@ -13,7 +13,7 @@ extension FirebaseClient {
 	
 	struct MajorChords {
 		
-		static let refAcordesMayores = "M/C4_dens4.mp3"
+		static let refMajorChords = "M/C4_dens4.mp3"
 		static let items = ["M/C4_dens4.mp3", "M/E4_dens4.mp3", "M/G4_dens4.mp3"]
 		
 

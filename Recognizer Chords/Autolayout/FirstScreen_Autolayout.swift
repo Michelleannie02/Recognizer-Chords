@@ -41,7 +41,7 @@ func autolayout () {
 	
 	pointsBarView.translatesAutoresizingMaskIntoConstraints = false
 	
-	ci.translatesAutoresizingMaskIntoConstraints = false
+	chordsInfo.translatesAutoresizingMaskIntoConstraints = false
 	
 	
 	// MARK: - Stack Views
@@ -60,8 +60,8 @@ func autolayout () {
 	print("🎲\(bottomStackView.arrangedSubviews)")
 	
 	// ANEXOS
-	let chordsInfoStackView = UIStackView(arrangedSubviews: [ci])
-	let lastScoresStackView = UIStackView(arrangedSubviews: [ci])
+	let chordsInfoStackView = UIStackView(arrangedSubviews: [chordsInfo])
+	let lastScoresStackView = UIStackView(arrangedSubviews: [chordsInfo])
 	
 	
 	//////////////////////

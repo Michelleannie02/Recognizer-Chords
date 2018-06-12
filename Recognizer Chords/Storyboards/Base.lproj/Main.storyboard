@@ -102,6 +102,9 @@
                                 <state key="normal" title="M">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="majorButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="JmO-GC-n3U"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXM-03-odx">
                                 <rect key="frame" x="0.0" y="334" width="375" height="333"/>
@@ -111,6 +114,9 @@
                                 <state key="normal" title="m">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="minorButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="3vF-dV-W5E"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGg-9z-I6a">
                                 <rect key="frame" x="22" y="0.0" width="20" height="16"/>
@@ -156,17 +162,24 @@
                                     <action selector="playButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="5sh-6m-e8r"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aBE-E9-Tnl">
+                                <rect key="frame" x="253" y="424" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ufS-pU-SDr"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="aBE-E9-Tnl" id="4qD-hR-mCe"/>
                         <outlet property="chordsInfoButton" destination="hGg-9z-I6a" id="kui-Gq-aqq"/>
                         <outlet property="languageButton" destination="jFa-Nr-4id" id="n5s-Br-bK9"/>
                         <outlet property="lastScoresButton" destination="hqy-Cp-pgD" id="dRB-Zi-5T8"/>
-                        <outlet property="majorButton" destination="vZ5-cB-hHL" id="GtG-Zc-doH"/>
+                        <outlet property="majorButton" destination="vZ5-cB-hHL" id="3h4-Hy-3v2"/>
                         <outlet property="minorButton" destination="FXM-03-odx" id="npt-Gq-DDa"/>
                         <outlet property="playButton" destination="MMA-z9-vfr" id="xlK-xI-lVc"/>
+                        <segue destination="TBp-57-4Gb" kind="show" identifier="" id="5Jq-vI-dDr"/>
+                        <segue destination="Zyv-cz-aKV" kind="presentation" identifier="ir a game over" id="DVd-hD-WWj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I30-hn-cVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,7 +221,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7o-rS-czg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="-320"/>
+            <point key="canvasLocation" x="375" y="-321"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QuY-bT-JEc">
+            <objects>
+                <viewController id="Zyv-cz-aKV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CPI-tE-bNJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="game over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrD-Ot-l7o">
+                                <rect key="frame" x="147" y="291" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXZ-2L-gG2">
+                                <rect key="frame" x="191" y="67" width="135" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="comenzar de nuevo"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mDX-uM-j1a" firstAttribute="bottom" secondItem="JrD-Ot-l7o" secondAttribute="bottom" constant="355" id="Fh8-Bu-RwW"/>
+                            <constraint firstItem="JrD-Ot-l7o" firstAttribute="leading" secondItem="mDX-uM-j1a" secondAttribute="leading" constant="147" id="HRS-ob-xWx"/>
+                            <constraint firstItem="JrD-Ot-l7o" firstAttribute="top" secondItem="mDX-uM-j1a" secondAttribute="top" constant="271" id="RTg-T9-FH7"/>
+                            <constraint firstItem="mDX-uM-j1a" firstAttribute="trailing" secondItem="JrD-Ot-l7o" secondAttribute="trailing" constant="147" id="fXv-zM-JrK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mDX-uM-j1a"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l3Z-Nf-Yia" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292" y="424"/>
         </scene>
         <!--2-->
         <scene sceneID="RaA-AF-N60">
@@ -334,11 +381,16 @@
                                     <action selector="chordsInfoButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="GUj-MT-DHE"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="eKI-jl-ybl">
+                                <rect key="frame" x="289" y="395" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.8784313725490196" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="WZj-eW-vjT"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="eKI-jl-ybl" id="w2w-vN-PWx"/>
                         <outlet property="augmentedButton" destination="hea-Nw-7j7" id="kiQ-GN-XJR"/>
                         <outlet property="diminishedButton" destination="2oV-cp-skb" id="vsm-TC-i4Y"/>
                         <outlet property="gClefButton" destination="lgS-Yx-sMo" id="cYm-Bf-hlt"/>

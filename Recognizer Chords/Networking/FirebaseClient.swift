@@ -12,7 +12,8 @@ import Foundation
 import Firebase
 
 /* Abstract:
-completar....
+Contiene métodos para realizar una solictud a Firebase para obtener un acorde de la base de datos.
+Una vez obtenido los datos de audio de ese acorde crea una referencia (una propiedad) para almacenar temporalmente esos datos y disponerlos para luego usarlos.
 */
 
 
@@ -30,70 +31,70 @@ class FirebaseClient: NSObject {
 	// MARK: - Properties
 	//*****************************************************************
 	
-	// los datos del audio del acorde obtenido
+	// los datos de audio del acorde obtenido
 	static var dataChord = Data()
+	// el nombre del acorde elegido
+	static var aChordSounded: String? = ""
 	
 	//*****************************************************************
 	// MARK: - Networking Methods
 	//*****************************************************************
 	
-	/// task: ....
-	func setupChords(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController? = nil, thirdScreen: ThirdScreenViewController? = nil) {
-		
-		
-		//TODO: investigar
-		//		enum TipoDeAcorde: Int {
-		//
-		//			case mayor, menor, disminuido, aumentado
-		//		}
-		
+	/**
+	Prepara el acorde que va a sonar cuando el usuario presione 'play'.
+	
+	- parameter firstScreen: el controlador de la primer pantalla.
+	- parameter secondScreen: el controlador de la segunda pantalla.
 
+	*/
+	func setupChord(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController? = nil) {
 		
+		
+		// 1er pantalla /////////////////////////////////////////////
+		
+		// si 'setupChords' es llamado desde la 1er pantalla ejectua la siguiente pieza...
 		if firstScreen?.title == "1" {
-
-			print("😇\(firstScreen?.title)")
-
-			// test
-			print("Me llaman de la primer pantalla, actuaré en consecuencia")
-
-			let tiposAcordes = ["mayor", "menor"]
+			
+			// los tipos de acordes disponibles en esta pantalla
+			let typeChords = ["major", "minor"]
 
 			// elige entre un acorde mayor o menor aleatoriamente
-			let acordeActual = tiposAcordes.randomElement()
+			let chordChosen = typeChords.randomElement()
 			
-			print("EL ACORDE ELEGIDO ES\(acordeActual)")
+			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
+			FirebaseClient.aChordSounded = chordChosen
+			
+			print("😂 EL ACORDE ELEGIDO ES \(chordChosen)")
+			
+			// ejecuta un caso u otro dependiendo del tipo del acorde elegido
+			switch chordChosen {
 
-			switch acordeActual {
-
-			case "mayor":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMayores: MajorChords.refAcordesMayores, acordesMayores: MajorChords.items)
-			case "menor":
+			case "major":
+				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMayores: MajorChords.refMajorChords, acordesMayores: MajorChords.items)
+			case "minor":
 				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMenores: MinorChords.refAcordesMenores, acordesMenores: MinorChords.items)
 			default:
 				print("")
 			}
 
-
-			// test
-			print("EL ACORDE ELEGIDO ES DE TIPO: \(acordeActual)")
-
-
-
+			
+		// 2da pantalla /////////////////////////////////////////////
+		
+		// si 'setupChords' es llamado desde la 2da pantalla ejectua la siguiente pieza...
 		} else if secondScreen?.title == "2" {
 
-			print("Me llaman de la segunda pantalla, actuaré en consecuencia")
-			print("😇\(secondScreen?.title)")
-
+			
 			// los acordes disponibles
-			let tiposAcordes = ["mayor", "menor", "disminuido", "aumentado"]
+			let typeChords = ["mayor", "menor", "disminuido", "aumentado"]
 			
 			// elige entre un acorde mayor, menor, dismunuido o aumentado aleatoriamente
-			let acordeActual = tiposAcordes.randomElement()
-
-			switch acordeActual {
+			let chordChosen = typeChords.randomElement()
+			
+			// ejecuta un caso u otro dependiendo del tipo del acorde elegido
+			switch chordChosen {
 
 			case "mayor":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMayores: MajorChords.refAcordesMayores, acordesMayores: MajorChords.items)
+				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMayores: MajorChords.refMajorChords, acordesMayores: MajorChords.items)
 
 			case "menor":
 				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMenores: MinorChords.refAcordesMenores, acordesMenores: MinorChords.items)
@@ -108,20 +109,7 @@ class FirebaseClient: NSObject {
 				print("")
 			}
 
-
-			// test
-			print("EL ACORDE ELEGIDO ES DE TIPO: \(acordeActual)")
-
-		} else if thirdScreen?.title == "3" {
-
-			// test
-			print("Me llaman de la tercera pantalla, actuaré en consecuencia")
-
-			let tiposAcordes = ["mayor", "menor", "disminuido", "aumentado", "etc"]
-
-			let acordeActual = tiposAcordes.randomElement()
-			
-			
+		
 		}
 
 		
@@ -129,6 +117,20 @@ class FirebaseClient: NSObject {
 	
 	
 	/// task: realizar la solicitud a firebase para traer los datos del acorde aleatoriamente elegido
+	/**
+	Realiza la solicitud a Firebase DEPENDIENDO de los datos que recibe el método en sus parámetros.
+	
+	- parameter gsRef: la ubicación del almacenamiento.
+	- parameter refAcordesMayores: la referencia a los acordes mayores.
+	- parameter acordesMayores: los acordes mayores contenidos en esa referencia.
+	- parameter refAcordesMenores: la referencia a los acordes menores.
+	- parameter acordesMenores: los acordes menores contenidos en esa referencia.
+	- parameter refAcordesDisminuidos: la referencia a los acordes disminuídos.
+	- parameter acordesDisminuidos: los acordes disminiuídos contenidos en esa referencia.
+	- parameter refAcordesAumentados:la referencia a los acordes aumentados.
+	- parameter acordesAumentados: los acordes aumentados contenidos en esa referencia.
+	
+	*/
 	func chordRequest(gsRef: String,
 					  refAcordesMayores: String? = nil,
 					  acordesMayores: [String]? = nil,
@@ -140,162 +142,128 @@ class FirebaseClient: NSObject {
 					  acordesAumentados: [String]? = nil) {
 		
 		
-		// se conecta con FIREBASE (Google Cloud Storage)
+		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
 		
-		// crea una referencia al archivo que se desea descargar
+		// 2- crea una referencia al archivo que se desea descargar
 		let gsReference = storage.reference(forURL: gsRef)
 		
-		// si se salió un acorde MAYOR
+		
+		////////////////////////////////
+		/// si salió un acorde MAYOR ///
+		////////////////////////////////
+		
 		if refAcordesMayores != nil {
 			
-			print("👇\(refAcordesMayores)")
+			// 3 - raconta los datos para realizar la solicitud ------------------------------------
 			
-			// 1 - raconta los datos para realizar la solicitud ------------------------------------
+			// a - crea una referencia con un archivo inicial que contiene el path y el nombre
+			let pathReference = storage.reference(withPath: (MajorChords.refMajorChords))
 			
-			// Create a reference with an initial file path and name
-			let pathReference = storage.reference(withPath: (MajorChords.refAcordesMayores))
+			// b - crea una nueva referencia HIJA de la referencia anterior (para que sea la referencia del archivo que se quiere descargar)
+			// y 'revuelve' y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
+			let majorChords = gsReference.child((MajorChords.items.randomElement())!)
 			
-			// Create a reference to the file you want to download
-			let acordesMayores = gsReference.child((MajorChords.items.randomElement())!)
+			// test
+			print("🥋 se está ejecutando la rama que contiene tres acordes mayores. De los acordes mayores se obtuvieron los datos de este específicamente: \(majorChords.name)")
 			
-			print("🤡\(acordesMayores.name)")
-			
-			// 2 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
-			
-			// Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-			acordesMayores.getData(maxSize: 1 * 1024 * 1024) { data, error in
+			// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
+
+			// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
+			majorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
+				
+				// b - comprueba si ocurrió un error en la solicitud
 				if let error = error {
+					
 					// Uh-oh, an error occurred!
-				} else {
-					// Data for "images/island.jpg" is returned
-					let image = UIImage(data: data!)
+					print(error.localizedDescription)
+					// TODO: implementar un alert view en caso de que la solicitud web haya fallado
 				}
 				
-				// almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+				// c - comprueba si se obtuvieron los datos correctamente...y si se así
 				if let data =  data {
-					FirebaseClient.dataChord = data // 👈
-				}
+					
+					
+					
+					
+					
+					// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+					FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
 				
+				
+				
+				
+				
+				}
 			}
-			
 		}
 	
-		// si se salió un acorde MENOR
+		////////////////////////////////
+		/// si salió un acorde MENOR ///
+		////////////////////////////////
+		
 		else if refAcordesMenores != nil {
-			
-			print("👇\(refAcordesMenores)")
-			
-			// 1 - raconta los datos para realizar la solicitud ------------------------------------
-			
-			// Create a reference with an initial file path and name
+
 			let pathReference = storage.reference(withPath: (MinorChords.refAcordesMenores))
-			
-			// Create a reference to the file you want to download
 			let acordesMenores = gsReference.child((MinorChords.items.randomElement())!)
 			
-			print("🤡\(acordesMenores.name)")
+			// test
+			print("🥋 se está ejecutando la rama que contiene tres acordes menores. De los acordes menores se obtuvieron los datos de este específicamente: \(acordesMenores.name)")
 			
-			// Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
 			acordesMenores.getData(maxSize: 1 * 1024 * 1024) { data, error in
 				if let error = error {
-					// Uh-oh, an error occurred!
-				} else {
-					// Data for "images/island.jpg" is returned
-					let image = UIImage(data: data!)
+					
+					print(error.localizedDescription)
 				}
 				
-				// almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
 				}
-				
-
-				
 			}
-			
 		}
 		
+
+		/////////////////////////////////////
+		/// si salió un acorde DISMINUÍDO ///
+		/////////////////////////////////////
 		
-		
-		// si se salió un acorde DISMINUIDO
 		else if refAcordesDisminuidos != nil {
 			
-			print("👇\(refAcordesDisminuidos)")
-			
-			// 1 - raconta los datos para realizar la solicitud ------------------------------------
-			
-			// Create a reference with an initial file path and name
 			let pathReference = storage.reference(withPath: (DiminishedChords.refAcordesDisminuidos))
-			
-			// Create a reference to the file you want to download
 			let acordesDisminuidos = gsReference.child((DiminishedChords.items.randomElement())!)
-			
-			print("🤡\(acordesDisminuidos.name)")
-			
-			// Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
 			acordesDisminuidos.getData(maxSize: 1 * 1024 * 1024) { data, error in
+				
 				if let error = error {
-					// Uh-oh, an error occurred!
-				} else {
-					// Data for "images/island.jpg" is returned
-					let image = UIImage(data: data!)
+					print(error.localizedDescription)
 				}
 				
-				// almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
 				}
-
-				
-				
 			}
-			
 		}
 		
 		
+		////////////////////////////////////
+		/// si salió un acorde AUMENTADO ///
+		////////////////////////////////////
 		
-		// si se salió un acorde AUMENTADO
 		else if refAcordesAumentados != nil {
 			
-			print("👇\(refAcordesAumentados)")
-			
-			// 1 - raconta los datos para realizar la solicitud ------------------------------------
-			
-			// Create a reference with an initial file path and name
 			let pathReference = storage.reference(withPath: (AugmentedChords.refAcordesAumentados))
-			
-			// Create a reference to the file you want to download
 			let acordesAumentados = gsReference.child((AugmentedChords.items.randomElement())!)
-			
-			print("🤡\(acordesAumentados.name)")
-			
-			// Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
 			acordesAumentados.getData(maxSize: 1 * 1024 * 1024) { data, error in
 				if let error = error {
-					// Uh-oh, an error occurred!
-				} else {
-					// Data for "images/island.jpg" is returned
-					let image = UIImage(data: data!)
+					print(error.localizedDescription)
 				}
 				
-				// almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
 				}
-
-				
-				
 			}
-			
 		}
 
-		
-		
-		
-		
-		
-
+	
 	} // end func
 
 
