@@ -18,7 +18,7 @@ extension SecondScreenViewController {
 	// MARK: - Autolayout
 	//*****************************************************************
 	
-	func autolayout () {
+	func setAutolayout () {
 		
 		
 		//			// rota el texto de los botones del menú superior
@@ -39,19 +39,17 @@ extension SecondScreenViewController {
 		minorButton.translatesAutoresizingMaskIntoConstraints = false
 		augmentedButton.translatesAutoresizingMaskIntoConstraints = false
 		diminishedButton.translatesAutoresizingMaskIntoConstraints = false
+		
 		playButton.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		
 		chordsInfo.translatesAutoresizingMaskIntoConstraints = false
 		
 		
-		// MARK: - Stack Views
-		
 		// definiendo los stack views
 		
-		
-		
 		// TOP ////////////////////////////////////////////////////////////////
-		let topStackView = UIStackView(arrangedSubviews: [gClefButton, lastScoresButton, activityIndicator])
+		let topStackView = UIStackView(arrangedSubviews: [gClefButton, lastScoresButton])
 		
 		
 		// CENTER //////////////////////////////////////////////////////////////
@@ -76,6 +74,8 @@ extension SecondScreenViewController {
 		/// Top Stack View ///
 		//////////////////////
 		
+		// MARK: - top stack view
+		
 		topStackView.translatesAutoresizingMaskIntoConstraints = false
 		topStackView.axis = .horizontal
 		topStackView.distribution = .fillEqually
@@ -95,6 +95,8 @@ extension SecondScreenViewController {
 		/////////////////////////
 		/// Center Stack View ///
 		/////////////////////////
+		
+		// MARK: - center stack view
 		
 		// center (root) 👈
 		centerStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -158,6 +160,8 @@ extension SecondScreenViewController {
 		/// Bottom Stack View ///
 		/////////////////////////
 		
+		// MARK: - bottom stack view
+		
 		bottomStackView.translatesAutoresizingMaskIntoConstraints = false
 		bottomStackView.axis = .horizontal
 		bottomStackView.distribution = .fillEqually
@@ -179,12 +183,28 @@ extension SecondScreenViewController {
 		/// Play Button ///
 		///////////////////
 		
+		// MARK: - play button constraints
+		
 		view.addSubview(playButton)
 		NSLayoutConstraint.activate([
 			// ancla 'play button' en el centro de la pantalla
 			playButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 			playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 			])
+		
+		//////////////////////////
+		/// Activity Indicator ///
+		//////////////////////////
+		
+		// MARK: - activity indicator constraints
+		
+		view.addSubview(activityIndicator)
+		NSLayoutConstraint.activate([
+			// ancla 'play button' en el centro de la pantalla
+			activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+			activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+			])
+		
 		
 		///////////////////
 		/// Chords Info ///
@@ -225,10 +245,7 @@ extension SecondScreenViewController {
 			lastScoresStackView.heightAnchor.constraint(equalToConstant: 250)
 			
 			])
-		
-		
-		
-		
+
 	}
 	
 	

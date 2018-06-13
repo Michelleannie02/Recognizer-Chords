@@ -70,12 +70,21 @@ class FirstScreenViewController: UIViewController {
 	@IBOutlet weak var lastScoresButton: UIButton!
 	
 	// los tres botones que contiene esta pantalla
-	@IBOutlet weak var majorButton: UIButton!
+	@IBOutlet weak var botonMayor: UIButton!
 	@IBOutlet weak var playButton: UIButton!
 	@IBOutlet weak var minorButton: UIButton!
 	
 	// indicator de actividad (networking)
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
+	
+	// PRUEBA BOTON MAYOR
+	@IBOutlet weak var botonPrueba: UIButton!
+	@IBAction func botonPruebaPresionado(_ sender: Any) {
+		
+		print("🛡")
+
+	}
 	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
@@ -85,12 +94,15 @@ class FirstScreenViewController: UIViewController {
     override func viewDidLoad() { // 🚪
         super.viewDidLoad()
 		
+		/// user interface elements
 		// prepara el estado de los elementos gráficos de la interfaz
-		setUIEnabled(true)
+		setUI()
 		
+		/// autolayout
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
-		autolayout()
-	
+		setAutolayout()
+		
+		/// newtorking - request data audio chord
 		// prepara el primer acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
 		firebase.setupChord(firstScreen: self, secondScreen: nil)
@@ -114,7 +126,7 @@ class FirstScreenViewController: UIViewController {
 			chordsInfo.isHidden = false
 			buttonWasTapped = false
 			
-			majorButton.isEnabled = false
+			//majorButton.isEnabled = false
 			minorButton.isEnabled = false
 			playButton.isEnabled = false
 			
@@ -123,7 +135,7 @@ class FirstScreenViewController: UIViewController {
 			chordsInfo.isHidden = true
 			buttonWasTapped = true
 			
-			majorButton.isEnabled = true
+			//majorButton.isEnabled = true
 			minorButton.isEnabled = true
 			playButton.isEnabled = true
 		}
@@ -142,7 +154,7 @@ class FirstScreenViewController: UIViewController {
 			scoresInfo.isHidden = false
 			buttonWasTapped = false
 			
-			majorButton.isEnabled = false
+			//majorButton.isEnabled = false
 			minorButton.isEnabled = false
 			playButton.isEnabled = false
 			
@@ -151,7 +163,7 @@ class FirstScreenViewController: UIViewController {
 			scoresInfo.isHidden = true
 			buttonWasTapped = true
 			
-			majorButton.isEnabled = true
+			//majorButton.isEnabled = true
 			minorButton.isEnabled = true
 			playButton.isEnabled = true
 		}
@@ -168,29 +180,40 @@ class FirstScreenViewController: UIViewController {
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 
 		// test
-		print("el botón de mayor fue presionado")
+		print("🎱 el botón de mayor fue presionado")
 
-		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
-		playButton.isHidden = false
-//		majorButton.alpha = 0.8
-		minorButton.backgroundColor = .yellow
-
-
-		if majorButtonWasTapped {
-			majorButton.isEnabled = false
-			minorButton.isEnabled = false
-
-		}
-
-		// el contador del botón play se pone a 0
-		counter.playButtonValue = 0
-
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: self, secondScreen: nil)
+//		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
+//		playButton.isHidden = false
+////		majorButton.alpha = 0.8
+//		minorButton.backgroundColor = .yellow
+//
+//
+//		if majorButtonWasTapped {
+//			majorButton.isEnabled = false
+//			minorButton.isEnabled = false
+//
+//		}
+//
+//		// el contador del botón play se pone a 0
+//		counter.playButtonValue = 0
+//
+//		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+//		// un acorde mayor o uno menor
+//		firebase.setupChord(firstScreen: self, secondScreen: nil)
+		
+		// la app se comporta dependiendo del desempeño del usuario
+		progressOrGameOver()
 
 	}
-
+	
+	
+	@IBAction func botonMayorPresionado(_ sender: UIButton) {
+		
+		// test
+		print("🎱 el botón de mayor fue presionado")
+		
+	}
+	
 
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
@@ -204,18 +227,21 @@ class FirstScreenViewController: UIViewController {
 
 		if minorButtonWasTapped {
 			minorButton.isEnabled = false
-			majorButton.isEnabled = false
+			//majorButton.isEnabled = false
 
 		}
 		
 		
+		// el contador del botón play se pone a 0
+		counter.playButtonValue = 0
+
 		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
 		if FirebaseClient.aChordSounded == "minor" {
 			
 			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
-	
+			
 		} else {
 			
 			print("YERRASTE!!!!!!!!")
@@ -224,37 +250,25 @@ class FirstScreenViewController: UIViewController {
 			
 		}
 		
-		// si el usuario erró más de tres veces en su sesión, pierde
-		if errorsBarView.currentValue == 3 {
-			
-			performSegue(withIdentifier: "ir a game over", sender: nil)
-			
-			
-		}
 		
-		
-		// el contador del botón play se pone a 0
-		counter.playButtonValue = 0
-
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
 		firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
+		// la app se comporta dependiendo del desempeño del usuario
+		progressOrGameOver()
 		
 	}
-
-
-
+	
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
-		majorButton.isEnabled = true
+		//majorButton.isEnabled = true
 		minorButton.isEnabled = true
 		
 		// se visibiliza el indicator de actividad (networking)
 		startAnimating()
 
-		
 		// Contador ///////////////////////////////////////////////
 		
 		// cada vez que se tapea el botón de play se incrementa en 1 el contador
@@ -266,7 +280,7 @@ class FirstScreenViewController: UIViewController {
 			// UI
 			counter.playButtonValue = 0
 			playButton.isHidden = true
-			majorButton.isEnabled = true
+			//majorButton.isEnabled = true
 			minorButton.isEnabled = true
 		}
 
@@ -292,6 +306,30 @@ class FirstScreenViewController: UIViewController {
 
 	}
 
+	//*****************************************************************
+	// MARK: - Methods
+	//*****************************************************************
+	
+	/// task: computar los aciertos y errores del usuario en su sesión y actuar en consecuencia
+	func progressOrGameOver() {
+		
+		// si el usuario erró tres tres veces en su sesión, pierde
+		if errorsBarView.currentValue == 3 {
+			
+			performSegue(withIdentifier: "ir a game over", sender: nil)
+		}
+		
+		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
+		if pointsBarView.currentValue == 2 { // luego cambiar a 8
+			
+			// avanza a la siguiente pantalla
+			let controller = self.storyboard!.instantiateViewController(withIdentifier: "Transition View Controller")
+			self.present(controller, animated: true, completion: nil)
+		}
+
+	}
+	
+	
 	
 	//*****************************************************************
 	// MARK: - Helpers
@@ -312,7 +350,7 @@ class FirstScreenViewController: UIViewController {
 	func displayErrorAlert(_ title: String?, _ message: String?) {
 		
 		// Reset UI
-		setUIEnabled(true)
+		setUI()
 		stopAnimating()
 		
 		// Display Error in Alert Controller

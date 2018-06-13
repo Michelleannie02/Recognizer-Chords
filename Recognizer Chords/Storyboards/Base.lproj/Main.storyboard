@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zyv-cz-aKV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lus-0j-79O">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,15 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZ5-cB-hHL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="334"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="M">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDV-ka-Mle">
+                                <rect key="frame" x="0.0" y="24" width="375" height="312"/>
+                                <color key="backgroundColor" name="Pink"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="majorButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="JmO-GC-n3U"/>
+                                    <action selector="botonPruebaPresionado:" destination="Lus-0j-79O" eventType="touchUpInside" id="gIs-vC-wep"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXM-03-odx">
@@ -72,19 +70,23 @@
                                     <action selector="playButtonPressed:" destination="Lus-0j-79O" eventType="touchUpInside" id="5sh-6m-e8r"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aBE-E9-Tnl">
-                                <rect key="frame" x="327" y="20" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aBE-E9-Tnl">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KDV-ka-Mle" firstAttribute="leading" secondItem="ufS-pU-SDr" secondAttribute="leading" id="RyK-Qf-Dte"/>
+                            <constraint firstItem="KDV-ka-Mle" firstAttribute="top" secondItem="ufS-pU-SDr" secondAttribute="top" constant="4" id="o6x-TU-yNO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ufS-pU-SDr"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="aBE-E9-Tnl" id="4qD-hR-mCe"/>
+                        <outlet property="botonPrueba" destination="KDV-ka-Mle" id="bdj-Jb-flV"/>
                         <outlet property="chordsInfoButton" destination="hGg-9z-I6a" id="kui-Gq-aqq"/>
                         <outlet property="lastScoresButton" destination="hqy-Cp-pgD" id="dRB-Zi-5T8"/>
-                        <outlet property="majorButton" destination="vZ5-cB-hHL" id="3h4-Hy-3v2"/>
                         <outlet property="minorButton" destination="FXM-03-odx" id="npt-Gq-DDa"/>
                         <outlet property="playButton" destination="MMA-z9-vfr" id="xlK-xI-lVc"/>
                         <segue destination="TBp-57-4Gb" kind="show" identifier="" id="5Jq-vI-dDr"/>
@@ -98,7 +100,7 @@
         <!--Transition View Controller-->
         <scene sceneID="iMF-Jx-snd">
             <objects>
-                <viewController id="TBp-57-4Gb" customClass="TransitionViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Transition View Controller" id="TBp-57-4Gb" customClass="TransitionViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uYM-98-TKf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,6 +202,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="majorButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="qZQ-PN-rv9"/>
                                     <action selector="playChordsButton:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="QUV-BP-2EQ"/>
                                 </connections>
                             </button>
@@ -212,6 +215,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="minorButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="m4d-fo-NRQ"/>
                                     <action selector="playChordsButton:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="Ir7-2I-nTw"/>
                                 </connections>
                             </button>
@@ -224,6 +228,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="diminishedButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="eej-gW-lUq"/>
                                     <action selector="playChordsButton:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="Rcy-PJ-toS"/>
                                 </connections>
                             </button>
@@ -236,6 +241,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="augmentedButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="1JR-uV-Len"/>
                                     <action selector="playChordsButton:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="SGM-hX-3pZ"/>
                                 </connections>
                             </button>
@@ -296,7 +302,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eKI-jl-ybl">
-                                <rect key="frame" x="339" y="20" width="20" height="20"/>
+                                <rect key="frame" x="174" y="324" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
@@ -363,8 +369,11 @@
     <resources>
         <image name="down_arrow" width="97" height="69"/>
         <image name="play_button" width="167" height="167"/>
+        <namedColor name="Pink">
+            <color red="1" green="0.17599999899999999" blue="0.33300000429999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DVd-hD-WWj"/>
+        <segue reference="28q-Md-zoN"/>
     </inferredMetricsTieBreakers>
 </document>

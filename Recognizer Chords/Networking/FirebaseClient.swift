@@ -167,7 +167,7 @@ class FirebaseClient: NSObject {
 			let majorChords = gsReference.child((MajorChords.items.randomElement())!)
 			
 			// test
-			print("🥋 se está ejecutando la rama que contiene tres acordes mayores. De los acordes mayores se obtuvieron los datos de este específicamente: \(majorChords.name)")
+			print("🥋 se está ejecutando la rama que contiene tres acordes mayores. De los acordes mayores se obtuvieron los datos de este específicamente: 👏 \(majorChords.name)")
 			
 		
 			
@@ -233,11 +233,11 @@ class FirebaseClient: NSObject {
 			let acordesMenores = gsReference.child((MinorChords.items.randomElement())!)
 			
 			// test
-			print("🥋 se está ejecutando la rama que contiene tres acordes menores. De los acordes menores se obtuvieron los datos de este específicamente: \(acordesMenores.name)")
+			print("🥋 se está ejecutando la rama que contiene tres acordes menores. De los acordes menores se obtuvieron los datos de este específicamente: 👏 \(acordesMenores.name)")
 			
 			acordesMenores.getData(maxSize: 1 * 1024 * 1024) { data, error in
 				if let error = error {
-					
+//					
 					print(error.localizedDescription)
 				}
 				

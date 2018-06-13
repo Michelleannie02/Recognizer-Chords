@@ -92,7 +92,7 @@ class SecondScreenViewController: UIViewController {
 		super.viewDidLoad()
 		
 		// prepara el estado de los elementos gráficos de la interfaz
-		setUIEnabled(true)
+		setUI()
 		
 		// en principio el indicador de actividad (networking) está oculto
 		activityIndicator.isHidden = true
@@ -100,10 +100,10 @@ class SecondScreenViewController: UIViewController {
 		// las contenedores con información acerca de acordes y puntaje también
 		chordsInfo.isHidden = true
 		
-		disabledButtons()
+		//disabledButtons()
 		
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
-		autolayout()
+		setAutolayout()
 		
 		firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
@@ -193,20 +193,33 @@ class SecondScreenViewController: UIViewController {
 		playButton.isHidden = false
 		playButton.alpha = 1
 		
+		// el contador del botón play se pone a 0
+		counter.playButtonValue = 0
 		
-		// se ejecuta como estado inicial
-		// y cada vez que el botón mayor es tapeado
-		if majorButtonWasTapped {
-			// deshabilita todos los botones de acordes
-			majorButton.isEnabled = false
-			minorButton.isEnabled = false
-			diminishedButton.isEnabled = false
-			augmentedButton.isEnabled = false
+		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
+		if FirebaseClient.aChordSounded == "minor" {
+			
+			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
+			// un paso para la barra de aciertos
+			pointsBarView.currentValue += 1
+			
+		} else {
+			
+			print("YERRASTE!!!!!!!!")
+			// un paso para la barra de errores
+			errorsBarView.currentValue += 1
 			
 		}
 		
-		// el contador del botón play se pone a 0
-		counter.playButtonValue = 0
+		
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		// un acorde mayor o uno menor
+		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		
+		// la app se comporta dependiendo del desempeño del usuario
+		progressOrGameOver()
+		
+
 	
 	}
 	
@@ -228,8 +241,31 @@ class SecondScreenViewController: UIViewController {
 			
 		}
 		
+		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
-
+		
+		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
+		if FirebaseClient.aChordSounded == "minor" {
+			
+			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
+			// un paso para la barra de aciertos
+			pointsBarView.currentValue += 1
+			
+		} else {
+			
+			print("YERRASTE!!!!!!!!")
+			// un paso para la barra de errores
+			errorsBarView.currentValue += 1
+			
+		}
+		
+		
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		// un acorde mayor o uno menor
+		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		// la app se comporta dependiendo del desempeño del usuario
+		progressOrGameOver()
+		
 	}
 	
 	
@@ -254,6 +290,29 @@ class SecondScreenViewController: UIViewController {
 		
 		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
+		
+		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
+		if FirebaseClient.aChordSounded == "minor" {
+			
+			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
+			// un paso para la barra de aciertos
+			pointsBarView.currentValue += 1
+			
+		} else {
+			
+			print("YERRASTE!!!!!!!!")
+			// un paso para la barra de errores
+			errorsBarView.currentValue += 1
+			
+		}
+		
+		
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		// un acorde mayor o uno menor
+		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		// la app se comporta dependiendo del desempeño del usuario
+		progressOrGameOver()
+		
 
 	}
 	
@@ -266,20 +325,31 @@ class SecondScreenViewController: UIViewController {
 		playButton.isHidden = false
 		playButton.alpha = 1
 
+		// el contador del botón play se pone a 0
+		counter.playButtonValue = 0
 		
-		// se ejecuta como estado inicial
-		// y cada vez que el botón aumentado es tapeado
-		if augmentedButtonWasTapped {
-			// deshabilita todos los botones de acordes
-			majorButton.isEnabled = false
-			minorButton.isEnabled = false
-			diminishedButton.isEnabled = false
-			augmentedButton.isEnabled = false
+		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
+		if FirebaseClient.aChordSounded == "minor" {
+			
+			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
+			// un paso para la barra de aciertos
+			pointsBarView.currentValue += 1
+			
+		} else {
+			
+			print("YERRASTE!!!!!!!!")
+			// un paso para la barra de errores
+			errorsBarView.currentValue += 1
 			
 		}
 		
-		// y el contador del botón play se pone a 0
-		counter.playButtonValue = 0
+		
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		// un acorde mayor o uno menor
+		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		
+		// la app se comporta dependiendo del desempeño del usuario
+		progressOrGameOver()
 		
 	}
 	
@@ -335,17 +405,24 @@ class SecondScreenViewController: UIViewController {
 	// MARK: - Methods
 	//*****************************************************************
 	
-	/// task: deshabilitar los botones de acordes
-	func disabledButtons() {
+	/// task: computar los aciertos y errores del usuario en su sesión y actuar en consecuencia
+	func progressOrGameOver() {
 		
-		// en principio los botones de mayor, menor, disminuído y aumentado están deshabilitados
-		majorButton.isEnabled = false
-		minorButton.isEnabled = false
-		augmentedButton.isEnabled = false
-		diminishedButton.isEnabled = false
-
+		// si el usuario erró tres tres veces en su sesión, pierde
+		if errorsBarView.currentValue == 3 {
+			
+			performSegue(withIdentifier: "ir a game over", sender: nil)
+		}
+		
+		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
+		if pointsBarView.currentValue == 2 { // luego cambiar a 8
+			
+			// avanza a la siguiente pantalla
+			let controller = self.storyboard!.instantiateViewController(withIdentifier: "Transition View Controller")
+			self.present(controller, animated: true, completion: nil)
+		}
+		
 	}
-	
 	
 	
 	//*****************************************************************

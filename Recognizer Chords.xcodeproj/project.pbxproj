@@ -18,6 +18,7 @@
 		A6354F7E20C3C0790083E838 /* ErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7D20C3C0790083E838 /* ErrorsView.swift */; };
 		A63B6DF820BFC193005CBBFF /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63B6DF720BFC193005CBBFF /* Preview.storyboard */; };
 		A656CB6E20D1A37A009B41E9 /* ScoresInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB6D20D1A37A009B41E9 /* ScoresInfo.swift */; };
+		A656CB7020D1DE70009B41E9 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */; };
 		A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C520C0BA8A005B404A /* AppGuide.swift */; };
 		A69789C920C10558005B404A /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C820C10558005B404A /* Counter.swift */; };
 		A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */; };
@@ -49,6 +50,7 @@
 		A6354F7D20C3C0790083E838 /* ErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsView.swift; sourceTree = "<group>"; };
 		A63B6DF720BFC193005CBBFF /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		A656CB6D20D1A37A009B41E9 /* ScoresInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScoresInfo.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/View/top info menu/ScoresInfo.swift"; sourceTree = "<absolute>"; };
+		A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GCDBlackBox.swift; path = "Recognizer Chords/GCDBlackBox.swift"; sourceTree = SOURCE_ROOT; };
 		A69789C520C0BA8A005B404A /* AppGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGuide.swift; sourceTree = "<group>"; };
 		A69789C820C10558005B404A /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A3502D207E504C000E79E1 /* AppDelegate.swift */,
+				A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */,
 				A69789C720C0BB03005B404A /* App Guide */,
 				A63B6DF920BFC2D0005CBBFF /* Storyboards */,
 				A6BC0AD92085243C00D2AF6C /* Controller */,
@@ -346,6 +349,7 @@
 				A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */,
 				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
 				A60DF5C520CE0EF100EE4F7A /* FirebaseConstants.swift in Sources */,
+				A656CB7020D1DE70009B41E9 /* GCDBlackBox.swift in Sources */,
 				A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */,
 				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
 				A69789C920C10558005B404A /* Counter.swift in Sources */,
