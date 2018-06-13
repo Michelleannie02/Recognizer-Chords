@@ -1,19 +1,20 @@
 //
-//  GameOverViewController.swift
+//  WinnerViewController.swift
 //  Recognizer Chords
 //
-//  Created by Luciano Schillagi on 12/06/2018.
+//  Created by Luciano Schillagi on 13/06/2018.
 //  Copyright © 2018 luko. All rights reserved.
 //
 
 import UIKit
 
-class GameOverViewController: UIViewController {
-
+class WinnerViewController: UIViewController {
+	
 	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,19 +22,19 @@ class GameOverViewController: UIViewController {
     }
 
 	
+	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
-	@IBAction func recomenzarButtonPressed(_ sender: UIButton) {
+	@IBAction func recomenzarButton(_ sender: UIButton) {
 		
 		// TODO: volver a la pantalla inicial
-		// avanza a la siguiente pantalla
-		let controller = self.storyboard!.instantiateViewController(withIdentifier: "First Screen View Controller")
-		self.present(controller, animated: true, completion: nil)
-		
 		
 	}
-
 	
+	
+	
+	
+
 }

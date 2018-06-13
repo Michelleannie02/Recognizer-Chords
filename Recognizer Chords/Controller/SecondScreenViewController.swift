@@ -21,8 +21,9 @@ class SecondScreenViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 	
+	// UI ELEMENTOS
 	// información desplegada del menú
-	let ci = ChordsInfo()
+	let chordsInfo = ChordsInfo()
 	
 	// la barra que me traje
 	let pointsBarView = PointsView()
@@ -30,9 +31,6 @@ class SecondScreenViewController: UIViewController {
 	
 	// una variable que contiene la cantidad de veces que fue presionado el botón 'play'
 	var counter: Counter = Counter()
-	
-	// lenguaje actual
-	var englishLanguage = true
 	
 	// los botones de acordes fueron tapeados
 	var majorButtonWasTapped = true
@@ -58,7 +56,6 @@ class SecondScreenViewController: UIViewController {
 	// los íconos de la barra de menú
 	@IBOutlet weak var gClefButton: UIButton!
 	@IBOutlet weak var lastScoresButton: UIButton!
-	@IBOutlet weak var languageButton: UIButton!
 	
 	/// información desplegada del menú
 	@IBOutlet weak var fourChordInfo: UICollectionView!
@@ -94,8 +91,14 @@ class SecondScreenViewController: UIViewController {
 	override func viewDidLoad() { // 🚪
 		super.viewDidLoad()
 		
+		// prepara el estado de los elementos gráficos de la interfaz
+		setUIEnabled(true)
+		
+		// en principio el indicador de actividad (networking) está oculto
+		activityIndicator.isHidden = true
+		
 		// las contenedores con información acerca de acordes y puntaje también
-		ci.isHidden = true
+		chordsInfo.isHidden = true
 		
 		disabledButtons()
 		
@@ -117,7 +120,7 @@ class SecondScreenViewController: UIViewController {
 		
 		// el área aparece
 		if elBotonFuePresionado {
-			ci.isHidden = false
+			chordsInfo.isHidden = false
 			elBotonFuePresionado = false
 			
 			majorButton.isEnabled = false
@@ -126,7 +129,7 @@ class SecondScreenViewController: UIViewController {
 			
 			// el área desaparece
 		} else {
-			ci.isHidden = true
+			chordsInfo.isHidden = true
 			elBotonFuePresionado = true
 			
 			majorButton.isEnabled = true
@@ -142,7 +145,7 @@ class SecondScreenViewController: UIViewController {
 		
 		// el área aparece
 		if elBotonFuePresionado {
-			ci.isHidden = false
+			chordsInfo.isHidden = false
 			elBotonFuePresionado = false
 			
 			majorButton.isEnabled = false
@@ -151,7 +154,7 @@ class SecondScreenViewController: UIViewController {
 			
 			// el área desaparece
 		} else {
-			ci.isHidden = true
+			chordsInfo.isHidden = true
 			elBotonFuePresionado = true
 			
 			majorButton.isEnabled = true
@@ -161,22 +164,6 @@ class SecondScreenViewController: UIViewController {
 		
 	}
 	
-	/// task: ejectutarse cada vez que el botón 'language' es tapeado
-	@IBAction func languageButtonPressed(_ sender: UIButton) {
-		
-		// si el lenguaje actual está en inglés, cambiar a español
-		if englishLanguage {
-			languageButton.setTitle("EN", for: .normal)
-			englishLanguage = false
-			print("ahora la app está en español")
-			// si está en español, cambiar a inglés
-		} else {
-			languageButton.setTitle("ES", for: .normal)
-			print("ahora la app está en inglés")
-			englishLanguage = true
-		}
-		
-	}
 	
 	// Chords Button
 	
@@ -300,8 +287,8 @@ class SecondScreenViewController: UIViewController {
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
-		// test
-		print("el botón de play fue presionado")
+		// se visibiliza el indicator de actividad (networking)
+		startAnimating()
 		
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true

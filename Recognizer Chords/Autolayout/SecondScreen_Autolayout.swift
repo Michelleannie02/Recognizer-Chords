@@ -41,7 +41,7 @@ extension SecondScreenViewController {
 		diminishedButton.translatesAutoresizingMaskIntoConstraints = false
 		playButton.translatesAutoresizingMaskIntoConstraints = false
 		
-		ci.translatesAutoresizingMaskIntoConstraints = false
+		chordsInfo.translatesAutoresizingMaskIntoConstraints = false
 		
 		
 		// MARK: - Stack Views
@@ -51,7 +51,7 @@ extension SecondScreenViewController {
 		
 		
 		// TOP ////////////////////////////////////////////////////////////////
-		let topStackView = UIStackView(arrangedSubviews: [gClefButton, lastScoresButton, languageButton])
+		let topStackView = UIStackView(arrangedSubviews: [gClefButton, lastScoresButton, activityIndicator])
 		
 		
 		// CENTER //////////////////////////////////////////////////////////////
@@ -68,8 +68,8 @@ extension SecondScreenViewController {
 		let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView])
 		
 		// ANEXOS
-		let chordsInfoStackView = UIStackView(arrangedSubviews: [ci])
-		let lastScoresStackView = UIStackView(arrangedSubviews: [ci])
+		let chordsInfoStackView = UIStackView(arrangedSubviews: [chordsInfo])
+		let lastScoresStackView = UIStackView(arrangedSubviews: [chordsInfo])
 		
 		
 		//////////////////////

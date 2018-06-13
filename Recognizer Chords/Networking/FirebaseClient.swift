@@ -36,6 +36,8 @@ class FirebaseClient: NSObject {
 	// el nombre del acorde elegido
 	static var aChordSounded: String? = ""
 	
+//	let firstScreenVC = FirstScreenViewController()
+	
 	//*****************************************************************
 	// MARK: - Networking Methods
 	//*****************************************************************
@@ -167,6 +169,16 @@ class FirebaseClient: NSObject {
 			// test
 			print("🥋 se está ejecutando la rama que contiene tres acordes mayores. De los acordes mayores se obtuvieron los datos de este específicamente: \(majorChords.name)")
 			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
 
 			// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
@@ -184,16 +196,29 @@ class FirebaseClient: NSObject {
 				if let data =  data {
 					
 					
-					
-					
-					
 					// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 					FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
-				
-				
-				
-				
-				
+					
+					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
+					
+		
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				}
 			}
 		}
@@ -218,6 +243,11 @@ class FirebaseClient: NSObject {
 				
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
+					
+					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+					print("Los datos de audio del acorde se obtuvieron, parar el indicador de actividad. Los datos son: \(data)")
+					
+					
 				}
 			}
 		}
@@ -239,6 +269,9 @@ class FirebaseClient: NSObject {
 				
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
+					
+					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
 				}
 			}
 		}
@@ -259,6 +292,9 @@ class FirebaseClient: NSObject {
 				
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
+					
+					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
 				}
 			}
 		}

@@ -33,7 +33,6 @@ func autolayout () {
 	// translate autoresizing mask into constraints
 	chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
 	lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
-	languageButton.translatesAutoresizingMaskIntoConstraints = false
 	
 	majorButton.translatesAutoresizingMaskIntoConstraints = false
 	minorButton.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +48,7 @@ func autolayout () {
 	// definiendo los stack views
 	
 	// TOP
-	let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton,  lastScoresButton, languageButton])
+	let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton, activityIndicator])
 	
 	// CENTER
 	let centerStackView = UIStackView(arrangedSubviews: [majorButton, minorButton])

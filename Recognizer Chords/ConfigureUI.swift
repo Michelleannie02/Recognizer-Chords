@@ -26,16 +26,18 @@ extension FirstScreenViewController {
 	//*****************************************************************
 	
 	func setUIEnabled(_ enabled: Bool) {
-//		usernameTextField.isEnabled = enabled
-//		passwordTextField.isEnabled = enabled
-//		loginButton.isEnabled = enabled
 		
-//		// adjust login button alpha
-//		if enabled {
-//			loginButton.alpha = 1.0
-//		} else {
-//			loginButton.alpha = 0.5
-//		}
+		// en principio el indicador de actividad (networking) está oculto
+		activityIndicator.isHidden = true
+		
+		// en principio los botones de mayor y menor se encuentran deshabilitados
+		majorButton.isEnabled = false
+		minorButton.isEnabled = false
+		
+		// las contenedores con información acerca de acordes y puntaje se encuentran ocultos
+		chordsInfo.isHidden = true
+		scoresInfo.isHidden = true
+		
 	}
 	
 	//*****************************************************************
@@ -46,14 +48,12 @@ extension FirstScreenViewController {
 		
 		activityIndicator.isHidden = false
 		activityIndicator.startAnimating()
-		self.view.alpha = 0.75
 	}
 	
 	func stopAnimating() {
 		
 		activityIndicator.isHidden = true
 		activityIndicator.stopAnimating()
-		self.view.alpha = 1.0
 	}
 	
 }
@@ -66,16 +66,15 @@ extension SecondScreenViewController {
 		
 	func setUIEnabled(_ enabled: Bool) {
 		
-		//		usernameTextField.isEnabled = enabled
-		//		passwordTextField.isEnabled = enabled
-		//		loginButton.isEnabled = enabled
-//
-//		// adjust login button alpha
-//		if enabled {
-//			loginButton.alpha = 1.0
-//		} else {
-//			loginButton.alpha = 0.5
-//		}
+		// en principio el indicador de actividad (networking) está oculto
+		activityIndicator.isHidden = true
+		
+		// en principio los botones de mayor y menor se encuentran deshabilitados
+		majorButton.isEnabled = false
+		minorButton.isEnabled = false
+		
+		// las contenedores con información acerca de acordes y puntaje también
+		chordsInfo.isHidden = true
 	
 	}
 		

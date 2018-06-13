@@ -24,6 +24,7 @@ class FirstScreenViewController: UIViewController {
 	// UI ELEMENTOS
 	// información desplegada del menú
 	let chordsInfo = ChordsInfo()
+	let scoresInfo = ScoresInfo()
 	
 	// la barra que me traje
 	let pointsBarView = PointsView()
@@ -31,9 +32,6 @@ class FirstScreenViewController: UIViewController {
 
 	// una variable que contiene la cantidad de veces que fue presionado el botón 'play'
 	var counter = Counter()
-	
-	// lenguaje actual
-	var englishLanguage = true
 	
 	// los botones de acordes fueron tapeados
 	var majorButtonWasTapped = true
@@ -57,7 +55,6 @@ class FirstScreenViewController: UIViewController {
 	// los datos el acorde elegido
 	
 	let firebase = FirebaseClient()
-//	var dataChord = FirebaseClient.dataChord
 
 	
 	// PERSISTENCIA ///////////////////////////////////////////////
@@ -71,7 +68,6 @@ class FirstScreenViewController: UIViewController {
 	// los íconos de la barra de menú
 	@IBOutlet weak var chordsInfoButton: UIButton!
 	@IBOutlet weak var lastScoresButton: UIButton!
-	@IBOutlet weak var languageButton: UIButton!
 	
 	// los tres botones que contiene esta pantalla
 	@IBOutlet weak var majorButton: UIButton!
@@ -89,12 +85,8 @@ class FirstScreenViewController: UIViewController {
     override func viewDidLoad() { // 🚪
         super.viewDidLoad()
 		
-		// en principio los botones de mayor y menor se encuentran deshabilitados
-		majorButton.isEnabled = false
-		minorButton.isEnabled = false
-		
-		// las contenedores con información acerca de acordes y puntaje también
-		chordsInfo.isHidden = true
+		// prepara el estado de los elementos gráficos de la interfaz
+		setUIEnabled(true)
 		
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
@@ -104,7 +96,8 @@ class FirstScreenViewController: UIViewController {
 		firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
     }
-
+	
+	
 	
 	//*****************************************************************
 	// MARK: - IBActions
@@ -141,10 +134,12 @@ class FirstScreenViewController: UIViewController {
 	@IBAction func lastScoresButtonPressed(_ sender: UIButton) {
 		
 		print("🤼‍♀️ El boton fue presionado está en \(buttonWasTapped)")
+		print("DEBERÍA APARECER EL CONTENEDOR DE PUNTAJES")
 		
 		// el área aparece
 		if buttonWasTapped {
-			chordsInfo.isHidden = false
+			
+			scoresInfo.isHidden = false
 			buttonWasTapped = false
 			
 			majorButton.isEnabled = false
@@ -153,7 +148,7 @@ class FirstScreenViewController: UIViewController {
 			
 		// el área desaparece
 		} else {
-			chordsInfo.isHidden = true
+			scoresInfo.isHidden = true
 			buttonWasTapped = true
 			
 			majorButton.isEnabled = true
@@ -164,42 +159,7 @@ class FirstScreenViewController: UIViewController {
 
 		
 	}
-	
-	/// task: ejectutarse cada vez que el botón 'language' es tapeado
-	@IBAction func languageButtonPressed(_ sender: UIButton) {
-		
-		// si el lenguaje actual está en inglés, cambiar a español
-		if englishLanguage {
-		languageButton.setTitle("ES", for: .normal)
-		englishLanguage = false
-		print("ahora la app está en español")
-		// si está en español, cambiar a inglés
-		} else {
-		languageButton.setTitle("EN", for: .normal)
-		print("ahora la app está en inglés")
-		englishLanguage = true
-		}
-		
-		// prueba
-		pointsBarView.currentValue += 1
-		print("👏tu puntaje actual es de \(pointsBarView.currentValue)")
-		
-		
-		
-		if pointsBarView.currentValue == 8 {
-			
-			//
-		}
-		
-		// va contando los aciertos
-		actualScore = Int(pointsBarView.currentValue)
-		print("tu score actual es \(actualScore)")
-		
-		savedScores.append(actualScore)
-		print("🔌\(savedScores)")
-	
-		
-	}
+
 	
 	
 	// Major, Minor & Play Buttons
@@ -212,6 +172,8 @@ class FirstScreenViewController: UIViewController {
 
 		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
 		playButton.isHidden = false
+//		majorButton.alpha = 0.8
+		minorButton.backgroundColor = .yellow
 
 
 		if majorButtonWasTapped {
@@ -237,6 +199,8 @@ class FirstScreenViewController: UIViewController {
 
 
 		playButton.isHidden = false
+//		minorButton.alpha = 0.8
+		minorButton.backgroundColor = .yellow
 
 		if minorButtonWasTapped {
 			minorButton.isEnabled = false
@@ -286,6 +250,9 @@ class FirstScreenViewController: UIViewController {
 		
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true
+		
+		// se visibiliza el indicator de actividad (networking)
+		startAnimating()
 
 		
 		// Contador ///////////////////////////////////////////////
@@ -302,28 +269,24 @@ class FirstScreenViewController: UIViewController {
 			majorButton.isEnabled = true
 			minorButton.isEnabled = true
 		}
-		
+
 		
 		// Audio //////////////////////////////////////////////////
 		
-		// 1-prepara el acorde a sonar...
-
-		// un acorde mayor o uno menor
-//		firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
-		
-		// 2-lo pone el el reproductor
+		// 1-toma los ÚLTIMOS datos de audio almacenados en memoria, ahora puestos en el reproductor
 		do {
 			audioPlayer = try AVAudioPlayer(data: FirebaseClient.dataChord)
 			audioPlayer?.prepareToPlay()
 			
 		} catch let error as NSError {
 			
+		
 			print(error.debugDescription)
 		}
 		
 		
-		// 3-y lo reproduce
+		// 2-y los reproduce
 		audioPlayer?.play()
 
 
