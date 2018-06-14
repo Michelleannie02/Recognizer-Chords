@@ -54,11 +54,14 @@ class FirstScreenViewController: UIViewController {
 	var audioPlayer: AVAudioPlayer?
 	// los datos el acorde elegido
 	
+	// NETWORKING //////////////////////////////////////////////////
 	let firebase = FirebaseClient()
-
 	
 	// PERSISTENCIA ///////////////////////////////////////////////
 	// TODO: core data!
+	
+	var protoPersistencia = Double() // luego borrar
+	
 	var savedScores: [Int] = []
 	
 	//*****************************************************************
@@ -70,21 +73,14 @@ class FirstScreenViewController: UIViewController {
 	@IBOutlet weak var lastScoresButton: UIButton!
 	
 	// los tres botones que contiene esta pantalla
-	@IBOutlet weak var botonMayor: UIButton!
-	@IBOutlet weak var playButton: UIButton!
+	@IBOutlet weak var majorButton: UIButton!
 	@IBOutlet weak var minorButton: UIButton!
+	@IBOutlet weak var playButton: UIButton!
 	
 	// indicator de actividad (networking)
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
 	
-	// PRUEBA BOTON MAYOR
-	@IBOutlet weak var botonPrueba: UIButton!
-	@IBAction func botonPruebaPresionado(_ sender: Any) {
-		
-		print("🛡")
-
-	}
 	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
@@ -126,7 +122,7 @@ class FirstScreenViewController: UIViewController {
 			chordsInfo.isHidden = false
 			buttonWasTapped = false
 			
-			//majorButton.isEnabled = false
+			majorButton.isEnabled = false
 			minorButton.isEnabled = false
 			playButton.isEnabled = false
 			
@@ -135,7 +131,7 @@ class FirstScreenViewController: UIViewController {
 			chordsInfo.isHidden = true
 			buttonWasTapped = true
 			
-			//majorButton.isEnabled = true
+			majorButton.isEnabled = true
 			minorButton.isEnabled = true
 			playButton.isEnabled = true
 		}
@@ -154,7 +150,7 @@ class FirstScreenViewController: UIViewController {
 			scoresInfo.isHidden = false
 			buttonWasTapped = false
 			
-			//majorButton.isEnabled = false
+			majorButton.isEnabled = false
 			minorButton.isEnabled = false
 			playButton.isEnabled = false
 			
@@ -163,7 +159,7 @@ class FirstScreenViewController: UIViewController {
 			scoresInfo.isHidden = true
 			buttonWasTapped = true
 			
-			//majorButton.isEnabled = true
+			majorButton.isEnabled = true
 			minorButton.isEnabled = true
 			playButton.isEnabled = true
 		}
@@ -173,7 +169,6 @@ class FirstScreenViewController: UIViewController {
 	}
 
 	
-	
 	// Major, Minor & Play Buttons
 	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
@@ -182,38 +177,40 @@ class FirstScreenViewController: UIViewController {
 		// test
 		print("🎱 el botón de mayor fue presionado")
 
-//		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
-//		playButton.isHidden = false
-////		majorButton.alpha = 0.8
-//		minorButton.backgroundColor = .yellow
-//
-//
-//		if majorButtonWasTapped {
-//			majorButton.isEnabled = false
-//			minorButton.isEnabled = false
-//
-//		}
-//
-//		// el contador del botón play se pone a 0
-//		counter.playButtonValue = 0
-//
-//		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-//		// un acorde mayor o uno menor
-//		firebase.setupChord(firstScreen: self, secondScreen: nil)
+		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
+		playButton.isHidden = false
+		majorButton.alpha = 0.8
+
+
+
+		if majorButtonWasTapped {
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+
+		}
+
+		// el contador del botón play se pone a 0
+		counter.playButtonValue = 0
+
+		
+		// NETWORKING 🚀
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		// un acorde mayor o uno menor
+		firebase.setupChord(firstScreen: self, secondScreen: nil)
+		// se visibiliza el indicator de actividad (networking)
+//		startAnimating() // REQUERIDO pero no lo pongo a propósito
+		
+		
 		
 		// la app se comporta dependiendo del desempeño del usuario
 		progressOrGameOver()
+		
+		// asigna el último socre a la variable ´protoPersistencia´
+		protoPersistencia = pointsBarView.currentValue // 👈
+		print("✔︎ Tu último score es de \(protoPersistencia)")
 
 	}
-	
-	
-	@IBAction func botonMayorPresionado(_ sender: UIButton) {
-		
-		// test
-		print("🎱 el botón de mayor fue presionado")
-		
-	}
-	
+
 
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
@@ -222,12 +219,12 @@ class FirstScreenViewController: UIViewController {
 
 
 		playButton.isHidden = false
-//		minorButton.alpha = 0.8
-		minorButton.backgroundColor = .yellow
+		minorButton.alpha = 0.8
+
 
 		if minorButtonWasTapped {
 			minorButton.isEnabled = false
-			//majorButton.isEnabled = false
+			majorButton.isEnabled = false
 
 		}
 		
@@ -235,7 +232,7 @@ class FirstScreenViewController: UIViewController {
 		// el contador del botón play se pone a 0
 		counter.playButtonValue = 0
 
-		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
+		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!...
 		if FirebaseClient.aChordSounded == "minor" {
 			
 			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
@@ -243,7 +240,7 @@ class FirstScreenViewController: UIViewController {
 			pointsBarView.currentValue += 1
 			
 		} else {
-			
+			// caso contrario...
 			print("YERRASTE!!!!!!!!")
 			// un paso para la barra de errores
 			errorsBarView.currentValue += 1
@@ -251,23 +248,32 @@ class FirstScreenViewController: UIViewController {
 		}
 		
 		
+		// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
 		firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
+		// se visibiliza el indicator de actividad (networking)
+//		startAnimating() // REQUERIDO pero no lo pongo a propósito
+		
+		
+		
 		// la app se comporta dependiendo del desempeño del usuario
 		progressOrGameOver()
+		
+		// asigna el último socre a la variable ´protoPersistencia´
+		protoPersistencia = pointsBarView.currentValue // 👈
+		print("✔︎ Tu último score es de \(protoPersistencia)")
 		
 	}
 	
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
-		//majorButton.isEnabled = true
+		majorButton.isEnabled = true
+		print("🤼‍♀️ el boton mayor esta habilitado? \(majorButton.isEnabled)")
 		minorButton.isEnabled = true
 		
-		// se visibiliza el indicator de actividad (networking)
-		startAnimating()
 
 		// Contador ///////////////////////////////////////////////
 		
@@ -280,7 +286,7 @@ class FirstScreenViewController: UIViewController {
 			// UI
 			counter.playButtonValue = 0
 			playButton.isHidden = true
-			//majorButton.isEnabled = true
+			majorButton.isEnabled = true
 			minorButton.isEnabled = true
 		}
 
@@ -316,15 +322,22 @@ class FirstScreenViewController: UIViewController {
 		// si el usuario erró tres tres veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
 			
-			performSegue(withIdentifier: "ir a game over", sender: nil)
-		}
+			// espera 3 segundos antes de navegar hacia la siguiente pantalla
+			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
+				self.performSegue(withIdentifier: "ir a game over", sender: nil)
+			}
+				
+				
+			
+		)}
 		
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 2 { // luego cambiar a 8
+		if pointsBarView.currentValue == 8 { // luego cambiar a 8
 			
-			// avanza a la siguiente pantalla
-			let controller = self.storyboard!.instantiateViewController(withIdentifier: "Transition View Controller")
-			self.present(controller, animated: true, completion: nil)
+			// TODO: suena el diapasón!!!!
+			
+			
+			
 		}
 
 	}
@@ -363,3 +376,49 @@ class FirstScreenViewController: UIViewController {
 } // end class
 
 
+//*****************************************************************
+// MARK: - Navigation (Segue)
+//*****************************************************************
+
+extension FirstScreenViewController {
+	
+	// task: enviar a 'PhotoAlbumViewController' una serie de datos
+	override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
+		
+		if segue.identifier == "score first screen" {
+			
+			// el destino de la transición, el 'PhotosAlbumViewController'
+			let secondScreenVC = segue.destination as! SecondScreenViewController
+			
+//			// el remitente será una coordenada (pin) puesto sobre el mapa
+//			let coord = sender as! CLLocationCoordinate2D
+			
+			
+//			// le pasa a 'PhotoAlbumViewController' los siguientes datos: ///////////////////////////////
+//
+//			/*
+//			1- el controlador de datos (core data)
+//			2- el pin coincidente
+//			3- la coordenada de ese pin
+//			4- las fotos recibidas desde flickr 'flickrPhotos:[FlickrImage]'
+//			*/
+//
+//			// el controlador de datos
+//			photoAlbumVC.dataController = dataController
+//
+//			// el pin coincidente..
+//			photoAlbumVC.pin = pinToPass
+//
+//			// ..y su coordenada
+//			photoAlbumVC.coordinateSelected = coord
+//
+//			// y pasa las fotos recibidas desde flickr
+//			photoAlbumVC.flickrPhotos = flickrPhotos
+			
+			secondScreenVC.scoreFirstScreen = protoPersistencia
+			
+		} // end if
+		
+	} // end func
+
+} // end ext

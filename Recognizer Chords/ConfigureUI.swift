@@ -33,9 +33,8 @@ extension FirstScreenViewController {
 		activityIndicator.isHidden = true
 		
 		// en principio los botones de mayor y menor se encuentran deshabilitados
-		//majorButton.isEnabled = true
-		//botonMayor.isEnabled = true
-		minorButton.isEnabled = true
+		majorButton.isEnabled = true
+		minorButton.isEnabled = false
 		
 		// las contenedores con información acerca de acordes y puntaje se encuentran ocultos
 		chordsInfo.isHidden = true
@@ -73,7 +72,7 @@ extension SecondScreenViewController {
 		activityIndicator.isHidden = true
 		
 		// en principio los botones de mayor y menor se encuentran deshabilitados
-		majorButton.isEnabled = true
+		majorButton.isEnabled = false
 		minorButton.isEnabled = false
 		
 		// las contenedores con información acerca de acordes y puntaje también

@@ -14,7 +14,6 @@ class ErrorsView: UIView {
 	override init(frame: CGRect) {
 		
 		super.init(frame: frame)
-		self.backgroundColor = .gray
 		setup()
 	}
 	
@@ -78,10 +77,10 @@ class ErrorsView: UIView {
 	func buildLayer(layer: CAShapeLayer) {
 		let path = UIBezierPath()
 		//		path.move(to: CGPoint(x: 0, y: bounds.height/3))
-		path.move(to: CGPoint(x: 20, y: 0))
+		path.move(to: CGPoint(x: 20, y: 15))
 		
 		//		path.addLine(to: CGPoint(x: bounds.width, y: bounds.height/3))
-		path.addLine(to: CGPoint(x: bounds.width/1.1, y: 0))
+		path.addLine(to: CGPoint(x: bounds.width/1.1, y: 15))
 		
 		layer.path = path.cgPath
 		layer.lineWidth = 20

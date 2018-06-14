@@ -19,6 +19,7 @@
 		A63B6DF820BFC193005CBBFF /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63B6DF720BFC193005CBBFF /* Preview.storyboard */; };
 		A656CB6E20D1A37A009B41E9 /* ScoresInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB6D20D1A37A009B41E9 /* ScoresInfo.swift */; };
 		A656CB7020D1DE70009B41E9 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */; };
+		A656CB7220D1EA3D009B41E9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB7120D1EA3D009B41E9 /* DataController.swift */; };
 		A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C520C0BA8A005B404A /* AppGuide.swift */; };
 		A69789C920C10558005B404A /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69789C820C10558005B404A /* Counter.swift */; };
 		A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */; };
@@ -26,11 +27,10 @@
 		A6A35033207E504C000E79E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35031207E504C000E79E1 /* Main.storyboard */; };
 		A6A35035207E504C000E79E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A35034207E504C000E79E1 /* Assets.xcassets */; };
 		A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35036207E504C000E79E1 /* LaunchScreen.storyboard */; };
-		A6ACA07920D1751F006227ED /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACA07820D1751F006227ED /* TransitionViewController.swift */; };
-		A6ACA07B20D176DC006227ED /* WinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACA07A20D176DC006227ED /* WinnerViewController.swift */; };
 		A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF19FC20BE17E600DBAAAC /* PointsView.swift */; };
 		A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */; };
 		A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */; };
+		A6F074AA20D21476001475FC /* ThirdScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F074A920D21476001475FC /* ThirdScreenViewController.swift */; };
 		A6F72CB320CF1EA400251901 /* ConfigureUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F72CB220CF1EA400251901 /* ConfigureUI.swift */; };
 		A6F72CB520CF9CD100251901 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F72CB420CF9CD100251901 /* GameOverViewController.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +51,7 @@
 		A63B6DF720BFC193005CBBFF /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		A656CB6D20D1A37A009B41E9 /* ScoresInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScoresInfo.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/View/top info menu/ScoresInfo.swift"; sourceTree = "<absolute>"; };
 		A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GCDBlackBox.swift; path = "Recognizer Chords/GCDBlackBox.swift"; sourceTree = SOURCE_ROOT; };
+		A656CB7120D1EA3D009B41E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A69789C520C0BA8A005B404A /* AppGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGuide.swift; sourceTree = "<group>"; };
 		A69789C820C10558005B404A /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
@@ -60,11 +61,10 @@
 		A6A35034207E504C000E79E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6A35037207E504C000E79E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6A35039207E504C000E79E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6ACA07820D1751F006227ED /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
-		A6ACA07A20D176DC006227ED /* WinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerViewController.swift; sourceTree = "<group>"; };
 		A6AF19FC20BE17E600DBAAAC /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
 		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsInfo.swift; sourceTree = "<group>"; };
+		A6F074A920D21476001475FC /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
 		A6F72CB220CF1EA400251901 /* ConfigureUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigureUI.swift; path = "Recognizer Chords/ConfigureUI.swift"; sourceTree = SOURCE_ROOT; };
 		A6F72CB420CF9CD100251901 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +197,7 @@
 		A6AF16D120A492A400A25F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A656CB7120D1EA3D009B41E9 /* DataController.swift */,
 				A60DF5B920CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld */,
 			);
 			path = Model;
@@ -207,9 +208,8 @@
 			children = (
 				A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */,
 				A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */,
-				A6ACA07820D1751F006227ED /* TransitionViewController.swift */,
+				A6F074A920D21476001475FC /* ThirdScreenViewController.swift */,
 				A6F72CB420CF9CD100251901 /* GameOverViewController.swift */,
-				A6ACA07A20D176DC006227ED /* WinnerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -352,16 +352,16 @@
 				A656CB7020D1DE70009B41E9 /* GCDBlackBox.swift in Sources */,
 				A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */,
 				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
+				A656CB7220D1EA3D009B41E9 /* DataController.swift in Sources */,
+				A6F074AA20D21476001475FC /* ThirdScreenViewController.swift in Sources */,
 				A69789C920C10558005B404A /* Counter.swift in Sources */,
 				A656CB6E20D1A37A009B41E9 /* ScoresInfo.swift in Sources */,
 				A6F72CB520CF9CD100251901 /* GameOverViewController.swift in Sources */,
 				A6354F7E20C3C0790083E838 /* ErrorsView.swift in Sources */,
 				A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */,
-				A6ACA07B20D176DC006227ED /* WinnerViewController.swift in Sources */,
 				A619F8F520CBA70B00241E2D /* FirstScreen_Autolayout.swift in Sources */,
 				A69789C620C0BA8A005B404A /* AppGuide.swift in Sources */,
 				A60DF5BB20CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld in Sources */,
-				A6ACA07920D1751F006227ED /* TransitionViewController.swift in Sources */,
 				A60DF5C320CE0E4100EE4F7A /* FirebaseClient.swift in Sources */,
 				A6C96C3420BBA9F2006C71FB /* ChordsInfo.swift in Sources */,
 				A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */,

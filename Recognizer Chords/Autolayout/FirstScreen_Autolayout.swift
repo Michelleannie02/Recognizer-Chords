@@ -35,7 +35,7 @@ func setAutolayout () {
 	lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
 	
 	//botonMayor.translatesAutoresizingMaskIntoConstraints = false
-	botonPrueba.translatesAutoresizingMaskIntoConstraints = false
+	majorButton.translatesAutoresizingMaskIntoConstraints = false
 	minorButton.translatesAutoresizingMaskIntoConstraints = false
 	playButton.translatesAutoresizingMaskIntoConstraints = false
 	activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +51,7 @@ func setAutolayout () {
 	let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton])
 	
 	// CENTER
-	let centerStackView = UIStackView(arrangedSubviews: [botonPrueba,minorButton])
+	let centerStackView = UIStackView(arrangedSubviews: [majorButton,minorButton])
 	
 	// BOTTOM
 	let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView])
@@ -81,6 +81,7 @@ func setAutolayout () {
 		topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
 		topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
 		topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+//		topStackView.bottomAnchor.constraint(equalTo:centerStackView.centerYAnchor),
 		topStackView.heightAnchor.constraint(equalToConstant: 10)
 		])
 	
@@ -91,7 +92,7 @@ func setAutolayout () {
 	
 	// MARK: - center stack view
 	
-//	let centerStackView = UIStackView(arrangedSubviews: [botonPrueba, minorButton])
+	//let centerStackView = UIStackView(arrangedSubviews: [majorButton, minorButton])
 	centerStackView.translatesAutoresizingMaskIntoConstraints = false
 	centerStackView.axis = .vertical
 	centerStackView.distribution = .fillEqually
@@ -125,7 +126,7 @@ func setAutolayout () {
 		bottomStackView.topAnchor.constraint(equalTo: centerStackView.bottomAnchor),
 		bottomStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 		bottomStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-		bottomStackView.heightAnchor.constraint(equalToConstant: 25),
+		bottomStackView.heightAnchor.constraint(equalToConstant: 30),
 		bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 		
 		])

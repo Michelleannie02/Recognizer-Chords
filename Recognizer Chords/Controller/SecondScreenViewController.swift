@@ -46,6 +46,21 @@ class SecondScreenViewController: UIViewController {
 
 	let firebase = FirebaseClient()
 	//var dataChord = FirebaseClient.dataChord
+	
+	
+	// SCORES
+	var scoreFirstScreen: Double!
+	
+	var scoreSecondScreen = Double()
+	
+	var totalScore: Double = 0 {
+		
+		didSet {
+		
+		scoreSecondScreen += scoreFirstScreen
+			
+		}
+	}
 
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -106,6 +121,8 @@ class SecondScreenViewController: UIViewController {
 		setAutolayout()
 		
 		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		
+
 		
 	}
 	
@@ -219,7 +236,10 @@ class SecondScreenViewController: UIViewController {
 		// la app se comporta dependiendo del desempeño del usuario
 		progressOrGameOver()
 		
-
+		// asigna el último socre a la variable ´protoPersistencia´
+		scoreSecondScreen = pointsBarView.currentValue // 👈
+		
+		print("✔︎ Tu último score es de \(totalScore)")
 	
 	}
 	
@@ -265,6 +285,10 @@ class SecondScreenViewController: UIViewController {
 		firebase.setupChord(firstScreen: nil, secondScreen: self)
 		// la app se comporta dependiendo del desempeño del usuario
 		progressOrGameOver()
+		
+		// asigna el último socre a la variable ´protoPersistencia´
+		totalScore = pointsBarView.currentValue // 👈
+		print("✔︎ Tu último score es de \(totalScore)")
 		
 	}
 	
@@ -313,6 +337,9 @@ class SecondScreenViewController: UIViewController {
 		// la app se comporta dependiendo del desempeño del usuario
 		progressOrGameOver()
 		
+		// asigna el último socre a la variable ´protoPersistencia´
+		totalScore = pointsBarView.currentValue // 👈
+		print("✔︎ Tu último score es de \(totalScore)")
 
 	}
 	
@@ -350,6 +377,10 @@ class SecondScreenViewController: UIViewController {
 		
 		// la app se comporta dependiendo del desempeño del usuario
 		progressOrGameOver()
+		
+		// asigna el último socre a la variable ´protoPersistencia´
+		totalScore = pointsBarView.currentValue // 👈
+		print("✔︎ Tu último score es de \(totalScore)")
 		
 	}
 	
@@ -398,6 +429,10 @@ class SecondScreenViewController: UIViewController {
 		
 		// 3-y lo reproduce
 		audioPlayer?.play()
+		
+		
+		// test - score de la pantalla anterior
+		print("👻\(scoreFirstScreen)")
 		
 	}
 
