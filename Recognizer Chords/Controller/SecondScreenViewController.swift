@@ -57,7 +57,7 @@ class SecondScreenViewController: UIViewController {
 		
 		didSet {
 		
-		scoreSecondScreen += scoreFirstScreen
+		//scoreSecondScreen += scoreFirstScreen
 			
 		}
 	}

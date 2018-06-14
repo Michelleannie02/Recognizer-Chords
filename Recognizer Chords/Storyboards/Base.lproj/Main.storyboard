@@ -88,62 +88,13 @@
                         <outlet property="majorButton" destination="JBe-th-4cM" id="JDc-S7-Mgr"/>
                         <outlet property="minorButton" destination="FXM-03-odx" id="npt-Gq-DDa"/>
                         <outlet property="playButton" destination="MMA-z9-vfr" id="xlK-xI-lVc"/>
-                        <segue destination="TBp-57-4Gb" kind="show" identifier="" id="5Jq-vI-dDr"/>
                         <segue destination="Zyv-cz-aKV" kind="show" identifier="ir a game over" id="hij-Ow-kNq"/>
+                        <segue destination="OQf-Gl-yZi" kind="show" identifier="next screen" id="WTW-Yu-rsy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I30-hn-cVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-455.19999999999999" y="-320.68965517241384"/>
-        </scene>
-        <!--Bronze View Controller-->
-        <scene sceneID="iMF-Jx-snd">
-            <objects>
-                <viewController storyboardIdentifier="Transition View Controller" id="TBp-57-4Gb" customClass="BronzeViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uYM-98-TKf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-aG-OAe">
-                                <rect key="frame" x="61" y="96" width="243" height="267"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="bronce" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="te3-XH-La6">
-                                <rect key="frame" x="64" y="394" width="240" height="54"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="KoX-qs-00z"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-08-qMW">
-                                <rect key="frame" x="302" y="33" width="43" height="30"/>
-                                <state key="normal" title="seguir"/>
-                                <connections>
-                                    <action selector="avanzarButton:" destination="TBp-57-4Gb" eventType="touchUpInside" id="fWL-uM-VVh"/>
-                                    <segue destination="OQf-Gl-yZi" kind="show" identifier="ir a la segunda pantalla" id="Iz0-g9-Qdz"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="OB3-08-qMW" firstAttribute="top" secondItem="cIA-3D-3yH" secondAttribute="top" constant="13" id="8P5-s3-CKQ"/>
-                            <constraint firstItem="LMa-aG-OAe" firstAttribute="leading" secondItem="cIA-3D-3yH" secondAttribute="leading" constant="61" id="BNc-yf-rVF"/>
-                            <constraint firstItem="cIA-3D-3yH" firstAttribute="trailing" secondItem="LMa-aG-OAe" secondAttribute="trailing" constant="71" id="Era-vQ-FV9"/>
-                            <constraint firstItem="te3-XH-La6" firstAttribute="top" secondItem="LMa-aG-OAe" secondAttribute="bottom" constant="31" id="T1D-Hv-MYa"/>
-                            <constraint firstItem="cIA-3D-3yH" firstAttribute="bottom" secondItem="te3-XH-La6" secondAttribute="bottom" constant="219" id="Xf5-X9-4Y6"/>
-                            <constraint firstItem="te3-XH-La6" firstAttribute="leading" secondItem="cIA-3D-3yH" secondAttribute="leading" constant="64" id="XwL-B3-nne"/>
-                            <constraint firstItem="cIA-3D-3yH" firstAttribute="trailing" secondItem="OB3-08-qMW" secondAttribute="trailing" constant="30" id="kEZ-cd-pwB"/>
-                            <constraint firstItem="LMa-aG-OAe" firstAttribute="top" secondItem="cIA-3D-3yH" secondAttribute="top" constant="76" id="mOa-JV-LNP"/>
-                            <constraint firstItem="te3-XH-La6" firstAttribute="trailing" secondItem="LMa-aG-OAe" secondAttribute="trailing" id="rfx-9R-nLI"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="cIA-3D-3yH"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f7o-rS-czg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="393" y="-321"/>
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="QuY-bT-JEc">

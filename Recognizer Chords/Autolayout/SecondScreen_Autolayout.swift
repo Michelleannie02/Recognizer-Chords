@@ -174,7 +174,7 @@ extension SecondScreenViewController {
 			bottomStackView.topAnchor.constraint(equalTo: centerStackView.bottomAnchor),
 			bottomStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 			bottomStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			bottomStackView.heightAnchor.constraint(equalToConstant: 50),
+			bottomStackView.heightAnchor.constraint(equalToConstant: 30),
 			bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 			])
 		

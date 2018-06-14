@@ -322,24 +322,57 @@ class FirstScreenViewController: UIViewController {
 		// si el usuario erró tres tres veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
 			
-			// espera 3 segundos antes de navegar hacia la siguiente pantalla
+			// espera 5 segundos antes de navegar hacia la siguiente pantalla
 			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
 				self.performSegue(withIdentifier: "ir a game over", sender: nil)
 			}
-				
-				
-			
+
 		)}
 		
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 8 { // luego cambiar a 8
+		if pointsBarView.currentValue == 2 { // luego cambiar a 8
 			
-			// TODO: suena el diapasón!!!!
+			// se deshabilitan los dos botones de acordes
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			// TODO: implementar blur effect
+			// 1
+			view.backgroundColor = .clear
+			// 2
+			let blurEffect = UIBlurEffect(style: .light)
+			// 3
+			let blurView = UIVisualEffectView(effect: blurEffect)
+			// 4
+			blurView.translatesAutoresizingMaskIntoConstraints = false
+			view.insertSubview(blurView, at: 0)
 			
+			// espera 8 segundos antes de navegar hacia la siguiente pantalla...
+			Timer.scheduledTimer(withTimeInterval: 6.0, repeats: false, block: {(timer) in
+				
+				// TODO: suena el diapasón!!!!
+				do {
+					self.audioPlayer = try AVAudioPlayer(data: FirebaseClient.dataChord)
+					self.audioPlayer?.prepareToPlay()
+					
+					// 2-y los reproduce
+					self.audioPlayer?.play()
+					
+				} catch let error as NSError {
+					
+					
+					print(error.debugDescription)
+				}
+				
+				// y por último navega hacia la próxima pantalla
+				self.performSegue(withIdentifier: "next screen", sender: nil)
+			})
+		
 			
-			
-		}
+		
+		} // end if
 
+		
+		
 	}
 	
 	
