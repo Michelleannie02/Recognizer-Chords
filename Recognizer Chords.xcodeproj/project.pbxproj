@@ -65,7 +65,7 @@
 		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
 		A6C96C3320BBA9F2006C71FB /* ChordsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsInfo.swift; sourceTree = "<group>"; };
 		A6F074A920D21476001475FC /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
-		A6F72CB220CF1EA400251901 /* ConfigureUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigureUI.swift; path = "Recognizer Chords/ConfigureUI.swift"; sourceTree = SOURCE_ROOT; };
+		A6F72CB220CF1EA400251901 /* ConfigureUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureUI.swift; sourceTree = SOURCE_ROOT; };
 		A6F72CB420CF9CD100251901 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +103,7 @@
 		A60E686220927221004C601B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A6F72CB220CF1EA400251901 /* ConfigureUI.swift */,
 				A684734B209CEEBD00AD89CD /* top info menu */,
 				A6075BE420B911840019E2E8 /* bottom score menu */,
 			);
@@ -183,7 +184,6 @@
 				A63B6DF920BFC2D0005CBBFF /* Storyboards */,
 				A6BC0AD92085243C00D2AF6C /* Controller */,
 				A60E686220927221004C601B /* View */,
-				A6F72CB220CF1EA400251901 /* ConfigureUI.swift */,
 				A6AF16D120A492A400A25F1B /* Model */,
 				A619F8F320CBA6D300241E2D /* Autolayout */,
 				A6333AD9209D40D400A94C1A /* Extensions */,

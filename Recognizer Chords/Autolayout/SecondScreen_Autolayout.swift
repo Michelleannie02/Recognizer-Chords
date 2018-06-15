@@ -30,8 +30,8 @@ extension SecondScreenViewController {
 		// translate autoresizing mask into constraints
 		
 		// botones del menú superior
-		gClefButton.translatesAutoresizingMaskIntoConstraints = false
-		lastScoresButton.translatesAutoresizingMaskIntoConstraints = false
+//		gClefButton.translatesAutoresizingMaskIntoConstraints = false
+//		lastScoresButton.translatesAutoresizingMaskIntoConstraints = false
 		
 		
 		// botones de la interfaz
@@ -43,13 +43,13 @@ extension SecondScreenViewController {
 		playButton.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		
-		chordsInfo.translatesAutoresizingMaskIntoConstraints = false
+//		chordsInfo.translatesAutoresizingMaskIntoConstraints = false
 		
 		
 		// definiendo los stack views
 		
 		// TOP ////////////////////////////////////////////////////////////////
-		let topStackView = UIStackView(arrangedSubviews: [gClefButton, lastScoresButton])
+		let topStackView = UIStackView(arrangedSubviews: [])
 		
 		
 		// CENTER //////////////////////////////////////////////////////////////
@@ -66,8 +66,8 @@ extension SecondScreenViewController {
 		let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView])
 		
 		// ANEXOS
-		let chordsInfoStackView = UIStackView(arrangedSubviews: [chordsInfo])
-		let lastScoresStackView = UIStackView(arrangedSubviews: [chordsInfo])
+//		let chordsInfoStackView = UIStackView(arrangedSubviews: [chordsInfo])
+//		let lastScoresStackView = UIStackView(arrangedSubviews: [chordsInfo])
 		
 		
 		//////////////////////
@@ -80,9 +80,9 @@ extension SecondScreenViewController {
 		topStackView.axis = .horizontal
 		topStackView.distribution = .fillEqually
 		topStackView.spacing = 150
-		
+
 		view.addSubview(topStackView)
-		
+
 		// restricciones a 'top stack view'
 		NSLayoutConstraint.activate([
 			topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
@@ -210,41 +210,41 @@ extension SecondScreenViewController {
 		/// Chords Info ///
 		///////////////////
 		
-		chordsInfoStackView.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(chordsInfoStackView)
-		// restricciones al contenedor de prueba
-		NSLayoutConstraint.activate([
-			// top
-			chordsInfoStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
-			// leading
-			chordsInfoStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			// trailing
-			chordsInfoStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			// height
-			chordsInfoStackView.heightAnchor.constraint(equalToConstant: 250)
-			
-			])
-		
-		print("🥉\(chordsInfoStackView.arrangedSubviews.count)")
+//		chordsInfoStackView.translatesAutoresizingMaskIntoConstraints = false
+//		view.addSubview(chordsInfoStackView)
+//		// restricciones al contenedor de prueba
+//		NSLayoutConstraint.activate([
+//			// top
+//			chordsInfoStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
+//			// leading
+//			chordsInfoStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+//			// trailing
+//			chordsInfoStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+//			// height
+//			chordsInfoStackView.heightAnchor.constraint(equalToConstant: 250)
+//
+//			])
+//
+//		print("🥉\(chordsInfoStackView.arrangedSubviews.count)")
 		
 		///////////////////
 		/// Scores Info ///
 		///////////////////
 		
-		lastScoresStackView.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(lastScoresStackView)
-		// restricciones al contenedor de prueba
-		NSLayoutConstraint.activate([
-			// top
-			lastScoresStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
-			// leading
-			lastScoresStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			// trailing
-			lastScoresStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			// height
-			lastScoresStackView.heightAnchor.constraint(equalToConstant: 250)
-			
-			])
+//		lastScoresStackView.translatesAutoresizingMaskIntoConstraints = false
+//		view.addSubview(lastScoresStackView)
+//		// restricciones al contenedor de prueba
+//		NSLayoutConstraint.activate([
+//			// top
+//			lastScoresStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
+//			// leading
+//			lastScoresStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+//			// trailing
+//			lastScoresStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+//			// height
+//			lastScoresStackView.heightAnchor.constraint(equalToConstant: 250)
+//			
+//			])
 
 	}
 	

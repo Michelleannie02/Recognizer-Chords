@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3Z-Nf-Yia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217" y="698"/>
+            <point key="canvasLocation" x="537" y="681"/>
         </scene>
         <!--2-->
         <scene sceneID="RaA-AF-N60">
@@ -152,8 +152,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="majorButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="qZQ-PN-rv9"/>
-                                    <action selector="playChordsButton:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="QUV-BP-2EQ"/>
+                                    <action selector="majorButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="69s-Jt-9fR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdc-cw-6rH">
@@ -165,8 +164,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="minorButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="m4d-fo-NRQ"/>
-                                    <action selector="playChordsButton:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="Ir7-2I-nTw"/>
+                                    <action selector="minorButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="yPL-XL-g0A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2oV-cp-skb">
@@ -178,8 +176,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="diminishedButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="eej-gW-lUq"/>
-                                    <action selector="playChordsButton:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="Rcy-PJ-toS"/>
+                                    <action selector="diminishedButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="yqW-Bo-tC2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hea-Nw-7j7">
@@ -191,8 +188,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="augmentedButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="1JR-uV-Len"/>
-                                    <action selector="playChordsButton:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="SGM-hX-3pZ"/>
+                                    <action selector="augmentedButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="NwW-4z-rQU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJS-cr-DxR">
@@ -200,7 +196,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="play_button"/>
                                 <connections>
-                                    <action selector="playButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="Gq1-Qy-q68"/>
+                                    <action selector="playButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="wKD-dO-qs6"/>
                                 </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eJN-uf-gME">
@@ -235,9 +231,6 @@
                                 <state key="normal" image="down_arrow">
                                     <color key="titleColor" red="0.8784313725490196" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="chordsInfoButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="03u-ZD-hpY"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-oU-EsF">
                                 <rect key="frame" x="174" y="15" width="27" height="19"/>
@@ -247,9 +240,6 @@
                                 <state key="normal" image="down_arrow">
                                     <color key="titleColor" red="0.87843137250000003" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="chordsInfoButtonPressed:" destination="OQf-Gl-yZi" eventType="touchUpInside" id="GUj-MT-DHE"/>
-                                </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eKI-jl-ybl">
                                 <rect key="frame" x="174" y="324" width="20" height="20"/>
@@ -261,19 +251,17 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="eKI-jl-ybl" id="w2w-vN-PWx"/>
-                        <outlet property="augmentedButton" destination="hea-Nw-7j7" id="kiQ-GN-XJR"/>
-                        <outlet property="diminishedButton" destination="2oV-cp-skb" id="vsm-TC-i4Y"/>
-                        <outlet property="gClefButton" destination="lgS-Yx-sMo" id="cYm-Bf-hlt"/>
-                        <outlet property="lastScoresButton" destination="Cjy-oU-EsF" id="ERF-Vm-iFD"/>
-                        <outlet property="majorButton" destination="gTC-iN-ZAe" id="f4k-bY-Wa1"/>
-                        <outlet property="minorButton" destination="Cdc-cw-6rH" id="qNm-CA-fKg"/>
-                        <outlet property="playButton" destination="RJS-cr-DxR" id="zEp-3A-97S"/>
+                        <outlet property="augmentedButton" destination="hea-Nw-7j7" id="9lQ-1f-aFE"/>
+                        <outlet property="diminishedButton" destination="2oV-cp-skb" id="24A-kt-JSb"/>
+                        <outlet property="majorButton" destination="gTC-iN-ZAe" id="UbK-nX-JBs"/>
+                        <outlet property="minorButton" destination="Cdc-cw-6rH" id="yxu-IL-f1c"/>
+                        <outlet property="playButton" destination="RJS-cr-DxR" id="cy4-SK-Nkp"/>
                         <segue destination="Zyv-cz-aKV" kind="show" identifier="ir a game over" id="28q-Md-zoN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAt-zl-PJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217" y="-321"/>
+            <point key="canvasLocation" x="487" y="-321"/>
         </scene>
         <!--Gold View Controller-->
         <scene sceneID="Vy0-DG-5an">
@@ -312,46 +300,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yxy-Mx-mMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3601" y="-325"/>
+            <point key="canvasLocation" x="2204" y="-300"/>
         </scene>
-        <!--Plate View Controller-->
-        <scene sceneID="XRK-kr-025">
-            <objects>
-                <viewController id="0LF-QO-dam" customClass="PlateViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ing-jV-uS1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1g-Ve-LIX">
-                                <rect key="frame" x="66" y="62" width="243" height="267"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="plate" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tB6-91-VbZ">
-                                <rect key="frame" x="69" y="360" width="240" height="54"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="d5C-iY-Jcb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="tB6-91-VbZ" firstAttribute="trailing" secondItem="v1g-Ve-LIX" secondAttribute="trailing" id="2pT-Xy-h4m"/>
-                            <constraint firstItem="tB6-91-VbZ" firstAttribute="top" secondItem="v1g-Ve-LIX" secondAttribute="bottom" constant="31" id="VSd-vR-aDR"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="wCU-OO-hx7"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eI6-Fl-cZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2002" y="-325"/>
-        </scene>
-        <!--View Controller-->
+        <!--Third Screen View Controller-->
         <scene sceneID="ApQ-KN-myc">
             <objects>
-                <viewController id="L3I-Ik-qJG" sceneMemberID="viewController">
+                <viewController id="L3I-Ik-qJG" customClass="ThirdScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0TI-hm-mtl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -364,12 +318,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeB-0C-6Ki" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2799" y="-325"/>
+            <point key="canvasLocation" x="1410" y="-300"/>
         </scene>
     </scenes>
     <resources>
         <image name="down_arrow" width="97" height="69"/>
-        <image name="play_button" width="167" height="167"/>
+        <image name="play_button" width="168" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hij-Ow-kNq"/>

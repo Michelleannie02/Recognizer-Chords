@@ -21,7 +21,7 @@ extension FirebaseClient {
 	
 	struct MinorChords {
 		
-		static let refAcordesMenores = "m/Cm4_dens4.mp3"
+		static let refMinorChords = "m/Cm4_dens4.mp3"
 		static let items = ["m/Cm4_dens4.mp3","m/Em4_dens4.mp3","m/Gm4_dens4.mp3"]
 		
 	}
@@ -29,7 +29,7 @@ extension FirebaseClient {
 	// gs://recognizer-chords.appspot.com/d/Cdim4_dens4.mp3
 	struct DiminishedChords {
 		
-		static let refAcordesDisminuidos = "d/Cdim4_dens4.mp3"
+		static let refDiminishedChords = "d/Cdim4_dens4.mp3"
 		static let items = ["d/Cdim4_dens4.mp3", "d/Edim4_dens4.mp3", "d/Gdim4_dens4.mp3"]
 		
 		
@@ -38,7 +38,7 @@ extension FirebaseClient {
 	// gs://recognizer-chords.appspot.com/A/Caug4_dens4.mp3
 	struct AugmentedChords {
 		
-		static let refAcordesAumentados = "A/Caug4_dens4.mp3"
+		static let refAugmentedChords = "A/Caug4_dens4.mp3"
 		static let items = ["A/Caug4_dens4.mp3", "A/Eaug4_dens4.mp3", "A/Gaug4_dens4.mp3"]
 		
 		

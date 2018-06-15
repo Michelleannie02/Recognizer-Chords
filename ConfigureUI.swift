@@ -27,18 +27,18 @@ extension FirstScreenViewController {
 	// MARK: - User Interface
 	//*****************************************************************
 	
-	func setUI() {
+	func setUserInterface() {
 		
 		// en principio el indicador de actividad (networking) está oculto
 		activityIndicator.isHidden = true
 		
 		// en principio los botones de mayor y menor se encuentran deshabilitados
-		majorButton.isEnabled = true
+		majorButton.isEnabled = false
 		minorButton.isEnabled = false
 		
 		// las contenedores con información acerca de acordes y puntaje se encuentran ocultos
-		chordsInfo.isHidden = true
-		scoresInfo.isHidden = true
+//		chordsInfo.isHidden = true
+//		scoresInfo.isHidden = true
 		
 	}
 	
@@ -66,17 +66,20 @@ extension SecondScreenViewController {
 	// MARK: - User Interface
 	//*****************************************************************
 		
-	func setUI() {
+	func setUserInterface() {
 		
 		// en principio el indicador de actividad (networking) está oculto
 		activityIndicator.isHidden = true
 		
 		// en principio los botones de mayor y menor se encuentran deshabilitados
-		majorButton.isEnabled = false
-		minorButton.isEnabled = false
+		majorButton.isEnabled = true
+		minorButton.isEnabled = true
+		diminishedButton.isEnabled = true
+		augmentedButton.isEnabled = true
+	
 		
 		// las contenedores con información acerca de acordes y puntaje también
-		chordsInfo.isHidden = true
+//		chordsInfo.isHidden = true
 	
 	}
 		
