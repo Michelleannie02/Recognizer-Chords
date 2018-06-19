@@ -80,8 +80,7 @@ class FirstScreenViewController: UIViewController {
 	// indicator de actividad (networking)
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
-	
-	
+
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
