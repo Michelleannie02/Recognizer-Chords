@@ -21,7 +21,7 @@ class ScoresViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 
-	var collectionData = ["3", "4", "2"]
+	var collectionData = [String(FirstScreenViewController.protoPersistencia)]
 	
 	//*****************************************************************
 	// MARK: - IBOutlets

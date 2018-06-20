@@ -10,6 +10,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 /* Abstract:
 La primer pantalla de la aplicación. Contiene dos botones representando un acorde mayor y un acorde menor más un botón de play.
@@ -20,11 +21,7 @@ class FirstScreenViewController: UIViewController {
 	//*****************************************************************
 	// MARK: - Properties
 	//*****************************************************************
-	
-	// UI ELEMENTOS
-	// información desplegada del menú
-//	let chordsInfo = ChordsInfo()
-//	let scoresInfo = ScoresInfo()
+
 	
 	// la barra que me traje
 	let pointsBarView = PointsView()
@@ -45,9 +42,9 @@ class FirstScreenViewController: UIViewController {
 	
 	// los tipos de botones disponibles
 	// cada valor (tag) se corresponde con un tipo de botón diferente
-	enum chordButtonType: Int {
-		case major = 0, minor
-	}
+//	enum chordButtonType: Int {
+//		case major = 0, minor
+//	}
 	
 	// AUDIO ///////////////////////////////////////////////////////
 	// reproductor de audio
@@ -60,9 +57,9 @@ class FirstScreenViewController: UIViewController {
 	// PERSISTENCIA (scores) ///////////////////////////////////////////////
 	// TODO: core data!
 	
-	var protoPersistencia = Double() // luego borrar
+	static var protoPersistencia = Int() // luego borrar
 	
-	var savedScores: [Int] = []
+	static var savedScores: [Int] = []
 	
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -103,8 +100,72 @@ class FirstScreenViewController: UIViewController {
 		// un acorde mayor o uno menor
 		firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
-    }
+		startAnimating()
+		
+		destinationRequests()
+		
+		
+		
+	}
 	
+	/// task: comprobar el destino de la solicitudes realizadas y actuar en consecuencia
+	func destinationRequests() {
+		
+		
+		// major chord
+		firebase.requestMajorChord { (success, errorString) in
+			
+			performUIUpdatesOnMain {
+				
+				if success {
+					
+					/// stop animating
+					
+					self.stopAnimating()
+					
+				} else {
+					
+					/// alert view!
+					
+					self.displayAlertView(errorString)
+				}
+			}
+			
+			
+		}
+		
+		
+		// minor chord
+		firebase.requestMinorChord { (success, errorString) in
+			
+			performUIUpdatesOnMain {
+				
+				if success {
+					
+					/// stop animating
+					
+					self.stopAnimating()
+					
+				} else {
+					
+					/// alert view!
+					
+					self.displayAlertView(errorString)
+				}
+			}
+			
+			
+		}
+		
+		// diminished chord
+		
+		
+		
+		
+		// augmented chord
+		
+		
+	}
 	
 	
 	//*****************************************************************
@@ -177,14 +238,20 @@ class FirstScreenViewController: UIViewController {
 		// se visibiliza el indicator de actividad (networking)
 //		startAnimating() // REQUERIDO pero no lo pongo a propósito
 		
-		
+		destinationRequests()
 		
 		// la app se comporta dependiendo del desempeño del usuario
 		progressOrGameOver()
 		
+		
+		
+		// PERSISTENCIA 💿
 		// asigna el último socre a la variable ´protoPersistencia´
-		protoPersistencia = pointsBarView.currentValue // 👈
-		print("✔︎ Tu último score es de \(protoPersistencia)")
+		FirstScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
+		
+		// añade al array de scores el valor actual de aciertos
+		FirstScreenViewController.savedScores.append(Int(pointsBarView.currentValue))
+		print("✔︎ Tu último score es de \(FirstScreenViewController.protoPersistencia)")
 
 	}
 
@@ -215,6 +282,8 @@ class FirstScreenViewController: UIViewController {
 		// un acorde mayor o uno menor
 		firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
+		destinationRequests()
+		
 		
 		/// LÓGICA
 		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!...
@@ -223,6 +292,12 @@ class FirstScreenViewController: UIViewController {
 			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
+			
+			// se suma un punto al score
+			actualScore += 1
+			
+			// test
+			print("✏️ Ya acertaste \(actualScore)")
 			
 		} else {
 			// caso contrario...
@@ -236,17 +311,10 @@ class FirstScreenViewController: UIViewController {
 		progressOrGameOver()
 		
 
-		
-		// se visibiliza el indicator de actividad (networking)
-//		startAnimating() // REQUERIDO pero no lo pongo a propósito
-		
-		
-		
-
 		/// PESISTENCIA score
 		// asigna el último socre a la variable ´protoPersistencia´
-		protoPersistencia = pointsBarView.currentValue // 👈
-		print("✔︎ Tu último score es de \(protoPersistencia)")
+		FirstScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
+		print("✔︎ Tu último score es de \(FirstScreenViewController.protoPersistencia)")
 		
 	}
 	
@@ -309,18 +377,6 @@ class FirstScreenViewController: UIViewController {
 			minorButton.isEnabled = false
 			
 			
-//			// TODO: implementar blur effect
-//			// 1
-//			view.backgroundColor = .clear
-//			// 2
-//			let blurEffect = UIBlurEffect(style: .light)
-//			// 3
-//			let blurView = UIVisualEffectView(effect: blurEffect)
-//			// 4
-//			blurView.translatesAutoresizingMaskIntoConstraints = false
-//			view.insertSubview(blurView, at: 0)
-			
-			
 			
 			/// timer-diapasón (VER)
 //			// espera 8 segundos antes de navegar hacia la siguiente pantalla...
@@ -361,6 +417,7 @@ class FirstScreenViewController: UIViewController {
 			return true
 		}
 	
+	
 	/**
 	Muestra al usuario un mensaje acerca de porqué el sonido no suena.
 	
@@ -368,20 +425,31 @@ class FirstScreenViewController: UIViewController {
 	- Parameter message: El mensaje acerca del error.
 	
 	*/
-	func displayErrorAlert(_ title: String?, _ message: String?) {
+	func displayAlertView(_ error: String?) {
 		
-		// Reset UI
-		setUserInterface()
-		stopAnimating()
-		
-		// Display Error in Alert Controller
-		let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-		self.present(alert, animated: true, completion: nil)
+		if error != nil {
+			
+			let alertController = UIAlertController(title: "Request Error", message: error, preferredStyle: .alert)
+			
+			let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+				
+			}
+			alertController.addAction(cancelAction)
+			
+			let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+				
+			}
+			alertController.addAction(OKAction)
+			
+			self.present(alertController, animated: true) {
+				
+			}
+		}
 	}
 		
 
 } // end class
+
 
 
 //*****************************************************************
@@ -389,19 +457,19 @@ class FirstScreenViewController: UIViewController {
 //*****************************************************************
 
 extension FirstScreenViewController {
-	
+
 	// task: enviar a 'PhotoAlbumViewController' una serie de datos
 	override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
-		
+
 		if segue.identifier == "score first screen" {
-			
-			// el destino de la transición, el 'PhotosAlbumViewController'
-			let secondScreenVC = segue.destination as! SecondScreenViewController
-			
+
+//			// el destino de la transición, el 'PhotosAlbumViewController'
+//			let secondScreenVC = segue.destination as! SecondScreenViewController
+//
 //			// el remitente será una coordenada (pin) puesto sobre el mapa
 //			let coord = sender as! CLLocationCoordinate2D
-			
-			
+//
+//
 //			// le pasa a 'PhotoAlbumViewController' los siguientes datos: ///////////////////////////////
 //
 //			/*
@@ -422,11 +490,13 @@ extension FirstScreenViewController {
 //
 //			// y pasa las fotos recibidas desde flickr
 //			photoAlbumVC.flickrPhotos = flickrPhotos
-			
-			secondScreenVC.scoreFirstScreen = protoPersistencia
-			
+
+			//secondScreenVC.scoreFirstScreen = protoPersistencia
+
 		} // end if
-		
+
 	} // end func
 
 } // end ext
+
+

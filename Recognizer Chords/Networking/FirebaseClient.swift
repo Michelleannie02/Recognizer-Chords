@@ -33,17 +33,20 @@ class FirebaseClient: NSObject {
 	
 	// los datos de audio del acorde obtenido
 	static var dataChord = Data()
+	
 	// el nombre del acorde elegido
 	static var aChordSounded: String? = ""
 	
-//	let firstScreenVC = FirstScreenViewController()
+	// guarda el acorde mayor elegido para luego realizar la solicitud
+	static var saveMajorChord = StorageReference()
+	
 	
 	//*****************************************************************
 	// MARK: - Networking Methods
 	//*****************************************************************
 	
 	/**
-	Prepara el acorde que va a sonar cuando el usuario presione 'play'.
+	Prepara el acorde que va a sonar cuando el usuario presione 'play' tanto en la primera como en la segunda pantalla.
 	
 	- parameter firstScreen: el controlador de la primer pantalla.
 	- parameter secondScreen: el controlador de la segunda pantalla.
@@ -66,7 +69,7 @@ class FirebaseClient: NSObject {
 			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
 			FirebaseClient.aChordSounded = chordChosen
 			
-						print("😂 el acorde que va a sonar es... \(FirebaseClient.aChordSounded)")
+			print("😂 el acorde que va a sonar es... \(FirebaseClient.aChordSounded)")
 			
 			// ejecuta un caso u otro dependiendo del tipo del acorde elegido
 			switch chordChosen {
@@ -122,7 +125,6 @@ class FirebaseClient: NSObject {
 	} // end func
 	
 	
-	/// task: realizar la solicitud a firebase para traer los datos del acorde aleatoriamente elegido
 	/**
 	Realiza la solicitud a Firebase DEPENDIENDO de los datos que recibe el método en sus parámetros.
 	
@@ -145,7 +147,9 @@ class FirebaseClient: NSObject {
 					  refDiminishedChords: String? = nil,
 					  diminishedChords: [String]? = nil,
 					  refAugmentedChords: String? = nil,
-					  augmentedChords: [String]? = nil) {
+					  augmentedChords: [String]? = nil ) {
+		
+		
 		
 		
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
@@ -164,11 +168,13 @@ class FirebaseClient: NSObject {
 			// 3 - raconta los datos para realizar la solicitud ------------------------------------
 			
 			// a - crea una referencia con un archivo inicial que contiene el path y el nombre
-			let pathReference = storage.reference(withPath: (MajorChords.refMajorChords))
+			_ = storage.reference(withPath: (MajorChords.refMajorChords))
 			
 			// b - crea una nueva referencia HIJA de la referencia anterior (para que sea la referencia del archivo que se quiere descargar)
 			// y 'revuelve' y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
 			let majorChords = gsReference.child((MajorChords.items.randomElement())!)
+			
+			FirebaseClient.saveMajorChord = majorChords
 			
 			// test
 			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes mayores. De los acordes mayores se obtuvieron los datos de este específicamente: 👏 \(majorChords.name)")
@@ -183,48 +189,49 @@ class FirebaseClient: NSObject {
 			
 			
 			
-			// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
-
-			// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
-			majorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
-				
-				// b - comprueba si ocurrió un error en la solicitud
-				if let error = error {
-					
-					// Uh-oh, an error occurred!
-					print(error.localizedDescription)
-					// TODO: implementar un alert view en caso de que la solicitud web haya fallado
-				}
-				
-				// c - comprueba si se obtuvieron los datos correctamente...y si se así
-				if let data =  data {
-					
-					
-					// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-					FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
-					
-					// si la solicitud fue exitosa, entonces detener el indicator de actividad
-					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
-					
-		
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-				}
-			}
+//			// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
+//
+//			// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
+//			majorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//
+//				// b - comprueba si ocurrió un error en la solicitud
+//				if let error = error {
+//
+//					// Uh-oh, an error occurred!
+//					print(error.localizedDescription)
+//					// TODO: implementar un alert view en caso de que la solicitud web haya fallado
+//				}
+//
+//				// c - comprueba si se obtuvieron los datos correctamente...y si se así
+//				if let data =  data {
+//
+//
+//					// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+//					FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
+//
+//					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+//					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
+//
+//					// detener la animación del indicador de actividad
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//				}
+//			}
 		}
 	
 		////////////////////////////////
@@ -317,6 +324,101 @@ class FirebaseClient: NSObject {
 	
 	} // end func
 
+	
+	func requestMajorChord (_ completionHandlerForMajorChord: @escaping ( _ success: Bool, _  errorString: String?) -> Void) {
+		
+		
+		// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
+		
+		// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
+		FirebaseClient.saveMajorChord.getData(maxSize: 1 * 1024 * 1024) { data, error in
+		
+		
+			// b - comprueba si se obtuvieron los datos correctamente...y si se así
+			if let data =  data {
+				
+				
+				// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+				FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
+				
+				// si la solicitud fue exitosa, entonces detener el indicator de actividad
+				print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
+				
+				// detener la animación del indicador de actividad
+				
+				// le envía al completion handler la información de que la solicitud fue exitosa
+				completionHandlerForMajorChord(true, nil)
+		
+				
+			}
+			
+		
+			
+			// c - comprueba si ocurrió un error en la solicitud
+			if let error = error {
+				
+				// Uh-oh, an error occurred!
+				print(error.localizedDescription)
+				// TODO: implementar un alert view en caso de que la solicitud web haya fallado
+				
+				// le envía al completion handler la información de que la solicitud falló
+				completionHandlerForMajorChord(false, "error")
+			}
+	
+		}
+		
+	} // end func
+	
+	
+	func requestMinorChord (_ completionHandlerForMinorChord: @escaping ( _ success: Bool, _  errorString: String?) -> Void) {
+		
+		
+		// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
+		
+		// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
+		FirebaseClient.saveMajorChord.getData(maxSize: 1 * 1024 * 1024) { data, error in
+			
+			
+			// b - comprueba si se obtuvieron los datos correctamente...y si se así
+			if let data =  data {
+				
+				
+				// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+				FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
+				
+				// si la solicitud fue exitosa, entonces detener el indicator de actividad
+				print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
+				
+				// detener la animación del indicador de actividad
+				
+				// le envía al completion handler la información de que la solicitud fue exitosa
+				completionHandlerForMinorChord(true, nil)
+				
+				
+			}
+			
+			
+			// c - comprueba si ocurrió un error en la solicitud
+			if let error = error {
+				
+				// Uh-oh, an error occurred!
+				print(error.localizedDescription)
+				// TODO: implementar un alert view en caso de que la solicitud web haya fallado
+				
+				// le envía al completion handler la información de que la solicitud falló
+				completionHandlerForMinorChord(false, "error")
+			}
+			
+		}
+		
+	} // end func
+	
+		
+		
+		
+		
+		
+		
 
 	
 } // end class
