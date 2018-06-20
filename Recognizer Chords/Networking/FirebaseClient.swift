@@ -33,6 +33,10 @@ class FirebaseClient: NSObject {
 	
 	// los datos de audio del acorde obtenido
 	static var dataChord = Data()
+	// el nombre del acorde elegido
+	static var aChordSounded: String? = ""
+	
+//	let firstScreenVC = FirstScreenViewController()
 	
 	//*****************************************************************
 	// MARK: - Networking Methods
@@ -41,12 +45,11 @@ class FirebaseClient: NSObject {
 	/**
 	Prepara el acorde que va a sonar cuando el usuario presione 'play'.
 	
-	- parameter firstScreen: los parámetros que irán en el cuerpo de la solicitud 'POSTing a Session'.
-	- parameter secondScreen: comprueba si el encadenamiento de solicitudes ha sido exitoso o no.
-	- parameter thirdScreen: comprueba si el encadenamiento de solicitudes ha sido exitoso o no.
+	- parameter firstScreen: el controlador de la primer pantalla.
+	- parameter secondScreen: el controlador de la segunda pantalla.
 
 	*/
-	func setupChord(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController? = nil, thirdScreen: ThirdScreenViewController? = nil) {
+	func setupChord(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController? = nil) {
 		
 		
 		// 1er pantalla /////////////////////////////////////////////
@@ -55,20 +58,23 @@ class FirebaseClient: NSObject {
 		if firstScreen?.title == "1" {
 			
 			// los tipos de acordes disponibles en esta pantalla
-			let tiposAcordes = ["mayor", "menor"]
+			let typeChords = ["major", "minor"]
 
 			// elige entre un acorde mayor o menor aleatoriamente
-			let acordeElegido = tiposAcordes.randomElement()
+			let chordChosen = typeChords.randomElement()
 			
-			print("😂 EL ACORDE ELEGIDO ES \(acordeElegido)")
+			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
+			FirebaseClient.aChordSounded = chordChosen
+			
+						print("😂 el acorde que va a sonar es... \(FirebaseClient.aChordSounded)")
 			
 			// ejecuta un caso u otro dependiendo del tipo del acorde elegido
-			switch acordeElegido {
+			switch chordChosen {
 
-			case "mayor":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMayores: MajorChords.refMajorChords, acordesMayores: MajorChords.items)
-			case "menor":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMenores: MinorChords.refAcordesMenores, acordesMenores: MinorChords.items)
+			case "major":
+				chordRequest(gsRef: FirebaseClient.gsRef, refMajorChords: MajorChords.refMajorChords, majorChords: MajorChords.items)
+			case "minor":
+				chordRequest(gsRef: FirebaseClient.gsRef, refMinorChords: MinorChords.refMinorChords, minorChords: MinorChords.items)
 			default:
 				print("")
 			}
@@ -81,41 +87,35 @@ class FirebaseClient: NSObject {
 
 			
 			// los acordes disponibles
-			let tiposAcordes = ["mayor", "menor", "disminuido", "aumentado"]
+			let typeChords = ["major", "minor", "diminished", "augmented"]
 			
 			// elige entre un acorde mayor, menor, dismunuido o aumentado aleatoriamente
-			let acordeElegido = tiposAcordes.randomElement()
+			let chordChosen = typeChords.randomElement()
+			
+			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
+			FirebaseClient.aChordSounded = chordChosen
+			print("😂 el acorde que va a sonar es... \(FirebaseClient.aChordSounded)")
 			
 			// ejecuta un caso u otro dependiendo del tipo del acorde elegido
-			switch acordeElegido {
+			switch chordChosen {
 
-			case "mayor":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMayores: MajorChords.refMajorChords, acordesMayores: MajorChords.items)
+			case "major":
+				chordRequest(gsRef: FirebaseClient.gsRef, refMajorChords: MajorChords.refMajorChords, majorChords: MajorChords.items)
 
-			case "menor":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesMenores: MinorChords.refAcordesMenores, acordesMenores: MinorChords.items)
+			case "minor":
+				chordRequest(gsRef: FirebaseClient.gsRef, refMinorChords: MinorChords.refMinorChords, minorChords: MinorChords.items)
 
-			case "disminuido":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesDisminuidos: DiminishedChords.refAcordesDisminuidos, acordesDisminuidos: DiminishedChords.items)
+			case "diminished":
+				chordRequest(gsRef: FirebaseClient.gsRef, refDiminishedChords: DiminishedChords.refDiminishedChords, diminishedChords: DiminishedChords.items)
 
-			case "aumentados":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAcordesAumentados: AugmentedChords.refAcordesAumentados, acordesAumentados: AugmentedChords.items)
+			case "augmented":
+				chordRequest(gsRef: FirebaseClient.gsRef, refAugmentedChords: AugmentedChords.refAugmentedChords, augmentedChords: AugmentedChords.items)
 
 			default:
 				print("")
 			}
 
-			
-		// 3er pantalla ///////////////////////////////////////////////
 		
-		// si 'setupChords' es llamado desde la 3er pantalla ejectua la siguiente pieza...
-		} else if thirdScreen?.title == "3" {
-
-
-			let tiposAcordes = ["mayor", "menor", "disminuido", "aumentado", "etc"]
-
-			let acordeElegido = tiposAcordes.randomElement()
-			
 		}
 
 		
@@ -138,14 +138,14 @@ class FirebaseClient: NSObject {
 	
 	*/
 	func chordRequest(gsRef: String,
-					  refAcordesMayores: String? = nil,
-					  acordesMayores: [String]? = nil,
-					  refAcordesMenores: String? = nil,
-					  acordesMenores: [String]? = nil,
-					  refAcordesDisminuidos: String? = nil,
-					  acordesDisminuidos: [String]? = nil,
-					  refAcordesAumentados: String? = nil,
-					  acordesAumentados: [String]? = nil) {
+					  refMajorChords: String? = nil,
+					  majorChords: [String]? = nil,
+					  refMinorChords: String? = nil,
+					  minorChords: [String]? = nil,
+					  refDiminishedChords: String? = nil,
+					  diminishedChords: [String]? = nil,
+					  refAugmentedChords: String? = nil,
+					  augmentedChords: [String]? = nil) {
 		
 		
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
@@ -155,13 +155,11 @@ class FirebaseClient: NSObject {
 		let gsReference = storage.reference(forURL: gsRef)
 		
 		
-		
-		
 		////////////////////////////////
 		/// si salió un acorde MAYOR ///
 		////////////////////////////////
 		
-		if refAcordesMayores != nil {
+		if refMajorChords != nil {
 			
 			// 3 - raconta los datos para realizar la solicitud ------------------------------------
 			
@@ -173,7 +171,17 @@ class FirebaseClient: NSObject {
 			let majorChords = gsReference.child((MajorChords.items.randomElement())!)
 			
 			// test
-			print("🥋 se está ejecutando la rama que contiene tres acordes mayores. De los acordes mayores se obtuvieron los datos de este específicamente: \(majorChords.name)")
+			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes mayores. De los acordes mayores se obtuvieron los datos de este específicamente: 👏 \(majorChords.name)")
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
 
@@ -192,16 +200,29 @@ class FirebaseClient: NSObject {
 				if let data =  data {
 					
 					
-					
-					
-					
 					// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 					FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
-				
-				
-				
-				
-				
+					
+					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
+					
+		
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				}
 			}
 		}
@@ -210,22 +231,27 @@ class FirebaseClient: NSObject {
 		/// si salió un acorde MENOR ///
 		////////////////////////////////
 		
-		else if refAcordesMenores != nil {
+		else if refMinorChords != nil {
 
-			let pathReference = storage.reference(withPath: (MinorChords.refAcordesMenores))
-			let acordesMenores = gsReference.child((MinorChords.items.randomElement())!)
+			let pathReference = storage.reference(withPath: (MinorChords.refMinorChords))
+			let minorChords = gsReference.child((MinorChords.items.randomElement())!)
 			
 			// test
-			print("🥋 se está ejecutando la rama que contiene tres acordes menores. De los acordes menores se obtuvieron los datos de este específicamente: \(acordesMenores.name)")
+			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes menores. De los acordes menores se obtuvieron los datos de este específicamente: 👏 \(minorChords.name)")
 			
-			acordesMenores.getData(maxSize: 1 * 1024 * 1024) { data, error in
+			minorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
 				if let error = error {
-					
+//					
 					print(error.localizedDescription)
 				}
 				
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
+					
+					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+					print("Los datos de audio del acorde se obtuvieron, parar el indicador de actividad. Los datos son: \(data)")
+					
+					
 				}
 			}
 		}
@@ -235,11 +261,15 @@ class FirebaseClient: NSObject {
 		/// si salió un acorde DISMINUÍDO ///
 		/////////////////////////////////////
 		
-		else if refAcordesDisminuidos != nil {
+		else if refDiminishedChords != nil {
 			
-			let pathReference = storage.reference(withPath: (DiminishedChords.refAcordesDisminuidos))
-			let acordesDisminuidos = gsReference.child((DiminishedChords.items.randomElement())!)
-			acordesDisminuidos.getData(maxSize: 1 * 1024 * 1024) { data, error in
+			let pathReference = storage.reference(withPath: (DiminishedChords.refDiminishedChords))
+			let diminishedChords = gsReference.child((DiminishedChords.items.randomElement())!)
+			
+			// test
+			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes disminuidos. De los acordes disminuidos se obtuvieron los datos de este específicamente: 👏 \(diminishedChords.name)")
+			
+			diminishedChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
 				
 				if let error = error {
 					print(error.localizedDescription)
@@ -247,6 +277,9 @@ class FirebaseClient: NSObject {
 				
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
+					
+					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
 				}
 			}
 		}
@@ -256,17 +289,27 @@ class FirebaseClient: NSObject {
 		/// si salió un acorde AUMENTADO ///
 		////////////////////////////////////
 		
-		else if refAcordesAumentados != nil {
+		else if refAugmentedChords != nil {
 			
-			let pathReference = storage.reference(withPath: (AugmentedChords.refAcordesAumentados))
-			let acordesAumentados = gsReference.child((AugmentedChords.items.randomElement())!)
-			acordesAumentados.getData(maxSize: 1 * 1024 * 1024) { data, error in
+			let pathReference = storage.reference(withPath: (AugmentedChords.refAugmentedChords))
+			let augmentedChords = gsReference.child((AugmentedChords.items.randomElement())!)
+			
+			// test
+			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes aumentados. De los acordes aumentados se obtuvieron los datos de este específicamente: 👏 \(augmentedChords.name)")
+			
+			
+			augmentedChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
+				
 				if let error = error {
 					print(error.localizedDescription)
+					
 				}
 				
 				if let data =  data {
 					FirebaseClient.dataChord = data // 👈
+					
+					// si la solicitud fue exitosa, entonces detener el indicator de actividad
+					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
 				}
 			}
 		}

@@ -71,8 +71,8 @@ class SecondScreenViewController: UIViewController {
 	/// menú superior ////////////////////////////////////////////////
 	
 	// los íconos de la barra de menú
-//	@IBOutlet weak var gClefButton: UIButton!
-//	@IBOutlet weak var lastScoresButton: UIButton!
+	@IBOutlet weak var chordsInfoButton: UIButton!
+	@IBOutlet weak var lastScoresButton: UIButton!
 
 	
 	/// botones ////////////////////////////////////////////////

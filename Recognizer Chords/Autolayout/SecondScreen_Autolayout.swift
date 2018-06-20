@@ -49,7 +49,7 @@ extension SecondScreenViewController {
 		// definiendo los stack views
 		
 		// TOP ////////////////////////////////////////////////////////////////
-		let topStackView = UIStackView(arrangedSubviews: [])
+		let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton])
 		
 		
 		// CENTER //////////////////////////////////////////////////////////////
