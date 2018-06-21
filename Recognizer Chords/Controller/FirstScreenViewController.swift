@@ -52,7 +52,7 @@ class FirstScreenViewController: UIViewController {
 
 	
 	// NETWORKING //////////////////////////////////////////////////
-	let firebase = FirebaseClient()
+//	let firebase = FirebaseClient()
 	
 	// PERSISTENCIA (scores) ///////////////////////////////////////////////
 	// TODO: core data!
@@ -98,107 +98,45 @@ class FirstScreenViewController: UIViewController {
 		/// newtorking - request data audio chord 🚀
 		// prepara el primer acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: self, secondScreen: nil)
+		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
+		
+		FirebaseClient.sharedInstance().chordRequest { (success, errorString) in
+
+			print("HOLAAAAAAAAAAA")
+
+			if success {
+			print("LA SOLICITUD FUE EXITOSA!!!!\(success)")
+
+
+			} else {
+
+				print("ALGO")
+			}
+
+		}
+		
+
 		
 		startAnimating()
 		
-		destinationRequests()
-		
-		
-		
-	}
-	
-	/// task: comprobar el destino de la solicitudes realizadas y actuar en consecuencia
-	func destinationRequests() {
-		
-		
-		// major chord
-		firebase.requestMajorChord { (success, errorString) in
-			
-			performUIUpdatesOnMain {
-				
-				if success {
-					
-					/// stop animating
-					
-					self.stopAnimating()
-					
-				} else {
-					
-					/// alert view!
-					
-					self.displayAlertView(errorString)
-				}
-			}
-			
-			
-		}
-		
-		
-		// minor chord
-		firebase.requestMinorChord { (success, errorString) in
-			
-			performUIUpdatesOnMain {
-				
-				if success {
-					
-					/// stop animating
-					
-					self.stopAnimating()
-					
-				} else {
-					
-					/// alert view!
-					
-					self.displayAlertView(errorString)
-				}
-			}
-			
-			
-		}
-		
-		// diminished chord
-		
-		
-		
-		
-		// augmented chord
 		
 		
 	}
 	
+	
+	
+
 	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
 	
-	
-	// Chords Button
-	
-	//	@IBAction func playChordsButton(_ sender: UIButton) {
-	//
-	//		switch(chordButtonType(rawValue: sender.tag)!) {
-	//		case .major:
-	//			playSound(rate: 0.5)
-	//		case .minor:
-	//			playSound(rate: 1.5)
-	//		case .diminished:
-	//			playSound(rate: 1000)
-	//		case .augmented:
-	//			playSound(rate: -1000)
-	//		}
-	//
-	//
-	//	}
-	
-	
-
-	
 	// Major, Minor & Play Buttons
 	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
+		
 
 		// test
 		print("🎱 el botón de mayor fue presionado")
@@ -234,11 +172,11 @@ class FirstScreenViewController: UIViewController {
 		// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: self, secondScreen: nil)
+		//firebase.setupChord(firstScreen: self, secondScreen: nil)
 		// se visibiliza el indicator de actividad (networking)
 //		startAnimating() // REQUERIDO pero no lo pongo a propósito
 		
-		destinationRequests()
+		//destinationRequests()
 		
 		// la app se comporta dependiendo del desempeño del usuario
 		progressOrGameOver()
@@ -280,9 +218,9 @@ class FirstScreenViewController: UIViewController {
 		/// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: self, secondScreen: nil)
+		//firebase.setupChord(firstScreen: self, secondScreen: nil)
 		
-		destinationRequests()
+		//destinationRequests()
 		
 		
 		/// LÓGICA
@@ -320,6 +258,7 @@ class FirstScreenViewController: UIViewController {
 	
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
+		
 		
 		majorButton.isEnabled = true
 		print("🤼‍♀️ el boton mayor esta habilitado? \(majorButton.isEnabled)")

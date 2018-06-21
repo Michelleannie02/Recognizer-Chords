@@ -119,7 +119,7 @@ class SecondScreenViewController: UIViewController {
 		/// newtorking - request data audio chord 🚀
 		// prepara el primer acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		//firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
 	}
 	
@@ -232,7 +232,7 @@ class SecondScreenViewController: UIViewController {
 		// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		//firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
 
 		/// PERSISTENCIA score
@@ -287,7 +287,7 @@ class SecondScreenViewController: UIViewController {
 		// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		//firebase.setupChord(firstScreen: nil, secondScreen: self)
 
 		
 		/// PERSISTENCIA score
@@ -323,7 +323,7 @@ class SecondScreenViewController: UIViewController {
 		/// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		//firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
 		
 		/// LÓGICA
@@ -369,7 +369,7 @@ class SecondScreenViewController: UIViewController {
 		/// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		firebase.setupChord(firstScreen: nil, secondScreen: self)
+		//firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
 		/// LÓGICA
 		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!

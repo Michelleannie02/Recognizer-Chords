@@ -9,7 +9,7 @@ import Foundation
 
 extension FirebaseClient {
 	
-	static let gsRef = "gs://recognizer-chords.appspot.com/"
+	static let gsRef = "gs://recognizer-chords.appspot.com/" // SIEMPRE ES EL MISMO VALOR, PARA QUE PASARLO?????
 	
 	struct MajorChords {
 		

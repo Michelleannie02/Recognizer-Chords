@@ -37,8 +37,6 @@ class FirebaseClient: NSObject {
 	// el nombre del acorde elegido
 	static var aChordSounded: String? = ""
 	
-	// guarda el acorde mayor elegido para luego realizar la solicitud
-	static var saveMajorChord = StorageReference()
 	
 	
 	//*****************************************************************
@@ -53,82 +51,85 @@ class FirebaseClient: NSObject {
 
 	*/
 	func setupChord(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController? = nil) {
-		
-		
+
+
 		// 1er pantalla /////////////////////////////////////////////
-		
+
 		// si 'setupChords' es llamado desde la 1er pantalla ejectua la siguiente pieza...
 		if firstScreen?.title == "1" {
 			
 			// los tipos de acordes disponibles en esta pantalla
 			let typeChords = ["major", "minor"]
+			
 
 			// elige entre un acorde mayor o menor aleatoriamente
 			let chordChosen = typeChords.randomElement()
 			
+			// test
+			print("EL ACORDE ELEGIDO ENTRE MAYOR Y MENOR ES \(chordChosen)")
+
 			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
 			FirebaseClient.aChordSounded = chordChosen
-			
-			print("😂 el acorde que va a sonar es... \(FirebaseClient.aChordSounded)")
-			
+
+
 			// ejecuta un caso u otro dependiendo del tipo del acorde elegido
 			switch chordChosen {
 
 			case "major":
-				chordRequest(gsRef: FirebaseClient.gsRef, refMajorChords: MajorChords.refMajorChords, majorChords: MajorChords.items)
+				chordRequest(refMajorChords: MajorChords.refMajorChords, majorChords: MajorChords.items, completionHandlerForAudioData: {(success, errorString) in })
+
 			case "minor":
-				chordRequest(gsRef: FirebaseClient.gsRef, refMinorChords: MinorChords.refMinorChords, minorChords: MinorChords.items)
+				chordRequest(refMinorChords: MinorChords.refMinorChords, minorChords: MinorChords.items, completionHandlerForAudioData: {(success, errorString) in })
+
 			default:
 				print("")
 			}
 
-			
+
 		// 2da pantalla /////////////////////////////////////////////
-		
+
 		// si 'setupChords' es llamado desde la 2da pantalla ejectua la siguiente pieza...
 		} else if secondScreen?.title == "2" {
 
-			
+
 			// los acordes disponibles
 			let typeChords = ["major", "minor", "diminished", "augmented"]
-			
+
 			// elige entre un acorde mayor, menor, dismunuido o aumentado aleatoriamente
 			let chordChosen = typeChords.randomElement()
-			
+
 			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
 			FirebaseClient.aChordSounded = chordChosen
-			print("😂 el acorde que va a sonar es... \(FirebaseClient.aChordSounded)")
-			
-			// ejecuta un caso u otro dependiendo del tipo del acorde elegido
+
+			// ejecuta un caso u otro dependiendo del tipo del acorde elegido aleatoriamente
 			switch chordChosen {
 
 			case "major":
-				chordRequest(gsRef: FirebaseClient.gsRef, refMajorChords: MajorChords.refMajorChords, majorChords: MajorChords.items)
+				chordRequest(refMajorChords: MajorChords.refMajorChords, majorChords: MajorChords.items, completionHandlerForAudioData: {(success, errorString) in })
 
 			case "minor":
-				chordRequest(gsRef: FirebaseClient.gsRef, refMinorChords: MinorChords.refMinorChords, minorChords: MinorChords.items)
+				chordRequest(refMinorChords: MinorChords.refMinorChords, minorChords: MinorChords.items, completionHandlerForAudioData: {(success, errorString) in })
 
 			case "diminished":
-				chordRequest(gsRef: FirebaseClient.gsRef, refDiminishedChords: DiminishedChords.refDiminishedChords, diminishedChords: DiminishedChords.items)
+				chordRequest(refDiminishedChords: DiminishedChords.refDiminishedChords, diminishedChords: DiminishedChords.items, completionHandlerForAudioData: {(success, errorString) in })
 
 			case "augmented":
-				chordRequest(gsRef: FirebaseClient.gsRef, refAugmentedChords: AugmentedChords.refAugmentedChords, augmentedChords: AugmentedChords.items)
+				chordRequest(refAugmentedChords: AugmentedChords.refAugmentedChords, augmentedChords: AugmentedChords.items, completionHandlerForAudioData: {(success, errorString) in })
 
 			default:
 				print("")
 			}
 
-		
+
 		}
 
-		
+
 	} // end func
 	
 	
 	/**
 	Realiza la solicitud a Firebase DEPENDIENDO de los datos que recibe el método en sus parámetros.
 	
-	- parameter gsRef: la ubicación del almacenamiento.
 	- parameter refAcordesMayores: la referencia a los acordes mayores.
 	- parameter acordesMayores: los acordes mayores contenidos en esa referencia.
 	- parameter refAcordesMenores: la referencia a los acordes menores.
@@ -137,33 +138,37 @@ class FirebaseClient: NSObject {
 	- parameter acordesDisminuidos: los acordes disminiuídos contenidos en esa referencia.
 	- parameter refAcordesAumentados:la referencia a los acordes aumentados.
 	- parameter acordesAumentados: los acordes aumentados contenidos en esa referencia.
+	- parameter completionHandlerForAudioData: comprueba si la solicitud web fue exitosa o no.
 	
 	*/
-	func chordRequest(gsRef: String,
-					  refMajorChords: String? = nil,
-					  majorChords: [String]? = nil,
-					  refMinorChords: String? = nil,
-					  minorChords: [String]? = nil,
-					  refDiminishedChords: String? = nil,
-					  diminishedChords: [String]? = nil,
-					  refAugmentedChords: String? = nil,
-					  augmentedChords: [String]? = nil ) {
+	func chordRequest(refMajorChords: String? = nil,
+							 majorChords: [String]? = nil,
+							 refMinorChords: String? = nil,
+							 minorChords: [String]? = nil,
+							 refDiminishedChords: String? = nil,
+							 diminishedChords: [String]? = nil,
+							 refAugmentedChords: String? = nil,
+							 augmentedChords: [String]? = nil,
+							 completionHandlerForAudioData: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 		
-		
-		
+
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
-		let gsReference = storage.reference(forURL: gsRef)
+		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" ) // 👈 VER ESTO!!!!!!!!!!!
 		
 		
+
 		////////////////////////////////
 		/// si salió un acorde MAYOR ///
 		////////////////////////////////
 		
 		if refMajorChords != nil {
+			
+			// test
+			print("SE ESTA EJECUTANDO LA RAMA DE ACORDES MAYORES")
 			
 			// 3 - raconta los datos para realizar la solicitud ------------------------------------
 			
@@ -174,64 +179,68 @@ class FirebaseClient: NSObject {
 			// y 'revuelve' y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
 			let majorChords = gsReference.child((MajorChords.items.randomElement())!)
 			
-			FirebaseClient.saveMajorChord = majorChords
 			
-			// test
-			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes mayores. De los acordes mayores se obtuvieron los datos de este específicamente: 👏 \(majorChords.name)")
-			
-		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-//			// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
-//
-//			// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
-//			majorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
-//
-//				// b - comprueba si ocurrió un error en la solicitud
+			// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
+
+			// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
+			majorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
+				
+				
+				
+//				// summary key
 //				if let error = error {
+//					print(error)
+//					completionHandlerForGetSummaryInfo(false, nil, "error")
 //
-//					// Uh-oh, an error occurred!
-//					print(error.localizedDescription)
-//					// TODO: implementar un alert view en caso de que la solicitud web haya fallado
+//				} else {
+//					if let summary = currently [Constants.JSONKeys.Summary] as? String {
+//						completionHandlerForGetSummaryInfo(true, summary, nil)
+//
+//						print("sssss\(summary)")
+//					} else {
+//						print("no se encontró el valor ´summary´")
+//						completionHandlerForGetSummaryInfo(false, nil, "error")
+//					}
 //				}
-//
-//				// c - comprueba si se obtuvieron los datos correctamente...y si se así
-//				if let data =  data {
-//
-//
-//					// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-//					FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
-//
-//					// si la solicitud fue exitosa, entonces detener el indicator de actividad
-//					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
-//
-//					// detener la animación del indicador de actividad
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//				}
-//			}
+
+				
+
+
+
+
+				
+				
+				// b - esta rama comprueba si ocurrió un error en la solicitud
+				if let error = error {
+					
+					// c - informa al completion handler que la solicitud falló
+					completionHandlerForAudioData(false, error.localizedDescription)
+				
+				} else {
+					
+					
+					// b - esta rama comprueba si se obtuvieron los datos correctamente...y si se así
+					if let data = data {
+						
+						
+						
+						// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+						FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
+						
+						//test
+						print("LOS DATOS OBTENIDOS EL ACORDE MAYOR SON: \(data)")
+						
+						// d - informa al completion handler que la solicitud fue exitiosa!
+						completionHandlerForAudioData(true, nil)
+						
+					}
+					
+					
+					
+				}
+
+				
+			}
 		}
 	
 		////////////////////////////////
@@ -239,27 +248,50 @@ class FirebaseClient: NSObject {
 		////////////////////////////////
 		
 		else if refMinorChords != nil {
+			
+			
+			// test
+			print("SE ESTA EJECUTANDO LA RAMA DE ACORDES MENORES")
+			
 
 			let pathReference = storage.reference(withPath: (MinorChords.refMinorChords))
 			let minorChords = gsReference.child((MinorChords.items.randomElement())!)
 			
-			// test
-			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes menores. De los acordes menores se obtuvieron los datos de este específicamente: 👏 \(minorChords.name)")
 			
 			minorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
+			
+				
+				
+				
+				// or error
 				if let error = error {
-//					
-					print(error.localizedDescription)
+					
+					completionHandlerForAudioData(false, error.localizedDescription)
+				} else {
+					
+					
+					
+					// success
+					if let data = data {
+						
+						//test
+						print("LOS DATOS OBTENIDOS EL ACORDE menor SON: \(data)")
+						
+						FirebaseClient.dataChord = data // 👈
+						
+						completionHandlerForAudioData(true, nil)
+						
+						
+						
+					}
+					
+					
+					
+					
+					
 				}
 				
-				if let data =  data {
-					FirebaseClient.dataChord = data // 👈
-					
-					// si la solicitud fue exitosa, entonces detener el indicator de actividad
-					print("Los datos de audio del acorde se obtuvieron, parar el indicador de actividad. Los datos son: \(data)")
-					
-					
-				}
+				
 			}
 		}
 		
@@ -272,23 +304,32 @@ class FirebaseClient: NSObject {
 			
 			let pathReference = storage.reference(withPath: (DiminishedChords.refDiminishedChords))
 			let diminishedChords = gsReference.child((DiminishedChords.items.randomElement())!)
-			
-			// test
-			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes disminuidos. De los acordes disminuidos se obtuvieron los datos de este específicamente: 👏 \(diminishedChords.name)")
+
 			
 			diminishedChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
 				
-				if let error = error {
-					print(error.localizedDescription)
-				}
-				
+				// success
 				if let data =  data {
+					
 					FirebaseClient.dataChord = data // 👈
 					
-					// si la solicitud fue exitosa, entonces detener el indicator de actividad
-					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
+					completionHandlerForAudioData(true, nil)
+					
+					
 				}
+				
+				// or error
+				if let error = error {
+					
+					completionHandlerForAudioData(false, error.localizedDescription)
+				}
+
+			
 			}
+			
+		
+			
+	
 		}
 		
 		
@@ -301,117 +342,56 @@ class FirebaseClient: NSObject {
 			let pathReference = storage.reference(withPath: (AugmentedChords.refAugmentedChords))
 			let augmentedChords = gsReference.child((AugmentedChords.items.randomElement())!)
 			
-			// test
-			print("/////////////////////////////////// 🥋 se está ejecutando la rama que contiene tres acordes aumentados. De los acordes aumentados se obtuvieron los datos de este específicamente: 👏 \(augmentedChords.name)")
-			
+
 			
 			augmentedChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
 				
-				if let error = error {
-					print(error.localizedDescription)
-					
-				}
-				
+				// success
 				if let data =  data {
+					
 					FirebaseClient.dataChord = data // 👈
 					
-					// si la solicitud fue exitosa, entonces detener el indicator de actividad
-					print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
+					completionHandlerForAudioData(true, nil)
+					
+					
 				}
+				
+				// or error
+				if let error = error {
+					
+					completionHandlerForAudioData(false, error.localizedDescription)
+				}
+				
 			}
 		}
+		
+		
+		
+		
+		
+		
 
 	
 	} // end func
 
 	
-	func requestMajorChord (_ completionHandlerForMajorChord: @escaping ( _ success: Bool, _  errorString: String?) -> Void) {
-		
-		
-		// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
-		
-		// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
-		FirebaseClient.saveMajorChord.getData(maxSize: 1 * 1024 * 1024) { data, error in
-		
-		
-			// b - comprueba si se obtuvieron los datos correctamente...y si se así
-			if let data =  data {
-				
-				
-				// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-				FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
-				
-				// si la solicitud fue exitosa, entonces detener el indicator de actividad
-				print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
-				
-				// detener la animación del indicador de actividad
-				
-				// le envía al completion handler la información de que la solicitud fue exitosa
-				completionHandlerForMajorChord(true, nil)
-		
-				
-			}
-			
-		
-			
-			// c - comprueba si ocurrió un error en la solicitud
-			if let error = error {
-				
-				// Uh-oh, an error occurred!
-				print(error.localizedDescription)
-				// TODO: implementar un alert view en caso de que la solicitud web haya fallado
-				
-				// le envía al completion handler la información de que la solicitud falló
-				completionHandlerForMajorChord(false, "error")
-			}
 	
+
+	
+	
+	
+	//*****************************************************************
+	// MARK: - Shared Instance
+	//*****************************************************************
+	
+	class func sharedInstance() -> FirebaseClient {
+		
+		struct Singleton {
+			static var sharedInstance = FirebaseClient()
 		}
-		
-	} // end func
-	
-	
-	func requestMinorChord (_ completionHandlerForMinorChord: @escaping ( _ success: Bool, _  errorString: String?) -> Void) {
-		
-		
-		// 4 - SOLICITUD WEB A FIREBASE 🔥 ------------------------------------------------------
-		
-		// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
-		FirebaseClient.saveMajorChord.getData(maxSize: 1 * 1024 * 1024) { data, error in
-			
-			
-			// b - comprueba si se obtuvieron los datos correctamente...y si se así
-			if let data =  data {
-				
-				
-				// d - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-				FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
-				
-				// si la solicitud fue exitosa, entonces detener el indicator de actividad
-				print("los datos de audio del acorde se obtuvieron, parar el indicador de actividad. los dato son\(data)")
-				
-				// detener la animación del indicador de actividad
-				
-				// le envía al completion handler la información de que la solicitud fue exitosa
-				completionHandlerForMinorChord(true, nil)
-				
-				
-			}
-			
-			
-			// c - comprueba si ocurrió un error en la solicitud
-			if let error = error {
-				
-				// Uh-oh, an error occurred!
-				print(error.localizedDescription)
-				// TODO: implementar un alert view en caso de que la solicitud web haya fallado
-				
-				// le envía al completion handler la información de que la solicitud falló
-				completionHandlerForMinorChord(false, "error")
-			}
-			
-		}
-		
-	} // end func
+		return Singleton.sharedInstance
+	}
+
 	
 		
 		
