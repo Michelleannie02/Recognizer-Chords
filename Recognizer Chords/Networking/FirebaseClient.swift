@@ -55,7 +55,7 @@ class FirebaseClient: NSObject {
 
 		// 1er pantalla /////////////////////////////////////////////
 
-		// si 'setupChords' es llamado desde la 1er pantalla ejectua la siguiente pieza...
+		// si 'setupChords' es llamado desde la 1er pantalla ejecuta la siguiente pieza...
 		if firstScreen?.title == "1" {
 			
 			// los tipos de acordes disponibles en esta pantalla
@@ -142,25 +142,23 @@ class FirebaseClient: NSObject {
 	
 	*/
 	func chordRequest(refMajorChords: String? = nil,
-							 majorChords: [String]? = nil,
-							 refMinorChords: String? = nil,
-							 minorChords: [String]? = nil,
-							 refDiminishedChords: String? = nil,
-							 diminishedChords: [String]? = nil,
-							 refAugmentedChords: String? = nil,
-							 augmentedChords: [String]? = nil,
-							 completionHandlerForAudioData: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
-		
+					  majorChords: [String]? = nil,
+					  refMinorChords: String? = nil,
+					  minorChords: [String]? = nil,
+					  refDiminishedChords: String? = nil,
+					  diminishedChords: [String]? = nil,
+					  refAugmentedChords: String? = nil,
+					  augmentedChords: [String]? = nil,
+					  completionHandlerForAudioData: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
-		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" ) // 👈 VER ESTO!!!!!!!!!!!
+		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
 		
 		
-
 		////////////////////////////////
 		/// si salió un acorde MAYOR ///
 		////////////////////////////////
@@ -184,30 +182,6 @@ class FirebaseClient: NSObject {
 
 			// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
 			majorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
-				
-				
-				
-//				// summary key
-//				if let error = error {
-//					print(error)
-//					completionHandlerForGetSummaryInfo(false, nil, "error")
-//
-//				} else {
-//					if let summary = currently [Constants.JSONKeys.Summary] as? String {
-//						completionHandlerForGetSummaryInfo(true, summary, nil)
-//
-//						print("sssss\(summary)")
-//					} else {
-//						print("no se encontró el valor ´summary´")
-//						completionHandlerForGetSummaryInfo(false, nil, "error")
-//					}
-//				}
-
-				
-
-
-
-
 				
 				
 				// b - esta rama comprueba si ocurrió un error en la solicitud
@@ -234,13 +208,11 @@ class FirebaseClient: NSObject {
 						completionHandlerForAudioData(true, nil)
 						
 					}
-					
-					
-					
+
 				}
 
-				
 			}
+		
 		}
 	
 		////////////////////////////////
@@ -260,17 +232,14 @@ class FirebaseClient: NSObject {
 			
 			minorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
 			
-				
-				
-				
+
 				// or error
 				if let error = error {
 					
 					completionHandlerForAudioData(false, error.localizedDescription)
+				
 				} else {
-					
-					
-					
+
 					// success
 					if let data = data {
 						
@@ -281,18 +250,12 @@ class FirebaseClient: NSObject {
 						
 						completionHandlerForAudioData(true, nil)
 						
-						
-						
 					}
 					
-					
-					
-					
-					
 				}
-				
-				
+
 			}
+		
 		}
 		
 

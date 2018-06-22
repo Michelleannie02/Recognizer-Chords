@@ -40,19 +40,9 @@ class FirstScreenViewController: UIViewController {
 	// scores
 	var actualScore: Int = 0
 	
-	// los tipos de botones disponibles
-	// cada valor (tag) se corresponde con un tipo de botón diferente
-//	enum chordButtonType: Int {
-//		case major = 0, minor
-//	}
-	
 	// AUDIO ///////////////////////////////////////////////////////
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
-
-	
-	// NETWORKING //////////////////////////////////////////////////
-//	let firebase = FirebaseClient()
 	
 	// PERSISTENCIA (scores) ///////////////////////////////////////////////
 	// TODO: core data!
@@ -77,14 +67,12 @@ class FirstScreenViewController: UIViewController {
 	// indicator de actividad (networking)
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
-	
-	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
 	
-	// task: cargar la supervista..
-    override func viewDidLoad() { // 🚪
+	/// task: cargar la supervista..
+    override func viewDidLoad() {
         super.viewDidLoad()
 		
 		/// user interface elements
@@ -96,36 +84,37 @@ class FirstScreenViewController: UIViewController {
 		setAutolayout()
 		
 		/// newtorking - request data audio chord 🚀
-		// prepara el primer acorde que va a sonar y pasa información sobre este controlador
-		// un acorde mayor o uno menor
+		// prepara el primer acorde que va a sonar y pasa información sobre este controlador (un acorde mayor o uno menor)
 		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
 		
-		FirebaseClient.sharedInstance().chordRequest { (success, errorString) in
-
-			print("HOLAAAAAAAAAAA")
-
-			if success {
-			print("LA SOLICITUD FUE EXITOSA!!!!\(success)")
-
-
-			} else {
-
-				print("ALGO")
-			}
-
-		}
-		
-
-		
+		// se anima el indicador de actividad
 		startAnimating()
 		
-		
-		
+		/// newtorking - check request
+		// corrobora si la última solicitud web fue exitosa o no
+		FirebaseClient.sharedInstance().chordRequest { (success, errorString) in
+
+				// ejecuta este bloque en la cola principal (dispatch)
+				performUIUpdatesOnMain {
+				// si la solicitud fue exitosa
+				if success {
+					
+					print("ggg")
+					// detener el indicador de actividad
+					self.stopAnimating()
+				
+
+				// si falló
+				} else {
+					
+					// mostrar un alert view
+					self.displayAlertView(errorString)
+				}
+
+			} // end dispatch
+		}
 	}
 	
-	
-	
-
 	
 	//*****************************************************************
 	// MARK: - IBActions
@@ -172,7 +161,7 @@ class FirstScreenViewController: UIViewController {
 		// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		//firebase.setupChord(firstScreen: self, secondScreen: nil)
+		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
 		// se visibiliza el indicator de actividad (networking)
 //		startAnimating() // REQUERIDO pero no lo pongo a propósito
 		
@@ -218,7 +207,7 @@ class FirstScreenViewController: UIViewController {
 		/// NETWORKING 🚀
 		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
 		// un acorde mayor o uno menor
-		//firebase.setupChord(firstScreen: self, secondScreen: nil)
+		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
 		
 		//destinationRequests()
 		
