@@ -21,16 +21,9 @@ class SecondScreenViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 	
-	// UI ELEMENTOS
-	// información desplegada del menú
-//	let chordsInfo = ChordsInfo()
 	
-	// la barra que me traje
-	let pointsBarView = PointsView()
-	let errorsBarView = ErrorsView()
-	
-	// una variable que contiene la cantidad de veces que fue presionado el botón 'play'
-	var counter: Counter = Counter()
+	// indica si el botón ya fue tapeado
+	var buttonWasTapped = true
 	
 	// los botones de acordes fueron tapeados
 	var majorButtonWasTapped = true
@@ -38,22 +31,27 @@ class SecondScreenViewController: UIViewController {
 	var diminishedButtonWasTapped = true
 	var augmentedButtonWasTapped = true
 	
-	var buttonWasTapped = true
+	/// SCORE BOTTOM BAR ////////////////////////////////////////////////////
+	let pointsBarView = PointsView()
+	let errorsBarView = ErrorsView()
 	
-	// AUDIO ///////////////////////////////////////////////////////
+	
+	/// AUDIO //////////////////////////////////////////////////////////////
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
 
-	// NETWORKING //////////////////////////////////////////////////
-	let firebase = FirebaseClient()
-
 	
-	
-	// PERSISTENCIA (scores) ///////////////////////////////////////////////
+	/// PERSISTENCIA (scores) ///////////////////////////////////////////////
 	// TODO: core data!
 	var scoreFirstScreen: Double!
 	
 	var scoreSecondScreen = Double()
+	
+	static var savedScores: [Int] = []
+	
+	static var protoPersistencia = Int() // luego borrar
+	
+	var actualScore: Int = 0
 	
 	var totalScore: Double = 0 {
 		
@@ -74,9 +72,6 @@ class SecondScreenViewController: UIViewController {
 	@IBOutlet weak var chordsInfoButton: UIButton!
 	@IBOutlet weak var lastScoresButton: UIButton!
 
-	
-	/// botones ////////////////////////////////////////////////
-	
 	// los cinco botones que contiene esta pantalla
 	@IBOutlet weak var majorButton: UIButton!
 	@IBOutlet weak var minorButton: UIButton!
@@ -85,42 +80,56 @@ class SecondScreenViewController: UIViewController {
 	@IBOutlet weak var augmentedButton: UIButton!
 	
 	
-	// los tipos de botones disponibles
-	// cada valor (tag) se corresponde con un tipo de botón diferente
-	enum chordButtonType: Int {
-		case major = 0, minor, diminished, augmented
-	}
-	
 	// indicator de actividad (networking)
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
 	
 	//*****************************************************************
-	// MARK: - Life Cycle
+	// MARK: - VC Life Cycle
 	//*****************************************************************
 	
-	// task: cargar la supervista..
-	override func viewDidLoad() { // 🚪
+	/// task: cargar la supervista..
+	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		/// user interface elements
 		// prepara el estado de los elementos gráficos de la interfaz
 		setUserInterface()
 		
-		// en principio el indicador de actividad (networking) está oculto
-		activityIndicator.isHidden = true
-		
-		// las contenedores con información acerca de acordes y puntaje también
-//		chordsInfo.isHidden = true
-		
-		
+		/// autolayout
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		setAutolayout()
 		
 		/// newtorking - request data audio chord 🚀
-		// prepara el primer acorde que va a sonar y pasa información sobre este controlador
-		// un acorde mayor o uno menor
-		//firebase.setupChord(firstScreen: nil, secondScreen: self)
+		// prepara el primer acorde que va a sonar y pasa información sobre este controlador (un acorde mayor o uno menor)
+		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
 		
+		// se anima el indicador de actividad
+		startAnimating()
+		
+//		/// newtorking - check request
+//		// corrobora si la última solicitud web fue exitosa o no
+//		FirebaseClient.sharedInstance().chordRequest(refMajorChords: nil, majorChords: nil, refMinorChords: nil, minorChords: nil, refDiminishedChords: nil, diminishedChords: nil, refAugmentedChords: nil, augmentedChords: nil) { (success, errorString) in
+//			
+//			// ejecuta este bloque en la cola principal (dispatch)
+//			performUIUpdatesOnMain {
+//				// si la solicitud fue exitosa
+//				if success {
+//					
+//					print("ggg")
+//					// detener el indicador de actividad
+//					self.stopAnimating()
+//					
+//					
+//					// si falló
+//				} else {
+//					
+//					// mostrar un alert view
+//					self.displayAlertView(errorString)
+//				}
+//				
+//			} // end dispatch
+//		}
 	}
 	
 
@@ -128,172 +137,105 @@ class SecondScreenViewController: UIViewController {
 	// MARK: - IBActions
 	//*****************************************************************
 	
-//	@IBAction func chordsInfoButtonPressed(_ sender: UIButton) {
-//
-//		print("🤼‍♀️ El boton fue presionado está en \(buttonWasTapped)")
-//
-//		// el área aparece
-//		if buttonWasTapped {
-////			chordsInfo.isHidden = false
-////			elBotonFuePresionado = false
-//
-//			majorButton.isEnabled = false
-//			minorButton.isEnabled = false
-//			playButton.isEnabled = false
-//
-//			// el área desaparece
-//		} else {
-////			chordsInfo.isHidden = true
-//			buttonWasTapped = true
-//
-//			majorButton.isEnabled = true
-//			minorButton.isEnabled = true
-//			playButton.isEnabled = true
-//		}
-//
-//	}
-	
-//	@IBAction func scoresButtonPressed(_ sender: UIButton) {
-//
-//		print("🤼‍♀️ El boton fue presionado está en \(buttonWasTapped)")
-//
-//		// el área aparece
-//		if buttonWasTapped {
-////			chordsInfo.isHidden = false
-//			buttonWasTapped = false
-//
-//			majorButton.isEnabled = false
-//			minorButton.isEnabled = false
-//			playButton.isEnabled = false
-//
-//			// el área desaparece
-//		} else {
-////			chordsInfo.isHidden = true
-//			buttonWasTapped = true
-//
-//			majorButton.isEnabled = true
-//			minorButton.isEnabled = true
-//			playButton.isEnabled = true
-//		}
-//
-//	}
-	
-	
-	// Chords Button
-	
-//	@IBAction func playChordsButton(_ sender: UIButton) {
-//		
-//		switch(chordButtonType(rawValue: sender.tag)!) {
-//		case .major:
-//			playSound(rate: 0.5)
-//		case .minor:
-//			playSound(rate: 1.5)
-//		case .diminished:
-//			playSound(rate: 1000)
-//		case .augmented:
-//			playSound(rate: -1000)
-//		}
-//
-//
-//	}
+
 	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
-		// test
-		print("el botón de mayor fue presionado")
 		
-		// cuando el usuario tapea el botón mayor, el botón play vuelva a aparecer
-		playButton.isHidden = false
-		playButton.alpha = 1
+		/// 1- USER INTERFACE ///////////////////////////////////////////////////////////////
 		
-		// el contador del botón play se pone a 0
-		counter.playButtonValue = 0
+		// una vez tapeado el botón de mayor, todos los botones de acordes se deshabilitan
+		if majorButtonWasTapped {
+			disableChordsButtons()
+		}
 		
-		/// LÓGICA
-		// si sonó un acorde mayor y el usuario tapeó el botón de mayor, ACIERTO!
-		if FirebaseClient.aChordSounded == "major" {
+		/// 2- LÓGICA ///////////////////////////////////////////////////////////////////////
+		
+		// si sonó un acorde mayor y el usuario tapeó el botón de mayor, ACIERTO!...
+		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Major {
 			
-			print("ACERTASTE!!!! SONó UN ACORDE MAYOR!!!!!!!!")
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
 		} else {
-			
-			print("YERRASTE!!!!!!!!")
+			// caso contrario...
 			// un paso para la barra de errores
 			errorsBarView.currentValue += 1
-			
 		}
 		
-		// la app se comporta dependiendo del desempeño del usuario
+		// el juego progresa o finaliza de acuerdo al desempeño del usuar
 		progressOrGameOver()
 		
-		// NETWORKING 🚀
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		// un acorde mayor o uno menor
-		//firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
-
-		/// PERSISTENCIA score
+		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
+		
 		// asigna el último socre a la variable ´protoPersistencia´
-		scoreSecondScreen = pointsBarView.currentValue // 👈
+		SecondScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
 		
-		print("✔︎ Tu último score es de \(totalScore)")
+		// añade al array de scores el valor actual de aciertos
+		SecondScreenViewController.savedScores.append(Int(pointsBarView.currentValue))
+		print("✔︎ Tu último score es de \(SecondScreenViewController.protoPersistencia)")
+		
+		
+		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
+		
+		// por último, realizar una nueva solicitud web
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
+		// se visibiliza el indicator de actividad (networking)
+		startAnimating()
 	
 	}
 	
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
 		
-		print("el botón de menor fue presionado")
 		
-		
-		playButton.isHidden = false
-		playButton.alpha = 1
-
-		
-		/// LÓGICA
+		/// 1- USER INTERFACE ///////////////////////////////////////////////////////////////
 		if minorButtonWasTapped {
-			majorButton.isEnabled = false
-			minorButton.isEnabled = false
-			diminishedButton.isEnabled = false
-			augmentedButton.isEnabled = false
+			disableChordsButtons()
 			
 		}
 		
-		// la app se comporta dependiendo del desempeño del usuario
-		progressOrGameOver()
+		/// 2- LÓGICA ///////////////////////////////////////////////////////////////////////
 		
-		/// CONTADOR
-		// el contador del botón play se pone a 0
-		counter.playButtonValue = 0
-		
-		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
-		if FirebaseClient.aChordSounded == "minor" {
+		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!...
+		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Minor {
 			
-			print("ACERTASTE!!!! SONó UN ACORDE MENOR!!!!!!!!")
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
-		} else {
+			// se suma un punto al score
+			actualScore += 1
 			
-			print("YERRASTE!!!!!!!!")
+			
+		} else {
+			// caso contrario...
 			// un paso para la barra de errores
 			errorsBarView.currentValue += 1
 			
 		}
 		
-		// NETWORKING 🚀
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		// un acorde mayor o uno menor
-		//firebase.setupChord(firstScreen: nil, secondScreen: self)
-
+		// el juego progresa o finaliza de acuerdo al desempeño del usuario
+		progressOrGameOver()
 		
-		/// PERSISTENCIA score
+	
+		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
+		
 		// asigna el último socre a la variable ´protoPersistencia´
-		totalScore = pointsBarView.currentValue // 👈
-		print("✔︎ Tu último score es de \(totalScore)")
+		SecondScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
+		print("✔︎ Tu último score es de \(SecondScreenViewController.protoPersistencia)")
+		
+		
+		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
+		
+		// por último, realizar una nueva solicitud web
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
+		// se visibiliza el indicator de actividad (networking)
+		startAnimating()
+		
 		
 	}
 	
@@ -301,100 +243,101 @@ class SecondScreenViewController: UIViewController {
 	/// task: ejectutarse cada vez que el botón 'disminuído' es tapeado
 	@IBAction func diminishedButtonPressed(_ sender: UIButton) {
 		
-		// test
-		print("el botón de disminuído fue presionado")
-		
-		// cuando el usuario tapea el botón disminuído, el botón play vuelve a aparecer
-		playButton.isHidden = false
 
-		
+		/// 1- USER INTERFACE ///////////////////////////////////////////////////////////////
 		// una vez tapeado el botón de disminuído, todos los botones de acordes se deshabilitan
 		if diminishedButtonWasTapped {
-			majorButton.isEnabled = false
-			minorButton.isEnabled = false
-			diminishedButton.isEnabled = false
-			augmentedButton.isEnabled = false
+			disableChordsButtons()
 		}
 		
-		/// CONTADOR
-		// el contador del botón play se pone a 0
-		counter.playButtonValue = 0
-		
-		/// NETWORKING 🚀
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		// un acorde mayor o uno menor
-		//firebase.setupChord(firstScreen: nil, secondScreen: self)
 		
 		
-		/// LÓGICA
-		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
-		if FirebaseClient.aChordSounded == "diminished" {
+		
+		/// 2- LÓGICA ///////////////////////////////////////////////////////////////////////
+		// si sonó un acorde disminuído y el usuario tapeó el botón de disminuído, ACIERTO!
+		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Diminished {
 			
-			print("ACERTASTE!!!! SONó UN ACORDE DISMINUÍDO!!!!!!!!")
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
 		} else {
 			
-			print("YERRASTE!!!!!!!!")
 			// un paso para la barra de errores
 			errorsBarView.currentValue += 1
 			
 		}
 		
-		// la app se comporta dependiendo del desempeño del usuario
+		// el juego progresa o finaliza de acuerdo al desempeño del usuario
 		progressOrGameOver()
 		
 		
-		/// PERSISTENCIA 🚀
+		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
+		
 		// asigna el último socre a la variable ´protoPersistencia´
-		totalScore = pointsBarView.currentValue // 👈
-		print("✔︎ Tu último score es de \(totalScore)")
+		SecondScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
+		
+		// añade al array de scores el valor actual de aciertos
+		SecondScreenViewController.savedScores.append(Int(pointsBarView.currentValue))
+		print("✔︎ Tu último score es de \(SecondScreenViewController.protoPersistencia)")
+		
+		
+		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
+		
+		// por último, realizar una nueva solicitud web
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
+		// se visibiliza el indicator de actividad (networking)
+		startAnimating()
 
 	}
 	
 	/// task: ejectutarse cada vez que el botón 'aumentado' es tapeado
 	@IBAction func augmentedButtonPressed(_ sender: UIButton) {
 		
-		print("el botón de aumentado fue presionado")
+		/// 1- USER INTERFACE ///////////////////////////////////////////////////////////////
 		
-		// cuando el usuario tapea el botón disminuído, el botón play vuelve a aparecer
-		playButton.isHidden = false
+		// una vez tapeado el botón de mayor, todos los botones de acordes se deshabilitan
+		if augmentedButtonWasTapped {
+			disableChordsButtons()
+		}
 		
 		
-		/// CONTADOR
-		// el contador del botón play se pone a 0
-		counter.playButtonValue = 0
+		/// 2- LÓGICA ///////////////////////////////////////////////////////////////////////
 		
-		/// NETWORKING 🚀
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		// un acorde mayor o uno menor
-		//firebase.setupChord(firstScreen: nil, secondScreen: self)
-		
-		/// LÓGICA
-		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!
-		if FirebaseClient.aChordSounded == "augmented" {
+		// si sonó un acorde aumentado y el usuario tapeó el botón de aumentado, ACIERTO!...
+		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Augmented {
 			
-			print("ACERTASTE!!!! SONó UN ACORDE AUMENTADO!!!!!!!!")
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
 		} else {
-			
-			print("YERRASTE!!!!!!!!")
+	
 			// un paso para la barra de errores
 			errorsBarView.currentValue += 1
-			
 		}
 		
-		// la app se comporta dependiendo del desempeño del usuario
+		// el juego progresa o finaliza de acuerdo al desempeño del usuario
 		progressOrGameOver()
 		
 
-		/// PESISTENCIA score
+		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
+		
 		// asigna el último socre a la variable ´protoPersistencia´
-		totalScore = pointsBarView.currentValue // 👈
-		print("✔︎ Tu último score es de \(totalScore)")
+		SecondScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
+		
+		// añade al array de scores el valor actual de aciertos
+		SecondScreenViewController.savedScores.append(Int(pointsBarView.currentValue))
+		print("✔︎ Tu último score es de \(SecondScreenViewController.protoPersistencia)")
+		
+		
+		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
+		
+		// por último, realizar una nueva solicitud web
+		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
+		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
+		// visibiliza el indicator de actividad (networking)
+		startAnimating()
+		
 		
 	}
 	
@@ -402,34 +345,17 @@ class SecondScreenViewController: UIViewController {
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
-		// se visibiliza el indicator de actividad (networking)
-//		startAnimating()
-		
+		/// 1- USER INTERFACE ///////////////////////////////////////////////////////////////
+		// habilita los botones de acordes
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true
 		diminishedButton.isEnabled = true
 		augmentedButton.isEnabled = true
 		
-		
-		/// CONTADOR
-		counter.incrementPlayButton()
-		print("✏️\(counter.playButtonValue)")
-		
-		// si el usuario toca 3 veces el botón de play, este desaparece
-		if counter.playButtonValue == 50 { // cambiar luego a 3
-			
-			counter.playButtonValue = 0
-			playButton.isHidden = true
-			majorButton.isEnabled = true
-			minorButton.isEnabled = true
-		}
-		
-		
-		// Audio //////////////////////////////////////////////////
-		
 
+		/// 2- AUDIO ////////////////////////////////////////////////////////////////////////
 		
-				// 1-toma los ÚLTIMOS datos de audio almacenados en memoria, ahora puestos en el reproductor
+		// a-toma los ÚLTIMOS datos de audio almacenados en memoria, ahora puestos en el reproductor
 		do {
 			audioPlayer = try AVAudioPlayer(data: FirebaseClient.dataChord)
 			audioPlayer?.prepareToPlay()
@@ -440,12 +366,9 @@ class SecondScreenViewController: UIViewController {
 		}
 		
 		
-		// 2-y los reproduc
+		// b-y los reproduc
 		audioPlayer?.play()
 		
-		
-		// test - score de la pantalla anterior
-		print("👻\(scoreFirstScreen)")
 		
 	}
 
@@ -456,26 +379,64 @@ class SecondScreenViewController: UIViewController {
 	/// task: computar los aciertos y errores del usuario en su sesión y actuar en consecuencia
 	func progressOrGameOver() {
 		
+		/// PROGRESS...
 		// si el usuario erró tres tres veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
 			
 			// espera 5 segundos antes de navegar hacia la siguiente pantalla
 			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
-				self.performSegue(withIdentifier: "ir a game over", sender: nil)
+				self.performSegue(withIdentifier: "to game over", sender: nil)
 			}
 				
 			)}
 		
-		// si el usuario erró tres tres veces en su sesión, pierde
-		if errorsBarView.currentValue == 3 {
+		
+		/// GAME OVER.
+		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
+		if pointsBarView.currentValue == 8 { // luego cambiar a 8
 			
-			// espera 5 segundos antes de navegar hacia la siguiente pantalla
-			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
-				self.performSegue(withIdentifier: "ir a game over", sender: nil)
-			}
+			// se deshabilitan los dos botones de acordes
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			
+			
+			
+			/// timer-diapasón (VER)
+			// espera 8 segundos antes de navegar hacia la siguiente pantalla...
+			Timer.scheduledTimer(withTimeInterval: 6.0, repeats: false, block: {(timer) in
 				
-			)}
+				//				// TODO: suena el diapasón!!!!
+				//				do {
+				//					self.audioPlayer = try AVAudioPlayer(data: FirebaseClient.dataChord)
+				//					self.audioPlayer?.prepareToPlay()
+				//
+				//					// 2-y los reproduce
+				//					self.audioPlayer?.play()
+				//
+				//				} catch let error as NSError {
+				//
+				//
+				//					print(error.debugDescription)
+				//				}
+				
+				// y por último navega hacia la próxima pantalla
+				self.performSegue(withIdentifier: "next screen", sender: nil)
+			})
+			
+			
+			
+		} // end if
 	
+	}
+	
+	/// task: deshabilitar todos los botones de acordes
+	func disableChordsButtons() {
+		
+		majorButton.isEnabled = false
+		minorButton.isEnabled = false
+		diminishedButton.isEnabled = false
+		augmentedButton.isEnabled = false
+		
 	}
 	
 	
@@ -494,16 +455,26 @@ class SecondScreenViewController: UIViewController {
 	- Parameter message: El mensaje acerca del error.
 	
 	*/
-	func displayErrorAlert(_ title: String?, _ message: String?) {
+	func displayAlertView(_ error: String?) {
 		
-		// Reset UI
-		setUserInterface()
-		stopAnimating()
-		
-		// Display Error in Alert Controller
-		let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-		self.present(alert, animated: true, completion: nil)
+		if error != nil {
+			
+			let alertController = UIAlertController(title: "Request Error", message: error, preferredStyle: .alert)
+			
+			let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+				
+			}
+			alertController.addAction(cancelAction)
+			
+			let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+				
+			}
+			alertController.addAction(OKAction)
+			
+			self.present(alertController, animated: true) {
+				
+			}
+		}
 	}
 	
 } // end class

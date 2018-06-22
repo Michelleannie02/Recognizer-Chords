@@ -208,7 +208,6 @@
 		A6BC0AD92085243C00D2AF6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A6A286DD20D9D5D100E5176E /* PruebaCV_ViewController.swift */,
 				A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */,
 				A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */,
 				A6F074A920D21476001475FC /* ThirdScreenViewController.swift */,
@@ -216,6 +215,7 @@
 				A6A286D120D98F3800E5176E /* ChordsInfoSecondViewController.swift */,
 				A6A286CF20D98DA900E5176E /* ScoresViewController.swift */,
 				A6F72CB420CF9CD100251901 /* GameOverViewController.swift */,
+				A6A286DD20D9D5D100E5176E /* PruebaCV_ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

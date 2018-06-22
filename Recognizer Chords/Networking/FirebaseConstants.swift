@@ -44,6 +44,15 @@ extension FirebaseClient {
 		
 	}
 	
+	// los tipos de acordes
+	struct TypesOfChords {
+	
+		static let Major = "major"
+		static let Minor  = "minor"
+		static let Augmented = "augmented"
+		static let Diminished = "diminished"
+
+	}
 	
 	
 	
