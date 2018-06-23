@@ -6,24 +6,73 @@
 //  Copyright © 2018 luko. All rights reserved.
 //
 
-/* Application */
+/* App */
 
 import UIKit
 import Firebase
 
+//*****************************************************************
+// MARK: - AppDelegate: UIResponder, UIApplicationDelegate
+//*****************************************************************
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+	//*****************************************************************
+	// MARK: - Properties
+	//*****************************************************************
+	
 	// representa la ventana de la aplicación
 	var window: UIWindow?
+	
+	/// CORE DATA
+	// configura cual es el Modelo de esta aplicación
+	let dataController = DataController(modelName: "RecognizerChords")
 
-	/// task: se ejecuta una vez que la aplicación terminó su etapa de ´lanzamiento´
+
+	//*****************************************************************
+	// MARK: - UIApplication Delegate
+	//*****************************************************************
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
+		/// FIREBASE
 		// asocia la app a Firebase 🔥
 		FirebaseApp.configure()
-
-			return true
+		
+		
+		/// CORE DATA
+		// carga el almacen persistente
+		dataController.load()
+		
+		// apenas arranca la aplicación...
+		// inyecta el 'dataController' en el 'TravelLocationsMapViewController'
+		let navigationController = window?.rootViewController as! UINavigationController
+		//let travelLocationsViewController = navigationController.topViewController as! TravelLocationsMapViewController
+		//travelLocationsViewController.dataController = dataController
+		
+		return true
+	}
+	
+	// cuando la aplicación entró en segundo plano se guarda el estado del contexto 💿
+	func applicationDidEnterBackground(_ application: UIApplication) {
+		
+		saveViewContext()
+	}
+	
+	// cuando la aplicación está por morir guarda el estado del contexto 💿
+	func applicationWillTerminate(_ application: UIApplication) {
+		
+		saveViewContext()
+	}
+	
+	//*****************************************************************
+	// MARK: - Core Data - Save View Context
+	//*****************************************************************
+	
+	/// task: guardar el contexto
+	func saveViewContext() {
+		try? dataController.viewContext.save() // 💿
 	}
 
 } // end class
