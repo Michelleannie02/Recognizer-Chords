@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	// MARK: - Properties
 	//*****************************************************************
 	
+
 	// representa la ventana de la aplicación
 	var window: UIWindow?
 	
@@ -47,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// apenas arranca la aplicación...
 		// inyecta el 'dataController' en el 'TravelLocationsMapViewController'
-		let navigationController = window?.rootViewController as! UINavigationController
+		//let navigationController = window?.rootViewController as! UINavigationController
 		//let travelLocationsViewController = navigationController.topViewController as! TravelLocationsMapViewController
 		//travelLocationsViewController.dataController = dataController
 		
@@ -76,6 +77,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 } // end class
+
+/*
+PERSISTENCIA:
+
+Momentos en los que se persisten los datos del score obtenido por el usuario en una sesión de juego:
+
+1- cuando la aplicación entra en segundo plano
+2- cuando la aplicación está por morir
+3- cada 30 segundos (autosave)
+4- cuando el usuario pierde
+
+*/
 
 
 

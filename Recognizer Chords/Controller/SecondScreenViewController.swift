@@ -10,6 +10,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 /* Abstract:
 La segunda pantalla de la aplicación. Contiene cuatro botones representando un los acordes mayor, menor, disminuído y aumentando más un botón de play.
@@ -41,15 +42,15 @@ class SecondScreenViewController: UIViewController {
 	var audioPlayer: AVAudioPlayer?
 
 	
-	/// PERSISTENCIA (scores) ///////////////////////////////////////////////
-	// TODO: core data!
-	var scoreFirstScreen: Double!
+	/// CORE DATA /////////////////////////////////////////////////////////////
+	var dataController: DataController! // inyecta el controlador de datos (core data stack)
 	
-	var scoreSecondScreen = Double()
+	// un array que contiene los objetos 'Score' persistidos
+	var scores: [Score] = []
 	
-	static var savedScores: [Int] = []
-	
-	static var protoPersistencia = Int() // luego borrar
+	// se encarga de contabilizar el score actual del usuario
+	var scoreToAdd: Double = 0
+
 	
 	// el score actual es 8 ya que es el requisito para estar en la 2da pantalla
 	var actualScore: Int = 8
@@ -93,11 +94,12 @@ class SecondScreenViewController: UIViewController {
 		setAutolayout()
 		
 		/// NETWORKING - request data audio chord 🚀
-		 requestChordDataAudio()
+		requestChordDataAudio()
+		
 		
 	}
 	
-
+	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
@@ -123,6 +125,9 @@ class SecondScreenViewController: UIViewController {
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
+			// agrega un punto a la variable 'scoreToAdd'
+			scoreToAdd += 1
+			
 		} else {
 			// caso contrario...
 			// un paso para la barra de errores
@@ -133,14 +138,7 @@ class SecondScreenViewController: UIViewController {
 		progressOrGameOver()
 		
 		
-		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
-		
-		// asigna el último socre a la variable ´protoPersistencia´
-		SecondScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
-		
-		// añade al array de scores el valor actual de aciertos
-		SecondScreenViewController.savedScores.append(Int(pointsBarView.currentValue))
-		print("✔︎ Tu último score es de \(SecondScreenViewController.protoPersistencia)")
+
 		
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
@@ -167,8 +165,8 @@ class SecondScreenViewController: UIViewController {
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
-			// se suma un punto al score
-			actualScore += 1
+			// agrega un punto a la variable 'scoreToAdd'
+			scoreToAdd += 1
 			
 			
 		} else {
@@ -181,12 +179,7 @@ class SecondScreenViewController: UIViewController {
 		// el juego progresa o finaliza de acuerdo al desempeño del usuario
 		progressOrGameOver()
 		
-	
-		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
-		
-		// asigna el último socre a la variable ´protoPersistencia´
-		SecondScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
-		print("✔︎ Tu último score es de \(SecondScreenViewController.protoPersistencia)")
+
 		
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
@@ -218,6 +211,9 @@ class SecondScreenViewController: UIViewController {
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
+			// agrega un punto a la variable 'scoreToAdd'
+			scoreToAdd += 1
+			
 		} else {
 			
 			// un paso para la barra de errores
@@ -228,15 +224,7 @@ class SecondScreenViewController: UIViewController {
 		// el juego progresa o finaliza de acuerdo al desempeño del usuario
 		progressOrGameOver()
 		
-		
-		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
-		
-		// asigna el último socre a la variable ´protoPersistencia´
-		SecondScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
-		
-		// añade al array de scores el valor actual de aciertos
-		SecondScreenViewController.savedScores.append(Int(pointsBarView.currentValue))
-		print("✔︎ Tu último score es de \(SecondScreenViewController.protoPersistencia)")
+
 		
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
@@ -264,6 +252,9 @@ class SecondScreenViewController: UIViewController {
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
+			// agrega un punto a la variable 'scoreToAdd'
+			scoreToAdd += 1
+			
 		} else {
 	
 			// un paso para la barra de errores
@@ -274,14 +265,6 @@ class SecondScreenViewController: UIViewController {
 		progressOrGameOver()
 		
 
-		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
-		
-		// asigna el último socre a la variable ´protoPersistencia´
-		SecondScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
-		
-		// añade al array de scores el valor actual de aciertos
-		SecondScreenViewController.savedScores.append(Int(pointsBarView.currentValue))
-		print("✔︎ Tu último score es de \(SecondScreenViewController.protoPersistencia)")
 		
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
@@ -331,9 +314,14 @@ class SecondScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario erró tres tres veces en su sesión, pierde
+		/// GAME OVER.
+		// si el usuario erró 3 veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
 			
-			// espera 5 segundos antes de navegar hacia la siguiente pantalla
+			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 👏
+			addScoreToCoreData(hit: self.scoreToAdd)
+			
+			// b-espera 5 segundos antes de navegar hacia la siguiente pantalla
 			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
 				self.performSegue(withIdentifier: "to game over", sender: nil)
 			}
@@ -378,6 +366,34 @@ class SecondScreenViewController: UIViewController {
 		} // end if
 	
 	}
+	
+	
+	//*****************************************************************
+	// MARK: - Core Data (creates and save Score)
+	//*****************************************************************
+	
+	/// task: recibir el score actual y agregarlo a core data
+	func addScoreToCoreData(hit: Double) {
+		
+		
+		// Core Data CREATES and SAVE score ///////////////////////////////
+		
+		// crea un objeto gestionado 'score' para almacenar el score actual
+		let score = Score(hits: hit, context: dataController.viewContext)
+		
+		// agrega el score (managed object) a un array que contiene los scores persistidos '[Score]'
+		scores.append(score)
+		
+		// intenta guardar los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
+		try? dataController.viewContext.save() // 💿
+		
+		///////////////////////////////////////////////////
+		
+		
+	}
+	
+	
+	
 	
 	/// task: deshabilitar todos los botones de acordes
 	func disableChordsButtons() {

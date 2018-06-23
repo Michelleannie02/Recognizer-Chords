@@ -17,6 +17,6 @@ extension Score {
         return NSFetchRequest<Score>(entityName: "Score")
     }
 
-    @NSManaged public var hits: Int16
+    @NSManaged public var hits: Double // attribute
 
 }

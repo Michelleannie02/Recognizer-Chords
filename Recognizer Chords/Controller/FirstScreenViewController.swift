@@ -22,7 +22,7 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 
-	/// UI ////////////////////////////////////////////////////
+	/// UI ////////////////////////////////////////////////////////////
 	// los botones de acordes fueron tapeados
 	var majorButtonWasTapped = true
 	var minorButtonWasTapped = true
@@ -34,18 +34,21 @@ class FirstScreenViewController: UIViewController {
 	let pointsBarView = PointsView()
 	let errorsBarView = ErrorsView()
 	
-	/// AUDIO ///////////////////////////////////////////////////////////////
+	/// AUDIO /////////////////////////////////////////////////////////
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
 	
-	/// PERSISTENCIA (scores) ///////////////////////////////////////////////
-	// TODO: core data!
+
+	/// CORE DATA /////////////////////////////////////////////////////
+	var dataController: DataController! // inyecta el controlador de datos (core data stack)
 	
-	var actualScore: Int = 0
+	// un array que contiene los objetos 'Score' persistidos
+	var scores: [Score] = []
 	
-	static var protoPersistencia = Int() // luego borrar
+	// se encarga de contabilizar el score actual del usuario
+	var scoreToAdd: Double = 0
 	
-	static var savedScores: [Int] = []
+
 	
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -82,6 +85,7 @@ class FirstScreenViewController: UIViewController {
 		/// NETWORKING - request data audio chord 🚀
 		requestChordDataAudio()
 		
+
 		
 	}
 	
@@ -111,8 +115,15 @@ class FirstScreenViewController: UIViewController {
 		// si sonó un acorde mayor y el usuario tapeó el botón de mayor, ACIERTO!...
 		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Major {
 			
-			// un paso para la barra de aciertos
+			// da un paso en la barra de aciertos
 			pointsBarView.currentValue += 1
+			
+			// agrega un punto a la variable 'scoreToAdd'
+			scoreToAdd += 1
+			
+			// test
+			print("👏Sumar un punto al score")
+		
 			
 		} else {
 			// caso contrario...
@@ -124,15 +135,12 @@ class FirstScreenViewController: UIViewController {
 		progressOrGameOver()
 		
 
+
 		
-		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
 		
-		// asigna el último socre a la variable ´protoPersistencia´
-		FirstScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
 		
-		// añade al array de scores el valor actual de aciertos
-		FirstScreenViewController.savedScores.append(Int(pointsBarView.currentValue))
-		print("✔︎ Tu último score es de \(FirstScreenViewController.protoPersistencia)")
+		
+		
 		
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
@@ -143,6 +151,8 @@ class FirstScreenViewController: UIViewController {
 
 
 	}
+	
+
 
 
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
@@ -167,8 +177,11 @@ class FirstScreenViewController: UIViewController {
 			// un paso para la barra de aciertos
 			pointsBarView.currentValue += 1
 			
-			// se suma un punto al score
-			actualScore += 1
+			// agrega un punto a la variable 'scoreToAdd'
+			scoreToAdd += 1
+			
+			// test
+			print("👏Sumar un punto al score")
 			
 			
 		} else {
@@ -182,11 +195,6 @@ class FirstScreenViewController: UIViewController {
 		progressOrGameOver()
 		
 
-		/// 3- PERSISTENCIA 💿 ///////////////////////////////////////////////////////////////
-		
-		// asigna el último socre a la variable ´protoPersistencia´
-		FirstScreenViewController.protoPersistencia = Int(pointsBarView.currentValue) // 👈
-		print("✔︎ Tu último score es de \(FirstScreenViewController.protoPersistencia)")
 		
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
@@ -221,6 +229,9 @@ class FirstScreenViewController: UIViewController {
 		
 	}
 
+	
+
+	
 	//*****************************************************************
 	// MARK: - Methods
 	//*****************************************************************
@@ -230,18 +241,6 @@ class FirstScreenViewController: UIViewController {
 		
 		
 		/// PROGRESS...
-		// si el usuario erró 3 veces en su sesión, pierde
-		if errorsBarView.currentValue == 3 {
-			
-			// espera 5 segundos antes de navegar hacia la siguiente pantalla
-			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
-				self.performSegue(withIdentifier: "to game over", sender: nil)
-			}
-
-		)}
-		
-		
-		/// GAME OVER.
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
 		if pointsBarView.currentValue == 8 { // luego cambiar a 8
 			
@@ -277,8 +276,67 @@ class FirstScreenViewController: UIViewController {
 		
 		} // end if
 
+
+		/// GAME OVER.
+		// si el usuario erró 3 veces en su sesión, pierde
+		if errorsBarView.currentValue == 3 {
+			
+			
+			
+			
+			
+			
+			
+			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 👏
+			addScoreToCoreData(hit: self.scoreToAdd)
+			
+			
+			print("Game Over. Tu score fue de \(self.scoreToAdd) puntos.")
+			
+			
+			
+			
+			
+			
+			
+			
+			// b-espera 5 segundos antes de navegar hacia la siguiente pantalla
+			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
+				self.performSegue(withIdentifier: "to game over", sender: nil)
+			}
+
+		)}
+
 	
 	}
+	
+	
+	//*****************************************************************
+	// MARK: - Core Data (creates and save Score)
+	//*****************************************************************
+	
+	/// task: recibir el score actual y agregarlo a core data
+	func addScoreToCoreData(hit: Double) {
+		
+		
+		// Core Data CREATES and SAVE score ///////////////////////////////
+		
+		// crea un objeto gestionado 'score' para almacenar el score actual
+		let score = Score(hits: hit, context: dataController.viewContext)
+		
+		// agrega el score (managed object) a un array que contiene los scores persistidos '[Score]'
+		scores.append(score)
+		
+		print("tu score actual es de \(score)")
+		
+//		// intenta guardar los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
+//		try? dataController.viewContext.save() // 💿
+		
+		///////////////////////////////////////////////////
+		
+		
+	}
+	
 	
 	/// task: realizar una solicitud web para obtener los datos de audio del acorde elegido
 	func requestChordDataAudio() {

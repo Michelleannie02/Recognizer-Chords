@@ -9,9 +9,10 @@
 /* Controller */
 
 import UIKit
+import CoreData
 
 /* Abstract:
-...
+Una pantalla que muestra los últimos TRES scores del usuario.
 */
 
 class ScoresViewController: UIViewController {
@@ -20,8 +21,13 @@ class ScoresViewController: UIViewController {
 	//*****************************************************************
 	// MARK: - Properties
 	//*****************************************************************
+	
+	/// CORE DATA /////////////////////////////////////////////////////////////
+	var dataController: DataController! // inyecta el controlador de datos (core data stack)
+	
+	// los scores del usuario persistidos
+	var scores: [Score] = []
 
-	var collectionData = [String(FirstScreenViewController.protoPersistencia)]
 	
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -30,8 +36,7 @@ class ScoresViewController: UIViewController {
 	@IBOutlet weak var closeButton: UIButton!
 	@IBOutlet weak var threeLastScores: UICollectionView!
 	
-	
-	
+
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
@@ -39,12 +44,47 @@ class ScoresViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		// core data
+		fetchRequestForScores()
 		
 		// collection view layout
 		collectionViewLayout()
 		
+		
 	}
 	
+	
+	//*****************************************************************
+	// MARK: - Core Data (fetch request)
+	//*****************************************************************
+	
+	/// task: buscar si hay objetos 'Score' persistidos
+	func fetchRequestForScores() {
+		
+//				// hay objetos 'Score' persistidos?
+//				let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest() // 🔍
+//		
+//				// comprueba si hay resultados en la búsqueda..
+//				if let result = try? dataController.viewContext.fetch(fetchRequest) {
+//		
+//					// .. si es así, asigna el resultado de la solicitud al array de pins persistidos
+//					pins = result // pins:[Pin] 🔌
+//				}
+//		
+//				// luego itera ese array pins
+//				for pin in pins { //
+//					// y a las coordenadas de los pins persistidos..
+//					let coordinate = CLLocationCoordinate2D(latitude: pin.latitude , longitude: pin.longitude )
+//					// las convierte en objetos que adoptan el protocolo 'MKAnnotation'
+//					let pins = PinOnMap(coordinate: coordinate)
+//					// y los agrega al array de objetos preparados para mostrarse en una vista de mapa
+//					pinsOnMap.append(pins)
+//				}
+//		
+//				// por último, actualiza la vista de mapa agregando los pins persistidos.
+//				mapView.addAnnotations(pinsOnMap)
+		
+	}
 	
 	//*****************************************************************
 	// MARK: - IBActions
@@ -69,7 +109,7 @@ class ScoresViewController: UIViewController {
 		
 		func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 			
-			return collectionData.count
+			return 3
 		}
 		
 		func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,7 +126,7 @@ class ScoresViewController: UIViewController {
 			print("😉 la celda devuelta: \(cell)")
 			
 			if let label = cell.viewWithTag(100) as? UILabel {
-				label.text = collectionData[indexPath.row]
+				//label.text = collectionData[indexPath.row]
 			}
 			
 			// devuelve la celda ya configurada

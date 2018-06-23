@@ -135,7 +135,7 @@ class FirebaseClient: NSObject {
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
-		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
+		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
 		
 		
 		// 3 - raconta los datos para realizar la solicitud
@@ -162,6 +162,7 @@ class FirebaseClient: NSObject {
 		
 			// c - informa al completion handler que la solicitud falló
 				completionHandlerForMajorChord(false, error.localizedDescription)
+				print("LA SOLICITUD FALLó")
 		
 				} else {
 		
@@ -194,7 +195,7 @@ class FirebaseClient: NSObject {
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
-		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
+		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
 		
 		
 		// 3 - raconta los datos para realizar la solicitud
@@ -221,6 +222,7 @@ class FirebaseClient: NSObject {
 				
 				// c - informa al completion handler que la solicitud falló
 				completionHandlerForMinorChord(false, error.localizedDescription)
+				print("LA SOLICITUD FALLó")
 				
 			} else {
 				
