@@ -199,7 +199,6 @@
 		A6AF16D120A492A400A25F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A656CB7120D1EA3D009B41E9 /* DataController.swift */,
 				A60DF5B920CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld */,
 			);
 			path = Model;
@@ -216,6 +215,7 @@
 				A6A286CF20D98DA900E5176E /* ScoresViewController.swift */,
 				A6F72CB420CF9CD100251901 /* GameOverViewController.swift */,
 				A6A286DD20D9D5D100E5176E /* PruebaCV_ViewController.swift */,
+				A656CB7120D1EA3D009B41E9 /* DataController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

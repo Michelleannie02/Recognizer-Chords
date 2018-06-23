@@ -247,14 +247,14 @@ class FirebaseClient: NSObject {
 	}
 	
 	// diminished chord request
-	func diminishedChordRequest(refDiminishedChords: String?, diminishedChords:[String]?,completionHandlerForDiminishedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
+	func diminishedChordRequest(refDiminishedChords: String? = nil, diminishedChords:[String]? = nil,completionHandlerForDiminishedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 		
 		
 	}
 	
 	// augmented chord request
-	func augmentedChordRequest(refAugmentedChords: String?, augmentedChords:[String]?, completionHandlerForAugmentedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
+	func augmentedChordRequest(refAugmentedChords: String? = nil , augmentedChords:[String]? = nil, completionHandlerForAugmentedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 		
 		

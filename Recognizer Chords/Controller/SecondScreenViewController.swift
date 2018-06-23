@@ -21,7 +21,7 @@ class SecondScreenViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 	
-	
+	/// UI ////////////////////////////////////////////////////
 	// indica si el botón ya fue tapeado
 	var buttonWasTapped = true
 	
@@ -31,7 +31,7 @@ class SecondScreenViewController: UIViewController {
 	var diminishedButtonWasTapped = true
 	var augmentedButtonWasTapped = true
 	
-	/// SCORE BOTTOM BAR ////////////////////////////////////////////////////
+	// score bar bottom
 	let pointsBarView = PointsView()
 	let errorsBarView = ErrorsView()
 	
@@ -51,24 +51,17 @@ class SecondScreenViewController: UIViewController {
 	
 	static var protoPersistencia = Int() // luego borrar
 	
-	var actualScore: Int = 0
+	// el score actual es 8 ya que es el requisito para estar en la 2da pantalla
+	var actualScore: Int = 8
 	
-	var totalScore: Double = 0 {
-		
-		didSet {
-		
-		//scoreSecondScreen += scoreFirstScreen
-			
-		}
-	}
-
+	
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
 	
 	/// menú superior ////////////////////////////////////////////////
 	
-	// los íconos de la barra de menú
+	// los triángulos de la barra de menú
 	@IBOutlet weak var chordsInfoButton: UIButton!
 	@IBOutlet weak var lastScoresButton: UIButton!
 
@@ -78,7 +71,6 @@ class SecondScreenViewController: UIViewController {
 	@IBOutlet weak var playButton: UIButton!
 	@IBOutlet weak var diminishedButton: UIButton!
 	@IBOutlet weak var augmentedButton: UIButton!
-	
 	
 	// indicator de actividad (networking)
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -92,44 +84,17 @@ class SecondScreenViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		/// user interface elements
+		/// UI
 		// prepara el estado de los elementos gráficos de la interfaz
 		setUserInterface()
 		
-		/// autolayout
+		/// AUTOLAYOUT
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		setAutolayout()
 		
-		/// newtorking - request data audio chord 🚀
-		// prepara el primer acorde que va a sonar y pasa información sobre este controlador (un acorde mayor o uno menor)
-		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
+		/// NETWORKING - request data audio chord 🚀
+		 requestChordDataAudio()
 		
-		// se anima el indicador de actividad
-		startAnimating()
-		
-//		/// newtorking - check request
-//		// corrobora si la última solicitud web fue exitosa o no
-//		FirebaseClient.sharedInstance().chordRequest(refMajorChords: nil, majorChords: nil, refMinorChords: nil, minorChords: nil, refDiminishedChords: nil, diminishedChords: nil, refAugmentedChords: nil, augmentedChords: nil) { (success, errorString) in
-//			
-//			// ejecuta este bloque en la cola principal (dispatch)
-//			performUIUpdatesOnMain {
-//				// si la solicitud fue exitosa
-//				if success {
-//					
-//					print("ggg")
-//					// detener el indicador de actividad
-//					self.stopAnimating()
-//					
-//					
-//					// si falló
-//				} else {
-//					
-//					// mostrar un alert view
-//					self.displayAlertView(errorString)
-//				}
-//				
-//			} // end dispatch
-//		}
 	}
 	
 
@@ -180,11 +145,7 @@ class SecondScreenViewController: UIViewController {
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
 		
-		// por último, realizar una nueva solicitud web
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
-		// se visibiliza el indicator de actividad (networking)
-		startAnimating()
+		requestChordDataAudio()
 	
 	}
 	
@@ -231,10 +192,7 @@ class SecondScreenViewController: UIViewController {
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
 		
 		// por último, realizar una nueva solicitud web
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
-		// se visibiliza el indicator de actividad (networking)
-		startAnimating()
+		requestChordDataAudio()
 		
 		
 	}
@@ -283,11 +241,7 @@ class SecondScreenViewController: UIViewController {
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
 		
-		// por último, realizar una nueva solicitud web
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
-		// se visibiliza el indicator de actividad (networking)
-		startAnimating()
+		requestChordDataAudio()
 
 	}
 	
@@ -332,11 +286,7 @@ class SecondScreenViewController: UIViewController {
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
 		
-		// por último, realizar una nueva solicitud web
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
-		// visibiliza el indicator de actividad (networking)
-		startAnimating()
+		requestChordDataAudio()
 		
 		
 	}
@@ -439,6 +389,96 @@ class SecondScreenViewController: UIViewController {
 		
 	}
 	
+	
+	// task: realizar una solicitud web para obtener los datos de audio del acorde elegido
+	func requestChordDataAudio() {
+		
+		
+		// prepara el siguiente acorde que va a sonar y pasa el objeto 'FirstScreenViewController'
+		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
+		// se visibiliza el indicator de actividad (networking)
+		startAnimating()
+		// corrobora si la solicitud es exitosa o no
+		checkIfTheRequestWasSuccesful()
+		
+		
+	}
+	
+	
+	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
+	func checkIfTheRequestWasSuccesful() {
+		
+		FirebaseClient.sharedInstance().majorChordRequest { success, error in
+			
+			performUIUpdatesOnMain {
+				
+				if success {
+					
+					self.stopAnimating()
+					
+				} else {
+					
+					self.displayAlertView(error)
+				}
+				
+			} // end dispatch
+			
+		} // end closure
+		
+		
+		FirebaseClient.sharedInstance().minorChordRequest { success, error in
+			
+			performUIUpdatesOnMain {
+				
+				if success {
+					
+					self.stopAnimating()
+					
+				} else {
+					
+					self.displayAlertView(error)
+				}
+				
+			} // end dispatch
+			
+		} // end closure
+		
+		FirebaseClient.sharedInstance().diminishedChordRequest { success, error in
+			
+			performUIUpdatesOnMain {
+				
+				if success {
+					
+					self.stopAnimating()
+					
+				} else {
+					
+					self.displayAlertView(error)
+				}
+				
+			} // end dispatch
+			
+		} // end closure
+		
+		FirebaseClient.sharedInstance().augmentedChordRequest { success, error in
+			
+			performUIUpdatesOnMain {
+				
+				if success {
+					
+					self.stopAnimating()
+					
+				} else {
+					
+					self.displayAlertView(error)
+				}
+				
+			} // end dispatch
+			
+		} // end closure
+		
+		
+	} // end func
 	
 	//*****************************************************************
 	// MARK: - Helpers

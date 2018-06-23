@@ -22,7 +22,7 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 
-
+	/// UI ////////////////////////////////////////////////////
 	// los botones de acordes fueron tapeados
 	var majorButtonWasTapped = true
 	var minorButtonWasTapped = true
@@ -30,8 +30,7 @@ class FirstScreenViewController: UIViewController {
 	// indica si el botón ya fue tapeado
 	var buttonWasTapped = true
 	
-
-	/// SCORE BOTTOM BAR ////////////////////////////////////////////////////
+	// bar score bottom
 	let pointsBarView = PointsView()
 	let errorsBarView = ErrorsView()
 	
@@ -52,7 +51,7 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - IBOutlets
 	//*****************************************************************
 
-	// los íconos de la barra de menú
+	// los triángulos de la barra de menú
 	@IBOutlet weak var chordsInfoButton: UIButton!
 	@IBOutlet weak var lastScoresButton: UIButton!
 	
@@ -72,23 +71,16 @@ class FirstScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		/// user interface elements
+		/// UI
 		// prepara el estado de los elementos gráficos de la interfaz
 		setUserInterface()
 		
-		/// autolayout
+		/// AUTOLAYOUT
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		setAutolayout()
 		
-		/// newtorking - request data audio chord 🚀
-		// prepara el primer acorde que va a sonar y pasa información sobre este controlador (un acorde mayor o uno menor)
-		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
-		
-		// se anima el indicador de actividad
-		startAnimating()
-		
-		// corroborar si la solicitud web fue exitosa
-		checkIfTheRequestWasSuccesful()
+		/// NETWORKING - request data audio chord 🚀
+		requestChordDataAudio()
 		
 		
 	}
@@ -128,7 +120,7 @@ class FirstScreenViewController: UIViewController {
 			errorsBarView.currentValue += 1
 		}
 		
-		// el juego progresa o finaliza de acuerdo al desempeño del usuario
+		// el juego progresa o finaliza de acuerdo a los aciertos u errores del usuario
 		progressOrGameOver()
 		
 
@@ -143,16 +135,12 @@ class FirstScreenViewController: UIViewController {
 		print("✔︎ Tu último score es de \(FirstScreenViewController.protoPersistencia)")
 		
 		
-		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
 		
-		// por último, realizar una nueva solicitud web
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
-		// se visibiliza el indicator de actividad (networking)
-		startAnimating()
-		// corrobora si la solicitud es exitosa o no
-		checkIfTheRequestWasSuccesful()
+		// por último, realizar una solicitud web
+		requestChordDataAudio()
+		
+
 
 	}
 
@@ -190,7 +178,7 @@ class FirstScreenViewController: UIViewController {
 			
 		}
 		
-		// el juego progresa o finaliza de acuerdo al desempeño del usuario
+		// // el juego progresa o finaliza de acuerdo a los aciertos u errores del usuario
 		progressOrGameOver()
 		
 
@@ -202,12 +190,7 @@ class FirstScreenViewController: UIViewController {
 		
 		
 		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
-		
-		// prepara el siguiente acorde que va a sonar y pasa información sobre este controlador
-		// un acorde mayor o uno menor
-		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
-		startAnimating()
-		checkIfTheRequestWasSuccesful()
+		requestChordDataAudio()
 		
 	}
 	
@@ -297,61 +280,63 @@ class FirstScreenViewController: UIViewController {
 	
 	}
 	
+	/// task: realizar una solicitud web para obtener los datos de audio del acorde elegido
+	func requestChordDataAudio() {
+		
+		
+		// prepara el siguiente acorde que va a sonar y pasa el objeto 'FirstScreenViewController'
+		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
+		// se visibiliza el indicator de actividad (networking)
+		startAnimating()
+		// corrobora si la solicitud es exitosa o no
+		checkIfTheRequestWasSuccesful()
+		
+	
+	}
 	
 	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
 	func checkIfTheRequestWasSuccesful() {
 		
-		
-		//		/// newtorking - check request
-		//		// corrobora si la última solicitud web fue exitosa o no
 		FirebaseClient.sharedInstance().majorChordRequest { success, error in
-			
 			
 			performUIUpdatesOnMain {
 				
 				if success {
 					
 					self.stopAnimating()
-					print("la solicitud fue exitosa!!")
 					
 				} else {
 					
 					self.displayAlertView(error)
-					print("la solicitud fue fracasó!!")
 				}
 				
 			} // end dispatch
-			
-			
 			
 		} // end closure
 		
 		
 		FirebaseClient.sharedInstance().minorChordRequest { success, error in
 			
-			
 			performUIUpdatesOnMain {
 				
 				if success {
 					
 					self.stopAnimating()
-					print("la solicitud fue exitosa!!")
 					
 				} else {
 					
 					self.displayAlertView(error)
-					print("la solicitud fue fracasó!!")
 				}
 				
 			} // end dispatch
 			
-
-			
 		} // end closure
 		
-		
-	}
+
+	} // end func
 	
+	
+
 	//*****************************************************************
 	// MARK: - Helpers
 	//*****************************************************************
@@ -363,7 +348,7 @@ class FirstScreenViewController: UIViewController {
 	
 	
 	/**
-	Muestra al usuario un mensaje acerca de porqué el sonido no suena.
+	Muestra al usuario un mensaje acerca de porqué la solicitud falló.
 	
 	- Parameter title: El título del error.
 	- Parameter message: El mensaje acerca del error.
@@ -371,6 +356,7 @@ class FirstScreenViewController: UIViewController {
 	*/
 	func displayAlertView(_ error: String?) {
 		
+		// si ocurre un error en la solicitud, mostrar una vista de alerta!
 		if error != nil {
 			
 			let alertController = UIAlertController(title: "Request Error", message: error, preferredStyle: .alert)
