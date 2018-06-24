@@ -22,7 +22,7 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 
-	/// UI ////////////////////////////////////////////////////////////
+	/// User Interface ................................................
 	// los botones de acordes fueron tapeados
 	var majorButtonWasTapped = true
 	var minorButtonWasTapped = true
@@ -34,13 +34,14 @@ class FirstScreenViewController: UIViewController {
 	let pointsBarView = PointsView()
 	let errorsBarView = ErrorsView()
 	
-	/// AUDIO /////////////////////////////////////////////////////////
+	/// Audio .........................................................
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
 	
 
-	/// CORE DATA /////////////////////////////////////////////////////
-	var dataController: DataController! // inyecta el controlador de datos (core data stack)
+	/// Core Data .....................................................
+	// inyecta el controlador de datos (core data stack)
+	var dataController: DataController!
 	
 	// un array que contiene los objetos 'Score' persistidos
 	var scores: [Score] = []
@@ -48,7 +49,9 @@ class FirstScreenViewController: UIViewController {
 	// se encarga de contabilizar el score actual del usuario
 	var scoreToAdd: Double = 0
 	
-
+	/// Internet Recheability ..........................................
+	let connection = ConnectionPossibilities(connection: .none)
+	let recheability = Reachability()!
 	
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -70,23 +73,24 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - VC Life Cycle
 	//*****************************************************************
 	
-	/// task: cargar la supervista..
+	/// task: cargar la supervista
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		/// UI
+		/// User Interface ............................................
 		// prepara el estado de los elementos gráficos de la interfaz
 		setUserInterface()
 		
-		/// AUTOLAYOUT
+		/// Autolayout ................................................
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		setAutolayout()
 		
-		/// NETWORKING - request data audio chord 🚀
+		/// Networking - request data audio chord 🚀 ..................
 		requestChordDataAudio()
 		
+		/// Internet Recheability ..........................................
+		internetRecheability()
 
-		
 	}
 	
 	
@@ -94,14 +98,13 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - IBActions
 	//*****************************************************************
 	
-	
 	// Major, Minor & Play Buttons
 	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
 		
 		
-		/// 1- USER INTERFACE ///////////////////////////////////////////////////////////////
+		/// 1- User Interface .........................................
 		
 		// una vez tapeado el botón de mayor, todos los botones de acordes se deshabilitan
 		if majorButtonWasTapped {
@@ -110,7 +113,7 @@ class FirstScreenViewController: UIViewController {
 		}
 
 		
-		/// 2- LÓGICA ///////////////////////////////////////////////////////////////////////
+		/// 2- Logic ...................................................
 		
 		// si sonó un acorde mayor y el usuario tapeó el botón de mayor, ACIERTO!...
 		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Major {
@@ -143,10 +146,14 @@ class FirstScreenViewController: UIViewController {
 		
 		
 		
-		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
+		/// 3- Networking 🚀 ...........................................
+		
+		// antes de realizar la solicitud comprobar si hay conexión a internet
+		internetRecheability()
 		
 		// por último, realizar una solicitud web
 		requestChordDataAudio()
+		
 		
 
 
@@ -159,7 +166,7 @@ class FirstScreenViewController: UIViewController {
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
 
 
-		/// 1- USER INTERFACE ///////////////////////////////////////////////////////////////
+		/// 1- User Interface ...........................................
 		
 		// una vez tapeado el botón de menor, todos los botones de acordes se deshabilitan
 		if minorButtonWasTapped {
@@ -169,7 +176,7 @@ class FirstScreenViewController: UIViewController {
 		}
 
 		
-		/// 2- LÓGICA ///////////////////////////////////////////////////////////////////////
+		/// 2- Logic .....................................................
 		
 		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!...
 		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Minor {
@@ -197,7 +204,9 @@ class FirstScreenViewController: UIViewController {
 
 		
 		
-		/// 4- NETWORKING 🚀 /////////////////////////////////////////////////////////////////
+		/// 3- Networking 🚀 ..................................................
+		
+		internetRecheability()
 		requestChordDataAudio()
 		
 	}
@@ -206,13 +215,13 @@ class FirstScreenViewController: UIViewController {
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
-		/// 1- USER INTERFACE ///////////////////////////////////////////////////////////////
+		/// 1- User Interface .................................................
 		
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true
 		
 
-		/// 2- AUDIO ////////////////////////////////////////////////////////////////////////
+		/// 2- Audio ..........................................................
 		
 		// a- toma los ÚLTIMOS datos de audio almacenados en memoria, ahora puestos en el reproductor
 		do {
@@ -319,7 +328,7 @@ class FirstScreenViewController: UIViewController {
 	func addScoreToCoreData(hit: Double) {
 		
 		
-		// Core Data CREATES and SAVE score ///////////////////////////////
+		// Core Data CREATES and SAVE score
 		
 		// crea un objeto gestionado 'score' para almacenar el score actual
 		let score = Score(hits: hit, context: dataController.viewContext)
@@ -329,10 +338,8 @@ class FirstScreenViewController: UIViewController {
 		
 		print("tu score actual es de \(score)")
 		
-//		// intenta guardar los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
-//		try? dataController.viewContext.save() // 💿
-		
-		///////////////////////////////////////////////////
+		// intenta guardar los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
+		try? dataController.viewContext.save() // 💿
 		
 		
 	}
@@ -419,15 +426,17 @@ class FirstScreenViewController: UIViewController {
 			
 			let alertController = UIAlertController(title: "Request Error", message: error, preferredStyle: .alert)
 			
-			let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-				
-			}
-			alertController.addAction(cancelAction)
-			
 			let OKAction = UIAlertAction(title: "OK", style: .default) { action in
 				
-			}
-			alertController.addAction(OKAction)
+				// TODO: qué tipo de acción implementar si hay un error con la solicitud??
+				// ir a otra pantalla que diga, intente más tarde?
+				
+				
+				// comprobar si ahora sí hay internet
+				self.internetRecheability()
+				
+				}
+				alertController.addAction(OKAction)
 			
 			self.present(alertController, animated: true) {
 				
@@ -484,6 +493,108 @@ extension FirstScreenViewController {
 		} // end if
 
 	} // end func
+	
+	
+	
+	
+	//*****************************************************************
+	// MARK: - Internet Connection
+	//*****************************************************************
+	
+	
+	func internetRecheability() {
+		
+		
+		/// Internet Recheability ..........................................
+		// que hacer cuando SÍ hay conexión a internet
+		recheability.whenReachable = { _ in
+			
+			DispatchQueue.main.async {
+				self.view.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+				print("hay conexión!")
+			}
+		}
+		
+		// que hacer cuando NO hay internet
+		recheability.whenUnreachable = { _ in
+			
+			DispatchQueue.main.async {
+				self.displayAlertView("Su dispositivo no está conectado a internet")
+				self.view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+				print("NO hay conexión!")
+			}
+			
+		}
+		
+		// agrega un observador
+		NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: Notification.Name.reachabilityChanged, object: recheability)
+		
+		// comprueba si el notificador inició
+		do {
+			try recheability.startNotifier()
+		} catch {
+			print("Could not start notifier")
+		}
+		
+		
+		
+		
+	}
+	
+	/// task: observar si hay cambios en la conexión y actuar en consecuencia
+	@objc func internetChanged(note: Notification) {
+		
+		let recheability = note.object as! Reachability
+		
+		// si hay internet
+		if recheability.connection != .none {
+			
+			// si hay conexión wifi
+			if recheability.connection == .wifi {
+				
+				DispatchQueue.main.async {
+					self.view.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+					print("hay conexión wifi")
+					
+					// si se reanuda la conexión realizar una nueva solicitud
+					self.requestChordDataAudio()
+					
+					
+				}
+				// si hay conexión con datos móviles
+			} else {
+				
+				DispatchQueue.main.async {
+					self.view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+					print("hay conexión con cellular data")
+					
+					// si se reanuda la conexión realizar una nueva solicitud
+					self.requestChordDataAudio()
+				}
+				
+			}
+			
+			// si NO hay conexión a internet
+		} else {
+			
+			
+			DispatchQueue.main.async {
+				
+				
+				self.displayAlertView("No hay conexión a internet")
+				self.view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+				
+			}
+			
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
 
 } // end ext
 

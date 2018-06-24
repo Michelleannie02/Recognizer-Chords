@@ -36,6 +36,8 @@
 		A6A35038207E504C000E79E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35036207E504C000E79E1 /* LaunchScreen.storyboard */; };
 		A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF19FC20BE17E600DBAAAC /* PointsView.swift */; };
 		A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */; };
+		A6C7C71520DF5AEF00235C7D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C7C71420DF5AEE00235C7D /* Reachability.swift */; };
+		A6C7C71720DF5B4E00235C7D /* Connection_Posibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C7C71620DF5B4E00235C7D /* Connection_Posibilities.swift */; };
 		A6F074AA20D21476001475FC /* ThirdScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F074A920D21476001475FC /* ThirdScreenViewController.swift */; };
 		A6F72CB320CF1EA400251901 /* ConfigureUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F72CB220CF1EA400251901 /* ConfigureUI.swift */; };
 		A6F72CB520CF9CD100251901 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F72CB420CF9CD100251901 /* GameOverViewController.swift */; };
@@ -76,6 +78,9 @@
 		A6A35039207E504C000E79E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6AF19FC20BE17E600DBAAAC /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
+		A6C7C71420DF5AEE00235C7D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = "../../../../../../../../Desktop/Reachability.swift-master/Sources/Reachability.swift"; sourceTree = "<group>"; };
+		A6C7C71620DF5B4E00235C7D /* Connection_Posibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Connection_Posibilities.swift; path = "Recognizer Chords/Supporting files/Internet Connection/Connection_Posibilities.swift"; sourceTree = SOURCE_ROOT; };
+		A6C7C71920DF5B6600235C7D /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A6F074A920D21476001475FC /* ThirdScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenViewController.swift; sourceTree = "<group>"; };
 		A6F72CB220CF1EA400251901 /* ConfigureUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigureUI.swift; path = "Recognizer Chords/View/ConfigureUI.swift"; sourceTree = SOURCE_ROOT; };
 		A6F72CB420CF9CD100251901 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +114,7 @@
 				A6354F7D20C3C0790083E838 /* ErrorsView.swift */,
 			);
 			name = "bottom score menu";
-			path = "Recognizer Chords/bottom score menu";
+			path = "Recognizer Chords/View/bottom score menu";
 			sourceTree = "<group>";
 		};
 		A60E686220927221004C601B /* View */ = {
@@ -200,10 +205,10 @@
 		A6AF16D120A492A400A25F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A694A48E20DDFA4F005CA31B /* Score+CoreDataClass.swift */,
-				A694A48F20DDFA4F005CA31B /* Score+CoreDataProperties.swift */,
 				A656CB7120D1EA3D009B41E9 /* DataController.swift */,
 				A60DF5B920CDEFD400EE4F7A /* RecognizerChords.xcdatamodeld */,
+				A694A48E20DDFA4F005CA31B /* Score+CoreDataClass.swift */,
+				A694A48F20DDFA4F005CA31B /* Score+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,11 +239,22 @@
 		A6BC0AE7208542EB00D2AF6C /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				A6C7C71820DF5B6500235C7D /* Internet Connection */,
+				A6C7C71420DF5AEE00235C7D /* Reachability.swift */,
 				A6A35039207E504C000E79E1 /* Info.plist */,
 				A6A286D520D9A24500E5176E /* GoogleService-Info.plist */,
 				A61BE9CE208E6868004023EE /* README.md */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		A6C7C71820DF5B6500235C7D /* Internet Connection */ = {
+			isa = PBXGroup;
+			children = (
+				A6C7C71620DF5B4E00235C7D /* Connection_Posibilities.swift */,
+				A6C7C71920DF5B6600235C7D /* Reachability.swift */,
+			);
+			path = "Internet Connection";
 			sourceTree = "<group>";
 		};
 		A6DE85FE2086A33400DBBE3A /* Networking */ = {
@@ -359,6 +375,7 @@
 				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
 				A60DF5C520CE0EF100EE4F7A /* FirebaseConstants.swift in Sources */,
 				A656CB7020D1DE70009B41E9 /* GCDBlackBox.swift in Sources */,
+				A6C7C71520DF5AEF00235C7D /* Reachability.swift in Sources */,
 				A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */,
 				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
 				A656CB7220D1EA3D009B41E9 /* DataController.swift in Sources */,
@@ -372,6 +389,7 @@
 				A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */,
 				A6A286DC20D9C8A200E5176E /* ScoreCell.swift in Sources */,
 				A6A286D820D9AC9C00E5176E /* ChorsInfoFirst_Autolayout.swift in Sources */,
+				A6C7C71720DF5B4E00235C7D /* Connection_Posibilities.swift in Sources */,
 				A6A286DA20D9ACB000E5176E /* ChordInfoSecond_Autolayout.swift in Sources */,
 				A619F8F520CBA70B00241E2D /* FirstScreen_Autolayout.swift in Sources */,
 				A694A49120DDFA4F005CA31B /* Score+CoreDataProperties.swift in Sources */,

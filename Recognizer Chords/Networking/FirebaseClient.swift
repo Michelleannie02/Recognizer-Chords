@@ -39,7 +39,7 @@ class FirebaseClient: NSObject {
 	
 	
 	//*****************************************************************
-	// MARK: - Networking Methods
+	// MARK: - Setup Chords of First Or Second Screen
 	//*****************************************************************
 	
 	/**
@@ -127,6 +127,12 @@ class FirebaseClient: NSObject {
 	} // end func
 	
 	
+	
+	//*****************************************************************
+	// MARK: - Chords Requests
+	//*****************************************************************
+	
+	
 	// major chord request
 	func majorChordRequest(refMajorChords: String? = nil, majorChords:[String]? = nil, completionHandlerForMajorChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
@@ -151,37 +157,32 @@ class FirebaseClient: NSObject {
 			print("🏄🏻‍♂️ AL PRESIONAR 'PLAY' SONARÁ EL ACORDE: \(majorChords.name)")
 		
 		
-		// 4 - SOLICITUD WEB A FIREBASE 🔥
+		// 4 - solicitud a Firebase 🔥
 		
-			// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
+			// a - descarga los datos requeridos EN MEMORIA con un tamaño máximo permitido de 1MB
 			majorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
-		
-		
-			// b - esta rama comprueba si ocurrió un error en la solicitud
-			if let error = error {
-		
-			// c - informa al completion handler que la solicitud falló
-				completionHandlerForMajorChord(false, error.localizedDescription)
-				print("LA SOLICITUD FALLó")
-		
+
+				// handling errors
+				if let error = error {
+					
+					completionHandlerForMajorChord(false, error.localizedDescription)
+				
 				} else {
-		
-		
-			// b - esta rama comprueba si se obtuvieron los datos correctamente...y si se así
-			if let data = data {
-		
-			// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-				FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
-		
-				//test
-				print("LOS DATOS OBTENIDOS EL ACORDE MAYOR SON: \(data)")
-		
-				// d - informa al completion handler que la solicitud fue exitiosa!
-				completionHandlerForMajorChord(true, nil)
-		
+					// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+					FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
+					
+					//test
+					print("LOS DATOS OBTENIDOS EL ACORDE MAYOR SON: \(data)")
+					
+					// d - informa al completion handler que la solicitud fue exitiosa!
+					completionHandlerForMajorChord(true, nil)
+					
+					
 				}
+	
+				
+				print("los datos obtenidos son: \(data), y el error \(error)")
 		
-			}
 		
 		}
 		
@@ -216,32 +217,25 @@ class FirebaseClient: NSObject {
 		// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
 		minorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
 			
-			
-			// b - esta rama comprueba si ocurrió un error en la solicitud
+
 			if let error = error {
 				
-				// c - informa al completion handler que la solicitud falló
+				// TODO: consultar porqué no captura el error (al igual que las otras ramas similares)
 				completionHandlerForMinorChord(false, error.localizedDescription)
-				print("LA SOLICITUD FALLó")
 				
 			} else {
+				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
 				
+				//test
+				print("LOS DATOS OBTENIDOS EL ACORDE menor SON: \(data)")
 				
-				// b - esta rama comprueba si se obtuvieron los datos correctamente...y si se así
-				if let data = data {
-					
-					// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-					FirebaseClient.dataChord = data // DATOS DE AUDIO OBTENIDOS! 👏
-					
-					//test
-					print("LOS DATOS OBTENIDOS EL ACORDE menor SON: \(data)")
-					
-					// d - informa al completion handler que la solicitud fue exitiosa!
-					completionHandlerForMinorChord(true, nil)
-					
-				}
+				// d - informa al completion handler que la solicitud fue exitiosa!
+				completionHandlerForMinorChord(true, nil)
+				
 				
 			}
+		
 			
 		}
 
@@ -252,6 +246,52 @@ class FirebaseClient: NSObject {
 	func diminishedChordRequest(refDiminishedChords: String? = nil, diminishedChords:[String]? = nil,completionHandlerForDiminishedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 		
+		// 1- se conecta con FIREBASE (Google Cloud Storage)
+		let storage = Storage.storage()
+		
+		// 2- crea una referencia al archivo que se desea descargar
+		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
+		
+		
+		// 3 - raconta los datos para realizar la solicitud
+		
+		// a - crea una referencia con un archivo inicial que contiene el path y el nombre
+		_ = storage.reference(withPath: (DiminishedChords.refDiminishedChords))
+		
+		// b - crea una nueva referencia HIJA de la referencia anterior (para que sea la referencia del archivo que se quiere descargar)
+		// tira los 🎲 y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
+		let diminishedChords = gsReference.child((DiminishedChords.items.randomElement())!)
+		
+		// test
+		print("🏄🏻‍♂️ AL PRESIONAR 'PLAY' SONARÁ EL ACORDE: \(diminishedChords.name)")
+		
+		
+		// 4 - solicitud a Firebase 🔥
+		
+		// a - descarga los datos requeridos EN MEMORIA con un tamaño máximo permitido de 1MB
+		diminishedChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
+			
+			
+			if let error = error {
+				
+				completionHandlerForDiminishedChord(false, error.localizedDescription)
+				
+			} else {
+				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
+				
+				//test
+				print("LOS DATOS OBTENIDOS EL ACORDE disminuído SON: \(data)")
+				
+				// d - informa al completion handler que la solicitud fue exitiosa!
+				completionHandlerForDiminishedChord(true, nil)
+				
+				
+			}
+			
+			
+		}
+		
 		
 	}
 	
@@ -259,7 +299,53 @@ class FirebaseClient: NSObject {
 	func augmentedChordRequest(refAugmentedChords: String? = nil , augmentedChords:[String]? = nil, completionHandlerForAugmentedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 		
+		// 1- se conecta con FIREBASE (Google Cloud Storage)
+		let storage = Storage.storage()
 		
+		// 2- crea una referencia al archivo que se desea descargar
+		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
+		
+		
+		// 3 - raconta los datos para realizar la solicitud
+		
+		// a - crea una referencia con un archivo inicial que contiene el path y el nombre
+		_ = storage.reference(withPath: (AugmentedChords.refAugmentedChords))
+		
+		// b - crea una nueva referencia HIJA de la referencia anterior (para que sea la referencia del archivo que se quiere descargar)
+		// tira los 🎲 y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
+		let augmentedChords = gsReference.child((AugmentedChords.items.randomElement())!)
+		
+		// test
+		print("🏄🏻‍♂️ AL PRESIONAR 'PLAY' SONARÁ EL ACORDE: \(augmentedChords.name)")
+		
+		
+		// 4 - solicitud a Firebase 🔥
+		
+		// a - descarga los datos requeridos EN MEMORIA con un tamaño máximo permitido de 1MB
+		augmentedChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
+			
+			
+			if let error = error {
+				
+				completionHandlerForAugmentedChord(false, error.localizedDescription)
+				
+			} else {
+				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
+				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
+				
+				//test
+				print("LOS DATOS OBTENIDOS EL ACORDE aumentado SON: \(data)")
+				
+				// d - informa al completion handler que la solicitud fue exitiosa!
+				completionHandlerForAugmentedChord(true, nil)
+				
+				
+			}
+			
+			
+		}
+		
+
 	}
 	
 	

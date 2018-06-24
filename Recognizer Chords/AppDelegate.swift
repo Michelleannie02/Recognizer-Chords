@@ -37,20 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
-		/// FIREBASE
+		/// Firebase ..................................................
 		// asocia la app a Firebase 🔥
 		FirebaseApp.configure()
 		
 		
-		/// CORE DATA
-		// carga el almacen persistente
+		/// Core Data .................................................
+		// apenas arranca la app carga los datos persistidos (el almacén persistente)...
 		dataController.load()
-		
-		// apenas arranca la aplicación...
-		// inyecta el 'dataController' en el 'TravelLocationsMapViewController'
-		//let navigationController = window?.rootViewController as! UINavigationController
-		//let travelLocationsViewController = navigationController.topViewController as! TravelLocationsMapViewController
-		//travelLocationsViewController.dataController = dataController
+		// y son enviados a la propiedad 'dataController' de 'FirstScreenViewController'
+		let firstScreenViewController = FirstScreenViewController()
+		firstScreenViewController.dataController = dataController
 		
 		return true
 	}
