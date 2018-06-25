@@ -193,7 +193,7 @@ class FirstScreenViewController: UIViewController {
 			scoreToAdd += 1
 			
 			// test
-			print("👏Sumar un punto al score")
+			print("👏Sumar un punto al score. El valor de 'scoreToAdd es:'\(scoreToAdd)")
 			
 			
 		} else {
@@ -246,13 +246,14 @@ class FirstScreenViewController: UIViewController {
 
 	
 
-	
 	//*****************************************************************
 	// MARK: - Methods
 	//*****************************************************************
 	
 	/// task: computar los aciertos y errores del usuario en su sesión y actuar en consecuencia
 	func progressOrGameOver() {
+		
+		print("progressOrGameOver")
 		
 		
 		/// PROGRESS...
@@ -270,6 +271,8 @@ class FirstScreenViewController: UIViewController {
 				self.performSegue(withIdentifier: "next screen", sender: nil)
 			})
 		
+			
+			
 		} // end if
 
 
@@ -279,7 +282,10 @@ class FirstScreenViewController: UIViewController {
 		
 			
 			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 👏
-			addScoreToCoreData(hit: self.scoreToAdd)
+			
+			
+			
+			addScoreToCoreData(hits: self.scoreToAdd)
 			
 			
 			print("Game Over. Tu score fue de \(self.scoreToAdd) puntos.")
@@ -303,16 +309,16 @@ class FirstScreenViewController: UIViewController {
 	// MARK: - Core Data (creates and save Score)
 	//*****************************************************************
 	
-	/// task: recibir el score actual y agregarlo a core data
-	func addScoreToCoreData(hit: Double) {
+	/// task: recibir el score actual y agregarlo a la propiedad 'hits' del objeto gestionado 'Score'
+	func addScoreToCoreData(hits: Double) {
 		
 		
 		// Core Data CREATES and SAVE score
 		
 		// crea un objeto gestionado 'score' para almacenar el score actual
-		let score = Score(hits: hit, context: dataController.viewContext)
-		
-		// agrega el score (managed object) a un array que contiene los scores persistidos '[Score]'
+		let score = Score(hits: hits, context: dataController.viewContext) // ERROR! why? 👈
+
+		// agrega el score a un array que contiene los scores '[Score]'
 		scores.append(score)
 		
 		print("tu score actual es de \(score)")
@@ -323,8 +329,6 @@ class FirstScreenViewController: UIViewController {
 		
 	}
 	
-	
-
 	
 	
 } // end class

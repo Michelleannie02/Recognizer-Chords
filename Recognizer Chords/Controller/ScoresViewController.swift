@@ -25,16 +25,18 @@ class ScoresViewController: UIViewController {
 	/// CORE DATA /////////////////////////////////////////////////////////////
 	var dataController: DataController! // inyecta el controlador de datos (core data stack)
 	
-	// los scores del usuario persistidos
+	// todos los scores del usuario persistidos
 	var scores: [Score] = []
 
+	// los últimos tres scores del usuario
+	var threeLastScores: [Score] = []
 	
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
 	
 	@IBOutlet weak var closeButton: UIButton!
-	@IBOutlet weak var threeLastScores: UICollectionView!
+	@IBOutlet weak var threeLastScoresCollectionView: UICollectionView!
 	
 
 	//*****************************************************************
@@ -44,7 +46,7 @@ class ScoresViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// core data
+		// comprueba si hay scores persistidos 👈
 		fetchRequestForScores()
 		
 		// collection view layout
@@ -61,30 +63,33 @@ class ScoresViewController: UIViewController {
 	/// task: buscar si hay objetos 'Score' persistidos
 	func fetchRequestForScores() {
 		
-//				// hay objetos 'Score' persistidos?
-//				let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest() // 🔍
-//		
-//				// comprueba si hay resultados en la búsqueda..
-//				if let result = try? dataController.viewContext.fetch(fetchRequest) {
-//		
-//					// .. si es así, asigna el resultado de la solicitud al array de pins persistidos
-//					pins = result // pins:[Pin] 🔌
-//				}
-//		
-//				// luego itera ese array pins
-//				for pin in pins { //
-//					// y a las coordenadas de los pins persistidos..
-//					let coordinate = CLLocationCoordinate2D(latitude: pin.latitude , longitude: pin.longitude )
-//					// las convierte en objetos que adoptan el protocolo 'MKAnnotation'
-//					let pins = PinOnMap(coordinate: coordinate)
-//					// y los agrega al array de objetos preparados para mostrarse en una vista de mapa
-//					pinsOnMap.append(pins)
-//				}
-//		
-//				// por último, actualiza la vista de mapa agregando los pins persistidos.
-//				mapView.addAnnotations(pinsOnMap)
+			// hay objetos 'Score' persistidos?
+			let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest() // 🔍
+		
+				// comprueba si hay resultados en la búsqueda..
+				if let result = try? dataController.viewContext.fetch(fetchRequest) {
+		
+					// .. si es así, asigna el resultado de la solicitud al array de scores persistidos
+					scores = result // scores:[Score] 🔌
+					
+				}
+		
+			onlyThreeLastScores()
+		
+		}
+	
+
+	/// task: filtrar, del array de scores, sólo los 3 primeros miembros 👏
+	func onlyThreeLastScores() {
+		
+		threeLastScores = scores.getFirstElements(upTo: 3)
+		
+		// test
+		print("Estos son tus últimos 3 scores: \(threeLastScores) ")
 		
 	}
+
+
 	
 	//*****************************************************************
 	// MARK: - IBActions
@@ -98,8 +103,8 @@ class ScoresViewController: UIViewController {
 		
 	}
 	
-}
 
+}
 
 	//*****************************************************************
 	// MARK: - Collection View Methods
@@ -143,13 +148,13 @@ class ScoresViewController: UIViewController {
 			// 3 last scores collection view layout
 			
 			print("🛡 se cargó la vista de scores")
-			threeLastScores.backgroundColor = .red
+			threeLastScoresCollectionView.backgroundColor = .red
 			
 			
 			// collection view layout
 			let width = (view.frame.size.width) - 20
 			let height = (view.frame.size.height - 70) / 3.45
-			let layout = threeLastScores.collectionViewLayout as! UICollectionViewFlowLayout
+			let layout = threeLastScoresCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
 			layout.itemSize = CGSize(width: width, height: height)
 			
 			

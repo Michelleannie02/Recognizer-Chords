@@ -343,7 +343,7 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="S9I-0K-6B5" id="2jd-Tl-cQn"/>
-                        <outlet property="threeLastScores" destination="OxG-b7-Dvk" id="k48-FL-61h"/>
+                        <outlet property="threeLastScoresCollectionView" destination="OxG-b7-Dvk" id="k48-FL-61h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfA-zg-U4v" userLabel="First Responder" sceneMemberID="firstResponder"/>

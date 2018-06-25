@@ -98,3 +98,17 @@ extension Collection where Index == Int {
 	}
 	
 }
+
+
+//*****************************************************************
+// MARK: - Array Extention
+//*****************************************************************
+
+extension Array {
+	
+	func getFirstElements(upTo position: Int) -> Array<Element> {
+		let arraySlice = self[0 ..< position]
+		return Array(arraySlice)
+	}
+	
+}

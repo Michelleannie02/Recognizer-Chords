@@ -2,7 +2,7 @@
 //  Score+CoreDataProperties.swift
 //  Recognizer Chords
 //
-//  Created by Luciano Schillagi on 23/06/2018.
+//  Created by Luciano Schillagi on 25/06/2018.
 //  Copyright © 2018 luko. All rights reserved.
 //
 //
@@ -10,9 +10,6 @@
 import Foundation
 import CoreData
 
-/* Abstract:
-Contiene un método para buscar las objetos 'Score' dentro del contexto y el atributo 'hits' de la entidad 'Score'.
-*/
 
 extension Score {
 
@@ -20,6 +17,6 @@ extension Score {
         return NSFetchRequest<Score>(entityName: "Score")
     }
 
-    @NSManaged public var hits: Double // attribute
+    @NSManaged public var hits: Double
 
 }

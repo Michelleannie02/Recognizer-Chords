@@ -50,6 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		firstScreenViewController.dataController = dataController
 		
 		return true
+		
+		
+//		// inyecta el 'dataController' en el 'TravelLocationsMapViewController'
+//		let navigationController = window?.rootViewController as! UINavigationController
+//		let travelLocationsViewController = navigationController.topViewController as! TravelLocationsMapViewController
+//		travelLocationsViewController.dataController = dataController
+//
+		
 	}
 	
 	// cuando la aplicación entró en segundo plano se guarda el estado del contexto 💿
