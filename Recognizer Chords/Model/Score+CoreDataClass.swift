@@ -12,7 +12,6 @@
 import Foundation
 import CoreData
 
-
 /* Abstract:
 Una clase que representa el objeto ´Score´, con un inicializador de conveniencia.
 */

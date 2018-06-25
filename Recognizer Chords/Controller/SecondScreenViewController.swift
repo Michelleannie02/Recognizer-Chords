@@ -392,20 +392,6 @@ class SecondScreenViewController: UIViewController {
 	}
 
 	
-	// task: realizar una solicitud web para obtener los datos de audio del acorde elegido
-	func requestChordDataAudio() {
-		
-		
-		// prepara el siguiente acorde que va a sonar y pasa el objeto 'FirstScreenViewController'
-		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
-		// se visibiliza el indicator de actividad (networking)
-		startAnimating()
-		// corrobora si la solicitud es exitosa o no
-		checkIfTheRequestWasSuccesful()
-		
-		
-	}
-	
 	
 } // end class
 

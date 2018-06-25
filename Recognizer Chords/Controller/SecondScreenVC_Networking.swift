@@ -16,6 +16,20 @@ Contiene métodos concernientes a las solicitudes de red de la clase.
 
 extension SecondScreenViewController {
 	
+	// task: realizar una solicitud web para obtener los datos de audio del acorde elegido
+	func requestChordDataAudio() {
+		
+		
+		// prepara el siguiente acorde que va a sonar y pasa el objeto 'FirstScreenViewController'
+		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
+		// se visibiliza el indicator de actividad (networking)
+		startAnimating()
+		// corrobora si la solicitud es exitosa o no
+		checkIfTheRequestWasSuccesful()
+		
+		
+	}
+	
 	
 	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
 	func checkIfTheRequestWasSuccesful() {
@@ -152,4 +166,4 @@ extension SecondScreenViewController {
 		}
 	}
 	
-// end class
+} // end class

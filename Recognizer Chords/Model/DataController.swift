@@ -22,20 +22,20 @@ Una clase para encapsular las configuraciones de la pila y su funcionalidad.
 // task: crear una clase para encapsular las configuraciones de la pila y su funcionalidad
 class DataController {
 	
-	/// el contenedor persistente
+	// el contenedor persistente
 	let persistentContainer: NSPersistentContainer
 	
-	/// el contexto revisa si hay datos persistidos (en el contenedor persistente)
+	// el contexto revisa si hay datos persistidos (en el contenedor persistente)
 	var viewContext: NSManagedObjectContext {
 		return persistentContainer.viewContext
 	}
 	
-	/// inicializa el contenedor persistente de un modelo dado
+	// inicializa el contenedor persistente de un modelo dado
 	init(modelName: String) {
 		persistentContainer = NSPersistentContainer(name: modelName)
 	}
 	
-	/// carga los almacenes persistentes
+	/// carga los almacenes persistentes, es decir, los datos persistidos
 	func load(completion: (() -> Void)? = nil) {
 		persistentContainer.loadPersistentStores { storeDescription, error in
 			
