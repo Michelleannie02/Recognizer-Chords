@@ -1,0 +1,123 @@
+//
+//  FirstScreenVC_Networking.swift
+//  Recognizer Chords
+//
+//  Created by Luciano Schillagi on 24/06/2018.
+//  Copyright © 2018 luko. All rights reserved.
+//
+
+/* Controller */
+
+import UIKit
+
+/* Abstract:
+Contiene métodos concernientes a las solicitudes de red de la clase.
+*/
+
+extension FirstScreenViewController {
+	
+	
+	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
+	func checkIfTheRequestWasSuccesful() {
+		
+		FirebaseClient.sharedInstance().majorChordRequest { success, error in
+			
+			performUIUpdatesOnMain {
+				
+				if success {
+					
+					self.stopAnimating()
+					
+				} else {
+					
+					self.displayAlertView(Errors.Message.requestError.title, error)
+				}
+				
+			} // end dispatch
+			
+		} // end closure
+		
+		
+		FirebaseClient.sharedInstance().minorChordRequest { success, error in
+			
+			performUIUpdatesOnMain {
+				
+				if success {
+					
+					self.stopAnimating()
+					
+				} else {
+					
+					self.displayAlertView(Errors.Message.requestError.title, error)
+				}
+				
+			} // end dispatch
+			
+		} // end closure
+		
+		
+	} // end func
+	
+	
+	
+	//*****************************************************************
+	// MARK: - Alert View
+	//*****************************************************************
+	
+	/**
+	Muestra al usuario un mensaje acerca de porqué la solicitud falló.
+	
+	- Parameter title: El título del error.
+	- Parameter message: El mensaje acerca del error.
+	
+	*/
+	func displayAlertView(_ title: String?, _ error: String?) {
+		
+		// si ocurre un error en la solicitud, mostrar una vista de alerta!
+		if error != nil {
+			
+			let alertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
+			
+			let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+				
+				// comprobar si ahora sí hay internet
+				self.internetRecheability()
+				
+			}
+			alertController.addAction(OKAction)
+			
+			self.present(alertController, animated: true) {
+				
+			}
+		}
+	}
+	
+	
+	//*****************************************************************
+	// MARK: - Internet Connection
+	//*****************************************************************
+	
+	/// task: comprobar si hay conexión a internet y actuar en consecuencia
+	func internetRecheability() {
+		
+		// si hay internet
+		if recheability.connection != .none {
+			
+			// realizar una nueva solicitud
+			requestChordDataAudio()
+			print("hay conexión, se despide el alert view y se realizar una nueva solicitud")
+			
+		} else {
+			
+			DispatchQueue.main.async {
+				
+				// sigue sin haber conexión, mantener el alert view
+				self.displayAlertView(Errors.Message.noInternet.title, Errors.Message.no_Internet.description)
+				
+			}
+			
+		}
+	}
+	
+	
+}

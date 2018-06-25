@@ -34,6 +34,11 @@ class FirstScreenViewController: UIViewController {
 	let pointsBarView = PointsView()
 	let errorsBarView = ErrorsView()
 	
+	// esconde la barra de estado
+	override var prefersStatusBarHidden: Bool {
+		return true
+	}
+	
 	/// Audio .........................................................
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
@@ -206,6 +211,7 @@ class FirstScreenViewController: UIViewController {
 		
 		/// 3- Networking 🚀 ..................................................
 		
+		//internetRecheability()
 		internetRecheability()
 		requestChordDataAudio()
 		
@@ -257,31 +263,12 @@ class FirstScreenViewController: UIViewController {
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
 			
-			
-			
-			/// timer-diapasón (VER)
 			// espera 8 segundos antes de navegar hacia la siguiente pantalla...
-			Timer.scheduledTimer(withTimeInterval: 6.0, repeats: false, block: {(timer) in
+			Timer.scheduledTimer(withTimeInterval: 55.0, repeats: false, block: {(timer) in
 
-//				// TODO: suena el diapasón!!!!
-//				do {
-//					self.audioPlayer = try AVAudioPlayer(data: FirebaseClient.dataChord)
-//					self.audioPlayer?.prepareToPlay()
-//
-//					// 2-y los reproduce
-//					self.audioPlayer?.play()
-//
-//				} catch let error as NSError {
-//
-//
-//					print(error.debugDescription)
-//				}
-
-				// y por último navega hacia la próxima pantalla
+				// y navega hacia la próxima pantalla
 				self.performSegue(withIdentifier: "next screen", sender: nil)
 			})
-		
-			
 		
 		} // end if
 
@@ -289,23 +276,13 @@ class FirstScreenViewController: UIViewController {
 		/// GAME OVER.
 		// si el usuario erró 3 veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
-			
-			
-			
-			
-			
-			
+		
 			
 			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 👏
 			addScoreToCoreData(hit: self.scoreToAdd)
 			
 			
 			print("Game Over. Tu score fue de \(self.scoreToAdd) puntos.")
-			
-			
-			
-			
-			
 			
 			
 			
@@ -359,243 +336,20 @@ class FirstScreenViewController: UIViewController {
 	
 	}
 	
-	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
-	func checkIfTheRequestWasSuccesful() {
-		
-		FirebaseClient.sharedInstance().majorChordRequest { success, error in
-			
-			performUIUpdatesOnMain {
-				
-				if success {
-					
-					self.stopAnimating()
-					
-				} else {
-					
-					self.displayAlertView(error)
-				}
-				
-			} // end dispatch
-			
-		} // end closure
-		
-		
-		FirebaseClient.sharedInstance().minorChordRequest { success, error in
-			
-			performUIUpdatesOnMain {
-				
-				if success {
-					
-					self.stopAnimating()
-					
-				} else {
-					
-					self.displayAlertView(error)
-				}
-				
-			} // end dispatch
-			
-		} // end closure
-		
-
-	} // end func
 	
-	
-
-	//*****************************************************************
-	// MARK: - Helpers
-	//*****************************************************************
-	
-	/// esconde la barra de estado
-	override var prefersStatusBarHidden: Bool {
-			return true
-		}
-	
-	
-	/**
-	Muestra al usuario un mensaje acerca de porqué la solicitud falló.
-	
-	- Parameter title: El título del error.
-	- Parameter message: El mensaje acerca del error.
-	
-	*/
-	func displayAlertView(_ error: String?) {
-		
-		// si ocurre un error en la solicitud, mostrar una vista de alerta!
-		if error != nil {
-			
-			let alertController = UIAlertController(title: "Request Error", message: error, preferredStyle: .alert)
-			
-			let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-				
-				// TODO: qué tipo de acción implementar si hay un error con la solicitud??
-				// ir a otra pantalla que diga, intente más tarde?
-				
-				
-				// comprobar si ahora sí hay internet
-				self.internetRecheability()
-				
-				}
-				alertController.addAction(OKAction)
-			
-			self.present(alertController, animated: true) {
-				
-			}
-		}
-	}
-		
-
 } // end class
 
 
 
-//*****************************************************************
-// MARK: - Navigation (Segue)
-//*****************************************************************
 
-extension FirstScreenViewController {
 
-	// task: enviar a 'PhotoAlbumViewController' una serie de datos
-	override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
-
-		if segue.identifier == "score first screen" {
-
-//			// el destino de la transición, el 'PhotosAlbumViewController'
-//			let secondScreenVC = segue.destination as! SecondScreenViewController
-//
-//			// el remitente será una coordenada (pin) puesto sobre el mapa
-//			let coord = sender as! CLLocationCoordinate2D
-//
-//
-//			// le pasa a 'PhotoAlbumViewController' los siguientes datos: ///////////////////////////////
-//
-//			/*
-//			1- el controlador de datos (core data)
-//			2- el pin coincidente
-//			3- la coordenada de ese pin
-//			4- las fotos recibidas desde flickr 'flickrPhotos:[FlickrImage]'
-//			*/
-//
-//			// el controlador de datos
-//			photoAlbumVC.dataController = dataController
-//
-//			// el pin coincidente..
-//			photoAlbumVC.pin = pinToPass
-//
-//			// ..y su coordenada
-//			photoAlbumVC.coordinateSelected = coord
-//
-//			// y pasa las fotos recibidas desde flickr
-//			photoAlbumVC.flickrPhotos = flickrPhotos
-
-			//secondScreenVC.scoreFirstScreen = protoPersistencia
-
-		} // end if
-
-	} // end func
-	
-	
-	
-	
-	//*****************************************************************
-	// MARK: - Internet Connection
-	//*****************************************************************
-	
-	
-	func internetRecheability() {
-		
-		
-		/// Internet Recheability ..........................................
-		// que hacer cuando SÍ hay conexión a internet
-		recheability.whenReachable = { _ in
-			
-			DispatchQueue.main.async {
-				self.view.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-				print("hay conexión!")
-			}
-		}
-		
-		// que hacer cuando NO hay internet
-		recheability.whenUnreachable = { _ in
-			
-			DispatchQueue.main.async {
-				self.displayAlertView("Su dispositivo no está conectado a internet")
-				self.view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-				print("NO hay conexión!")
-			}
-			
-		}
-		
-		// agrega un observador
-		NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: Notification.Name.reachabilityChanged, object: recheability)
-		
-		// comprueba si el notificador inició
-		do {
-			try recheability.startNotifier()
-		} catch {
-			print("Could not start notifier")
-		}
-		
-		
-		
-		
-	}
-	
-	/// task: observar si hay cambios en la conexión y actuar en consecuencia
-	@objc func internetChanged(note: Notification) {
-		
-		let recheability = note.object as! Reachability
-		
-		// si hay internet
-		if recheability.connection != .none {
-			
-			// si hay conexión wifi
-			if recheability.connection == .wifi {
-				
-				DispatchQueue.main.async {
-					self.view.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-					print("hay conexión wifi")
-					
-					// si se reanuda la conexión realizar una nueva solicitud
-					self.requestChordDataAudio()
-					
-					
-				}
-				// si hay conexión con datos móviles
-			} else {
-				
-				DispatchQueue.main.async {
-					self.view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-					print("hay conexión con cellular data")
-					
-					// si se reanuda la conexión realizar una nueva solicitud
-					self.requestChordDataAudio()
-				}
-				
-			}
-			
-			// si NO hay conexión a internet
-		} else {
-			
-			
-			DispatchQueue.main.async {
-				
-				
-				self.displayAlertView("No hay conexión a internet")
-				self.view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-				
-			}
-			
-			
-		}
-		
-	}
-	
 	
 	
 	
 	
 
-} // end ext
+	
+
+
 
 

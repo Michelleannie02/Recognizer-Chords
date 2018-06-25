@@ -16,8 +16,6 @@ Almacena todas las configuraciones de interfaz de usuario referentes a momentos 
 La interfaz de usuario queda inhabilitada y un 'activity indicator' se anima indicandole al usuario que debe esperar hasta que el proceso actual finalice. Cuando finaliza el proceso la interfaz vuelve a habilitarse y el 'activity indicator' desaparece.
 */
 
-// TODO: ver si se pueden UNIFICAR estas dos extensions para no repetir métodos.
-
 
 // MARK: - FirstScreenViewController (Configure UI)
 
@@ -35,10 +33,15 @@ extension FirstScreenViewController {
 		// en principio los botones de mayor y menor se encuentran deshabilitados
 		majorButton.isEnabled = false
 		minorButton.isEnabled = false
+
+	}
+	
+	
+	/// task: deshabilitar todos los botones de acordes
+	func disableChordsButtons() {
 		
-		// las contenedores con información acerca de acordes y puntaje se encuentran ocultos
-//		chordsInfo.isHidden = true
-//		scoresInfo.isHidden = true
+		majorButton.isEnabled = false
+		minorButton.isEnabled = false
 		
 	}
 	
@@ -77,10 +80,17 @@ extension SecondScreenViewController {
 		diminishedButton.isEnabled = true
 		augmentedButton.isEnabled = true
 	
-		
-		// las contenedores con información acerca de acordes y puntaje también
-//		chordsInfo.isHidden = true
+	}
 	
+	
+	/// task: deshabilitar todos los botones de acordes
+	func disableChordsButtons() {
+		
+		majorButton.isEnabled = false
+		minorButton.isEnabled = false
+		diminishedButton.isEnabled = false
+		augmentedButton.isEnabled = false
+		
 	}
 		
 	//*****************************************************************
