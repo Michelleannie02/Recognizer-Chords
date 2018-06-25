@@ -22,14 +22,17 @@ class ScoresViewController: UIViewController {
 	// MARK: - Properties
 	//*****************************************************************
 	
-	/// CORE DATA /////////////////////////////////////////////////////////////
+	/// Core Data .....................................................
 	var dataController: DataController! // inyecta el controlador de datos (core data stack)
 	
+	
+	/// User Score ....................................................
 	// todos los scores del usuario persistidos
 	var scores: [Score] = []
 
 	// los últimos tres scores del usuario
 	var threeLastScores: [Score] = []
+	
 	
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -88,6 +91,7 @@ class ScoresViewController: UIViewController {
 		print("Estos son tus últimos 3 scores: \(threeLastScores) ")
 		
 	}
+	
 
 
 	
@@ -114,6 +118,32 @@ class ScoresViewController: UIViewController {
 		
 		func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 			
+			// TODO:
+			
+			/*
+			1- obtener el array 'threeLastScores: [Score]' con los últimos tres scores persistidos
+			2- acceder, de cada objeto, a su propiedad ´hits´
+			3- convertir el valor ´hits´ de <Double> a <Int>
+			*/
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+
 			return 3
 		}
 		

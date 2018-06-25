@@ -88,7 +88,7 @@ class FirstScreenViewController: UIViewController {
 		
 		/// Autolayout ................................................
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
-		setAutolayout()
+		autolayout()
 		
 		/// Networking - request data audio chord 🚀 ..................
 		requestChordDataAudio()

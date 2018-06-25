@@ -10,15 +10,15 @@ import UIKit
 
 class ChordsInfoSecondViewController: UIViewController {
 	
-	
-	
-	
-	
+
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
 	
-	
+	@IBOutlet weak var majorInfoView: UIView!
+	@IBOutlet weak var minorInfoView: UIView!
+	@IBOutlet weak var diminishedInfoView: UIView!
+	@IBOutlet weak var augmentedInfoView: UIView!
 	@IBOutlet weak var closeButton: UIButton!
 	
 	
@@ -29,7 +29,9 @@ class ChordsInfoSecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		
+		
+		
     }
 
 	
@@ -38,6 +40,7 @@ class ChordsInfoSecondViewController: UIViewController {
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
+	
 	@IBAction func closeChordsInfo(_ sender: UIButton) {
 		
 		dismiss(animated: true, completion: nil)

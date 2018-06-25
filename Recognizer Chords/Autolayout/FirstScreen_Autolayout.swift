@@ -18,7 +18,7 @@ extension FirstScreenViewController {
 // MARK: - Autolayout
 //*****************************************************************
 
-func setAutolayout () {
+func autolayout () {
 	
 	
 	//		pointsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)

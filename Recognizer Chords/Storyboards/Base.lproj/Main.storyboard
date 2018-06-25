@@ -43,11 +43,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGg-9z-I6a">
-                                <rect key="frame" x="22" y="0.0" width="20" height="16"/>
+                                <rect key="frame" x="29" y="0.0" width="20" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.48627450979999998" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" image="down_arrow">
+                                <state key="normal" title="Chord Info">
                                     <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -57,9 +56,8 @@
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqy-Cp-pgD">
                                 <rect key="frame" x="78" y="0.0" width="20" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.48627450979999998" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" image="down_arrow">
+                                <state key="normal" title="Scores">
                                     <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -162,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="-2865" y="582"/>
         </scene>
-        <!--Chords Info First View Controller-->
+        <!--Chords Info First Screen-->
         <scene sceneID="gPG-SY-eOp">
             <objects>
-                <viewController id="PZq-wm-qab" customClass="ChordsInfoFirstViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Chords Info First Screen" id="PZq-wm-qab" customClass="ChordsInfoFirstViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SIY-JC-oWo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,6 +238,10 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="rR2-Il-Jhm" id="oiq-S3-FuA"/>
+                        <outlet property="majorInfoStackView" destination="PXy-hC-6nK" id="uGt-AW-bm0"/>
+                        <outlet property="majorInfoView" destination="oqk-rQ-CS8" id="AGY-Jy-JZK"/>
+                        <outlet property="minorInfoStackView" destination="Jdo-y2-2Y6" id="Z5g-6l-32F"/>
+                        <outlet property="minorInfoView" destination="cFa-6s-Dbr" id="p8M-QP-69v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLd-6e-Bfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -350,10 +352,10 @@
             </objects>
             <point key="canvasLocation" x="165.59999999999999" y="861.3193403298352"/>
         </scene>
-        <!--Chords Info Second View Controller-->
+        <!--Chords Info Second Screen-->
         <scene sceneID="5JA-5n-YoF">
             <objects>
-                <viewController id="eM4-hT-HtR" customClass="ChordsInfoSecondViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Chords Info Second Screen" id="eM4-hT-HtR" customClass="ChordsInfoSecondViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6EM-OW-yB3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -475,7 +477,11 @@
                         <viewLayoutGuide key="safeArea" id="2nJ-9f-ax4"/>
                     </view>
                     <connections>
+                        <outlet property="augmentedInfoView" destination="q1t-9I-KqQ" id="bdc-9Q-wps"/>
                         <outlet property="closeButton" destination="Msv-G7-NIE" id="j8V-fK-Ln7"/>
+                        <outlet property="diminishedInfoView" destination="5P2-Td-pa5" id="CwP-jY-sT9"/>
+                        <outlet property="majorInfoView" destination="Z90-qW-HAo" id="k4G-Ti-KBJ"/>
+                        <outlet property="minorInfoView" destination="OUZ-9N-w3H" id="bOh-go-Ci4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4e-NO-euF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,10 +618,9 @@
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgS-Yx-sMo">
                                 <rect key="frame" x="57" y="15" width="27" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.8784313725490196" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" image="down_arrow">
-                                    <color key="titleColor" red="0.8784313725490196" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Chords Info">
+                                    <color key="titleColor" red="0.48627450979999998" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="eM4-hT-HtR" kind="presentation" id="AqQ-Cm-Usy"/>
@@ -624,16 +629,15 @@
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-oU-EsF">
                                 <rect key="frame" x="174" y="15" width="27" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.87843137250000003" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" image="down_arrow">
-                                    <color key="titleColor" red="0.87843137250000003" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Scores" image="down_arrow">
+                                    <color key="titleColor" red="0.48627450979999998" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="RfU-NJ-qag" kind="presentation" id="Dob-wt-5Dg"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eKI-jl-ybl">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="eKI-jl-ybl">
                                 <rect key="frame" x="174" y="324" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>

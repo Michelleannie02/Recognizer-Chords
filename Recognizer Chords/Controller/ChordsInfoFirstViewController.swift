@@ -17,17 +17,17 @@ import UIKit
 class ChordsInfoFirstViewController: UIViewController {
 	
 	
-	
-	
-	
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
 	
-	
+	@IBOutlet weak var majorInfoView: UIView!
+	@IBOutlet weak var minorInfoView: UIView!
 	@IBOutlet weak var closeButton: UIButton!
 	
-
+	@IBOutlet weak var majorInfoStackView: UIStackView!
+	@IBOutlet weak var minorInfoStackView: UIStackView!
+	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
@@ -35,7 +35,7 @@ class ChordsInfoFirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        autolayout()
     }
 
 	
@@ -49,6 +49,8 @@ class ChordsInfoFirstViewController: UIViewController {
 	@IBAction func closeChordsInfo(_ sender: UIButton) {
 		
 		dismiss(animated: true, completion: nil)
+		
+		print("close presionado")
 		
 		
 	}
