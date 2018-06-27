@@ -139,8 +139,7 @@ class FirstScreenViewController: UIViewController {
 		
 		// una vez tapeado el botón de mayor, todos los botones de acordes se deshabilitan
 		if majorButtonWasTapped {
-			majorButton.isEnabled = false
-			minorButton.isEnabled = false
+			disableButtons(all: false)
 		}
 
 		
@@ -190,8 +189,7 @@ class FirstScreenViewController: UIViewController {
 		
 		// una vez tapeado el botón de menor, todos los botones de acordes se deshabilitan
 		if minorButtonWasTapped {
-			minorButton.isEnabled = false
-			majorButton.isEnabled = false
+			disableButtons(all: false)
 
 		}
 
@@ -275,12 +273,11 @@ class FirstScreenViewController: UIViewController {
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
 		if pointsBarView.currentValue == 8 { // luego cambiar a 8
 			
-			// se deshabilitan los dos botones de acordes
-			majorButton.isEnabled = false
-			minorButton.isEnabled = false
+			// se deshabilitan todos los botones
+			disableButtons(all: true)
 			
 			// espera 8 segundos antes de navegar hacia la siguiente pantalla...
-			Timer.scheduledTimer(withTimeInterval: 55.0, repeats: false, block: {(timer) in
+			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
 
 				// y navega hacia la próxima pantalla
 				self.performSegue(withIdentifier: "next screen", sender: nil)
@@ -294,8 +291,10 @@ class FirstScreenViewController: UIViewController {
 		/// GAME OVER.
 		// si el usuario erró 3 veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
-		
 			
+			// se deshabilitan todos los botones
+			disableButtons(all: true)
+		
 			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 👏
 			
 			
@@ -317,9 +316,7 @@ class FirstScreenViewController: UIViewController {
 	
 	}
 	
-	
 
-	
 	//*****************************************************************
 	// MARK: - Core Data (creates and save Score)
 	//*****************************************************************

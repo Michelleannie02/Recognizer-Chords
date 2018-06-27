@@ -15,12 +15,31 @@ class ChordsInfoSecondViewController: UIViewController {
 	// MARK: - IBOutlets
 	//*****************************************************************
 	
-	@IBOutlet weak var majorInfoView: UIView!
-	@IBOutlet weak var minorInfoView: UIView!
-	@IBOutlet weak var diminishedInfoView: UIView!
-	@IBOutlet weak var augmentedInfoView: UIView!
-	@IBOutlet weak var closeButton: UIButton!
+	// major
+	@IBOutlet weak var majorView: UIView!
+	@IBOutlet weak var majorLabel: UILabel!
+	@IBOutlet weak var majorNotationImage: UIImageView!
+	@IBOutlet weak var majorInfoLabel: UILabel!
 	
+	// minor
+	@IBOutlet weak var minorView: UIView!
+	@IBOutlet weak var minorLabel: UILabel!
+	@IBOutlet weak var minorNotationImage: UIImageView!
+	@IBOutlet weak var minorInfoLabel: UILabel!
+	
+	// diminished
+	@IBOutlet weak var dimView: UIView!
+	@IBOutlet weak var dimLabel: UILabel!
+	@IBOutlet weak var dimNotationImage: UIImageView!
+	@IBOutlet weak var dimInfoLabel: UILabel!
+	
+	// augmented
+	@IBOutlet weak var augView: UIView!
+	@IBOutlet weak var augLabel: UILabel!
+	@IBOutlet weak var augNotationImage: UIImageView!
+	@IBOutlet weak var augInfoLabel: UILabel!
+	
+	@IBOutlet weak var closeButton: UIButton!
 	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
@@ -28,10 +47,7 @@ class ChordsInfoSecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		
-		
-		
+		autolayout()
     }
 
 	

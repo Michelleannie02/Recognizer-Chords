@@ -21,12 +21,21 @@ class ChordsInfoFirstViewController: UIViewController {
 	// MARK: - IBOutlets
 	//*****************************************************************
 	
-	@IBOutlet weak var majorInfoView: UIView!
-	@IBOutlet weak var minorInfoView: UIView!
+	// major
+	@IBOutlet weak var majorView: UIView!
+	@IBOutlet weak var majorLabel: UILabel!
+	@IBOutlet weak var majorNotationImage: UIImageView!
+	@IBOutlet weak var majorInfoLabel: UILabel!
+	
+	// minor
+	@IBOutlet weak var minorView: UIView!
+	@IBOutlet weak var minorLabel: UILabel!
+	@IBOutlet weak var minorNotationImage: UIImageView!
+	@IBOutlet weak var minorInfoLabel: UILabel!
+	
+	// close
 	@IBOutlet weak var closeButton: UIButton!
 	
-	@IBOutlet weak var majorInfoStackView: UIStackView!
-	@IBOutlet weak var minorInfoStackView: UIStackView!
 	
 	//*****************************************************************
 	// MARK: - VC Life Cycle

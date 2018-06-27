@@ -50,7 +50,7 @@ class ScoresViewController: UIViewController {
 		super.viewDidLoad()
 		
 		// comprueba si hay scores persistidos 👈
-		fetchRequestForScores()
+		//fetchRequestForScores()
 		
 		// collection view layout
 		collectionViewLayout()
@@ -64,22 +64,22 @@ class ScoresViewController: UIViewController {
 	//*****************************************************************
 	
 	/// task: buscar si hay objetos 'Score' persistidos
-	func fetchRequestForScores() {
-		
-			// hay objetos 'Score' persistidos?
-			let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest() // 🔍
-		
-				// comprueba si hay resultados en la búsqueda..
-				if let result = try? dataController.viewContext.fetch(fetchRequest) {
-		
-					// .. si es así, asigna el resultado de la solicitud al array de scores persistidos
-					scores = result // scores:[Score] 🔌
-					
-				}
-		
-			onlyThreeLastScores()
-		
-		}
+//	func fetchRequestForScores() {
+//
+//			// hay objetos 'Score' persistidos?
+//			let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest() // 🔍
+//
+//				// comprueba si hay resultados en la búsqueda..
+//				if let result = try? dataController.viewContext.fetch(fetchRequest) {
+//
+//					// .. si es así, asigna el resultado de la solicitud al array de scores persistidos
+//					scores = result // scores:[Score] 🔌
+//
+//				}
+//
+//			onlyThreeLastScores()
+//
+//		}
 	
 
 	/// task: filtrar, del array de scores, sólo los 3 primeros miembros 👏

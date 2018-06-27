@@ -36,14 +36,25 @@ extension FirstScreenViewController {
 
 	}
 	
-	
-	/// task: deshabilitar todos los botones de acordes
-	func disableChordsButtons() {
+	/// task: deshabilitar todos los botones o sólo los botones de acordes
+	func disableButtons(all: Bool) {
 		
-		majorButton.isEnabled = false
-		minorButton.isEnabled = false
+		if all {
+			
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			playButton.isEnabled = false
+			
+		} else {
+			
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			
+		}
 		
 	}
+	
+	
 	
 	//*****************************************************************
 	// MARK: - Animating
@@ -83,13 +94,25 @@ extension SecondScreenViewController {
 	}
 	
 	
-	/// task: deshabilitar todos los botones de acordes
-	func disableChordsButtons() {
+	/// task: deshabilitar todos los botones o sólo los botones de acordes
+	func disableButtons(all: Bool) {
 		
-		majorButton.isEnabled = false
-		minorButton.isEnabled = false
-		diminishedButton.isEnabled = false
-		augmentedButton.isEnabled = false
+		if all {
+			
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			diminishedButton.isEnabled = false
+			augmentedButton.isEnabled = false
+			playButton.isEnabled = false
+			
+		} else {
+			
+			majorButton.isEnabled = false
+			minorButton.isEnabled = false
+			diminishedButton.isEnabled = false
+			augmentedButton.isEnabled = false
+			
+		}
 		
 	}
 		
@@ -101,14 +124,12 @@ extension SecondScreenViewController {
 			
 		activityIndicator.isHidden = false
 		activityIndicator.startAnimating()
-		self.view.alpha = 0.75
 	}
 		
 	func stopAnimating() {
 		
 		activityIndicator.isHidden = true
 		activityIndicator.stopAnimating()
-		self.view.alpha = 1.0
 	}
 	
 	

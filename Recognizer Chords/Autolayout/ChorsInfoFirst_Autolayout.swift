@@ -15,35 +15,57 @@ extension ChordsInfoFirstViewController {
 	func autolayout () {
 		
 		// translate autoresizing mask into constraints
-		majorInfoView.translatesAutoresizingMaskIntoConstraints = false
-		minorInfoView.translatesAutoresizingMaskIntoConstraints = false
 		
-		majorInfoStackView.translatesAutoresizingMaskIntoConstraints = false
-		minorInfoStackView.translatesAutoresizingMaskIntoConstraints =  false
+		// major
+		majorView.translatesAutoresizingMaskIntoConstraints = false
+		majorLabel.translatesAutoresizingMaskIntoConstraints =  false
+		majorNotationImage.translatesAutoresizingMaskIntoConstraints = false
+		majorInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+		
+		// minor
+		minorView.translatesAutoresizingMaskIntoConstraints = false
+		minorLabel.translatesAutoresizingMaskIntoConstraints = false
+		minorNotationImage.translatesAutoresizingMaskIntoConstraints = false
+		minorInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+		
+		// close
+		closeButton.translatesAutoresizingMaskIntoConstraints = false
 		
 
-		
 	NSLayoutConstraint.activate([
 		
-		// major info view
-		majorInfoView.topAnchor.constraint(equalTo: view.topAnchor),
-		majorInfoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-		majorInfoView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-		majorInfoView.bottomAnchor.constraint(equalTo: view.centerYAnchor),
 		
-		// minor info view
-		minorInfoView.topAnchor.constraint(equalTo:view.centerYAnchor),
-		minorInfoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-		minorInfoView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-		minorInfoView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+		// major view constraints
+		majorView.topAnchor.constraint(equalTo: view.topAnchor),
+		majorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+		majorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+		majorView.bottomAnchor.constraint(equalTo: view.centerYAnchor),
+
+		majorLabel.bottomAnchor.constraint(equalTo: majorNotationImage.topAnchor, constant: -25),
+		majorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+		majorNotationImage.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
+		majorNotationImage.centerYAnchor.constraint(equalTo: majorView.centerYAnchor),
+		majorInfoLabel.topAnchor.constraint(equalTo: majorNotationImage.bottomAnchor, constant: 30),
+		majorInfoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 		
-		// major info stack view constraints
-		majorInfoStackView.centerXAnchor.constraint(equalTo: majorInfoView.centerXAnchor),
-		majorInfoStackView.centerYAnchor.constraint(equalTo:majorInfoView.centerYAnchor),
+
+		// minor view constraints
+		minorView.topAnchor.constraint(equalTo:view.centerYAnchor),
+		minorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+		minorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+		minorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 		
-		minorInfoStackView.centerXAnchor.constraint(equalTo: minorInfoView.centerXAnchor),
-		minorInfoStackView.centerYAnchor.constraint(equalTo: minorInfoView.centerYAnchor)
 		
+		minorLabel.bottomAnchor.constraint(equalTo: minorNotationImage.topAnchor, constant: -25),
+		minorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+		minorNotationImage.centerXAnchor.constraint(equalTo: minorView.centerXAnchor),
+		minorNotationImage.centerYAnchor.constraint(equalTo: minorView.centerYAnchor),
+		minorInfoLabel.topAnchor.constraint(equalTo: minorNotationImage.bottomAnchor, constant: 30),
+		minorInfoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+		
+		// close button constraints
+		closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),	closeButton.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant: -20)
 		
 		
 		])

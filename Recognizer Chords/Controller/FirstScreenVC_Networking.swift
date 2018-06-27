@@ -119,7 +119,7 @@ extension FirstScreenViewController {
 		if recheability.connection != .none {
 			
 			// realizar una nueva solicitud
-			requestChordDataAudio()
+			//requestChordDataAudio()
 			print("hay conexión, se despide el alert view y se realizar una nueva solicitud")
 			
 		} else {

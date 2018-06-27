@@ -121,7 +121,7 @@ class SecondScreenViewController: UIViewController {
 		
 		// una vez tapeado el botón de mayor, todos los botones de acordes se deshabilitan
 		if majorButtonWasTapped {
-			disableChordsButtons()
+			disableButtons(all: false)
 		}
 		
 		/// 2- Logic ...................................................
@@ -163,7 +163,7 @@ class SecondScreenViewController: UIViewController {
 		
 		/// 1- User Interface ...........................................
 		if minorButtonWasTapped {
-			disableChordsButtons()
+			disableButtons(all: false)
 			
 		}
 		
@@ -208,7 +208,7 @@ class SecondScreenViewController: UIViewController {
 		/// 1- User Interface ...........................................
 		// una vez tapeado el botón de disminuído, todos los botones de acordes se deshabilitan
 		if diminishedButtonWasTapped {
-			disableChordsButtons()
+			disableButtons(all: false)
 		}
 		
 		
@@ -251,7 +251,7 @@ class SecondScreenViewController: UIViewController {
 		
 		// una vez tapeado el botón de mayor, todos los botones de acordes se deshabilitan
 		if augmentedButtonWasTapped {
-			disableChordsButtons()
+			disableButtons(all: false)
 		}
 		
 		
@@ -327,9 +327,8 @@ class SecondScreenViewController: UIViewController {
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
 		if pointsBarView.currentValue == 8 { // luego cambiar a 8
 			
-			// se deshabilitan los dos botones de acordes
-			majorButton.isEnabled = false
-			minorButton.isEnabled = false
+			// se deshabilitan todos los botones
+			disableButtons(all: true)
 			
 			// espera 8 segundos antes de navegar hacia la siguiente pantalla...
 			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
@@ -347,15 +346,15 @@ class SecondScreenViewController: UIViewController {
 		// si el usuario erró 3 veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
 			
-
+			// se deshabilitan todos los botones
+			disableButtons(all: true)
 			
 			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 👏
 			addScoreToCoreData(hit: self.scoreToAdd)
 			
 			
 			print("Game Over. Tu score fue de \(self.scoreToAdd) puntos.")
-			
-			
+
 			// b-espera 5 segundos antes de navegar hacia la siguiente pantalla
 			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
 				self.performSegue(withIdentifier: "to game over", sender: nil)
