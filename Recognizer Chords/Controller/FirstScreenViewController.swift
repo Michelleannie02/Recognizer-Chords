@@ -93,10 +93,36 @@ class FirstScreenViewController: UIViewController {
 		/// Networking - request data audio chord 🚀 ..................
 		requestChordDataAudio()
 		
-		/// Internet Recheability ..........................................
+		/// Internet Recheability .....................................
 		internetRecheability()
+		
+		/// Core Data .................................................
+		//fetchRequestForScores()
 
 	}
+	
+	
+	
+	//*****************************************************************
+	// MARK: - Core Data (fetch request)
+	//*****************************************************************
+	
+	/// task: buscar si hay objetos 'Score' persistidos
+	func fetchRequestForScores() {
+		
+		// hay objetos 'Pin' persistidos?
+		let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest() // 🔍
+		
+		// comprueba si hay resultados en la búsqueda..
+		if let result = try? dataController.viewContext.fetch(fetchRequest) {
+			
+			// .. si es así, asigna el resultado de la solicitud al array de scores persistidos
+			scores = result // pins:[Score] 🔌
+		}
+	
+		
+	}
+	
 	
 	
 	//*****************************************************************
@@ -142,14 +168,6 @@ class FirstScreenViewController: UIViewController {
 		// el juego progresa o finaliza de acuerdo a los aciertos u errores del usuario
 		progressOrGameOver()
 		
-
-
-		
-		
-		
-		
-		
-		
 		
 		/// 3- Networking 🚀 ...........................................
 		
@@ -159,9 +177,6 @@ class FirstScreenViewController: UIViewController {
 		// por último, realizar una solicitud web
 		requestChordDataAudio()
 		
-		
-
-
 	}
 	
 
@@ -285,7 +300,7 @@ class FirstScreenViewController: UIViewController {
 			
 			
 			
-			addScoreToCoreData(hits: self.scoreToAdd)
+			//addScoreToCoreData(hits: self.scoreToAdd)
 			
 			
 			print("Game Over. Tu score fue de \(self.scoreToAdd) puntos.")
@@ -315,15 +330,17 @@ class FirstScreenViewController: UIViewController {
 		
 		// Core Data CREATES and SAVE score
 		
-		// crea un objeto gestionado 'score' para almacenar el score actual
+		// CREA un objeto gestionado 'score' para almacenar el score actual
 		let score = Score(hits: hits, context: dataController.viewContext) // ERROR! why? 👈
+		// PORQUE EN EL CONTEXTO AÚN NO HAY NADA, PERO PORQUÉ??
+		// es lo lógico, ya que se no creó ninguna instancia de ´score´, entonces cómo hacer para que al llamar a este método por primera vez no encuentre ´nil´?
 
 		// agrega el score a un array que contiene los scores '[Score]'
 		scores.append(score)
 		
 		print("tu score actual es de \(score)")
 		
-		// intenta guardar los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
+		// GUARDA los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
 		try? dataController.viewContext.save() // 💿
 		
 		

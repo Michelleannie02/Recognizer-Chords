@@ -81,7 +81,6 @@ func autolayout () {
 		topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
 		topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
 		topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-//		topStackView.bottomAnchor.constraint(equalTo:centerStackView.centerYAnchor),
 		topStackView.heightAnchor.constraint(equalToConstant: 10)
 		])
 	

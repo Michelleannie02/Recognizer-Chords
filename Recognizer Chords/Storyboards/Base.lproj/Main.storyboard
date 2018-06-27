@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lus-0j-79O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zyv-cz-aKV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--1-->
         <scene sceneID="7Jr-qm-ibU">
             <objects>
-                <viewController storyboardIdentifier="First Screen View Controller" title="1" id="Lus-0j-79O" customClass="FirstScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="first screen view controller" title="1" id="Lus-0j-79O" customClass="FirstScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KnL-4G-3CW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -496,32 +496,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXZ-2L-gG2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXZ-2L-gG2">
                                 <rect key="frame" x="120" y="213" width="135" height="30"/>
-                                <state key="normal" title="comenzar de nuevo"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="start again"/>
                                 <connections>
-                                    <action selector="recomenzarButtonPressed:" destination="Zyv-cz-aKV" eventType="touchUpInside" id="Pg0-Pd-M79"/>
+                                    <action selector="startAgainButtonPressed:" destination="Zyv-cz-aKV" eventType="touchUpInside" id="gyT-Id-tRh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEu-4k-doB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEu-4k-doB">
                                 <rect key="frame" x="90" y="281" width="194" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="mDX-uM-j1a" firstAttribute="trailing" secondItem="eEu-4k-doB" secondAttribute="trailing" constant="91" id="2xg-fM-2GA"/>
-                            <constraint firstItem="JXZ-2L-gG2" firstAttribute="leading" secondItem="mDX-uM-j1a" secondAttribute="leading" constant="120" id="BSY-Xn-Qit"/>
-                            <constraint firstItem="mDX-uM-j1a" firstAttribute="bottom" secondItem="eEu-4k-doB" secondAttribute="bottom" constant="338" id="Euk-8p-eoC"/>
-                            <constraint firstItem="eEu-4k-doB" firstAttribute="top" secondItem="JXZ-2L-gG2" secondAttribute="bottom" constant="38" id="JXb-u3-P3o"/>
-                            <constraint firstItem="mDX-uM-j1a" firstAttribute="trailing" secondItem="JXZ-2L-gG2" secondAttribute="trailing" constant="120" id="d28-sw-v1s"/>
-                            <constraint firstItem="eEu-4k-doB" firstAttribute="leading" secondItem="mDX-uM-j1a" secondAttribute="leading" constant="90" id="dOB-6s-Z7n"/>
-                            <constraint firstItem="JXZ-2L-gG2" firstAttribute="top" secondItem="mDX-uM-j1a" secondAttribute="top" constant="193" id="vJh-R3-Efc"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mDX-uM-j1a"/>
                     </view>
+                    <connections>
+                        <outlet property="gameOverLabel" destination="eEu-4k-doB" id="7eF-Kf-OH0"/>
+                        <outlet property="startAgainButton" destination="JXZ-2L-gG2" id="Q3D-bT-QvI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3Z-Nf-Yia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -699,24 +696,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yxy-Mx-mMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2204" y="-300"/>
-        </scene>
-        <!--Third Screen View Controller-->
-        <scene sceneID="ApQ-KN-myc">
-            <objects>
-                <viewController id="L3I-Ik-qJG" customClass="ThirdScreenViewController" customModule="Recognizer_Chords" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0TI-hm-mtl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="dny-uE-fPk"/>
-                    </view>
-                    <connections>
-                        <segue destination="Zyv-cz-aKV" kind="show" identifier="to game over" id="vkq-9v-wVv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zeB-0C-6Ki" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1410" y="-300"/>
         </scene>
     </scenes>
     <resources>

@@ -35,7 +35,7 @@ class DataController {
 		persistentContainer = NSPersistentContainer(name: modelName)
 	}
 	
-	/// carga los almacenes persistentes, es decir, los datos persistidos
+	// carga los almacenes persistentes, es decir, los datos persistidos
 	func load(completion: (() -> Void)? = nil) {
 		persistentContainer.loadPersistentStores { storeDescription, error in
 			
