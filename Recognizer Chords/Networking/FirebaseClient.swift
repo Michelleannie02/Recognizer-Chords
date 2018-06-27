@@ -47,9 +47,10 @@ class FirebaseClient: NSObject {
 	
 	- parameter firstScreen: el controlador de la primer pantalla.
 	- parameter secondScreen: el controlador de la segunda pantalla.
+	- parameter chordChosen: el tipo de acorde elegido aleatoriamente (mayor o menor)
 
 	*/
-	func setupChord(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController? = nil) {
+	func setupChord(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController?, completionHandlerForChordChosen: @escaping (_ chordChosen: String? ) -> Void) {
 
 
 		// 1er pantalla /////////////////////////////////////////////
@@ -61,8 +62,11 @@ class FirebaseClient: NSObject {
 			let typeChords = ["major", "minor"]
 			
 
-			// elige entre un acorde mayor o menor aleatoriamente
-			let chordChosen = typeChords.randomElement()
+			// elige entre un acorde mayor o menor aleatoriamente 🎲
+			var chordChosen = typeChords.randomElement()
+			
+			// almacena el acorde elegido en el parámetro ´acordeElegido´
+			completionHandlerForChordChosen(chordChosen)
 			
 			// test
 			print("EL ACORDE ELEGIDO ENTRE MAYOR Y MENOR ES \(chordChosen)")
@@ -70,20 +74,6 @@ class FirebaseClient: NSObject {
 			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
 			FirebaseClient.aChordSounded = chordChosen
 			
-
-			// ejecuta un caso u otro dependiendo del tipo del acorde elegido
-			switch chordChosen {
-
-			case "major":
-				majorChordRequest(refMajorChords: MajorChords.refMajorChords, majorChords: MajorChords.items, completionHandlerForMajorChord: {(success, errorString) in })
-
-			case "minor":
-				minorChordRequest(refMinorChords: MinorChords.refMinorChords, minorChords: MinorChords.items, completionHandlerForMinorChord: {(success, errorString) in })
-
-			default:
-				print("")
-			}
-
 
 		// 2da pantalla /////////////////////////////////////////////
 
@@ -96,30 +86,12 @@ class FirebaseClient: NSObject {
 
 			// elige entre un acorde mayor, menor, dismunuido o aumentado aleatoriamente
 			let chordChosen = typeChords.randomElement()
+			
+			// almacena el acorde elegido en el parámetro ´acordeElegido´
+			completionHandlerForChordChosen(chordChosen)
 
 			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
 			FirebaseClient.aChordSounded = chordChosen
-			
-
-			// ejecuta un caso u otro dependiendo del tipo del acorde elegido aleatoriamente
-			switch chordChosen {
-
-			case "major":
-				majorChordRequest(refMajorChords: MajorChords.refMajorChords, majorChords: MajorChords.items, completionHandlerForMajorChord: {(success, errorString) in })
-
-			case "minor":
-				minorChordRequest(refMinorChords: MinorChords.refMinorChords, minorChords: MinorChords.items, completionHandlerForMinorChord: {(success, errorString) in })
-
-			case "diminished":
-				diminishedChordRequest(refDiminishedChords: DiminishedChords.refDiminishedChords, diminishedChords: DiminishedChords.items, completionHandlerForDiminishedChord: {(success, errorString) in })
-
-			case "augmented":
-				augmentedChordRequest(refAugmentedChords: AugmentedChords.refAugmentedChords, augmentedChords: AugmentedChords.items, completionHandlerForAugmentedChord: {(success, errorString) in })
-
-			default:
-				print("")
-			}
-
 
 		}
 

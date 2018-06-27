@@ -22,18 +22,41 @@ extension FirstScreenViewController {
 		
 		
 		// prepara el siguiente acorde que va a sonar y pasa el objeto 'FirstScreenViewController'
-		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil)
+		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil) { (chosenChord) in
+			
+			switch chosenChord {
+				
+				// comprueba si la solictud fue exitosa, tanto si salió un acorde mayor como uno menor
+				case "major":
+					self.checkIfTheRequestWasSuccesful(isMajor:true)
+				
+				case "minor":
+					self.checkIfTheRequestWasSuccesful(isMajor:false)
+				
+				case .none:
+					print("")
+				
+				case .some(_):
+					print("")
+			}
+
+		}
+		
 		// se visibiliza el indicator de actividad (networking)
 		startAnimating()
-		// corrobora si la solicitud es exitosa o no
-		checkIfTheRequestWasSuccesful()
-		
-		
+
 	}
 	
 	
 	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
-	func checkIfTheRequestWasSuccesful() {
+	func checkIfTheRequestWasSuccesful(isMajor: Bool) {
+		
+
+		// si la solicitud fue de un acorde mayor, ejecutar este bloque...
+		
+		if isMajor {
+			
+			print("se ejecuta la rama de la solicitud ACORDES MAYORES")
 		
 		FirebaseClient.sharedInstance().majorChordRequest { success, error in
 			
@@ -53,6 +76,11 @@ extension FirstScreenViewController {
 		} // end closure
 		
 		
+		// .. sino este otro
+		} else {
+		
+		print("se ejecuta la rama de la solicitud ACORDES MENORES")
+		// si la solicitud fue de un acorde menor, ejecutar este bloque...
 		FirebaseClient.sharedInstance().minorChordRequest { success, error in
 			
 			performUIUpdatesOnMain {
@@ -70,8 +98,9 @@ extension FirstScreenViewController {
 			
 		} // end closure
 		
+	} //end if-else
 		
-	} // end func
+} // end func
 	
 	
 	
@@ -95,8 +124,11 @@ extension FirstScreenViewController {
 			
 			let OKAction = UIAlertAction(title: "OK", style: .default) { action in
 				
-				// comprobar si ahora sí hay internet
+				// comprobar ahora sí hay internet
 				self.internetRecheability()
+				
+				// realizar una nueva solicitud
+				self.requestChordDataAudio()
 				
 			}
 			alertController.addAction(OKAction)

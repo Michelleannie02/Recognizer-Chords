@@ -13,28 +13,28 @@ extension FirebaseClient {
 	
 	struct MajorChords {
 		
-		static let refMajorChords = "XXX_M/C4_dens4.mp3" // revisar esta línea, no está de más?
+		static let refMajorChords = "M/C4_dens4.mp3" // revisar esta línea, no está de más?
 		static let items = ["M/C4_dens4.mp3", "M/E4_dens4.mp3", "M/G4_dens4.mp3"]
 		
 	}
 	
 	struct MinorChords {
 		
-		static let refMinorChords = "XXX_m/Cm4_dens4.mp3" // revisar esta línea, no está de más?
+		static let refMinorChords = "m/Cm4_dens4.mp3" // revisar esta línea, no está de más?
 		static let items = ["m/Cm4_dens4.mp3","m/Em4_dens4.mp3","m/Gm4_dens4.mp3"]
 		
 	}
 	
 	struct DiminishedChords {
 		
-		static let refDiminishedChords = "XXX_d/Cdim4_dens4.mp3" // revisar esta línea, no está de más?
+		static let refDiminishedChords = "d/Cdim4_dens4.mp3" // revisar esta línea, no está de más?
 		static let items = ["d/Cdim4_dens4.mp3", "d/Edim4_dens4.mp3", "d/Gdim4_dens4.mp3"]
 
 	}
 
 	struct AugmentedChords {
 		
-		static let refAugmentedChords = "XXX_A/Caug4_dens4.mp3" // revisar esta línea, no está de más?
+		static let refAugmentedChords = "A/Caug4_dens4.mp3" // revisar esta línea, no está de más?
 		static let items = ["A/Caug4_dens4.mp3", "A/Eaug4_dens4.mp3", "A/Gaug4_dens4.mp3"]
 
 	}

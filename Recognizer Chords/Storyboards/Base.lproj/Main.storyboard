@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lus-0j-79O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eM4-hT-HtR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -283,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfA-zg-U4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="165.59999999999999" y="861.3193403298352"/>
+            <point key="canvasLocation" x="226" y="1012"/>
         </scene>
         <!--Chords Info Second Screen-->
         <scene sceneID="5JA-5n-YoF">
@@ -463,7 +463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3Z-Nf-Yia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1194" y="656"/>
+            <point key="canvasLocation" x="1420" y="681"/>
         </scene>
         <!--2-->
         <scene sceneID="RaA-AF-N60">
@@ -593,6 +593,7 @@
                         <outlet property="minorButton" destination="Cdc-cw-6rH" id="yxu-IL-f1c"/>
                         <outlet property="playButton" destination="RJS-cr-DxR" id="cy4-SK-Nkp"/>
                         <segue destination="Zyv-cz-aKV" kind="show" identifier="to game over" id="28q-Md-zoN"/>
+                        <segue destination="pal-gQ-LL0" kind="show" identifier="next screen" id="xWj-3E-j4a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAt-zl-PJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -633,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yxy-Mx-mMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2204" y="-300"/>
+            <point key="canvasLocation" x="1420" y="-321"/>
         </scene>
     </scenes>
     <resources>
@@ -642,7 +643,7 @@
         <image name="play_button" width="168" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hij-Ow-kNq"/>
-        <segue reference="770-dL-uNb"/>
+        <segue reference="28q-Md-zoN"/>
+        <segue reference="Dob-wt-5Dg"/>
     </inferredMetricsTieBreakers>
 </document>

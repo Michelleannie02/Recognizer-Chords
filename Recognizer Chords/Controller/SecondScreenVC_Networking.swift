@@ -21,88 +21,114 @@ extension SecondScreenViewController {
 		
 		
 		// prepara el siguiente acorde que va a sonar y pasa el objeto 'FirstScreenViewController'
-		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self)
+		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self) { (chosenChord) in
+			
+			if let chosenChord = chosenChord {
+		
+				self.checkIfTheRequestWasSuccesful(typeOfChord: chosenChord)
+
+			}
+
+		}
+		
 		// se visibiliza el indicator de actividad (networking)
 		startAnimating()
-		// corrobora si la solicitud es exitosa o no
-		checkIfTheRequestWasSuccesful()
-		
 		
 	}
 	
 	
 	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
-	func checkIfTheRequestWasSuccesful() {
+	func checkIfTheRequestWasSuccesful(typeOfChord: String ) {
 		
+		
+		if typeOfChord == FirebaseClient.TypesOfChords.Major {
+			
 		FirebaseClient.sharedInstance().majorChordRequest { success, error in
 			
-			performUIUpdatesOnMain {
-				
-				if success {
+				performUIUpdatesOnMain {
 					
-					self.stopAnimating()
+					if success {
+						
+						self.stopAnimating()
+						
+					} else {
+						
+						self.displayAlertView(Errors.Message.requestError.title, error)
+					}
 					
-				} else {
-					
-					self.displayAlertView(Errors.Message.requestError.title, error)
-				}
-				
-			} // end dispatch
+				} // end dispatch
 			
-		} // end closure
+			} // end closure
+		
+		} // end if
 		
 		
-		FirebaseClient.sharedInstance().minorChordRequest { success, error in
-			
-			performUIUpdatesOnMain {
-				
-				if success {
-					
-					self.stopAnimating()
-					
-				} else {
-					
-					self.displayAlertView(Errors.Message.requestError.title, error)
-				}
-				
-			} // end dispatch
-			
-		} // end closure
 		
+		if typeOfChord == FirebaseClient.TypesOfChords.Minor {
+		
+			FirebaseClient.sharedInstance().minorChordRequest { success, error in
+				
+				performUIUpdatesOnMain {
+					
+					if success {
+						
+						self.stopAnimating()
+						
+					} else {
+						
+						self.displayAlertView(Errors.Message.requestError.title, error)
+					}
+					
+				} // end dispatch
+				
+			} // end closure
+		
+		}
+		
+		
+		
+		if typeOfChord == FirebaseClient.TypesOfChords.Diminished {
+			
 		FirebaseClient.sharedInstance().diminishedChordRequest { success, error in
 			
-			performUIUpdatesOnMain {
-				
-				if success {
+				performUIUpdatesOnMain {
 					
-					self.stopAnimating()
+					if success {
+						
+						self.stopAnimating()
+						
+					} else {
+						
+						self.displayAlertView(Errors.Message.requestError.title, error)
+					}
 					
-				} else {
-					
-					self.displayAlertView(Errors.Message.requestError.title, error)
-				}
-				
-			} // end dispatch
+				} // end dispatch
 			
-		} // end closure
+			} // end closure
+			
+		}
 		
+		
+		if typeOfChord == FirebaseClient.TypesOfChords.Augmented {
+			
 		FirebaseClient.sharedInstance().augmentedChordRequest { success, error in
 			
-			performUIUpdatesOnMain {
-				
-				if success {
+				performUIUpdatesOnMain {
 					
-					self.stopAnimating()
+					if success {
+						
+						self.stopAnimating()
+						
+					} else {
+						
+						self.displayAlertView(Errors.Message.requestError.title, error)
+					}
 					
-				} else {
-					
-					self.displayAlertView(Errors.Message.requestError.title, error)
-				}
-				
-			} // end dispatch
+				} // end dispatch
 			
-		} // end closure
+			} // end closure
 		
+		}
 		
 	} // end func
 	
@@ -126,8 +152,11 @@ extension SecondScreenViewController {
 			
 			let OKAction = UIAlertAction(title: "OK", style: .default) { action in
 				
-				// comprobar si ahora sí hay internet
+				// comprobar ahora sí hay internet
 				self.internetRecheability()
+				
+				// realizar una nueva solicitud
+				self.requestChordDataAudio()
 				
 			}
 			alertController.addAction(OKAction)
@@ -150,8 +179,7 @@ extension SecondScreenViewController {
 		// si hay internet
 		if recheability.connection != .none {
 			
-			// realizar una nueva solicitud
-			//requestChordDataAudio()
+
 			print("hay conexión, se despide el alert view y se realizar una nueva solicitud")
 			
 		} else {

@@ -295,8 +295,7 @@ class FirstScreenViewController: UIViewController {
 			// se deshabilitan todos los botones
 			disableButtons(all: true)
 		
-			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 👏
-			
+			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 
 			
 			
 			//addScoreToCoreData(hits: self.scoreToAdd)
