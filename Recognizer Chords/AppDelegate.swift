@@ -43,20 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		
 		/// Core Data .................................................
-		// apenas arranca la app carga los datos persistidos (el almacén persistente)...
+		// apenas arranca la app carga los datos persistidos (el almacén persistente)
 		dataController.load()
 		// y son enviados a la propiedad 'dataController' de 'FirstScreenViewController'
 		let firstScreenViewController = FirstScreenViewController()
 		firstScreenViewController.dataController = dataController
 		
+		
+		/// NSUserDefaults ............................................
+		checkFirstLaunch()
+		
 		return true
 		
-		
-//		// inyecta el 'dataController' en el 'TravelLocationsMapViewController'
-//		let navigationController = window?.rootViewController as! UINavigationController
-//		let travelLocationsViewController = navigationController.topViewController as! TravelLocationsMapViewController
-//		travelLocationsViewController.dataController = dataController
-//
 		
 	}
 	
@@ -70,6 +68,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(_ application: UIApplication) {
 		
 		saveViewContext()
+	}
+	
+	
+	/// task: comprueba si es la primera vez que la app se lanzó o no
+	func checkFirstLaunch() {
+		
+		if (UserDefaults().bool(forKey: "hasLaunchedBefore")) {
+			
+			print("App has launched before")
+			
+			} else {
+			
+			print("This is the first launch ever!")
+			
+			UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+			UserDefaults.standard.synchronize()
+		}
 	}
 	
 	//*****************************************************************

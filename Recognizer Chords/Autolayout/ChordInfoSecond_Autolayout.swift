@@ -97,14 +97,10 @@ extension ChordsInfoSecondViewController {
 			augInfoLabel.topAnchor.constraint(equalTo: augNotationImage.bottomAnchor, constant: 30),
 			augInfoLabel.centerXAnchor.constraint(equalTo: augView.centerXAnchor),
 			
-			
 			// close button constraints
 			closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),	closeButton.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant: -20)
-			
-			
+
 			])
-		
+		}
+	
 	}
-	
-	
-}
