@@ -48,8 +48,6 @@ class ChordsInfoFirstViewController: UIViewController {
     }
 
 	
-	
-	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
@@ -58,10 +56,7 @@ class ChordsInfoFirstViewController: UIViewController {
 	@IBAction func closeChordsInfo(_ sender: UIButton) {
 		
 		dismiss(animated: true, completion: nil)
-		
-		print("close presionado")
-		
-		
+
 	}
 	
 	

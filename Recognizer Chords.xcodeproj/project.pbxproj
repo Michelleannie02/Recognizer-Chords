@@ -57,13 +57,13 @@
 		A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GCDBlackBox.swift; path = "Recognizer Chords/GCDBlackBox.swift"; sourceTree = SOURCE_ROOT; };
 		A656CB7120D1EA3D009B41E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A68CC9E420E3246A0065C970 /* WinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerViewController.swift; sourceTree = "<group>"; };
-		A68CC9E620E3276A0065C970 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../../../../../../../../Desktop/LaunchScreen.xib; sourceTree = "<group>"; };
+		A68CC9E620E3276A0065C970 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../Storyboards/LaunchScreen.xib; sourceTree = "<group>"; };
 		A68CC9E820E327D60065C970 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		A694A48E20DDFA4F005CA31B /* Score+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A695147120E062E600D03675 /* DisplayErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayErrors.swift; path = "Recognizer Chords/Networking/Internet Connection/DisplayErrors.swift"; sourceTree = SOURCE_ROOT; };
 		A695147320E0876800D03675 /* FirstScreenVC_Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenVC_Networking.swift; sourceTree = "<group>"; };
 		A695147520E0882600D03675 /* SecondScreenVC_Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenVC_Networking.swift; sourceTree = "<group>"; };
-		A695147720E0931200D03675 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = "../../../../../../../../../Desktop/Reachability.swift-master/Sources/Reachability.swift"; sourceTree = "<group>"; };
+		A695147720E0931200D03675 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A695147920E0B7F200D03675 /* Score+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A69A252B20B28AD800579DB3 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
 		A6A286CD20D98D1600E5176E /* ChordsInfoFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsInfoFirstViewController.swift; sourceTree = "<group>"; };

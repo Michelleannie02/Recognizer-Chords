@@ -28,9 +28,8 @@ extension SecondScreenViewController {
 				self.checkIfTheRequestWasSuccesful(typeOfChord: chosenChord)
 
 			}
-
 		}
-		
+
 		// se visibiliza el indicator de actividad (networking)
 		startAnimating()
 		
@@ -178,19 +177,16 @@ extension SecondScreenViewController {
 		
 		// si hay internet
 		if recheability.connection != .none {
-			
 
 			print("hay conexión, se despide el alert view y se realizar una nueva solicitud")
 			
 		} else {
 			
 			DispatchQueue.main.async {
-				
 				// sigue sin haber conexión, mantener el alert view
 				self.displayAlertView(Errors.Message.noInternet.title, Errors.Message.no_Internet.description)
 				
 			}
-			
 		}
 	}
 	

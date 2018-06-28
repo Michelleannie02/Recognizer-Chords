@@ -53,11 +53,8 @@ extension FirstScreenViewController {
 		
 
 		// si la solicitud fue de un acorde mayor, ejecutar este bloque...
-		
 		if isMajor {
 			
-			print("se ejecuta la rama de la solicitud ACORDES MAYORES")
-		
 		FirebaseClient.sharedInstance().majorChordRequest { success, error in
 			
 			performUIUpdatesOnMain {
@@ -79,7 +76,6 @@ extension FirstScreenViewController {
 		// .. sino este otro
 		} else {
 		
-		print("se ejecuta la rama de la solicitud ACORDES MENORES")
 		// si la solicitud fue de un acorde menor, ejecutar este bloque...
 		FirebaseClient.sharedInstance().minorChordRequest { success, error in
 			
@@ -150,8 +146,6 @@ extension FirstScreenViewController {
 		// si hay internet
 		if recheability.connection != .none {
 			
-			// realizar una nueva solicitud
-			//requestChordDataAudio()
 			print("hay conexión, se despide el alert view y se realizar una nueva solicitud")
 			
 		} else {

@@ -55,6 +55,8 @@ extension ChordsInfoSecondViewController {
 			majorLabel.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
 			majorNotationImage.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
 			majorNotationImage.centerYAnchor.constraint(equalTo: majorView.centerYAnchor),
+//			majorNotationImage.heightAnchor.constraint(equalToConstant: 80),
+//			majorNotationImage.widthAnchor.constraint(equalToConstant: 80),
 			majorInfoLabel.topAnchor.constraint(equalTo: majorNotationImage.bottomAnchor, constant: 30),
 			majorInfoLabel.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
 			
