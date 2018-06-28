@@ -52,7 +52,6 @@
 		A60DF5C220CE0E4100EE4F7A /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = "Recognizer Chords/Networking/FirebaseClient.swift"; sourceTree = SOURCE_ROOT; };
 		A60DF5C420CE0EF100EE4F7A /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseConstants.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/Networking/FirebaseConstants.swift"; sourceTree = "<absolute>"; };
 		A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen_Autolayout.swift; sourceTree = "<group>"; };
-		A61BE9CE208E6868004023EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A6333ADA209D40F800A94C1A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		A6354F7D20C3C0790083E838 /* ErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsView.swift; sourceTree = "<group>"; };
 		A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GCDBlackBox.swift; path = "Recognizer Chords/GCDBlackBox.swift"; sourceTree = SOURCE_ROOT; };
@@ -234,7 +233,6 @@
 			children = (
 				A6A35039207E504C000E79E1 /* Info.plist */,
 				A6A286D520D9A24500E5176E /* GoogleService-Info.plist */,
-				A61BE9CE208E6868004023EE /* README.md */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
