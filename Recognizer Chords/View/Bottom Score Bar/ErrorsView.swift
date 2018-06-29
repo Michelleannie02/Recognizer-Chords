@@ -6,10 +6,20 @@
 //  Copyright © 2018 luko. All rights reserved.
 //
 
+/* View */
+
 import UIKit
+
+/* Abstract:
+Una vista que representa la barra de errores de la barra de scores.
+*/
 
 @IBDesignable
 class ErrorsView: UIView {
+	
+	//*****************************************************************
+	// MARK: - Initializers
+	//*****************************************************************
 	
 	override init(frame: CGRect) {
 		
@@ -25,23 +35,31 @@ class ErrorsView: UIView {
 	// MARK: - Properties
 	//*****************************************************************
 	
-	//	let label = UILabel()
-	//
-	//	// stepper is 0 to 10
-	//	let stepper = UIStepper()
+	// el stepper
+	let stepper = UIStepper()
+	// cada paso 'vale' 100
+	let step: Double = 100
+	// el valor máximo de pasos es 3
+	let maxValue: Double = 3
 	
-	let step: Double = 100  // go up by $100 at a time
-	let maxValue:Double = 3
-	
-	
+	// el valor actual de la etiqueta es 0
+	// cada vez que el stepper es tapeado este valor cambia y produce una animación
 	var currentValue: Double = 0 {
 		didSet {
-			//label.text = "\(Int(currentValue * step))"
+			
+			// entonces se produce una animación en la barra
+			let animation = CABasicAnimation(keyPath: "strokeEnd")
+			// que dura medio segundo
+			animation.duration = 0.2
+			
 			foregroundLayer.strokeEnd = CGFloat(currentValue/maxValue)
+			foregroundLayer.add(animation, forKey: "stroke")
 		}
 	}
 	
+	// la capa del fondo
 	var backgroundLayer = CAShapeLayer()
+	// la capa de adelante
 	var foregroundLayer = CAShapeLayer()
 	
 	//*****************************************************************
@@ -59,12 +77,13 @@ class ErrorsView: UIView {
 	}
 	
 	func setup() {
-		buildInterface()
+		autolayout()
 		layer.addSublayer(backgroundLayer)
 		layer.addSublayer(foregroundLayer)
 		foregroundLayer.strokeEnd = 0
 	}
 	
+	/// task: agregar subvistas a la vista
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		buildLayer(layer: backgroundLayer)
@@ -74,14 +93,17 @@ class ErrorsView: UIView {
 		foregroundLayer.strokeColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor
 	}
 	
+	/// task: dibujar las capas
 	func buildLayer(layer: CAShapeLayer) {
-		let path = UIBezierPath()
-		//		path.move(to: CGPoint(x: 0, y: bounds.height/3))
-		path.move(to: CGPoint(x: 20, y: 15))
 		
-		//		path.addLine(to: CGPoint(x: bounds.width, y: bounds.height/3))
+		// el dibujo
+		let path = UIBezierPath()
+		
+		// el dibujo de la línea se mueve desde x:20, y: 15
+		path.move(to: CGPoint(x: 20, y: 15))
 		path.addLine(to: CGPoint(x: bounds.width/1.1, y: 15))
 		
+		// agrega el dibujo a la capa
 		layer.path = path.cgPath
 		layer.lineWidth = 20
 		layer.fillColor = nil
@@ -95,12 +117,13 @@ class ErrorsView: UIView {
 		currentValue = stepper.value
 	}
 	
-	func buildInterface() {
-//
-//		let pointsBarCenterX = self.centerXAnchor.constraint(equalTo: centerXAnchor)
-//		let pointsBarCenterY = self.centerYAnchor.constraint(equalTo: centerYAnchor)
-//		let pointsBarHeight = self.heightAnchor.constraint(equalToConstant: 50)
-//		NSLayoutConstraint.activate([pointsBarCenterX])
+	/// task: aplicar restricciones a la barra de puntos
+	func autolayout() {
+
+		let errorsBarCenterX = self.centerXAnchor.constraint(equalTo: centerXAnchor)
+		let errrosBarCenterY = self.centerYAnchor.constraint(equalTo: centerYAnchor)
+		let errorsBarHeight = self.heightAnchor.constraint(equalToConstant: 50)
+		NSLayoutConstraint.activate([errorsBarCenterX, errrosBarCenterY])
 		
 	}
 	

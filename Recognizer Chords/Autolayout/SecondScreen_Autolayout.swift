@@ -20,30 +20,30 @@ extension SecondScreenViewController {
 	
 	func setAutolayout () {
 		
+//		pointsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)
+//		errorsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)
 		
-		//			// rota el texto de los botones del menú superior
-		//			gClefButton.transform = CGAffineTransform(rotationAngle: -120)
-		//			settingsButton.transform = CGAffineTransform(rotationAngle: -120)
-		//			lastScoresButton.transform = CGAffineTransform(rotationAngle: -120)
-		//			headphonesButton.transform = CGAffineTransform(rotationAngle: -120)
+
+		// rota el texto de los botones del menú
+		chordsInfoButton.transform = CGAffineTransform(rotationAngle: -120)
+		lastScoresButton.transform = CGAffineTransform(rotationAngle: -120)
 		
 		// translate autoresizing mask into constraints
 		
-		// botones del menú superior
-//		gClefButton.translatesAutoresizingMaskIntoConstraints = false
-//		lastScoresButton.translatesAutoresizingMaskIntoConstraints = false
 		
+		// translate autoresizing mask into constraints
+		chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
+		lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
 		
-		// botones de la interfaz
 		majorButton.translatesAutoresizingMaskIntoConstraints = false
 		minorButton.translatesAutoresizingMaskIntoConstraints = false
-		augmentedButton.translatesAutoresizingMaskIntoConstraints = false
 		diminishedButton.translatesAutoresizingMaskIntoConstraints = false
-		
+		augmentedButton.translatesAutoresizingMaskIntoConstraints = false
 		playButton.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		
-//		chordsInfo.translatesAutoresizingMaskIntoConstraints = false
+		pointsBarView.translatesAutoresizingMaskIntoConstraints = false
+		errorsBarView.translatesAutoresizingMaskIntoConstraints = false
 		
 		
 		// definiendo los stack views

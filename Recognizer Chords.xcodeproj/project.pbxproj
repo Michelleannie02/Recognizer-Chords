@@ -48,19 +48,19 @@
 		9B2746EC73680AED9D20B397 /* libPods-Recognizer Chords.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Recognizer Chords.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B70A3B4E59E301089A3BD1 /* Pods-Recognizer Chords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recognizer Chords.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recognizer Chords/Pods-Recognizer Chords.release.xcconfig"; sourceTree = "<group>"; };
 		A60DF5BA20CDEFD400EE4F7A /* RecognizerChords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecognizerChords.xcdatamodel; sourceTree = "<group>"; };
-		A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondScreen_Autolayout.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/Autolayout/SecondScreen_Autolayout.swift"; sourceTree = "<absolute>"; };
-		A60DF5C220CE0E4100EE4F7A /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = "Recognizer Chords/Networking/FirebaseClient.swift"; sourceTree = SOURCE_ROOT; };
-		A60DF5C420CE0EF100EE4F7A /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseConstants.swift; path = "/Users/ls/Documents/Dev/iOS_Udacity_Nanodegree/1-Core_Curricular/Projects/6-RecognizerChords_Luko/Recognizer Chords/Networking/FirebaseConstants.swift"; sourceTree = "<absolute>"; };
+		A60DF5BE20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen_Autolayout.swift; sourceTree = "<group>"; };
+		A60DF5C220CE0E4100EE4F7A /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		A60DF5C420CE0EF100EE4F7A /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen_Autolayout.swift; sourceTree = "<group>"; };
 		A6333ADA209D40F800A94C1A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		A6354F7D20C3C0790083E838 /* ErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsView.swift; sourceTree = "<group>"; };
-		A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GCDBlackBox.swift; path = "Recognizer Chords/GCDBlackBox.swift"; sourceTree = SOURCE_ROOT; };
+		A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		A656CB7120D1EA3D009B41E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A68CC9E420E3246A0065C970 /* WinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerViewController.swift; sourceTree = "<group>"; };
 		A68CC9E620E3276A0065C970 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../Storyboards/LaunchScreen.xib; sourceTree = "<group>"; };
 		A68CC9E820E327D60065C970 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		A694A48E20DDFA4F005CA31B /* Score+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A695147120E062E600D03675 /* DisplayErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayErrors.swift; path = "Recognizer Chords/Networking/Internet Connection/DisplayErrors.swift"; sourceTree = SOURCE_ROOT; };
+		A695147120E062E600D03675 /* DisplayErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayErrors.swift; sourceTree = "<group>"; };
 		A695147320E0876800D03675 /* FirstScreenVC_Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenVC_Networking.swift; sourceTree = "<group>"; };
 		A695147520E0882600D03675 /* SecondScreenVC_Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenVC_Networking.swift; sourceTree = "<group>"; };
 		A695147720E0931200D03675 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		A6A35039207E504C000E79E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6AF19FC20BE17E600DBAAAC /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
-		A6C7C71620DF5B4E00235C7D /* Connection_Posibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Connection_Posibilities.swift; path = "Recognizer Chords/Networking/Internet Connection/Connection_Posibilities.swift"; sourceTree = SOURCE_ROOT; };
+		A6C7C71620DF5B4E00235C7D /* Connection_Posibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection_Posibilities.swift; sourceTree = "<group>"; };
 		A6C7C71920DF5B6600235C7D /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A6F72CB220CF1EA400251901 /* ConfigureUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigureUI.swift; path = "Recognizer Chords/View/ConfigureUI.swift"; sourceTree = SOURCE_ROOT; };
 		A6F72CB420CF9CD100251901 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
@@ -107,14 +107,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A6075BE420B911840019E2E8 /* bottom score menu */ = {
+		A6075BE420B911840019E2E8 /* Bottom Score Bar */ = {
 			isa = PBXGroup;
 			children = (
 				A6AF19FC20BE17E600DBAAAC /* PointsView.swift */,
 				A6354F7D20C3C0790083E838 /* ErrorsView.swift */,
 			);
-			name = "bottom score menu";
-			path = "Recognizer Chords/View/bottom score menu";
+			name = "Bottom Score Bar";
+			path = "Recognizer Chords/View/Bottom Score Bar";
 			sourceTree = "<group>";
 		};
 		A60E686220927221004C601B /* View */ = {
@@ -122,7 +122,7 @@
 			children = (
 				A6A286DB20D9C8A200E5176E /* ScoreCell.swift */,
 				A6F72CB220CF1EA400251901 /* ConfigureUI.swift */,
-				A6075BE420B911840019E2E8 /* bottom score menu */,
+				A6075BE420B911840019E2E8 /* Bottom Score Bar */,
 			);
 			name = View;
 			path = ..;

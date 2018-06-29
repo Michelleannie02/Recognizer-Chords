@@ -6,10 +6,20 @@
 //  Copyright © 2018 luko. All rights reserved.
 //
 
+/* View */
+
 import UIKit
+
+/* Abstract:
+Una vista que representa la barra de puntos (aciertos) de la barra de scores.
+*/
 
 @IBDesignable
 class PointsView: UIView {
+	
+	//*****************************************************************
+	// MARK: - Initializers
+	//*****************************************************************
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -24,14 +34,12 @@ class PointsView: UIView {
 	// MARK: - Properties
 	//*****************************************************************
 
-//	let label = UILabel()
-//
-//	// stepper is 0 to 10
+	// el stepper
 	let stepper = UIStepper()
-	
-	let step: Double = 100  // go up by $100 at a time
+	// cada paso 'vale' 100
+	let step: Double = 100
+	// el valor máximo de pasos es 8
 	let maxValue: Double = 8
-	
 	
 	// el valor actual de la etiqueta es 0
 	// cada vez que el stepper es tapeado este valor cambia y produce una animación
@@ -48,8 +56,9 @@ class PointsView: UIView {
 		}
 	}
 	
-	
+	// la capa del fondo
 	var backgroundLayer = CAShapeLayer()
+	// la capa de adelante
 	var foregroundLayer = CAShapeLayer()
 	
 	//*****************************************************************
@@ -60,37 +69,40 @@ class PointsView: UIView {
 		super.awakeFromNib()
 		setup()
 	}
-	
+
 	override func prepareForInterfaceBuilder() {
 		super.prepareForInterfaceBuilder()
 		setup()
 	}
 	
 	func setup() {
-		buildInterface()
+		autolayout()
 		layer.addSublayer(backgroundLayer)
 		layer.addSublayer(foregroundLayer)
 		foregroundLayer.strokeEnd = 0
 	}
 	
+	/// task: agregar subvistas a la vista
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		buildLayer(layer: backgroundLayer)
-		backgroundLayer.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1).cgColor
-
-
 		
+		// aplica la capa de fondo
+		buildLayer(layer: backgroundLayer)
+		backgroundLayer.strokeColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
+		// aplica la capa de adelante
 		buildLayer(layer: foregroundLayer)
-		foregroundLayer.strokeColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor
+		foregroundLayer.strokeColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1).cgColor
 	}
 	
+	
+	/// task: dibujar las capas
 	func buildLayer(layer: CAShapeLayer) {
+		
+		// el dibujo
 		let path = UIBezierPath()
 
-		// el dibujo de la línea se mueve desde x:20
+		// el dibujo de la línea se mueve desde x:20, y: 15
 		path.move(to: CGPoint(x: 20, y: 15))
-
-//		path.addLine(to: CGPoint(x: bounds.width, y: bounds.height/3))
 		path.addLine(to: CGPoint(x: bounds.width/1.1, y: 15))
 		
 		// agrega el dibujo a la capa
@@ -100,14 +112,17 @@ class PointsView: UIView {
 		layer.lineCap = kCALineCapRound
 	}
 	
-	
-	// MARK:- Subviews
-	
+	/// task: manejar el stepper
 	@objc func handleStepper(_ stepper: UIStepper) {
 		currentValue = stepper.value
 	}
 	
-	func buildInterface() {
+	//*****************************************************************
+	// MARK: - Autolayout
+	//***************************************************************
+	
+	/// task: aplicar restricciones a la barra de puntos
+	func autolayout() {
 		
 		let pointsBarCenterX = self.centerXAnchor.constraint(equalTo: centerXAnchor)
 		let pointsBarCenterY = self.centerYAnchor.constraint(equalTo: centerYAnchor)

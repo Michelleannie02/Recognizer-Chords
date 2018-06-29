@@ -21,28 +21,25 @@ extension FirstScreenViewController {
 func autolayout () {
 	
 	
-	//		pointsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)
-	//		errorsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)
+//	pointsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)
+//	errorsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)
 	
-	//		// rota el texto de los botones del menú
-	//		gClefButton.transform = CGAffineTransform(rotationAngle: -120)
-	//		settingsButton.transform = CGAffineTransform(rotationAngle: -120)
-	//		lastScoresButton.transform = CGAffineTransform(rotationAngle: -120)
-	//		headphonesButton.transform = CGAffineTransform(rotationAngle: -120)
+	// rota el texto de los botones del menú
+	chordsInfoButton.transform = CGAffineTransform(rotationAngle: -120)
+	lastScoresButton.transform = CGAffineTransform(rotationAngle: -120)
 	
 	// translate autoresizing mask into constraints
 	chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
 	lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
 	
-	//botonMayor.translatesAutoresizingMaskIntoConstraints = false
 	majorButton.translatesAutoresizingMaskIntoConstraints = false
 	minorButton.translatesAutoresizingMaskIntoConstraints = false
 	playButton.translatesAutoresizingMaskIntoConstraints = false
 	activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 	
 	pointsBarView.translatesAutoresizingMaskIntoConstraints = false
+	errorsBarView.translatesAutoresizingMaskIntoConstraints = false
 	
-	//chordsInfo.translatesAutoresizingMaskIntoConstraints = false
 	
 	
 	// definiendo los stack views
@@ -81,7 +78,7 @@ func autolayout () {
 		topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
 		topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
 		topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-		topStackView.heightAnchor.constraint(equalToConstant: 10)
+		topStackView.heightAnchor.constraint(equalToConstant: 38)
 		])
 	
 	

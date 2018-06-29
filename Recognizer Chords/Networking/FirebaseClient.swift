@@ -47,25 +47,25 @@ class FirebaseClient: NSObject {
 	
 	- parameter firstScreen: el controlador de la primer pantalla.
 	- parameter secondScreen: el controlador de la segunda pantalla.
-	- parameter chordChosen: el tipo de acorde elegido aleatoriamente (mayor o menor)
+	- parameter completionHandlerForChordChosen: el tipo de acorde elegido aleatoriamente (mayor o menor)
 
 	*/
 	func setupChord(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController?, completionHandlerForChordChosen: @escaping (_ chordChosen: String? ) -> Void) {
 
 
-		// 1er pantalla /////////////////////////////////////////////
+		// 1er pantalla ...............................................................
 
 		// si 'setupChords' es llamado desde la 1er pantalla ejecuta la siguiente pieza...
 		if firstScreen?.title == "1" {
 			
 			// los tipos de acordes disponibles en esta pantalla
-			let typeChords = ["major", "minor"]
+			let typeChords = [TypesOfChords.Major, TypesOfChords.Minor]
 			
 
 			// elige entre un acorde mayor o menor aleatoriamente 🎲
-			var chordChosen = typeChords.randomElement()
+			let chordChosen = typeChords.randomElement()
 			
-			// almacena el acorde elegido en el parámetro ´acordeElegido´
+			// almacena el acorde elegido en el parámetro ´acordeElegido´ (del closure)
 			completionHandlerForChordChosen(chordChosen)
 			
 			// test
@@ -75,14 +75,14 @@ class FirebaseClient: NSObject {
 			FirebaseClient.aChordSounded = chordChosen
 			
 
-		// 2da pantalla /////////////////////////////////////////////
+		// 2da pantalla ..................................................................
 
 		// si 'setupChords' es llamado desde la 2da pantalla ejectua la siguiente pieza...
 		} else if secondScreen?.title == "2" {
 
 
 			// los acordes disponibles
-			let typeChords = ["major", "minor", "diminished", "augmented"]
+			let typeChords = [TypesOfChords.Major, TypesOfChords.Minor, TypesOfChords.Augmented, TypesOfChords.Diminished]
 
 			// elige entre un acorde mayor, menor, dismunuido o aumentado aleatoriamente
 			let chordChosen = typeChords.randomElement()
@@ -113,7 +113,7 @@ class FirebaseClient: NSObject {
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
-		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
+		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
 		
 		
 		// 3 - raconta los datos para realizar la solicitud
@@ -168,7 +168,7 @@ class FirebaseClient: NSObject {
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
-		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
+		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
 		
 		
 		// 3 - raconta los datos para realizar la solicitud
@@ -222,7 +222,7 @@ class FirebaseClient: NSObject {
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
-		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
+		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
 		
 		
 		// 3 - raconta los datos para realizar la solicitud
@@ -275,7 +275,7 @@ class FirebaseClient: NSObject {
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
-		let gsReference = storage.reference(forURL: "gs://recognizer-chords.appspot.com/" )
+		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
 		
 		
 		// 3 - raconta los datos para realizar la solicitud
@@ -320,7 +320,6 @@ class FirebaseClient: NSObject {
 
 	}
 	
-	
 
 	
 	//*****************************************************************
@@ -336,12 +335,5 @@ class FirebaseClient: NSObject {
 	}
 
 	
-		
-		
-		
-		
-		
-		
-
 	
 } // end class
