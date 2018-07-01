@@ -83,7 +83,7 @@ class FirstScreenViewController: UIViewController {
 		
 		/// User Interface ............................................
 		// prepara el estado de los elementos gráficos de la interfaz
-		//setUserInterface()
+		setUserInterface()
 		
 		/// Autolayout ................................................
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
@@ -96,8 +96,7 @@ class FirstScreenViewController: UIViewController {
 		internetRecheability()
 		
 		/// Core Data .................................................
-		//fetchRequestForScores()
-
+		fetchRequestForScores()
 	}
 	
 	//*****************************************************************
@@ -264,7 +263,7 @@ class FirstScreenViewController: UIViewController {
 			playButton.isHidden = true
 			
 			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿
-			//addScoreToCoreData(hits: self.scoreToAdd)
+			addScoreToCoreData(hits: self.scoreToAdd)
 			
 			// b-espera 4 segundos antes de navegar hacia la siguiente pantalla
 			Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: {(timer) in
@@ -288,7 +287,7 @@ class FirstScreenViewController: UIViewController {
 		// agrega el score a un array que contiene los scores '[Score]'
 		scores.append(score)
 		
-		print("tu score actual es de \(score)")
+		debugPrint("tu score actual es de \(score)")
 		
 		// GUARDA los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
 		try? dataController.viewContext.save() // 💿

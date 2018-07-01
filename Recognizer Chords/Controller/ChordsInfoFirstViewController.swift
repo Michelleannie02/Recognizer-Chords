@@ -44,7 +44,6 @@ class ChordsInfoFirstViewController: UIViewController {
         autolayout()
     }
 
-	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************

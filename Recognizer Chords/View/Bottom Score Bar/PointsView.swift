@@ -126,7 +126,7 @@ class PointsView: UIView {
 		
 		let pointsBarCenterX = self.centerXAnchor.constraint(equalTo: centerXAnchor)
 		let pointsBarCenterY = self.centerYAnchor.constraint(equalTo: centerYAnchor)
-		let pointsBarHeight = self.heightAnchor.constraint(equalToConstant: 40)
+		_ = self.heightAnchor.constraint(equalToConstant: 40)
 		NSLayoutConstraint.activate([pointsBarCenterX, pointsBarCenterY])
 	}
 

@@ -9,7 +9,7 @@
 import UIKit
 
 //*****************************************************************
-// MARK: - Collection Randmo Element
+// MARK: - Collection Random Element
 //*****************************************************************
 
 extension Collection where Index == Int {
@@ -25,7 +25,7 @@ extension Collection where Index == Int {
 }
 
 //*****************************************************************
-// MARK: - Array Extention
+// MARK: - Array Extension
 //*****************************************************************
 
 extension Array {

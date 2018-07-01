@@ -19,21 +19,25 @@ Una clase para encapsular las configuraciones de la pila y su funcionalidad.
 // MARK: - Core Data Stack
 //*****************************************************************
 
-// task: crear una clase para encapsular las configuraciones de la pila y su funcionalidad
+/*
+Esta clase se usa para hacer 3 cosas:
+1-para tener una instancia del contenedor persistente
+2-para ayudarnos a cargar el almacén persistente
+3-y para ayudarnos en el acceso al contexto
+*/
+
 class DataController {
+	
+	/// 1-crear el contendor persistente ..............................
 	
 	// el contenedor persistente
 	let persistentContainer: NSPersistentContainer
-	
-	// el contexto revisa si hay datos persistidos (en el contenedor persistente)
-	var viewContext: NSManagedObjectContext {
-		return persistentContainer.viewContext
-	}
-	
 	// inicializa el contenedor persistente de un modelo dado
 	init(modelName: String) {
 		persistentContainer = NSPersistentContainer(name: modelName)
 	}
+	
+	/// 2-cargar el almacen persistente ...............................
 	
 	// carga los almacenes persistentes, es decir, los datos persistidos
 	func load(completion: (() -> Void)? = nil) {
@@ -42,11 +46,19 @@ class DataController {
 			guard error == nil else {
 				fatalError(error!.localizedDescription)
 			}
-			self.autoSaveViewContext()
+			//self.autoSaveViewContext()
 			completion?()
 		}
 	}
+	
+	/// 3- acceder al contexto ...........................................
+	
+	// el contexto revisa si hay datos persistidos (en el contenedor persistente)
+	var viewContext: NSManagedObjectContext {
+		return persistentContainer.viewContext
+	}
 }
+
 
 //*****************************************************************
 // MARK: - Core Data - Autosave
@@ -59,7 +71,7 @@ extension DataController {
 		
 		// guard
 		guard interval > 0 else {
-			print("cannot set negative autosave interval")
+			debugPrint("cannot set negative autosave interval")
 			return
 		}
 		
@@ -70,11 +82,10 @@ extension DataController {
 		
 		// dispatch
 		DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-			
 			self.autoSaveViewContext(interval: interval)
 		}
 		
 		// test
-		print("autosaving")
+		debugPrint("autosaving")
 	}
 }

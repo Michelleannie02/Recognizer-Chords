@@ -122,7 +122,7 @@ class ErrorsView: UIView {
 
 		let errorsBarCenterX = self.centerXAnchor.constraint(equalTo: centerXAnchor)
 		let errrosBarCenterY = self.centerYAnchor.constraint(equalTo: centerYAnchor)
-		let errorsBarHeight = self.heightAnchor.constraint(equalToConstant: 20)
+		_ = self.heightAnchor.constraint(equalToConstant: 20)
 		NSLayoutConstraint.activate([errorsBarCenterX, errrosBarCenterY])	
 	}
 	

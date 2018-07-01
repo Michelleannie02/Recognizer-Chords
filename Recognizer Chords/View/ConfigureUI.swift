@@ -50,7 +50,6 @@ extension FirstScreenViewController {
 		}
 	}
 	
-	
 	//*****************************************************************
 	// MARK: - Animating
 	//*****************************************************************
@@ -64,7 +63,6 @@ extension FirstScreenViewController {
 		activityIndicator.isHidden = true
 		activityIndicator.stopAnimating()
 	}
-	
 }
 
 extension SecondScreenViewController {
@@ -118,6 +116,5 @@ extension SecondScreenViewController {
 		activityIndicator.isHidden = true
 		activityIndicator.stopAnimating()
 	}
-	
 	
 } // end ext

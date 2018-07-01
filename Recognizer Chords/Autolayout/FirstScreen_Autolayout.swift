@@ -20,30 +20,14 @@ extension FirstScreenViewController {
 
 func autolayout () {
 	
-	// translate autoresizing mask into constraints
-	chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
-	lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
+	translatesAutoresizingMaskIntoConstraints()
 	
-	majorButton.translatesAutoresizingMaskIntoConstraints = false
-	minorButton.translatesAutoresizingMaskIntoConstraints = false
-	
-	playButton.translatesAutoresizingMaskIntoConstraints = false
-	activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-	
-	pointsBarView.translatesAutoresizingMaskIntoConstraints = false
-	errorsBarView.translatesAutoresizingMaskIntoConstraints = false
-
-	/// stack views
+	// MARK: - stack views
 	
 	// top
-	let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton])
-	
-	// center
-	let centerStackView = UIStackView(arrangedSubviews: [majorButton,minorButton])
-	
-	// bottom
-	let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView])
-	
+	let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton]) // top
+	let centerStackView = UIStackView(arrangedSubviews: [majorButton,minorButton]) // center
+	let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView]) // bottom
 	
 	/////////////////////////
 	/// Center Stack View ///
@@ -86,11 +70,12 @@ func autolayout () {
 		bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 		])
 	
-	///////////////////
-	/// Play Button ///
-	///////////////////
 	
-	// MARK: -  play button constraints
+	///////////////////////////////
+	/// Play Button Constraints ///
+	///////////////////////////////
+	
+	// MARK: - play button constraints
 	
 	view.addSubview(playButton)
 	NSLayoutConstraint.activate([
@@ -100,10 +85,10 @@ func autolayout () {
 		playButton.heightAnchor.constraint(equalToConstant: 130),
 		playButton.widthAnchor.constraint(equalToConstant: 130)
 		])
-	
-	//////////////////////////
-	/// Activity Indicator ///
-	//////////////////////////
+
+	//////////////////////////////////////
+	/// Activity Indicator Constraints ///
+	//////////////////////////////////////
 	
 	// MARK: - activity indicator constraints
 	
@@ -114,7 +99,7 @@ func autolayout () {
 		activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 		])
 	
-
+	
 	//////////////////////
 	/// Top Stack View ///
 	//////////////////////
@@ -135,7 +120,19 @@ func autolayout () {
 		topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
 		topStackView.heightAnchor.constraint(equalToConstant: 50)
 		])
+	
 	} // end func
+	
+	func translatesAutoresizingMaskIntoConstraints() {
+		chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
+		lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
+		majorButton.translatesAutoresizingMaskIntoConstraints = false
+		minorButton.translatesAutoresizingMaskIntoConstraints = false
+		playButton.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		pointsBarView.translatesAutoresizingMaskIntoConstraints = false
+		errorsBarView.translatesAutoresizingMaskIntoConstraints = false
+	}
 
 
 } // end class

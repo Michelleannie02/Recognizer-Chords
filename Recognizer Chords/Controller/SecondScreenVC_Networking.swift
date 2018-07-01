@@ -49,11 +49,11 @@ extension SecondScreenViewController {
 						self.displayAlertView(Errors.Message.requestError.title, error)
 					}
 					
-				} // end dispatch
+				}
 			
-			} // end closure
+			}
 		
-		} // end if
+		}
 		
 		if typeOfChord == FirebaseClient.TypesOfChords.Minor {
 		
@@ -109,7 +109,6 @@ extension SecondScreenViewController {
 				}
 			}
 		}
-		
 	}
 	
 	//*****************************************************************
@@ -139,11 +138,9 @@ extension SecondScreenViewController {
 				self.requestChordDataAudio()
 				
 			}
-			alertController.addAction(OKAction)
 			
-			self.present(alertController, animated: true) {
-				
-			}
+			alertController.addAction(OKAction)
+			self.present(alertController, animated: true) {}
 		}
 	}
 	
@@ -156,8 +153,8 @@ extension SecondScreenViewController {
 		
 		// si hay internet
 		if recheability.connection != .none {
-
-			print("hay conexión, se despide el alert view y se realizar una nueva solicitud")
+			
+			debugPrint("hay conexión, se despide el alert view y se realizar una nueva solicitud")
 			
 		} else {
 			DispatchQueue.main.async {

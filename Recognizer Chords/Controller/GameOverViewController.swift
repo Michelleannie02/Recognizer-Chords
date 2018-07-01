@@ -32,7 +32,15 @@ class GameOverViewController: UIViewController {
 	
 	/// task: al presionar el botón se vuelve a la pantalla inicial
 	@IBAction func startAgainButtonPressed(_ sender: UIButton) {
-		performSegue(withIdentifier: "start again", sender: nil)
+		/* NOTE:
+		Scenario 1:
+		FirstScreenViewController -> GameOverViewController dismiss(animated: true, completion: nil) -> FirstScreenViewController -> OK
+		
+		Scenario 2:
+		FirstScreenViewController -> SecondScreenViewController -> GameOverViewController dismiss(animated: true, completion: nil) -> SecondScreenViewContoller
+		(ERROR) what is desired is to return to the 'FirstScreenViewController'
+		*/
+		dismiss(animated: true, completion: nil)
 	}
 	
 	//*****************************************************************

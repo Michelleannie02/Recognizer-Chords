@@ -20,41 +20,14 @@ extension SecondScreenViewController {
 	
 	func autolayout () {
 		
-		// translate autoresizing mask into constraints
+		translatesAutoresizingMaskIntoConstraints()
 		
-		chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
-		lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
-		
-		majorButton.translatesAutoresizingMaskIntoConstraints = false
-		minorButton.translatesAutoresizingMaskIntoConstraints = false
-		diminishedButton.translatesAutoresizingMaskIntoConstraints = false
-		augmentedButton.translatesAutoresizingMaskIntoConstraints = false
-		
-		playButton.translatesAutoresizingMaskIntoConstraints = false
-		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-		
-		pointsBarView.translatesAutoresizingMaskIntoConstraints = false
-		errorsBarView.translatesAutoresizingMaskIntoConstraints = false
-
-		// definiendo los stack views
-
-		// CENTER
-		
-		// center-top
-		let centerTopStackView = UIStackView(arrangedSubviews: [majorButton, diminishedButton])
-		
-		// center-bottom
-		let centerBottomStackView = UIStackView(arrangedSubviews: [augmentedButton, minorButton])
-		
-		// center
-		let centerStackView = UIStackView(arrangedSubviews: [centerTopStackView, centerBottomStackView])
-		
-		// BOTTOM
-		let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView])
-		
-		// TOP
-		let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton])
-		
+		// MARK: - stack views
+		let centerTopStackView = UIStackView(arrangedSubviews: [majorButton, diminishedButton]) // center top
+		let centerBottomStackView = UIStackView(arrangedSubviews: [augmentedButton, minorButton]) // center-bottom
+		let centerStackView = UIStackView(arrangedSubviews: [centerTopStackView, centerBottomStackView]) // center
+		let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView]) // bottom
+		let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton]) // top
 		
 		/////////////////////////
 		/// Center Stack View ///
@@ -71,13 +44,9 @@ extension SecondScreenViewController {
 		
 		// restricciones a 'center stack view'
 		NSLayoutConstraint.activate([
-			// ancla 'topStackView' con el tope de la supervista
 			centerStackView.topAnchor.constraint(equalTo: view.topAnchor),
-			// ancla 'topStackView' con el lado izquierdo de la supervista
 			centerStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			// ancla 'topStackView' con el lado derecho de la supervista
 			centerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			// ancla 'topStackView' con el fondo de la supervista
 			centerStackView.bottomAnchor.constraint(equalTo: centerStackView.topAnchor)
 			])
 		
@@ -91,13 +60,9 @@ extension SecondScreenViewController {
 		
 		// restricciones a 'top center stack view'
 		NSLayoutConstraint.activate([
-			// ancla 'topStackView' con el tope de la supervista
 			centerTopStackView.topAnchor.constraint(equalTo:centerStackView.topAnchor),
-			// ancla 'topStackView' con el lado izquierdo de la supervista
 			centerTopStackView.leadingAnchor.constraint(equalTo: centerStackView.leadingAnchor),
-			// ancla 'topStackView' con el lado derecho de la supervista
 			centerTopStackView.trailingAnchor.constraint(equalTo: centerStackView.trailingAnchor),
-			// ancla 'topStackView' con el fondo de la supervista
 			centerTopStackView.bottomAnchor.constraint(equalTo: view.centerYAnchor)
 			])
 		
@@ -110,13 +75,9 @@ extension SecondScreenViewController {
 		
 		// restricciones a 'top center stack view'
 		NSLayoutConstraint.activate([
-			// ancla 'topStackView' con el tope de la supervista
 			centerBottomStackView.topAnchor.constraint(equalTo: view.centerYAnchor),
-			// ancla 'topStackView' con el lado izquierdo de la supervista
 			centerBottomStackView.leadingAnchor.constraint(equalTo: centerStackView.leadingAnchor),
-			// ancla 'topStackView' con el lado derecho de la supervista
 			centerBottomStackView.trailingAnchor.constraint(equalTo: centerStackView.trailingAnchor),
-			// ancla 'topStackView' con el fondo de la supervista
 			centerBottomStackView.bottomAnchor.constraint(equalTo: centerStackView.bottomAnchor)
 			])
 		
@@ -172,28 +133,42 @@ extension SecondScreenViewController {
 			])
 		
 		
-				//////////////////////
-				/// Top Stack View ///
-				//////////////////////
+		//////////////////////
+		/// Top Stack View ///
+		//////////////////////
 		
-				// MARK: - top stack view
+		// MARK: - top stack view
 		
-				topStackView.translatesAutoresizingMaskIntoConstraints = false
-				topStackView.axis = .horizontal
-				topStackView.distribution = .fillEqually
-				topStackView.spacing = 90
+		topStackView.translatesAutoresizingMaskIntoConstraints = false
+		topStackView.axis = .horizontal
+		topStackView.distribution = .fillEqually
+		topStackView.spacing = 90
 		
-				view.addSubview(topStackView)
+		view.addSubview(topStackView)
 		
-				// restricciones a 'top stack view'
-				NSLayoutConstraint.activate([
-					topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
-					topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-					topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-					topStackView.heightAnchor.constraint(equalToConstant: 50)
-					])
+		// restricciones a 'top stack view'
+		NSLayoutConstraint.activate([
+			topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+			topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+			topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+			topStackView.heightAnchor.constraint(equalToConstant: 50)
+			])
 
 	} // end func
+	
+	
+	func translatesAutoresizingMaskIntoConstraints() {
+		chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
+		lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
+		majorButton.translatesAutoresizingMaskIntoConstraints = false
+		minorButton.translatesAutoresizingMaskIntoConstraints = false
+		diminishedButton.translatesAutoresizingMaskIntoConstraints = false
+		augmentedButton.translatesAutoresizingMaskIntoConstraints = false
+		playButton.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		pointsBarView.translatesAutoresizingMaskIntoConstraints = false
+		errorsBarView.translatesAutoresizingMaskIntoConstraints = false
+	}
 	
 	
 } // end class

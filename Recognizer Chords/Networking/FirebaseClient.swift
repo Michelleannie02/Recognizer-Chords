@@ -16,7 +16,6 @@ Contiene métodos para realizar una solictud a Firebase para obtener un acorde d
 Una vez obtenido los datos de audio de ese acorde crea una referencia (una propiedad) para almacenar temporalmente esos datos y disponerlos para luego usarlos.
 */
 
-
 class FirebaseClient: NSObject {
 	
 	//*****************************************************************
@@ -54,7 +53,6 @@ class FirebaseClient: NSObject {
 	*/
 	func setupChord(firstScreen: FirstScreenViewController? = nil, secondScreen: SecondScreenViewController?, completionHandlerForChordChosen: @escaping (_ chordChosen: String? ) -> Void) {
 
-
 		// 1er pantalla ...............................................................
 
 		// si 'setupChords' es llamado desde la 1er pantalla ejecuta la siguiente pieza...
@@ -72,7 +70,6 @@ class FirebaseClient: NSObject {
 			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
 			FirebaseClient.aChordSounded = chordChosen
 			
-
 		// 2da pantalla ..................................................................
 
 		// si 'setupChords' es llamado desde la 2da pantalla ejectua la siguiente pieza...
@@ -91,14 +88,16 @@ class FirebaseClient: NSObject {
 			FirebaseClient.aChordSounded = chordChosen
 		}
 
-	} // end func
+	}
 	
 	//*****************************************************************
 	// MARK: - Chords Requests
 	//*****************************************************************
 	
 	// major chord request
-	func majorChordRequest(refMajorChords: String? = nil, majorChords:[String]? = nil, completionHandlerForMajorChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
+	func majorChordRequest(refMajorChords: String? = nil,
+						   majorChords:[String]? = nil,
+						   completionHandlerForMajorChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
@@ -122,7 +121,7 @@ class FirebaseClient: NSObject {
 
 				// handling errors
 				if let error = error {
-					
+
 					completionHandlerForMajorChord(false, error.localizedDescription)
 				
 				} else {
@@ -137,7 +136,9 @@ class FirebaseClient: NSObject {
 	
 	
 	// minor chord request
-	func minorChordRequest(refMinorChords: String? = nil , minorChords:[String]? = nil, completionHandlerForMinorChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
+	func minorChordRequest(refMinorChords: String? = nil ,
+						   minorChords:[String]? = nil,
+						   completionHandlerForMinorChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
@@ -166,7 +167,7 @@ class FirebaseClient: NSObject {
 				
 			} else {
 				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
+				FirebaseClient.dataChord = data!
 				
 				// d - informa al completion handler que la solicitud fue exitiosa!
 				completionHandlerForMinorChord(true, nil)
@@ -175,7 +176,9 @@ class FirebaseClient: NSObject {
 	}
 	
 	// diminished chord request
-	func diminishedChordRequest(refDiminishedChords: String? = nil, diminishedChords:[String]? = nil,completionHandlerForDiminishedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
+	func diminishedChordRequest(refDiminishedChords: String? = nil,
+								diminishedChords:[String]? = nil,
+								completionHandlerForDiminishedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
 		
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
@@ -203,7 +206,7 @@ class FirebaseClient: NSObject {
 				
 			} else {
 				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
+				FirebaseClient.dataChord = data!
 				
 				// d - informa al completion handler que la solicitud fue exitiosa!
 				completionHandlerForDiminishedChord(true, nil)
@@ -240,7 +243,7 @@ class FirebaseClient: NSObject {
 				
 			} else {
 				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
-				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
+				FirebaseClient.dataChord = data! 
 				
 				// d - informa al completion handler que la solicitud fue exitiosa!
 				completionHandlerForAugmentedChord(true, nil)

@@ -43,7 +43,6 @@ class SecondScreenViewController: UIViewController {
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
 
-	
 	/// Core Data/ .....................................................
 	
 	// el score actual es 8 ya que es el requisito para estar en la 2da pantalla
@@ -250,7 +249,6 @@ class SecondScreenViewController: UIViewController {
 		internetRecheability()
 	}
 	
-	
 	/// task: ejectutarse cada vez que el botón 'play' es tapeado
 	@IBAction func playButtonPressed(_ sender: UIButton) {
 		
@@ -286,7 +284,7 @@ class SecondScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 1 { // luego cambiar a 8
+		if pointsBarView.currentValue == 8 { 
 			
 			// se deshabilitan todos los botones
 			disableButtons(all: true)

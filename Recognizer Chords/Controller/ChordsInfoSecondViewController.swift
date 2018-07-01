@@ -10,7 +10,6 @@ import UIKit
 
 class ChordsInfoSecondViewController: UIViewController {
 	
-
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
@@ -50,13 +49,11 @@ class ChordsInfoSecondViewController: UIViewController {
 		autolayout()
     }
 
-
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
 	@IBAction func closeChordsInfo(_ sender: UIButton) {
-		
 		dismiss(animated: true, completion: nil)
 	}
 	

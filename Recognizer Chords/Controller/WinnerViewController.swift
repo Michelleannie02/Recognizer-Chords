@@ -37,7 +37,11 @@ class WinnerViewController: UIViewController {
 	//*****************************************************************
 	
 	@IBAction func startAgainButtonPressed(_ sender: UIButton) {
-		performSegue(withIdentifier: "start again", sender: nil)
+		/* NOTE:
+				FirstScreenViewController -> SecondScreenViewController -> WinnerViewController dismiss(animated: true, completion: nil) -> SecondScreenViewContoller
+				(ERROR) what is desired is to return to the 'FirstScreenViewController'
+		*/
+		dismiss(animated: true, completion: nil)
 	}
 	
 	//*****************************************************************

@@ -63,9 +63,9 @@ extension FirstScreenViewController {
 					self.displayAlertView(Errors.Message.requestError.title, error)
 				}
 				
-			} // end dispatch
+			}
 			
-		} // end closure
+		}
 		
 		
 		// .. sino este otro
@@ -85,13 +85,13 @@ extension FirstScreenViewController {
 					self.displayAlertView(Errors.Message.requestError.title, error)
 				}
 				
-			} // end dispatch
+			}
 			
-		} // end closure
+		}
 		
-	} //end if-else
+	}
 		
-} // end func
+} 
 	
 	
 	//*****************************************************************

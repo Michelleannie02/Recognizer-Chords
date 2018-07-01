@@ -12,35 +12,7 @@ extension ChordsInfoSecondViewController {
 	
 	func autolayout () {
 		
-		// translate autoresizing mask into constraints
-		
-		// major
-		majorView.translatesAutoresizingMaskIntoConstraints = false
-		majorLabel.translatesAutoresizingMaskIntoConstraints =  false
-		majorNotationImage.translatesAutoresizingMaskIntoConstraints = false
-		majorInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-		
-		// minor
-		minorView.translatesAutoresizingMaskIntoConstraints = false
-		minorLabel.translatesAutoresizingMaskIntoConstraints = false
-		minorNotationImage.translatesAutoresizingMaskIntoConstraints = false
-		minorInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-		
-		// diminished
-		dimView.translatesAutoresizingMaskIntoConstraints = false
-		dimLabel.translatesAutoresizingMaskIntoConstraints = false
-		dimNotationImage.translatesAutoresizingMaskIntoConstraints = false
-		dimInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-
-		// augmented
-		augView.translatesAutoresizingMaskIntoConstraints = false
-		augLabel.translatesAutoresizingMaskIntoConstraints = false
-		augNotationImage.translatesAutoresizingMaskIntoConstraints = false
-		augInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-		
-		// close
-		closeButton.translatesAutoresizingMaskIntoConstraints = false
-		
+		translatesAutoresizingMaskIntoConstraints()
 		
 		NSLayoutConstraint.activate([
 			
@@ -49,7 +21,6 @@ extension ChordsInfoSecondViewController {
 			majorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			majorView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
 			majorView.bottomAnchor.constraint(equalTo: view.centerYAnchor),
-			
 			majorLabel.bottomAnchor.constraint(equalTo: majorNotationImage.topAnchor, constant: -25),
 			majorLabel.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
 			majorNotationImage.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
@@ -62,7 +33,6 @@ extension ChordsInfoSecondViewController {
 			dimView.leadingAnchor.constraint(equalTo: majorView.trailingAnchor),
 			dimView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			dimView.bottomAnchor.constraint(equalTo: view.centerYAnchor),
-			
 			dimLabel.bottomAnchor.constraint(equalTo: dimNotationImage.topAnchor, constant: -25),
 			dimLabel.centerXAnchor.constraint(equalTo: dimView.centerXAnchor),
 			dimNotationImage.centerXAnchor.constraint(equalTo: dimView.centerXAnchor),
@@ -75,7 +45,6 @@ extension ChordsInfoSecondViewController {
 			minorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			minorView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
 			minorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
 			minorLabel.bottomAnchor.constraint(equalTo: minorNotationImage.topAnchor, constant: -25),
 			minorLabel.centerXAnchor.constraint(equalTo: minorView.centerXAnchor),
 			minorNotationImage.centerXAnchor.constraint(equalTo: minorView.centerXAnchor),
@@ -88,7 +57,6 @@ extension ChordsInfoSecondViewController {
 			augView.leadingAnchor.constraint(equalTo: minorView.trailingAnchor),
 			augView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			augView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-			
 			augLabel.bottomAnchor.constraint(equalTo: augNotationImage.topAnchor, constant: -25),
 			augLabel.centerXAnchor.constraint(equalTo: augView.centerXAnchor),
 			augNotationImage.centerXAnchor.constraint(equalTo: augView.centerXAnchor),
@@ -97,8 +65,29 @@ extension ChordsInfoSecondViewController {
 			augInfoLabel.centerXAnchor.constraint(equalTo: augView.centerXAnchor),
 			
 			// close button constraints
-			closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),	closeButton.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant: -20)
+			closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+			closeButton.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant: -20)
 			])
 		}
 	
+	func translatesAutoresizingMaskIntoConstraints() {
+			majorView.translatesAutoresizingMaskIntoConstraints = false
+			majorLabel.translatesAutoresizingMaskIntoConstraints =  false
+			majorNotationImage.translatesAutoresizingMaskIntoConstraints = false
+			majorInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+			minorView.translatesAutoresizingMaskIntoConstraints = false
+			minorLabel.translatesAutoresizingMaskIntoConstraints = false
+			minorNotationImage.translatesAutoresizingMaskIntoConstraints = false
+			minorInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+			dimView.translatesAutoresizingMaskIntoConstraints = false
+			dimLabel.translatesAutoresizingMaskIntoConstraints = false
+			dimNotationImage.translatesAutoresizingMaskIntoConstraints = false
+			dimInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+			augView.translatesAutoresizingMaskIntoConstraints = false
+			augLabel.translatesAutoresizingMaskIntoConstraints = false
+			augNotationImage.translatesAutoresizingMaskIntoConstraints = false
+			augInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+			closeButton.translatesAutoresizingMaskIntoConstraints = false
 	}
+	
+}
