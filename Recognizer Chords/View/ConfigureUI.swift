@@ -40,20 +40,15 @@ extension FirstScreenViewController {
 	func disableButtons(all: Bool) {
 		
 		if all {
-			
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
 			playButton.isEnabled = false
 			
 		} else {
-			
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
-			
 		}
-		
 	}
-	
 	
 	
 	//*****************************************************************
@@ -61,13 +56,11 @@ extension FirstScreenViewController {
 	//*****************************************************************
 	
 	func startAnimating() {
-		
 		activityIndicator.isHidden = false
 		activityIndicator.startAnimating()
 	}
 	
 	func stopAnimating() {
-		
 		activityIndicator.isHidden = true
 		activityIndicator.stopAnimating()
 	}
@@ -90,15 +83,12 @@ extension SecondScreenViewController {
 		minorButton.isEnabled = true
 		diminishedButton.isEnabled = true
 		augmentedButton.isEnabled = true
-	
 	}
-	
 	
 	/// task: deshabilitar todos los botones o sólo los botones de acordes
 	func disableButtons(all: Bool) {
 		
 		if all {
-			
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
 			diminishedButton.isEnabled = false
@@ -113,7 +103,6 @@ extension SecondScreenViewController {
 			augmentedButton.isEnabled = false
 			
 		}
-		
 	}
 		
 	//*****************************************************************
@@ -121,13 +110,11 @@ extension SecondScreenViewController {
 	//*****************************************************************
 		
 	func startAnimating() {
-			
 		activityIndicator.isHidden = false
 		activityIndicator.startAnimating()
 	}
 		
 	func stopAnimating() {
-		
 		activityIndicator.isHidden = true
 		activityIndicator.stopAnimating()
 	}

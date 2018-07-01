@@ -10,11 +10,6 @@ import UIKit
 
 class ScoreCell: UICollectionViewCell {
 	
-	
-	
 	@IBOutlet weak var pointsEarned: UILabel!
-	
-	
-	
-    
+	   
 }

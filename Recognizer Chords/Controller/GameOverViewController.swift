@@ -32,10 +32,7 @@ class GameOverViewController: UIViewController {
 	
 	/// task: al presionar el botón se vuelve a la pantalla inicial
 	@IBAction func startAgainButtonPressed(_ sender: UIButton) {
-		
-		let controller = self.storyboard!.instantiateViewController(withIdentifier: "first screen view controller")
-		self.present(controller, animated: true, completion: nil)
-
+		performSegue(withIdentifier: "start again", sender: nil)
 	}
 	
 	//*****************************************************************
@@ -58,15 +55,6 @@ class GameOverViewController: UIViewController {
 			gameOverLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 		
 			])
-		
-		
-		
-		
-		
-		
 	}
-	
-	
 
-	
 } // end class

@@ -16,13 +16,11 @@ Contiene métodos concernientes a las solicitudes de red de la clase.
 
 extension FirstScreenViewController {
 	
-	
 	/// task: realizar una solicitud web para obtener los datos de audio del acorde elegido
 	func requestChordDataAudio() {
 		
-		
 		// prepara el siguiente acorde que va a sonar y pasa el objeto 'FirstScreenViewController'
-		FirebaseClient.sharedInstance().setupChord(firstScreen: self, secondScreen: nil) { (chosenChord) in
+		FirebaseClient.sharedInstance.setupChord(firstScreen: self, secondScreen: nil) { (chosenChord) in
 			
 			switch chosenChord {
 				
@@ -39,23 +37,20 @@ extension FirstScreenViewController {
 				case .some(_):
 					print("")
 			}
-
 		}
 		
 		// se visibiliza el indicator de actividad (networking)
 		startAnimating()
-
 	}
 	
 	
 	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
 	func checkIfTheRequestWasSuccesful(isMajor: Bool) {
 		
-
 		// si la solicitud fue de un acorde mayor, ejecutar este bloque...
 		if isMajor {
 			
-		FirebaseClient.sharedInstance().majorChordRequest { success, error in
+			FirebaseClient.sharedInstance.majorChordRequest { success, error in
 			
 			performUIUpdatesOnMain {
 				
@@ -77,7 +72,7 @@ extension FirstScreenViewController {
 		} else {
 		
 		// si la solicitud fue de un acorde menor, ejecutar este bloque...
-		FirebaseClient.sharedInstance().minorChordRequest { success, error in
+			FirebaseClient.sharedInstance.minorChordRequest { success, error in
 			
 			performUIUpdatesOnMain {
 				
@@ -97,7 +92,6 @@ extension FirstScreenViewController {
 	} //end if-else
 		
 } // end func
-	
 	
 	
 	//*****************************************************************
@@ -135,7 +129,6 @@ extension FirstScreenViewController {
 		}
 	}
 	
-	
 	//*****************************************************************
 	// MARK: - Internet Connection
 	//*****************************************************************
@@ -156,9 +149,7 @@ extension FirstScreenViewController {
 				self.displayAlertView(Errors.Message.noInternet.title, Errors.Message.no_Internet.description)
 				
 			}
-			
 		}
 	}
-	
-	
+		
 }

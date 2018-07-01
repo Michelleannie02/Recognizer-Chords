@@ -10,7 +10,6 @@ import UIKit
 
 extension ChordsInfoSecondViewController {
 	
-	
 	func autolayout () {
 		
 		// translate autoresizing mask into constraints
@@ -55,8 +54,6 @@ extension ChordsInfoSecondViewController {
 			majorLabel.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
 			majorNotationImage.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
 			majorNotationImage.centerYAnchor.constraint(equalTo: majorView.centerYAnchor),
-//			majorNotationImage.heightAnchor.constraint(equalToConstant: 80),
-//			majorNotationImage.widthAnchor.constraint(equalToConstant: 80),
 			majorInfoLabel.topAnchor.constraint(equalTo: majorNotationImage.bottomAnchor, constant: 30),
 			majorInfoLabel.centerXAnchor.constraint(equalTo: majorView.centerXAnchor),
 			
@@ -101,7 +98,6 @@ extension ChordsInfoSecondViewController {
 			
 			// close button constraints
 			closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),	closeButton.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant: -20)
-
 			])
 		}
 	

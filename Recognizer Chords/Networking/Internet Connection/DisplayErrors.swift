@@ -17,7 +17,7 @@ struct Errors {
 	
 	enum Message: Error {
 		
-		// Title
+		// title
 		case noInternet
 		case requestError
 		
@@ -32,7 +32,7 @@ struct Errors {
 			}
 		}
 		
-		// Description
+		// description
 		case no_Internet
 		
 		var description: String {

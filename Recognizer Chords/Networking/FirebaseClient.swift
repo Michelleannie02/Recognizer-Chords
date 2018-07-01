@@ -31,12 +31,14 @@ class FirebaseClient: NSObject {
 	// MARK: - Properties
 	//*****************************************************************
 	
+	// crea un singleton
+	static let sharedInstance = FirebaseClient()
+	
 	// los datos de audio del acorde obtenido
 	static var dataChord = Data()
 	
 	// el tipo del último acorde elegido, en principio a nil
 	static var aChordSounded: String? = nil
-	
 	
 	//*****************************************************************
 	// MARK: - Setup Chords of First Or Second Screen
@@ -61,15 +63,11 @@ class FirebaseClient: NSObject {
 			// los tipos de acordes disponibles en esta pantalla
 			let typeChords = [TypesOfChords.Major, TypesOfChords.Minor]
 			
-
 			// elige entre un acorde mayor o menor aleatoriamente 🎲
 			let chordChosen = typeChords.randomElement()
 			
 			// almacena el acorde elegido en el parámetro ´acordeElegido´ (del closure)
 			completionHandlerForChordChosen(chordChosen)
-			
-			// test
-			print("EL ACORDE ELEGIDO ENTRE MAYOR Y MENOR ES \(chordChosen)")
 
 			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
 			FirebaseClient.aChordSounded = chordChosen
@@ -79,7 +77,6 @@ class FirebaseClient: NSObject {
 
 		// si 'setupChords' es llamado desde la 2da pantalla ejectua la siguiente pieza...
 		} else if secondScreen?.title == "2" {
-
 
 			// los acordes disponibles
 			let typeChords = [TypesOfChords.Major, TypesOfChords.Minor, TypesOfChords.Augmented, TypesOfChords.Diminished]
@@ -92,29 +89,22 @@ class FirebaseClient: NSObject {
 
 			// almacena el tipo de acorde que sonará en la variable ´aChordSounded´
 			FirebaseClient.aChordSounded = chordChosen
-
 		}
 
-
 	} // end func
-	
-	
 	
 	//*****************************************************************
 	// MARK: - Chords Requests
 	//*****************************************************************
 	
-	
 	// major chord request
 	func majorChordRequest(refMajorChords: String? = nil, majorChords:[String]? = nil, completionHandlerForMajorChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
-		
 		
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
 		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
-		
 		
 		// 3 - raconta los datos para realizar la solicitud
 		
@@ -124,10 +114,6 @@ class FirebaseClient: NSObject {
 			// b - crea una nueva referencia HIJA de la referencia anterior (para que sea la referencia del archivo que se quiere descargar)
 			// y 'revuelve' y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
 			let majorChords = gsReference.child((MajorChords.items.randomElement())!)
-		
-			// test
-			print("🏄🏻‍♂️ AL PRESIONAR 'PLAY' SONARÁ EL ACORDE: \(majorChords.name)")
-		
 		
 		// 4 - solicitud a Firebase 🔥
 		
@@ -143,22 +129,11 @@ class FirebaseClient: NSObject {
 					// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 					FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
 					
-					//test
-					print("LOS DATOS OBTENIDOS EL ACORDE MAYOR SON: \(data)")
-					
 					// d - informa al completion handler que la solicitud fue exitiosa!
 					completionHandlerForMajorChord(true, nil)
-					
-					
 				}
-	
-				
-				print("los datos obtenidos son: \(data), y el error \(error)")
-		
-		
+			}
 		}
-		
-	}
 	
 	
 	// minor chord request
@@ -170,7 +145,6 @@ class FirebaseClient: NSObject {
 		// 2- crea una referencia al archivo que se desea descargar
 		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
 		
-		
 		// 3 - raconta los datos para realizar la solicitud
 		
 		// a - crea una referencia con un archivo inicial que contiene el path y el nombre
@@ -179,16 +153,11 @@ class FirebaseClient: NSObject {
 		// b - crea una nueva referencia HIJA de la referencia anterior (para que sea la referencia del archivo que se quiere descargar)
 		// y 'revuelve' y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
 		let minorChords = gsReference.child((MinorChords.items.randomElement())!)
-		
-		// test
-		print("🏄🏻‍♂️ AL PRESIONAR 'PLAY' SONARÁ EL ACORDE: \(minorChords.name)")
-		
-		
+
 		// 4 - SOLICITUD WEB A FIREBASE 🔥
 		
 		// a - descarga los datos requeridos en memoria con un tamaño máximo permitido de 1MB
 		minorChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
-			
 
 			if let error = error {
 				
@@ -199,31 +168,20 @@ class FirebaseClient: NSObject {
 				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
 				
-				//test
-				print("LOS DATOS OBTENIDOS EL ACORDE menor SON: \(data)")
-				
 				// d - informa al completion handler que la solicitud fue exitiosa!
 				completionHandlerForMinorChord(true, nil)
-				
-				
 			}
-		
-			
 		}
-
-		
 	}
 	
 	// diminished chord request
 	func diminishedChordRequest(refDiminishedChords: String? = nil, diminishedChords:[String]? = nil,completionHandlerForDiminishedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
-		
 		
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
 		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
-		
 		
 		// 3 - raconta los datos para realizar la solicitud
 		
@@ -234,15 +192,10 @@ class FirebaseClient: NSObject {
 		// tira los 🎲 y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
 		let diminishedChords = gsReference.child((DiminishedChords.items.randomElement())!)
 		
-		// test
-		print("🏄🏻‍♂️ AL PRESIONAR 'PLAY' SONARÁ EL ACORDE: \(diminishedChords.name)")
-		
-		
 		// 4 - solicitud a Firebase 🔥
 		
 		// a - descarga los datos requeridos EN MEMORIA con un tamaño máximo permitido de 1MB
 		diminishedChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
-			
 			
 			if let error = error {
 				
@@ -252,31 +205,20 @@ class FirebaseClient: NSObject {
 				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
 				
-				//test
-				print("LOS DATOS OBTENIDOS EL ACORDE disminuído SON: \(data)")
-				
 				// d - informa al completion handler que la solicitud fue exitiosa!
 				completionHandlerForDiminishedChord(true, nil)
-				
-				
 			}
-			
-			
 		}
-		
-		
 	}
 	
 	// augmented chord request
 	func augmentedChordRequest(refAugmentedChords: String? = nil , augmentedChords:[String]? = nil, completionHandlerForAugmentedChord: @escaping ( _ success: Bool ,_  errorString: String? ) -> Void) {
-		
 		
 		// 1- se conecta con FIREBASE (Google Cloud Storage)
 		let storage = Storage.storage()
 		
 		// 2- crea una referencia al archivo que se desea descargar
 		let gsReference = storage.reference(forURL: FirebaseClient.gsRef )
-		
 		
 		// 3 - raconta los datos para realizar la solicitud
 		
@@ -287,16 +229,11 @@ class FirebaseClient: NSObject {
 		// tira los 🎲 y devuelve aletoriamente UNO de los tres elementos del array de acordes mayores
 		let augmentedChords = gsReference.child((AugmentedChords.items.randomElement())!)
 		
-		// test
-		print("🏄🏻‍♂️ AL PRESIONAR 'PLAY' SONARÁ EL ACORDE: \(augmentedChords.name)")
-		
-		
 		// 4 - solicitud a Firebase 🔥
 		
 		// a - descarga los datos requeridos EN MEMORIA con un tamaño máximo permitido de 1MB
 		augmentedChords.getData(maxSize: 1 * 1024 * 1024) { data, error in
-			
-			
+
 			if let error = error {
 				
 				completionHandlerForAugmentedChord(false, error.localizedDescription)
@@ -305,35 +242,10 @@ class FirebaseClient: NSObject {
 				// c - almacena los datos de audio obtenidos dentro de la variable 'dataChord'
 				FirebaseClient.dataChord = data! // DATOS DE AUDIO OBTENIDOS! 👏
 				
-				//test
-				print("LOS DATOS OBTENIDOS EL ACORDE aumentado SON: \(data)")
-				
 				// d - informa al completion handler que la solicitud fue exitiosa!
 				completionHandlerForAugmentedChord(true, nil)
-				
-				
 			}
-			
-			
 		}
-		
-
 	}
-	
-
-	
-	//*****************************************************************
-	// MARK: - Shared Instance
-	//*****************************************************************
-	
-	class func sharedInstance() -> FirebaseClient {
-		
-		struct Singleton {
-			static var sharedInstance = FirebaseClient()
-		}
-		return Singleton.sharedInstance
-	}
-
-	
 	
 } // end class

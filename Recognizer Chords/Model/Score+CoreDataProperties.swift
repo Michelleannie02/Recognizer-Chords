@@ -18,5 +18,4 @@ extension Score {
     }
 
     @NSManaged public var hits: Double
-
 }

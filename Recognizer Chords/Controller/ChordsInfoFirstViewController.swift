@@ -16,7 +16,6 @@ import UIKit
 
 class ChordsInfoFirstViewController: UIViewController {
 	
-	
 	//*****************************************************************
 	// MARK: - IBOutlets
 	//*****************************************************************
@@ -35,15 +34,13 @@ class ChordsInfoFirstViewController: UIViewController {
 	
 	// close
 	@IBOutlet weak var closeButton: UIButton!
-	
-	
+
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         autolayout()
     }
 
@@ -54,12 +51,8 @@ class ChordsInfoFirstViewController: UIViewController {
 	
 	/// task: cerrar la pantalla de 'chords info'
 	@IBAction func closeChordsInfo(_ sender: UIButton) {
-		
 		dismiss(animated: true, completion: nil)
-
 	}
-	
-	
 	
 	//*****************************************************************
 	// MARK: - Helpers
@@ -69,6 +62,4 @@ class ChordsInfoFirstViewController: UIViewController {
 	override var prefersStatusBarHidden: Bool {
 		return true
 	}
-	
-
 }

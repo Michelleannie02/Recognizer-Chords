@@ -19,30 +19,24 @@ extension SecondScreenViewController {
 	// task: realizar una solicitud web para obtener los datos de audio del acorde elegido
 	func requestChordDataAudio() {
 		
-		
 		// prepara el siguiente acorde que va a sonar y pasa el objeto 'FirstScreenViewController'
-		FirebaseClient.sharedInstance().setupChord(firstScreen: nil, secondScreen: self) { (chosenChord) in
+		FirebaseClient.sharedInstance.setupChord(firstScreen: nil, secondScreen: self) { (chosenChord) in
 			
 			if let chosenChord = chosenChord {
-		
 				self.checkIfTheRequestWasSuccesful(typeOfChord: chosenChord)
-
 			}
 		}
 
 		// se visibiliza el indicator de actividad (networking)
 		startAnimating()
-		
 	}
-	
 	
 	/// task: comprobar si la última solicitud web fue exitosa o no y actualizar la UI dependiendo del resultado
 	func checkIfTheRequestWasSuccesful(typeOfChord: String ) {
 		
-		
 		if typeOfChord == FirebaseClient.TypesOfChords.Major {
 			
-		FirebaseClient.sharedInstance().majorChordRequest { success, error in
+			FirebaseClient.sharedInstance.majorChordRequest { success, error in
 			
 				performUIUpdatesOnMain {
 					
@@ -61,11 +55,9 @@ extension SecondScreenViewController {
 		
 		} // end if
 		
-		
-		
 		if typeOfChord == FirebaseClient.TypesOfChords.Minor {
 		
-			FirebaseClient.sharedInstance().minorChordRequest { success, error in
+			FirebaseClient.sharedInstance.minorChordRequest { success, error in
 				
 				performUIUpdatesOnMain {
 					
@@ -77,18 +69,13 @@ extension SecondScreenViewController {
 						
 						self.displayAlertView(Errors.Message.requestError.title, error)
 					}
-					
-				} // end dispatch
-				
-			} // end closure
-		
+				}
+			}
 		}
-		
-		
-		
+
 		if typeOfChord == FirebaseClient.TypesOfChords.Diminished {
 			
-		FirebaseClient.sharedInstance().diminishedChordRequest { success, error in
+			FirebaseClient.sharedInstance.diminishedChordRequest { success, error in
 			
 				performUIUpdatesOnMain {
 					
@@ -100,17 +87,14 @@ extension SecondScreenViewController {
 						
 						self.displayAlertView(Errors.Message.requestError.title, error)
 					}
-					
-				} // end dispatch
-			
-			} // end closure
-			
+				}
+			}
 		}
 		
 		
 		if typeOfChord == FirebaseClient.TypesOfChords.Augmented {
 			
-		FirebaseClient.sharedInstance().augmentedChordRequest { success, error in
+			FirebaseClient.sharedInstance.augmentedChordRequest { success, error in
 			
 				performUIUpdatesOnMain {
 					
@@ -122,14 +106,11 @@ extension SecondScreenViewController {
 						
 						self.displayAlertView(Errors.Message.requestError.title, error)
 					}
-					
-				} // end dispatch
-			
-			} // end closure
-		
+				}
+			}
 		}
 		
-	} // end func
+	}
 	
 	//*****************************************************************
 	// MARK: - Alert View
@@ -166,8 +147,6 @@ extension SecondScreenViewController {
 		}
 	}
 	
-	
-	
 	//*****************************************************************
 	// MARK: - Internet Connection
 	//*****************************************************************
@@ -181,11 +160,9 @@ extension SecondScreenViewController {
 			print("hay conexión, se despide el alert view y se realizar una nueva solicitud")
 			
 		} else {
-			
 			DispatchQueue.main.async {
 				// sigue sin haber conexión, mantener el alert view
 				self.displayAlertView(Errors.Message.noInternet.title, Errors.Message.no_Internet.description)
-				
 			}
 		}
 	}

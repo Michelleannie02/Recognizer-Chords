@@ -18,7 +18,6 @@
 		A656CB7020D1DE70009B41E9 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */; };
 		A656CB7220D1EA3D009B41E9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB7120D1EA3D009B41E9 /* DataController.swift */; };
 		A68CC9E520E3246A0065C970 /* WinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CC9E420E3246A0065C970 /* WinnerViewController.swift */; };
-		A68CC9E720E3276A0065C970 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68CC9E620E3276A0065C970 /* LaunchScreen.xib */; };
 		A694A49020DDFA4F005CA31B /* Score+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A48E20DDFA4F005CA31B /* Score+CoreDataClass.swift */; };
 		A695147220E062E600D03675 /* DisplayErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695147120E062E600D03675 /* DisplayErrors.swift */; };
 		A695147420E0876800D03675 /* FirstScreenVC_Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695147320E0876800D03675 /* FirstScreenVC_Networking.swift */; };
@@ -57,7 +56,6 @@
 		A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		A656CB7120D1EA3D009B41E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A68CC9E420E3246A0065C970 /* WinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerViewController.swift; sourceTree = "<group>"; };
-		A68CC9E620E3276A0065C970 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../Storyboards/LaunchScreen.xib; sourceTree = "<group>"; };
 		A68CC9E820E327D60065C970 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		A694A48E20DDFA4F005CA31B /* Score+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A695147120E062E600D03675 /* DisplayErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayErrors.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				A6A286CF20D98DA900E5176E /* ScoresViewController.swift */,
 				A6F72CB420CF9CD100251901 /* GameOverViewController.swift */,
 				A68CC9E420E3246A0065C970 /* WinnerViewController.swift */,
-				A68CC9E620E3276A0065C970 /* LaunchScreen.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,7 +323,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A68CC9E720E3276A0065C970 /* LaunchScreen.xib in Resources */,
 				A6A35035207E504C000E79E1 /* Assets.xcassets in Resources */,
 				A6A35033207E504C000E79E1 /* Main.storyboard in Resources */,
 				A6A286D620D9A24500E5176E /* GoogleService-Info.plist in Resources */,

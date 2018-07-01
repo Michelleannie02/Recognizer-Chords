@@ -20,66 +20,29 @@ extension FirstScreenViewController {
 
 func autolayout () {
 	
-	
-//	pointsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)
-//	errorsBar.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 260), for: .vertical)
-	
-	// rota el texto de los botones del menú
-	chordsInfoButton.transform = CGAffineTransform(rotationAngle: -120)
-	lastScoresButton.transform = CGAffineTransform(rotationAngle: -120)
-	
 	// translate autoresizing mask into constraints
 	chordsInfoButton.translatesAutoresizingMaskIntoConstraints = false
 	lastScoresButton.translatesAutoresizingMaskIntoConstraints =  false
 	
 	majorButton.translatesAutoresizingMaskIntoConstraints = false
 	minorButton.translatesAutoresizingMaskIntoConstraints = false
+	
 	playButton.translatesAutoresizingMaskIntoConstraints = false
 	activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 	
 	pointsBarView.translatesAutoresizingMaskIntoConstraints = false
 	errorsBarView.translatesAutoresizingMaskIntoConstraints = false
+
+	/// stack views
 	
-	
-	
-	// definiendo los stack views
-	
-	// TOP
+	// top
 	let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton])
 	
-	// CENTER
+	// center
 	let centerStackView = UIStackView(arrangedSubviews: [majorButton,minorButton])
 	
-	// BOTTOM
+	// bottom
 	let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView])
-	
-	print("🎲\(bottomStackView.arrangedSubviews)")
-	
-	// ANEXOS
-//	let chordsInfoStackView = UIStackView(arrangedSubviews: [chordsInfo])
-//	let lastScoresStackView = UIStackView(arrangedSubviews: [chordsInfo])
-	
-	
-	//////////////////////
-	/// Top Stack View ///
-	//////////////////////
-	
-	// MARK: - top stack view
-	
-	topStackView.translatesAutoresizingMaskIntoConstraints = false
-	topStackView.axis = .horizontal
-	topStackView.distribution = .fillEqually
-	topStackView.spacing = 150
-	
-	view.addSubview(topStackView)
-	
-	// restricciones a 'top stack view'
-	NSLayoutConstraint.activate([
-		topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
-		topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-		topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-		topStackView.heightAnchor.constraint(equalToConstant: 38)
-		])
 	
 	
 	/////////////////////////
@@ -88,7 +51,6 @@ func autolayout () {
 	
 	// MARK: - center stack view
 	
-	//let centerStackView = UIStackView(arrangedSubviews: [majorButton, minorButton])
 	centerStackView.translatesAutoresizingMaskIntoConstraints = false
 	centerStackView.axis = .vertical
 	centerStackView.distribution = .fillEqually
@@ -97,12 +59,11 @@ func autolayout () {
 	
 	// restricciones a 'center stack view'
 	NSLayoutConstraint.activate([
-		centerStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
+		centerStackView.topAnchor.constraint(equalTo: view.topAnchor),
 		centerStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 		centerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 		centerStackView.bottomAnchor.constraint(equalTo: centerStackView.topAnchor)
 		])
-	
 	
 	/////////////////////////
 	/// Bottom Stack View ///
@@ -113,8 +74,7 @@ func autolayout () {
 	bottomStackView.translatesAutoresizingMaskIntoConstraints = false
 	bottomStackView.axis = .horizontal
 	bottomStackView.distribution = .fillEqually
-	
-	
+
 	view.addSubview(bottomStackView)
 	
 	// restricciones a 'bottom stack view'
@@ -122,9 +82,8 @@ func autolayout () {
 		bottomStackView.topAnchor.constraint(equalTo: centerStackView.bottomAnchor),
 		bottomStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 		bottomStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-		bottomStackView.heightAnchor.constraint(equalToConstant: 30),
-		bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-		
+		bottomStackView.heightAnchor.constraint(equalToConstant: 32),
+		bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 		])
 	
 	///////////////////
@@ -136,8 +95,10 @@ func autolayout () {
 	view.addSubview(playButton)
 	NSLayoutConstraint.activate([
 		// ancla 'play button' en el centro de la pantalla
-		playButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-		playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+		playButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -10),
+		playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+		playButton.heightAnchor.constraint(equalToConstant: 130),
+		playButton.widthAnchor.constraint(equalToConstant: 130)
 		])
 	
 	//////////////////////////
@@ -149,56 +110,32 @@ func autolayout () {
 	view.addSubview(activityIndicator)
 	NSLayoutConstraint.activate([
 		// ancla 'play button' en el centro de la pantalla
-		activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+		activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -10),
 		activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 		])
 	
-	///////////////////
-	/// Chords Info ///
-	///////////////////
+
+	//////////////////////
+	/// Top Stack View ///
+	//////////////////////
 	
-//	chordsInfoStackView.translatesAutoresizingMaskIntoConstraints = false
-//	view.addSubview(chordsInfoStackView)
-//	// restricciones al contenedor de prueba
-//	NSLayoutConstraint.activate([
-//		// top
-//		chordsInfoStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
-//		// leading
-//		chordsInfoStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//		// trailing
-//		chordsInfoStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//		// height
-//		chordsInfoStackView.heightAnchor.constraint(equalToConstant: 250)
-//
-//		])
-//
-//	print("🥉\(chordsInfoStackView.arrangedSubviews.count)")
+	// MARK: - top stack view
 	
-	///////////////////
-	/// Scores Info ///
-	///////////////////
-//	
-//	lastScoresStackView.translatesAutoresizingMaskIntoConstraints = false
-//	view.addSubview(lastScoresStackView)
-//	// restricciones al contenedor de prueba
-//	NSLayoutConstraint.activate([
-//		// top
-//		lastScoresStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
-//		// leading
-//		lastScoresStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//		// trailing
-//		lastScoresStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//		// height
-//		lastScoresStackView.heightAnchor.constraint(equalToConstant: 250)
-//		
-//		])
+	topStackView.translatesAutoresizingMaskIntoConstraints = false
+	topStackView.axis = .horizontal
+	topStackView.distribution = .equalSpacing
+	topStackView.spacing = 90
 	
+	view.addSubview(topStackView)
 	
-	// test
-	print("👻\(pointsBarView.layer)")
-	
-	
-	}
+	// restricciones a 'top stack view'
+	NSLayoutConstraint.activate([
+		topStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+		topStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+		topStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+		topStackView.heightAnchor.constraint(equalToConstant: 50)
+		])
+	} // end func
 
 
 } // end class

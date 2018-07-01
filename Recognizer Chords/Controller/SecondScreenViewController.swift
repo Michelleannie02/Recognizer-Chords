@@ -57,11 +57,9 @@ class SecondScreenViewController: UIViewController {
 	// se encarga de contabilizar el score actual del usuario
 	var scoreToAdd: Double = 0
 
-	
 	/// Internet Recheability ..........................................
 	let connection = ConnectionPossibilities(connection: .none)
 	let recheability = Reachability()!
-	
 	
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -81,7 +79,6 @@ class SecondScreenViewController: UIViewController {
 	// indicator de actividad (networking)
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
-	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
@@ -96,14 +93,13 @@ class SecondScreenViewController: UIViewController {
 		
 		/// Autolayout ................................................
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
-		setAutolayout()
+		autolayout()
 		
 		/// Networking - request data audio chord 🚀 ..................
 		requestChordDataAudio()
 		
 		/// Internet Recheability .....................................
 		internetRecheability()
-		
 	}
 	
 	
@@ -111,11 +107,8 @@ class SecondScreenViewController: UIViewController {
 	// MARK: - IBActions
 	//*****************************************************************
 	
-
-	
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
-		
 		
 		/// 1- User Interface .........................................
 		
@@ -144,7 +137,6 @@ class SecondScreenViewController: UIViewController {
 		// el juego progresa o finaliza de acuerdo al desempeño del usuar
 		progressOrGameOver()
 		
-		
 		/// 3- Networking 🚀 ...........................................
 		
 		// antes de realizar la solicitud comprobar si hay conexión a internet
@@ -152,19 +144,14 @@ class SecondScreenViewController: UIViewController {
 		
 		// por último, realizar una solicitud web
 		requestChordDataAudio()
-		
-	
-
 	}
 	
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
 		
-		
 		/// 1- User Interface ...........................................
 		if minorButtonWasTapped {
 			disableButtons(all: false)
-			
 		}
 		
 		/// 2- Logic ....................................................
@@ -177,42 +164,30 @@ class SecondScreenViewController: UIViewController {
 			
 			// agrega un punto a la variable 'scoreToAdd'
 			scoreToAdd += 1
-			
-			
+
 		} else {
 			// caso contrario...
 			// un paso para la barra de errores
 			errorsBarView.currentValue += 1
-			
 		}
 		
 		// el juego progresa o finaliza de acuerdo al desempeño del usuario
 		progressOrGameOver()
 		
-
-		
-		
 		/// 3- Networking 🚀 ...........................................
 		
 		internetRecheability()
 		requestChordDataAudio()
-		
-		
 	}
-	
 	
 	/// task: ejectutarse cada vez que el botón 'disminuído' es tapeado
 	@IBAction func diminishedButtonPressed(_ sender: UIButton) {
 		
-
 		/// 1- User Interface ...........................................
 		// una vez tapeado el botón de disminuído, todos los botones de acordes se deshabilitan
 		if diminishedButtonWasTapped {
 			disableButtons(all: false)
 		}
-		
-		
-		
 		
 		/// 2- Logic ....................................................
 		// si sonó un acorde disminuído y el usuario tapeó el botón de disminuído, ACIERTO!
@@ -228,20 +203,15 @@ class SecondScreenViewController: UIViewController {
 			
 			// un paso para la barra de errores
 			errorsBarView.currentValue += 1
-			
 		}
 		
 		// el juego progresa o finaliza de acuerdo al desempeño del usuario
 		progressOrGameOver()
 		
-
-		
-		
 		/// 3- Networking 🚀 ...........................................
 		
 		requestChordDataAudio()
 		internetRecheability()
-
 	}
 	
 	/// task: ejectutarse cada vez que el botón 'aumentado' es tapeado
@@ -253,7 +223,6 @@ class SecondScreenViewController: UIViewController {
 		if augmentedButtonWasTapped {
 			disableButtons(all: false)
 		}
-		
 		
 		/// 2- Logic ....................................................
 		
@@ -275,13 +244,10 @@ class SecondScreenViewController: UIViewController {
 		// el juego progresa o finaliza de acuerdo al desempeño del usuario
 		progressOrGameOver()
 		
-
 		/// 3- Networking 🚀 ...........................................
 		
 		requestChordDataAudio()
 		internetRecheability()
-		
-		
 	}
 	
 	
@@ -295,7 +261,6 @@ class SecondScreenViewController: UIViewController {
 		diminishedButton.isEnabled = true
 		augmentedButton.isEnabled = true
 		
-
 		/// 2- Audio ....................................................
 		
 		// a-toma los ÚLTIMOS datos de audio almacenados en memoria, ahora puestos en el reproductor
@@ -307,12 +272,9 @@ class SecondScreenViewController: UIViewController {
 			
 			print(error.debugDescription)
 		}
-		
-		
+
 		// b-y los reproduce
 		audioPlayer?.play()
-		
-		
 	}
 
 	//*****************************************************************
@@ -322,49 +284,41 @@ class SecondScreenViewController: UIViewController {
 	/// task: computar los aciertos y errores del usuario en su sesión y actuar en consecuencia
 	func progressOrGameOver() {
 		
-		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 8 { // luego cambiar a 8
+		if pointsBarView.currentValue == 1 { // luego cambiar a 8
 			
 			// se deshabilitan todos los botones
 			disableButtons(all: true)
 			
-			// espera 8 segundos antes de navegar hacia la siguiente pantalla...
+			// espera 5 segundos antes de navegar hacia la siguiente pantalla...
 			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
-			
 				
 				// y navega hacia la próxima pantalla
 				self.performSegue(withIdentifier: "next screen", sender: nil)
 			})
-			
 
 		} // end if
-		
 		
 		/// GAME OVER.
 		// si el usuario erró 3 veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
 			
-			// se deshabilitan todos los botones
+			// se anula la UI
 			disableButtons(all: true)
+			playButton.isHidden = true
+			activityIndicator.isHidden = true
 			
-			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 👏
-			addScoreToCoreData(hit: self.scoreToAdd)
-			
-			
-			print("Game Over. Tu score fue de \(self.scoreToAdd) puntos.")
+			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿
 
-			// b-espera 5 segundos antes de navegar hacia la siguiente pantalla
-			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
+			//addScoreToCoreData(hit: self.scoreToAdd)
+			
+			// b-espera 4 segundos antes de navegar hacia la siguiente pantalla
+			Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: {(timer) in
 				self.performSegue(withIdentifier: "to game over", sender: nil)
 			}
-				
-			)}
-		
-		
+		)}
 	}
-	
 	
 	//*****************************************************************
 	// MARK: - Core Data (creates and save Score)
@@ -373,8 +327,7 @@ class SecondScreenViewController: UIViewController {
 	/// task: recibir el score actual y agregarlo a core data
 	func addScoreToCoreData(hit: Double) {
 		
-		
-		// Core Data CREATES and SAVE score ///////////////////////////////
+		// Core Data CREATES and SAVE score
 		
 		// crea un objeto gestionado 'score' para almacenar el score actual
 		let score = Score(hits: hit, context: dataController.viewContext)
@@ -384,14 +337,8 @@ class SecondScreenViewController: UIViewController {
 		
 		// intenta guardar los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
 		try? dataController.viewContext.save() // 💿
-		
-		///////////////////////////////////////////////////
-		
-		
 	}
 
-	
-	
 } // end class
 
 

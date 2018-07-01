@@ -24,15 +24,13 @@ class ScoresViewController: UIViewController {
 	
 	/// Core Data .....................................................
 	var dataController: DataController! // inyecta el controlador de datos (core data stack)
-	
-	
+
 	/// User Score ....................................................
 	// todos los scores del usuario persistidos
 	var scores: [Score] = []
 
 	// los últimos tres scores del usuario
 	var threeLastScores: [Score] = []
-	
 	
 	//*****************************************************************
 	// MARK: - IBOutlets
@@ -41,7 +39,6 @@ class ScoresViewController: UIViewController {
 	@IBOutlet weak var closeButton: UIButton!
 	@IBOutlet weak var threeLastScoresCollectionView: UICollectionView!
 	
-
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************
@@ -54,8 +51,6 @@ class ScoresViewController: UIViewController {
 		
 		// collection view layout
 		collectionViewLayout()
-		
-		
 	}
 	
 	
@@ -84,30 +79,28 @@ class ScoresViewController: UIViewController {
 
 	/// task: filtrar, del array de scores, sólo los 3 primeros miembros 👏
 	func onlyThreeLastScores() {
-		
 		threeLastScores = scores.getFirstElements(upTo: 3)
-		
-		// test
-		print("Estos son tus últimos 3 scores: \(threeLastScores) ")
-		
 	}
-	
 
-
-	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
 	/// task: despedir la pantalla de scores
 	@IBAction func closeScores(_ sender: UIButton) {
-		
 		dismiss(animated: true, completion: nil)
-		
-		
 	}
 	
-
+	
+	//*****************************************************************
+	// MARK: - Helpers
+	//*****************************************************************
+	
+	/// esconde la barra de estado
+	override var prefersStatusBarHidden: Bool {
+		return true
+	}
+	
 }
 
 	//*****************************************************************
@@ -125,24 +118,6 @@ class ScoresViewController: UIViewController {
 			2- acceder, de cada objeto, a su propiedad ´hits´
 			3- convertir el valor ´hits´ de <Double> a <Int>
 			*/
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
 
 			return 3
 		}

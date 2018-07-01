@@ -43,7 +43,6 @@ class FirstScreenViewController: UIViewController {
 	// reproductor de audio
 	var audioPlayer: AVAudioPlayer?
 	
-
 	/// Core Data .....................................................
 	// inyecta el controlador de datos (core data stack)
 	var dataController: DataController!
@@ -84,7 +83,7 @@ class FirstScreenViewController: UIViewController {
 		
 		/// User Interface ............................................
 		// prepara el estado de los elementos gráficos de la interfaz
-		setUserInterface()
+		//setUserInterface()
 		
 		/// Autolayout ................................................
 		// añade ´autolayout´ a todas las vistas que contiene la pantalla
@@ -100,8 +99,6 @@ class FirstScreenViewController: UIViewController {
 		//fetchRequestForScores()
 
 	}
-	
-	
 	
 	//*****************************************************************
 	// MARK: - Core Data (fetch request)
@@ -119,21 +116,16 @@ class FirstScreenViewController: UIViewController {
 			// .. si es así, asigna el resultado de la solicitud al array de scores persistidos
 			scores = result // pins:[Score] 🔌
 		}
-	
-		
 	}
-	
-	
 	
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
 	// Major, Minor & Play Buttons
-	
+
 	/// task: ejectutarse cada vez que el botón 'major' es tapeado
 	@IBAction func majorButtonPressed(_ sender: UIButton) {
-		
 		
 		/// 1- User Interface .........................................
 		
@@ -142,7 +134,6 @@ class FirstScreenViewController: UIViewController {
 			disableButtons(all: false)
 		}
 
-		
 		/// 2- Logic ...................................................
 		
 		// si sonó un acorde mayor y el usuario tapeó el botón de mayor, ACIERTO!...
@@ -154,10 +145,6 @@ class FirstScreenViewController: UIViewController {
 			// agrega un punto a la variable 'scoreToAdd'
 			scoreToAdd += 1
 			
-			// test
-			print("👏Sumar un punto al score")
-		
-			
 		} else {
 			// caso contrario...
 			// un paso para la barra de errores
@@ -167,7 +154,6 @@ class FirstScreenViewController: UIViewController {
 		// el juego progresa o finaliza de acuerdo a los aciertos u errores del usuario
 		progressOrGameOver()
 		
-		
 		/// 3- Networking 🚀 ...........................................
 		
 		// antes de realizar la solicitud comprobar si hay conexión a internet
@@ -175,15 +161,10 @@ class FirstScreenViewController: UIViewController {
 		
 		// por último, realizar una solicitud web
 		requestChordDataAudio()
-		
 	}
 	
-
-
-
 	/// task: ejectutarse cada vez que el botón 'minor' es tapeado
 	@IBAction func minorButtonPressed(_ sender: UIButton) {
-
 
 		/// 1- User Interface ...........................................
 		
@@ -193,7 +174,6 @@ class FirstScreenViewController: UIViewController {
 
 		}
 
-		
 		/// 2- Logic .....................................................
 		
 		// si sonó un acorde menor y el usuario tapeó el botón de menor, ACIERTO!...
@@ -205,10 +185,6 @@ class FirstScreenViewController: UIViewController {
 			// agrega un punto a la variable 'scoreToAdd'
 			scoreToAdd += 1
 			
-			// test
-			print("👏Sumar un punto al score. El valor de 'scoreToAdd es:'\(scoreToAdd)")
-			
-			
 		} else {
 			// caso contrario...
 			// un paso para la barra de errores
@@ -218,16 +194,12 @@ class FirstScreenViewController: UIViewController {
 		
 		// // el juego progresa o finaliza de acuerdo a los aciertos u errores del usuario
 		progressOrGameOver()
-		
 
-		
-		
 		/// 3- Networking 🚀 ..................................................
 		
 		//internetRecheability()
 		internetRecheability()
 		requestChordDataAudio()
-		
 	}
 	
 	
@@ -239,7 +211,6 @@ class FirstScreenViewController: UIViewController {
 		majorButton.isEnabled = true
 		minorButton.isEnabled = true
 		
-
 		/// 2- Audio ..........................................................
 		
 		// a- toma los ÚLTIMOS datos de audio almacenados en memoria, ahora puestos en el reproductor
@@ -257,8 +228,6 @@ class FirstScreenViewController: UIViewController {
 		
 	}
 
-	
-
 	//*****************************************************************
 	// MARK: - Methods
 	//*****************************************************************
@@ -266,56 +235,44 @@ class FirstScreenViewController: UIViewController {
 	/// task: computar los aciertos y errores del usuario en su sesión y actuar en consecuencia
 	func progressOrGameOver() {
 		
-		print("progressOrGameOver")
-		
-		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
 		if pointsBarView.currentValue == 8 { // luego cambiar a 8
 			
 			// se deshabilitan todos los botones
+			activityIndicator.isHidden = true
+			playButton.isHidden = true
 			disableButtons(all: true)
 			
-			// espera 8 segundos antes de navegar hacia la siguiente pantalla...
-			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
+			// espera 4 segundos antes de navegar hacia la siguiente pantalla...
+			Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: {(timer) in
 
 				// y navega hacia la próxima pantalla
 				self.performSegue(withIdentifier: "next screen", sender: nil)
 			})
-		
-			
-			
+
 		} // end if
 
-
+		
 		/// GAME OVER.
 		// si el usuario erró 3 veces en su sesión, pierde
 		if errorsBarView.currentValue == 3 {
 			
-			// se deshabilitan todos los botones
+			// se anula la UI
+			activityIndicator.isHidden = true
 			disableButtons(all: true)
-		
-			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿 
+			playButton.isHidden = true
 			
-			
+			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿
 			//addScoreToCoreData(hits: self.scoreToAdd)
 			
-			
-			print("Game Over. Tu score fue de \(self.scoreToAdd) puntos.")
-			
-			
-			
-			// b-espera 5 segundos antes de navegar hacia la siguiente pantalla
-			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
+			// b-espera 4 segundos antes de navegar hacia la siguiente pantalla
+			Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: {(timer) in
 				self.performSegue(withIdentifier: "to game over", sender: nil)
 			}
-
 		)}
-
-	
 	}
 	
-
 	//*****************************************************************
 	// MARK: - Core Data (creates and save Score)
 	//*****************************************************************
@@ -323,13 +280,10 @@ class FirstScreenViewController: UIViewController {
 	/// task: recibir el score actual y agregarlo a la propiedad 'hits' del objeto gestionado 'Score'
 	func addScoreToCoreData(hits: Double) {
 		
-		
 		// Core Data CREATES and SAVE score
 		
 		// CREA un objeto gestionado 'score' para almacenar el score actual
 		let score = Score(hits: hits, context: dataController.viewContext) // ERROR! why? 👈
-		// PORQUE EN EL CONTEXTO AÚN NO HAY NADA, PERO PORQUÉ??
-		// es lo lógico, ya que se no creó ninguna instancia de ´score´, entonces cómo hacer para que al llamar a este método por primera vez no encuentre ´nil´?
 
 		// agrega el score a un array que contiene los scores '[Score]'
 		scores.append(score)
@@ -338,11 +292,7 @@ class FirstScreenViewController: UIViewController {
 		
 		// GUARDA los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
 		try? dataController.viewContext.save() // 💿
-		
-		
 	}
-	
-	
 	
 } // end class
 

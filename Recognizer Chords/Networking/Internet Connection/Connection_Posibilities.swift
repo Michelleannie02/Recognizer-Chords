@@ -9,10 +9,8 @@
 struct ConnectionPossibilities {
 	
 	enum Connection {
-		
 		case none, wifi, cellular
 	}
 	
 	var connection: Connection
-
 }

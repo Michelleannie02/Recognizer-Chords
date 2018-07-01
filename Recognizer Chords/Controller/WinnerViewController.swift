@@ -6,7 +6,13 @@
 //  Copyright © 2018 luko. All rights reserved.
 //
 
+/* Controller */
+
 import UIKit
+
+/* Abstract:
+...
+*/
 
 class WinnerViewController: UIViewController {
 	
@@ -14,10 +20,8 @@ class WinnerViewController: UIViewController {
 	// MARK: - IBOutlets
 	//*****************************************************************
 	
-
 	@IBOutlet weak var greatEarLabel: UILabel!
 	@IBOutlet weak var startAgainButton: UIButton!
-	
 	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
@@ -25,28 +29,16 @@ class WinnerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
 		autolayout()
-		
     }
-	
-	
+		
 	//*****************************************************************
 	// MARK: - IBActions
 	//*****************************************************************
 	
-	
 	@IBAction func startAgainButtonPressed(_ sender: UIButton) {
-
-			let controller = self.storyboard!.instantiateViewController(withIdentifier: "first screen view controller")
-			self.present(controller, animated: true, completion: nil)
-			
-
+		performSegue(withIdentifier: "start again", sender: nil)
 	}
-	
-	
-	
-	
 	
 	//*****************************************************************
 	// MARK: - Autolayout
@@ -67,16 +59,7 @@ class WinnerViewController: UIViewController {
 			greatEarLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			greatEarLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 			
-			])
-		
-		
-		
-		
-		
-		
+			])	
 	}
-	
-
-   
 
 }

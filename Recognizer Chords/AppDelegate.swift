@@ -22,14 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	// MARK: - Properties
 	//*****************************************************************
 	
-
 	// representa la ventana de la aplicación
 	var window: UIWindow?
 	
-	/// CORE DATA
+	/// Core Data
 	// configura cual es el Modelo de esta aplicación
 	let dataController = DataController(modelName: "RecognizerChords")
-
 
 	//*****************************************************************
 	// MARK: - UIApplication Delegate
@@ -40,8 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		/// Firebase ..................................................
 		// asocia la app a Firebase 🔥
 		FirebaseApp.configure()
-		
-		
+
 		/// Core Data .................................................
 		// apenas arranca la app carga los datos persistidos (el almacén persistente)
 		dataController.load()
@@ -49,24 +46,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let firstScreenViewController = FirstScreenViewController()
 		firstScreenViewController.dataController = dataController
 		
-		
 		/// NSUserDefaults ............................................
 		checkFirstLaunch()
 		
 		return true
-		
-		
 	}
 	
 	// cuando la aplicación entró en segundo plano se guarda el estado del contexto 💿
 	func applicationDidEnterBackground(_ application: UIApplication) {
-		
 		saveViewContext()
 	}
 	
 	// cuando la aplicación está por morir guarda el estado del contexto 💿
 	func applicationWillTerminate(_ application: UIApplication) {
-		
 		saveViewContext()
 	}
 	

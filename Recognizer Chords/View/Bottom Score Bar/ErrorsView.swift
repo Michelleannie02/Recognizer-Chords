@@ -87,10 +87,10 @@ class ErrorsView: UIView {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		buildLayer(layer: backgroundLayer)
-		backgroundLayer.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1).cgColor
+		backgroundLayer.strokeColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
 		
 		buildLayer(layer: foregroundLayer)
-		foregroundLayer.strokeColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor
+		foregroundLayer.strokeColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor
 	}
 	
 	/// task: dibujar las capas
@@ -122,9 +122,8 @@ class ErrorsView: UIView {
 
 		let errorsBarCenterX = self.centerXAnchor.constraint(equalTo: centerXAnchor)
 		let errrosBarCenterY = self.centerYAnchor.constraint(equalTo: centerYAnchor)
-		let errorsBarHeight = self.heightAnchor.constraint(equalToConstant: 50)
-		NSLayoutConstraint.activate([errorsBarCenterX, errrosBarCenterY])
-		
+		let errorsBarHeight = self.heightAnchor.constraint(equalToConstant: 20)
+		NSLayoutConstraint.activate([errorsBarCenterX, errrosBarCenterY])	
 	}
 	
 } // end class

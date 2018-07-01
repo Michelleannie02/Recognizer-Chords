@@ -91,7 +91,7 @@ class PointsView: UIView {
 		backgroundLayer.strokeColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
 		// aplica la capa de adelante
 		buildLayer(layer: foregroundLayer)
-		foregroundLayer.strokeColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1).cgColor
+		foregroundLayer.strokeColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor
 	}
 	
 	
@@ -126,8 +126,8 @@ class PointsView: UIView {
 		
 		let pointsBarCenterX = self.centerXAnchor.constraint(equalTo: centerXAnchor)
 		let pointsBarCenterY = self.centerYAnchor.constraint(equalTo: centerYAnchor)
+		let pointsBarHeight = self.heightAnchor.constraint(equalToConstant: 40)
 		NSLayoutConstraint.activate([pointsBarCenterX, pointsBarCenterY])
-
 	}
 
 } // end class
