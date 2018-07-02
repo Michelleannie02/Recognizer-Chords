@@ -304,7 +304,6 @@ class SecondScreenViewController: UIViewController {
 			
 			// se anula la UI
 			disableButtons(all: true)
-			playButton.isHidden = true
 			activityIndicator.isHidden = true
 			
 			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿

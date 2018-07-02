@@ -96,7 +96,7 @@ class FirstScreenViewController: UIViewController {
 		internetRecheability()
 		
 		/// Core Data .................................................
-		fetchRequestForScores()
+		//fetchRequestForScores()
 	}
 	
 	//*****************************************************************
@@ -224,7 +224,6 @@ class FirstScreenViewController: UIViewController {
 		
 		// b- y los reproduce
 		audioPlayer?.play()
-		
 	}
 
 	//*****************************************************************
@@ -236,11 +235,10 @@ class FirstScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 8 { // luego cambiar a 8
+		if pointsBarView.currentValue == 2 { // luego cambiar a 8
 			
 			// se deshabilitan todos los botones
 			activityIndicator.isHidden = true
-			playButton.isHidden = true
 			disableButtons(all: true)
 			
 			// espera 4 segundos antes de navegar hacia la siguiente pantalla...
@@ -263,7 +261,7 @@ class FirstScreenViewController: UIViewController {
 			playButton.isHidden = true
 			
 			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿
-			addScoreToCoreData(hits: self.scoreToAdd)
+			//addScoreToCoreData(hits: self.scoreToAdd)
 			
 			// b-espera 4 segundos antes de navegar hacia la siguiente pantalla
 			Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: {(timer) in
