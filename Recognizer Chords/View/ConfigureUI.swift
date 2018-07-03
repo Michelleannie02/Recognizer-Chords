@@ -24,13 +24,14 @@ extension FirstScreenViewController {
 	//*****************************************************************
 	// MARK: - User Interface
 	//*****************************************************************
-	
+
 	func setUserInterface() {
 		
 		// en principio el indicador de actividad (networking) está oculto
 		activityIndicator.isHidden = true
 		
 		// en principio los botones de mayor y menor se encuentran deshabilitados
+		playButton.isHidden = false
 		majorButton.isEnabled = false
 		minorButton.isEnabled = false
 
@@ -48,6 +49,18 @@ extension FirstScreenViewController {
 			majorButton.isEnabled = false
 			minorButton.isEnabled = false
 		}
+	}
+	
+	/// task: restablecer la pantalla inicial 
+	func restartScreen() {
+		playButton.isHidden = false
+		playButton.isEnabled = true
+		majorButton.isHidden = false
+		minorButton.isHidden = false
+		majorButton.isEnabled = false
+		minorButton.isEnabled = false
+		pointsBarView.currentValue = 0.0
+		errorsBarView.currentValue = 0.0
 	}
 	
 	//*****************************************************************

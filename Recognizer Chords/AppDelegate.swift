@@ -40,11 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FirebaseApp.configure()
 
 		/// Core Data .................................................
-		// apenas arranca la app carga los datos persistidos (el almacén persistente)
+		// apenas arranca la app carga los datos persistidos (el almacén persistente - los datos persistidos)
 		dataController.load()
-		// y son enviados a la propiedad 'dataController' de 'FirstScreenViewController'
-		let firstScreenViewController = FirstScreenViewController()
-		firstScreenViewController.dataController = dataController
+		// inyecta la clase que gestiona core data en la propiedad 'dataController' de 'FirstScreenViewController'
+		let firstViewController = window?.rootViewController as! FirstScreenViewController
+		firstViewController.dataController = dataController
+		
+		defaultScores()
 		
 		/// NSUserDefaults ............................................
 		checkFirstLaunch()
@@ -80,8 +82,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 	
 	//*****************************************************************
-	// MARK: - Core Data - Save View Context
+	// MARK: - Core Data -
 	//*****************************************************************
+	
+	/// task: crea los primeros tres scores por defecto a 0
+	func defaultScores() {
+		_ = Score(hits: 0, context: dataController.viewContext)
+		_ = Score(hits: 0, context: dataController.viewContext)
+		_ = Score(hits: 0, context: dataController.viewContext)
+	}
+	
 	
 	/// task: guardar el contexto
 	func saveViewContext() {
@@ -90,17 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 } // end class
 
-/*
-PERSISTENCIA:
-
-Momentos en los que se persisten los datos del score obtenido por el usuario en una sesión de juego:
-
-1- cuando la aplicación entra en segundo plano
-2- cuando la aplicación está por morir
-3- cada 30 segundos (autosave)
-4- cuando el usuario pierde
-
-*/
 
 
 

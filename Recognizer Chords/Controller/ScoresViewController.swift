@@ -17,7 +17,6 @@ Una pantalla que muestra los últimos TRES scores del usuario.
 
 class ScoresViewController: UIViewController {
 	
-	
 	//*****************************************************************
 	// MARK: - Properties
 	//*****************************************************************
@@ -28,6 +27,7 @@ class ScoresViewController: UIViewController {
 	/// User Score ....................................................
 	// todos los scores del usuario persistidos
 	var scores: [Score] = []
+	var scoresReversed: [Score] = []
 
 	// los últimos tres scores del usuario
 	var threeLastScores: [Score] = []
@@ -47,7 +47,7 @@ class ScoresViewController: UIViewController {
 		super.viewDidLoad()
 		
 		// comprueba si hay scores persistidos 👈
-		//fetchRequestForScores()
+		fetchRequestForScores()
 		
 		// collection view layout
 		collectionViewLayout()
@@ -59,27 +59,29 @@ class ScoresViewController: UIViewController {
 	//*****************************************************************
 	
 	/// task: buscar si hay objetos 'Score' persistidos
-//	func fetchRequestForScores() {
-//
-//			// hay objetos 'Score' persistidos?
-//			let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest() // 🔍
-//
-//				// comprueba si hay resultados en la búsqueda..
-//				if let result = try? dataController.viewContext.fetch(fetchRequest) {
-//
-//					// .. si es así, asigna el resultado de la solicitud al array de scores persistidos
-//					scores = result // scores:[Score] 🔌
-//
-//				}
-//
-//			onlyThreeLastScores()
-//
-//		}
+	func fetchRequestForScores() {
+
+			// hay objetos 'Score' persistidos?
+			let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest() // 🔍
+
+				// comprueba si hay resultados en la búsqueda..
+				if let result = try? dataController.viewContext.fetch(fetchRequest) {
+
+					// .. si es así, asigna el resultado de la solicitud al array de scores persistidos
+					scores = result // scores:[Score] 🔌
+
+				}
+
+			onlyThreeLastScores()
+
+		}
 	
 
 	/// task: filtrar, del array de scores, sólo los 3 primeros miembros 👏
 	func onlyThreeLastScores() {
-		threeLastScores = scores.getFirstElements(upTo: 3)
+		scoresReversed = scores.reversed()
+		threeLastScores = scoresReversed.getFirstElements(upTo: 3)
+		debugPrint("tus últimos tres scores son \(threeLastScores)")
 	}
 
 	//*****************************************************************
@@ -110,20 +112,10 @@ class ScoresViewController: UIViewController {
 	extension ScoresViewController: UICollectionViewDataSource {
 		
 		func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-			
-			// TODO:
-			
-			/*
-			1- obtener el array 'threeLastScores: [Score]' con los últimos tres scores persistidos
-			2- acceder, de cada objeto, a su propiedad ´hits´
-			3- convertir el valor ´hits´ de <Double> a <Int>
-			*/
-
-			return 3
+			return threeLastScores.count
 		}
 		
 		func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-			
 			
 			// la celda de scores
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "score cell id", for: indexPath)
@@ -131,12 +123,16 @@ class ScoresViewController: UIViewController {
 			// pone la etiqueta contenida en la celda de color verde
 			//cell.pointsEarned.backgroundColor = .green
 			
-			cell.backgroundColor = .gray
+			cell.backgroundColor = .red
 			
-			print("😉 la celda devuelta: \(cell)")
-			
+			// itera el array de scores para extraerle los valores de 'hits'
+			var hitsArray: [Int] = []
+			for score in scoresReversed {
+				hitsArray.append(Int(score.hits))
+			}
+			// pone los valores de hits en la etiqueta de la celda de la colección
 			if let label = cell.viewWithTag(100) as? UILabel {
-				//label.text = collectionData[indexPath.row]
+				label.text = String(hitsArray[indexPath.row])
 			}
 			
 			// devuelve la celda ya configurada
@@ -149,20 +145,11 @@ class ScoresViewController: UIViewController {
 //		}
 		
 		func collectionViewLayout() {
-			
-			// 3 last scores collection view layout
-			
-			print("🛡 se cargó la vista de scores")
 			threeLastScoresCollectionView.backgroundColor = .red
-			
-			
-			// collection view layout
 			let width = (view.frame.size.width) - 20
 			let height = (view.frame.size.height - 70) / 3.45
 			let layout = threeLastScoresCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
 			layout.itemSize = CGSize(width: width, height: height)
-			
-			
 		}
 
 	

@@ -55,10 +55,12 @@ class DataController {
 	
 	// el contexto revisa si hay datos persistidos (en el contenedor persistente)
 	var viewContext: NSManagedObjectContext {
+		// el contenedor persistente tiene dos tareas:
+		// 1-ayuda a configurar el resto del stack
+		// 2-proporciona variables y méotdos útiles para trabajar con contextos
 		return persistentContainer.viewContext
 	}
 }
-
 
 //*****************************************************************
 // MARK: - Core Data - Autosave

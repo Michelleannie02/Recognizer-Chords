@@ -123,22 +123,22 @@ extension SecondScreenViewController {
 	
 	*/
 	func displayAlertView(_ title: String?, _ error: String?) {
-		
+
 		// si ocurre un error en la solicitud, mostrar una vista de alerta!
 		if error != nil {
-			
+
 			let alertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
-			
+
 			let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-				
+
 				// comprobar ahora sí hay internet
 				self.internetRecheability()
-				
+
 				// realizar una nueva solicitud
 				self.requestChordDataAudio()
-				
+
 			}
-			
+
 			alertController.addAction(OKAction)
 			self.present(alertController, animated: true) {}
 		}

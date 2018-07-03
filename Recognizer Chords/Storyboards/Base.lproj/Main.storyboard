@@ -69,7 +69,7 @@
                                     <color key="titleColor" red="0.48627450980392156" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="RfU-NJ-qag" kind="presentation" id="770-dL-uNb"/>
+                                    <segue destination="RfU-NJ-qag" kind="presentation" identifier="three last scores" id="770-dL-uNb"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aBE-E9-Tnl">
@@ -80,6 +80,7 @@
                         <color key="backgroundColor" red="0.48627450979999998" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ufS-pU-SDr"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qTZ-nV-fbj"/>
                     <connections>
                         <outlet property="activityIndicator" destination="aBE-E9-Tnl" id="4qD-hR-mCe"/>
                         <outlet property="chordsInfoButton" destination="hGg-9z-I6a" id="kui-Gq-aqq"/>
@@ -267,7 +268,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.48627450979999998" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4ae-Vd-8kg" firstAttribute="centerX" secondItem="OxG-b7-Dvk" secondAttribute="centerX" id="5hV-zS-DFE"/>
                             <constraint firstItem="4ae-Vd-8kg" firstAttribute="top" secondItem="AQd-UB-zP4" secondAttribute="top" constant="30" id="MHN-cw-ani"/>
@@ -582,7 +583,7 @@
                                     <color key="titleColor" red="0.48627450979999998" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="RfU-NJ-qag" kind="presentation" id="Dob-wt-5Dg"/>
+                                    <segue destination="RfU-NJ-qag" kind="presentation" identifier="three last scores" id="Dob-wt-5Dg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -640,14 +641,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yxy-Mx-mMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="-1076"/>
+            <point key="canvasLocation" x="1503" y="-321"/>
         </scene>
     </scenes>
     <resources>
         <image name="play_button" width="167" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hij-Ow-kNq"/>
-        <segue reference="770-dL-uNb"/>
+        <segue reference="28q-Md-zoN"/>
+        <segue reference="Dob-wt-5Dg"/>
     </inferredMetricsTieBreakers>
 </document>

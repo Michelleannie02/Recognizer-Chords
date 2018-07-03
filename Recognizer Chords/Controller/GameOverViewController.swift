@@ -32,12 +32,7 @@ class GameOverViewController: UIViewController {
 	
 	/// task: al presionar el botón se vuelve a la pantalla inicial
 	@IBAction func startAgainButtonPressed(_ sender: UIButton) {
-		// NOTE:
-		// if I go back to the root view controller it will return to the LAST STATE of the screen and I do not want that since it would keep the state of the score bar and it would be incorrect because the scores (both hits and errors) should be back to 0
-		//view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-		
-		// if I return with this method the vc is reloaded with the values of scores to 0 and that is what I want
-		performSegue(withIdentifier: "first screen view controller", sender: nil)
+		view.window?.rootViewController?.dismiss(animated: true, completion: nil)
 	}
 	
 	//*****************************************************************

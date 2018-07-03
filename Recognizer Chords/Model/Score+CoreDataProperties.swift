@@ -2,7 +2,7 @@
 //  Score+CoreDataProperties.swift
 //  Recognizer Chords
 //
-//  Created by Luciano Schillagi on 25/06/2018.
+//  Created by Luciano Schillagi on 02/07/2018.
 //  Copyright © 2018 luko. All rights reserved.
 //
 //
@@ -18,4 +18,5 @@ extension Score {
     }
 
     @NSManaged public var hits: Double
+
 }

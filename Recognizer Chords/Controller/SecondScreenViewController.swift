@@ -284,10 +284,13 @@ class SecondScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 8 { 
+		if pointsBarView.currentValue == 2 { 
 			
 			// se deshabilitan todos los botones
 			disableButtons(all: true)
+			
+			// si el usuario gana el juego y pasa a la siguiente pantalla, se guarda su score final
+			addScoreToCoreData(hit: self.scoreToAdd)
 			
 			// espera 5 segundos antes de navegar hacia la siguiente pantalla...
 			Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
@@ -306,9 +309,8 @@ class SecondScreenViewController: UIViewController {
 			disableButtons(all: true)
 			activityIndicator.isHidden = true
 			
-			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿
-
-			//addScoreToCoreData(hit: self.scoreToAdd)
+			// a-entonces agrega el score del usuario a core data
+			addScoreToCoreData(hit: self.scoreToAdd)
 			
 			// b-espera 4 segundos antes de navegar hacia la siguiente pantalla
 			Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: {(timer) in
@@ -327,18 +329,37 @@ class SecondScreenViewController: UIViewController {
 		// Core Data CREATES and SAVE score
 		
 		// crea un objeto gestionado 'score' para almacenar el score actual
-		let score = Score(hits: hit, context: dataController.viewContext)
+		let score = Score(hits: hit + 8, context: dataController.viewContext)
 		
 		// agrega el score (managed object) a un array que contiene los scores persistidos '[Score]'
 		scores.append(score)
 		
-		// intenta guardar los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
+		debugPrint("tu score actual es de \(score)")
+		
+		// y por último GUARDA los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score.hits´)
 		try? dataController.viewContext.save() // 💿
 	}
 
 } // end class
 
 
+extension SecondScreenViewController {
+	
+	// task: enviar a 'ScoresViewController' el 'data controller'
+	override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
+		
+		if segue.identifier == "three last scores" {
+			
+			// el destino de la transición, el 'ScoresViewController'
+			let scoresVC = segue.destination as! ScoresViewController
+			
+			// el controlador de datos
+			scoresVC.dataController = dataController
+			
+		}
+	}
+	
+}
 
 
 

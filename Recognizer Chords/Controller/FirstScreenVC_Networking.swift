@@ -62,11 +62,8 @@ extension FirstScreenViewController {
 					
 					self.displayAlertView(Errors.Message.requestError.title, error)
 				}
-				
 			}
-			
 		}
-		
 		
 		// .. sino este otro
 		} else {
@@ -121,14 +118,13 @@ extension FirstScreenViewController {
 				self.requestChordDataAudio()
 				
 			}
-			alertController.addAction(OKAction)
 			
-			self.present(alertController, animated: true) {
-				
-			}
+			alertController.addAction(OKAction)
+			self.present(alertController, animated: true) {}
 		}
 	}
-	
+
+
 	//*****************************************************************
 	// MARK: - Internet Connection
 	//*****************************************************************
@@ -151,5 +147,5 @@ extension FirstScreenViewController {
 			}
 		}
 	}
-		
+	
 }

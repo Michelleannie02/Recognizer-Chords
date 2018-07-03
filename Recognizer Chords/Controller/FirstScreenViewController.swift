@@ -80,7 +80,7 @@ class FirstScreenViewController: UIViewController {
 	/// task: cargar la supervista
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+
 		/// User Interface ............................................
 		// prepara el estado de los elementos gráficos de la interfaz
 		setUserInterface()
@@ -96,7 +96,12 @@ class FirstScreenViewController: UIViewController {
 		internetRecheability()
 		
 		/// Core Data .................................................
-		//fetchRequestForScores()
+		fetchRequestForScores()
+	}
+	
+	/// task:
+	override func viewWillAppear(_ animated: Bool) {
+		restartScreen()
 	}
 	
 	//*****************************************************************
@@ -114,6 +119,12 @@ class FirstScreenViewController: UIViewController {
 			
 			// .. si es así, asigna el resultado de la solicitud al array de scores persistidos
 			scores = result // pins:[Score] 🔌
+			debugPrint("tus scores persistidos son: \(scores.count)")
+		}
+		
+		// scores guardados debug
+		for score in scores {
+			debugPrint("Tus scores son: \(scores.index(of: score)!)->\(Int(score.hits))")
 		}
 	}
 	
@@ -235,7 +246,7 @@ class FirstScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 2 { // luego cambiar a 8
+		if pointsBarView.currentValue == 2 {
 			
 			// se deshabilitan todos los botones
 			activityIndicator.isHidden = true
@@ -260,8 +271,8 @@ class FirstScreenViewController: UIViewController {
 			disableButtons(all: true)
 			playButton.isHidden = true
 			
-			// a-ENTONCES GRABA-PERSISTE el score del usuario 💿
-			//addScoreToCoreData(hits: self.scoreToAdd)
+			// a-entonces agrega el score del usuario a core data
+			addScoreToCoreData(hits: self.scoreToAdd)
 			
 			// b-espera 4 segundos antes de navegar hacia la siguiente pantalla
 			Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: {(timer) in
@@ -280,19 +291,48 @@ class FirstScreenViewController: UIViewController {
 		// Core Data CREATES and SAVE score
 		
 		// CREA un objeto gestionado 'score' para almacenar el score actual
-		let score = Score(hits: hits, context: dataController.viewContext) // ERROR! why? 👈
+		let score = Score(hits: hits, context: dataController.viewContext)
 
 		// agrega el score a un array que contiene los scores '[Score]'
 		scores.append(score)
 		
-		debugPrint("tu score actual es de \(score)")
+		debugPrint("tu último score guardado es de: \(Int(score.hits))")
 		
-		// GUARDA los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score´)
+		// y por último GUARDA los cambios que registra el contexto (en este caso, que se agregó un nuevo objeto ´Score.hits´)
 		try? dataController.viewContext.save() // 💿
 	}
 	
 } // end class
 
+
+extension FirstScreenViewController {
+	
+	// task: enviar a 'ScoresViewController' y a 'SecondScreenViewController' el 'data controller'
+	override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
+		
+		if segue.identifier == "three last scores" {
+			
+			// el destino de la transición, el 'ScoresViewController'
+			let scoresVC = segue.destination as! ScoresViewController
+			
+			// el controlador de datos
+			scoresVC.dataController = dataController
+
+		}
+		
+		if segue.identifier == "next screen" {
+			
+			// el destino de la transición, el 'ScoresViewController'
+			let secondScreenVC = segue.destination as! SecondScreenViewController
+			
+			// el controlador de datos
+			secondScreenVC.dataController = dataController
+			
+		}
+		
+	}
+	
+}
 
 
 
