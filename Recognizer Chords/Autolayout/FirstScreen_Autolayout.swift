@@ -27,7 +27,7 @@ func autolayout () {
 	// top
 	let topStackView = UIStackView(arrangedSubviews: [chordsInfoButton, lastScoresButton]) // top
 	let centerStackView = UIStackView(arrangedSubviews: [majorButton,minorButton]) // center
-	let bottomStackView = UIStackView(arrangedSubviews: [pointsBarView, errorsBarView]) // bottom
+	let bottomStackView = UIStackView(arrangedSubviews: [hitsBarView, errorsBarView]) // bottom
 	
 	/////////////////////////
 	/// Center Stack View ///
@@ -130,7 +130,7 @@ func autolayout () {
 		minorButton.translatesAutoresizingMaskIntoConstraints = false
 		playButton.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-		pointsBarView.translatesAutoresizingMaskIntoConstraints = false
+		hitsBarView.translatesAutoresizingMaskIntoConstraints = false
 		errorsBarView.translatesAutoresizingMaskIntoConstraints = false
 	}
 

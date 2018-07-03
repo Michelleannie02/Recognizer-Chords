@@ -38,7 +38,7 @@ extension SecondScreenViewController {
 			
 			FirebaseClient.sharedInstance.majorChordRequest { success, error in
 			
-				performUIUpdatesOnMain {
+				DispatchQueue.main.async {
 					
 					if success {
 						
@@ -59,7 +59,7 @@ extension SecondScreenViewController {
 		
 			FirebaseClient.sharedInstance.minorChordRequest { success, error in
 				
-				performUIUpdatesOnMain {
+				DispatchQueue.main.async {
 					
 					if success {
 						
@@ -77,7 +77,7 @@ extension SecondScreenViewController {
 			
 			FirebaseClient.sharedInstance.diminishedChordRequest { success, error in
 			
-				performUIUpdatesOnMain {
+				DispatchQueue.main.async {
 					
 					if success {
 						
@@ -96,7 +96,7 @@ extension SecondScreenViewController {
 			
 			FirebaseClient.sharedInstance.augmentedChordRequest { success, error in
 			
-				performUIUpdatesOnMain {
+				DispatchQueue.main.async {
 					
 					if success {
 						

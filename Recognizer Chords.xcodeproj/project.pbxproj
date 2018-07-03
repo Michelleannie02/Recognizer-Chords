@@ -15,7 +15,6 @@
 		A619F8F520CBA70B00241E2D /* FirstScreen_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */; };
 		A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6333ADA209D40F800A94C1A /* Helpers.swift */; };
 		A6354F7E20C3C0790083E838 /* ErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354F7D20C3C0790083E838 /* ErrorsView.swift */; };
-		A656CB7020D1DE70009B41E9 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */; };
 		A656CB7220D1EA3D009B41E9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656CB7120D1EA3D009B41E9 /* DataController.swift */; };
 		A68CC9E520E3246A0065C970 /* WinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CC9E420E3246A0065C970 /* WinnerViewController.swift */; };
 		A694A49020DDFA4F005CA31B /* Score+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A48E20DDFA4F005CA31B /* Score+CoreDataClass.swift */; };
@@ -53,7 +52,6 @@
 		A619F8F420CBA70B00241E2D /* FirstScreen_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen_Autolayout.swift; sourceTree = "<group>"; };
 		A6333ADA209D40F800A94C1A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		A6354F7D20C3C0790083E838 /* ErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsView.swift; sourceTree = "<group>"; };
-		A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		A656CB7120D1EA3D009B41E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A68CC9E420E3246A0065C970 /* WinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerViewController.swift; sourceTree = "<group>"; };
 		A68CC9E820E327D60065C970 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				A6A3502D207E504C000E79E1 /* AppDelegate.swift */,
-				A656CB6F20D1DE70009B41E9 /* GCDBlackBox.swift */,
 				A63B6DF920BFC2D0005CBBFF /* Storyboards */,
 				A6BC0AD92085243C00D2AF6C /* Controller */,
 				A60E686220927221004C601B /* View */,
@@ -364,7 +361,6 @@
 				A695147220E062E600D03675 /* DisplayErrors.swift in Sources */,
 				A695147A20E0B7F200D03675 /* Score+CoreDataProperties.swift in Sources */,
 				A60DF5C520CE0EF100EE4F7A /* FirebaseConstants.swift in Sources */,
-				A656CB7020D1DE70009B41E9 /* GCDBlackBox.swift in Sources */,
 				A60DF5BF20CDFCBB00EE4F7A /* SecondScreen_Autolayout.swift in Sources */,
 				A69A252C20B28AD800579DB3 /* FirstScreenViewController.swift in Sources */,
 				A656CB7220D1EA3D009B41E9 /* DataController.swift in Sources */,

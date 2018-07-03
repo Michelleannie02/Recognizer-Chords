@@ -59,7 +59,7 @@ extension FirstScreenViewController {
 		minorButton.isHidden = false
 		majorButton.isEnabled = false
 		minorButton.isEnabled = false
-		pointsBarView.currentValue = 0.0
+		hitsBarView.currentValue = 0.0
 		errorsBarView.currentValue = 0.0
 	}
 	

@@ -31,8 +31,10 @@ class FirstScreenViewController: UIViewController {
 	var buttonWasTapped = true
 	
 	// bar score bottom
-	let pointsBarView = PointsView()
+	let hitsBarView = PointsView()
 	let errorsBarView = ErrorsView()
+	let maxErrors: Double = 3
+	let hitsToGoToTheNextScreen: Double = 8
 	
 	// esconde la barra de estado
 	override var prefersStatusBarHidden: Bool {
@@ -150,7 +152,7 @@ class FirstScreenViewController: UIViewController {
 		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Major {
 			
 			// da un paso en la barra de aciertos
-			pointsBarView.currentValue += 1
+			hitsBarView.currentValue += 1
 			
 			// agrega un punto a la variable 'scoreToAdd'
 			scoreToAdd += 1
@@ -190,7 +192,7 @@ class FirstScreenViewController: UIViewController {
 		if FirebaseClient.aChordSounded == FirebaseClient.TypesOfChords.Minor {
 			
 			// un paso para la barra de aciertos
-			pointsBarView.currentValue += 1
+			hitsBarView.currentValue += 1
 			
 			// agrega un punto a la variable 'scoreToAdd'
 			scoreToAdd += 1
@@ -246,7 +248,7 @@ class FirstScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 8 {
+		if hitsBarView.currentValue == hitsToGoToTheNextScreen {
 			
 			// se deshabilitan todos los botones
 			activityIndicator.isHidden = true
@@ -264,7 +266,7 @@ class FirstScreenViewController: UIViewController {
 		
 		/// GAME OVER.
 		// si el usuario erró 3 veces en su sesión, pierde
-		if errorsBarView.currentValue == 3 {
+		if errorsBarView.currentValue == maxErrors {
 			
 			// se anula la UI
 			activityIndicator.isHidden = true

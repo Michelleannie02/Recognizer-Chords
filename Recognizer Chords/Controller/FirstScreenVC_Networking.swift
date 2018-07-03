@@ -52,7 +52,7 @@ extension FirstScreenViewController {
 			
 			FirebaseClient.sharedInstance.majorChordRequest { success, error in
 			
-			performUIUpdatesOnMain {
+			DispatchQueue.main.async {
 				
 				if success {
 					
@@ -71,7 +71,7 @@ extension FirstScreenViewController {
 		// si la solicitud fue de un acorde menor, ejecutar este bloque...
 			FirebaseClient.sharedInstance.minorChordRequest { success, error in
 			
-			performUIUpdatesOnMain {
+			DispatchQueue.main.async {
 				
 				if success {
 					

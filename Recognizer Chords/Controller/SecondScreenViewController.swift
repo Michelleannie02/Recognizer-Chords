@@ -35,6 +35,9 @@ class SecondScreenViewController: UIViewController {
 	// score bar bottom
 	let pointsBarView = PointsView()
 	let errorsBarView = ErrorsView()
+	let maxErrors: Double = 3
+	let hitsToWin: Double = 8
+	let hitsLastScreen: Double = 8
 	
 	// esconde la barra de estado
 	override var prefersStatusBarHidden: Bool { return true }
@@ -91,7 +94,6 @@ class SecondScreenViewController: UIViewController {
 		setUserInterface()
 		
 		/// Autolayout ................................................
-		// añade ´autolayout´ a todas las vistas que contiene la pantalla
 		autolayout()
 		
 		/// Networking - request data audio chord 🚀 ..................
@@ -284,7 +286,7 @@ class SecondScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 8 {
+		if pointsBarView.currentValue == hitsToWin {
 			
 			// se deshabilitan todos los botones
 			disableButtons(all: true)
@@ -303,7 +305,7 @@ class SecondScreenViewController: UIViewController {
 		
 		/// GAME OVER.
 		// si el usuario erró 3 veces en su sesión, pierde
-		if errorsBarView.currentValue == 3 {
+		if errorsBarView.currentValue == maxErrors {
 			
 			// se anula la UI
 			disableButtons(all: true)
@@ -329,7 +331,7 @@ class SecondScreenViewController: UIViewController {
 		// Core Data CREATES and SAVE score
 		
 		// crea un objeto gestionado 'score' para almacenar el score actual
-		let score = Score(hits: hit + 8, context: dataController.viewContext)
+		let score = Score(hits: hit + hitsLastScreen, context: dataController.viewContext)
 		
 		// agrega el score (managed object) a un array que contiene los scores persistidos '[Score]'
 		scores.append(score)
