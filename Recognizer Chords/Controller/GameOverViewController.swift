@@ -17,7 +17,6 @@ class GameOverViewController: UIViewController {
 	@IBOutlet weak var startAgainButton: UIButton!
 	@IBOutlet weak var gameOverLabel: UILabel!
 	
-	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
 	//*****************************************************************

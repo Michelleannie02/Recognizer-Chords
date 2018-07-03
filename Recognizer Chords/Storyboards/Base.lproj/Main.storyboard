@@ -201,39 +201,31 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="score cell id" id="ApF-BH-que">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="score cell id" id="ApF-BH-que" customClass="ScoresCollectionViewCell" customModule="Recognizer_Chords" customModuleProvider="target">
                                         <rect key="frame" x="-0.5" y="0.0" width="376" height="163"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="163"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="-40" translatesAutoresizingMaskIntoConstraints="NO" id="vcK-Tw-qfh">
-                                                    <rect key="frame" x="134" y="51" width="108" height="61"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAh-hw-3hP">
-                                                            <rect key="frame" x="0.0" y="0.5" width="74" height="60"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXo-Io-Vab">
-                                                            <rect key="frame" x="34" y="9.5" width="74" height="42"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                            <color key="textColor" red="0.72156862749999995" green="0.69019607839999997" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAh-hw-3hP">
+                                                    <rect key="frame" x="58" y="38" width="260" height="87"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="vcK-Tw-qfh" firstAttribute="top" secondItem="ApF-BH-que" secondAttribute="topMargin" constant="43" id="Ua9-5u-GAY"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="vcK-Tw-qfh" secondAttribute="bottom" constant="43" id="guR-LG-bor"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="vcK-Tw-qfh" secondAttribute="trailing" constant="126" id="k72-na-yft"/>
-                                            <constraint firstItem="vcK-Tw-qfh" firstAttribute="leading" secondItem="ApF-BH-que" secondAttribute="leadingMargin" constant="126" id="llP-EZ-OKu"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="xAh-hw-3hP" secondAttribute="bottom" constant="30" id="9cV-Dy-l6m"/>
+                                            <constraint firstItem="xAh-hw-3hP" firstAttribute="top" secondItem="ApF-BH-que" secondAttribute="topMargin" constant="30" id="aNA-Jj-KmR"/>
+                                            <constraint firstItem="xAh-hw-3hP" firstAttribute="leading" secondItem="ApF-BH-que" secondAttribute="leadingMargin" constant="50" id="kTM-A6-WIZ"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="xAh-hw-3hP" secondAttribute="trailing" constant="50" id="lza-MN-fVr"/>
                                         </constraints>
                                         <size key="customSize" width="376" height="163"/>
+                                        <connections>
+                                            <outlet property="hitLabel" destination="xAh-hw-3hP" id="eyt-Jt-bJM"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -256,13 +248,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is your last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KyR-Je-3iz">
                                         <rect key="frame" x="0.0" y="0.0" width="119" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Scores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-rt-fMi">
                                         <rect key="frame" x="0.0" y="25.5" width="119" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -648,7 +640,7 @@
         <image name="play_button" width="167" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="28q-Md-zoN"/>
+        <segue reference="hij-Ow-kNq"/>
         <segue reference="Dob-wt-5Dg"/>
     </inferredMetricsTieBreakers>
 </document>

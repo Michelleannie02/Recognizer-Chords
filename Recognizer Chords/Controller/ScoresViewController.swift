@@ -38,6 +38,7 @@ class ScoresViewController: UIViewController {
 	
 	@IBOutlet weak var closeButton: UIButton!
 	@IBOutlet weak var threeLastScoresCollectionView: UICollectionView!
+
 	
 	//*****************************************************************
 	// MARK: - VC Life Cycle
@@ -71,9 +72,8 @@ class ScoresViewController: UIViewController {
 					scores = result // scores:[Score] 🔌
 
 				}
-
+		
 			onlyThreeLastScores()
-
 		}
 	
 
@@ -81,7 +81,6 @@ class ScoresViewController: UIViewController {
 	func onlyThreeLastScores() {
 		scoresReversed = scores.reversed()
 		threeLastScores = scoresReversed.getFirstElements(upTo: 3)
-		debugPrint("tus últimos tres scores son \(threeLastScores)")
 	}
 
 	//*****************************************************************
@@ -103,6 +102,7 @@ class ScoresViewController: UIViewController {
 		return true
 	}
 	
+	
 }
 
 	//*****************************************************************
@@ -118,40 +118,33 @@ class ScoresViewController: UIViewController {
 		func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 			
 			// la celda de scores
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "score cell id", for: indexPath)
-			
-			// pone la etiqueta contenida en la celda de color verde
-			//cell.pointsEarned.backgroundColor = .green
-			
-			cell.backgroundColor = .red
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "score cell id", for: indexPath) as! ScoresCollectionViewCell
 			
 			// itera el array de scores para extraerle los valores de 'hits'
 			var hitsArray: [Int] = []
 			for score in scoresReversed {
 				hitsArray.append(Int(score.hits))
 			}
+			
+			let hitCharacter: String = " ✔"
+			
 			// pone los valores de hits en la etiqueta de la celda de la colección
 			if let label = cell.viewWithTag(100) as? UILabel {
-				label.text = String(hitsArray[indexPath.row])
+				label.text = String(hitsArray[indexPath.row]) + hitCharacter
 			}
 			
-			// devuelve la celda ya configurada
 			return cell
 		}
 	
-		
-//		func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//			<#code#>
-//		}
-		
+		/// task: configura el diseño de la collection view
 		func collectionViewLayout() {
-			threeLastScoresCollectionView.backgroundColor = .red
+			threeLastScoresCollectionView.backgroundColor = UIColor(red: 124, green: 117, blue: 117, alpha: 0.0) //7C7575
 			let width = (view.frame.size.width) - 20
 			let height = (view.frame.size.height - 70) / 3.45
 			let layout = threeLastScoresCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
 			layout.itemSize = CGSize(width: width, height: height)
 		}
-
+		
 	
 } // end ext
 

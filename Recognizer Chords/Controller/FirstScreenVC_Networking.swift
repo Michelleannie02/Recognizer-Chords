@@ -135,7 +135,7 @@ extension FirstScreenViewController {
 		// si hay internet
 		if recheability.connection != .none {
 			
-			print("hay conexión, se despide el alert view y se realizar una nueva solicitud")
+			print("hay conexión, se despide el alert view y se realiza una nueva solicitud")
 			
 		} else {
 			

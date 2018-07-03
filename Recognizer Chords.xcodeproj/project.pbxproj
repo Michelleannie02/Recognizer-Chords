@@ -31,13 +31,13 @@
 		A6A286D620D9A24500E5176E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6A286D520D9A24500E5176E /* GoogleService-Info.plist */; };
 		A6A286D820D9AC9C00E5176E /* ChorsInfoFirst_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A286D720D9AC9C00E5176E /* ChorsInfoFirst_Autolayout.swift */; };
 		A6A286DA20D9ACB000E5176E /* ChordInfoSecond_Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A286D920D9ACB000E5176E /* ChordInfoSecond_Autolayout.swift */; };
-		A6A286DC20D9C8A200E5176E /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A286DB20D9C8A200E5176E /* ScoreCell.swift */; };
 		A6A3502E207E504C000E79E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3502D207E504C000E79E1 /* AppDelegate.swift */; };
 		A6A35033207E504C000E79E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A35031207E504C000E79E1 /* Main.storyboard */; };
 		A6A35035207E504C000E79E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A35034207E504C000E79E1 /* Assets.xcassets */; };
 		A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF19FC20BE17E600DBAAAC /* PointsView.swift */; };
 		A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */; };
 		A6C7C71720DF5B4E00235C7D /* Connection_Posibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C7C71620DF5B4E00235C7D /* Connection_Posibilities.swift */; };
+		A6D81EEB20EB30C800CAB666 /* ScoresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D81EEA20EB30C800CAB666 /* ScoresCollectionViewCell.swift */; };
 		A6F72CB320CF1EA400251901 /* ConfigureUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F72CB220CF1EA400251901 /* ConfigureUI.swift */; };
 		A6F72CB520CF9CD100251901 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F72CB420CF9CD100251901 /* GameOverViewController.swift */; };
 /* End PBXBuildFile section */
@@ -70,7 +70,6 @@
 		A6A286D520D9A24500E5176E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6A286D720D9AC9C00E5176E /* ChorsInfoFirst_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChorsInfoFirst_Autolayout.swift; sourceTree = "<group>"; };
 		A6A286D920D9ACB000E5176E /* ChordInfoSecond_Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordInfoSecond_Autolayout.swift; sourceTree = "<group>"; };
-		A6A286DB20D9C8A200E5176E /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScoreCell.swift; path = "Recognizer Chords/View/ScoreCell.swift"; sourceTree = "<group>"; };
 		A6A3502A207E504C000E79E1 /* Recognizer Chords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recognizer Chords.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A3502D207E504C000E79E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A35032207E504C000E79E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		A6BC0AE2208524E900D2AF6C /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
 		A6C7C71620DF5B4E00235C7D /* Connection_Posibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection_Posibilities.swift; sourceTree = "<group>"; };
 		A6C7C71920DF5B6600235C7D /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		A6D81EEA20EB30C800CAB666 /* ScoresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresCollectionViewCell.swift; sourceTree = "<group>"; };
 		A6F72CB220CF1EA400251901 /* ConfigureUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigureUI.swift; path = "Recognizer Chords/View/ConfigureUI.swift"; sourceTree = SOURCE_ROOT; };
 		A6F72CB420CF9CD100251901 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,7 +118,7 @@
 		A60E686220927221004C601B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A6A286DB20D9C8A200E5176E /* ScoreCell.swift */,
+				A6D81EEA20EB30C800CAB666 /* ScoresCollectionViewCell.swift */,
 				A6F72CB220CF1EA400251901 /* ConfigureUI.swift */,
 				A6075BE420B911840019E2E8 /* Bottom Score Bar */,
 			);
@@ -357,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D81EEB20EB30C800CAB666 /* ScoresCollectionViewCell.swift in Sources */,
 				A6F72CB320CF1EA400251901 /* ConfigureUI.swift in Sources */,
 				A6333ADB209D40F800A94C1A /* Helpers.swift in Sources */,
 				A6BC0AE3208524EA00D2AF6C /* SecondScreenViewController.swift in Sources */,
@@ -374,7 +375,6 @@
 				A6354F7E20C3C0790083E838 /* ErrorsView.swift in Sources */,
 				A695147420E0876800D03675 /* FirstScreenVC_Networking.swift in Sources */,
 				A6AF19FD20BE17E600DBAAAC /* PointsView.swift in Sources */,
-				A6A286DC20D9C8A200E5176E /* ScoreCell.swift in Sources */,
 				A6A286D820D9AC9C00E5176E /* ChorsInfoFirst_Autolayout.swift in Sources */,
 				A6C7C71720DF5B4E00235C7D /* Connection_Posibilities.swift in Sources */,
 				A6A286DA20D9ACB000E5176E /* ChordInfoSecond_Autolayout.swift in Sources */,

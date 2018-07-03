@@ -246,7 +246,7 @@ class FirstScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 2 {
+		if pointsBarView.currentValue == 8 {
 			
 			// se deshabilitan todos los botones
 			activityIndicator.isHidden = true
@@ -307,7 +307,7 @@ class FirstScreenViewController: UIViewController {
 
 extension FirstScreenViewController {
 	
-	// task: enviar a 'ScoresViewController' y a 'SecondScreenViewController' el 'data controller'
+	// task: inyectar a 'ScoresViewController' y a 'SecondScreenViewController' el 'data controller'
 	override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
 		
 		if segue.identifier == "three last scores" {
@@ -321,17 +321,10 @@ extension FirstScreenViewController {
 		}
 		
 		if segue.identifier == "next screen" {
-			
-			// el destino de la transición, el 'ScoresViewController'
 			let secondScreenVC = segue.destination as! SecondScreenViewController
-			
-			// el controlador de datos
 			secondScreenVC.dataController = dataController
-			
 		}
-		
 	}
-	
 }
 
 

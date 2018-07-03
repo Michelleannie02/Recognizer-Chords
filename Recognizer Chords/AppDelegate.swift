@@ -46,8 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let firstViewController = window?.rootViewController as! FirstScreenViewController
 		firstViewController.dataController = dataController
 		
-		defaultScores()
-		
 		/// NSUserDefaults ............................................
 		checkFirstLaunch()
 		
@@ -64,34 +62,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		saveViewContext()
 	}
 	
+	//*****************************************************************
+	// MARK: - User Defaults
+	//*****************************************************************
 	
 	/// task: comprueba si es la primera vez que la app se lanzó o no
 	func checkFirstLaunch() {
 		
 		if (UserDefaults().bool(forKey: "hasLaunchedBefore")) {
 			
-			print("App has launched before")
+			debugPrint("App has launched before")
 			
 			} else {
 			
-			print("This is the first launch ever!")
-			
+			debugPrint("This is the first launch ever!")
+			// si es la primera vez que la app se lanza, crear tres objetos score
+			let _ = Score.init(hits: 0, context: dataController.viewContext)
+			let _ = Score.init(hits: 0, context: dataController.viewContext)
+			let _ = Score.init(hits: 0, context: dataController.viewContext)
+
 			UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
 			UserDefaults.standard.synchronize()
 		}
 	}
 	
 	//*****************************************************************
-	// MARK: - Core Data -
+	// MARK: - Core Data
 	//*****************************************************************
-	
-	/// task: crea los primeros tres scores por defecto a 0
-	func defaultScores() {
-		_ = Score(hits: 0, context: dataController.viewContext)
-		_ = Score(hits: 0, context: dataController.viewContext)
-		_ = Score(hits: 0, context: dataController.viewContext)
-	}
-	
 	
 	/// task: guardar el contexto
 	func saveViewContext() {

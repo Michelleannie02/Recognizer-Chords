@@ -89,11 +89,11 @@ extension SecondScreenViewController {
 		// en principio el indicador de actividad (networking) está oculto
 		activityIndicator.isHidden = true
 		
-		// en principio los botones de mayor y menor se encuentran deshabilitados
-		majorButton.isEnabled = true
-		minorButton.isEnabled = true
-		diminishedButton.isEnabled = true
-		augmentedButton.isEnabled = true
+		// en principio los botones de mayor, menor, disminuído y aumentado se encuentran deshabilitados
+		majorButton.isEnabled = false
+		minorButton.isEnabled = false
+		diminishedButton.isEnabled = false
+		augmentedButton.isEnabled = false
 	}
 	
 	/// task: deshabilitar todos los botones o sólo los botones de acordes

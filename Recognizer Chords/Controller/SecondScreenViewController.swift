@@ -284,7 +284,7 @@ class SecondScreenViewController: UIViewController {
 		
 		/// PROGRESS...
 		// si el usuario acertó ocho veces en su sesión sube de nivel y pasa a la siguiente pantalla
-		if pointsBarView.currentValue == 2 { 
+		if pointsBarView.currentValue == 8 {
 			
 			// se deshabilitan todos los botones
 			disableButtons(all: true)
